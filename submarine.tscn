@@ -1,10 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=7 format=3 uid="uid://cnemvuq4712kt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wcj"]
-size = Vector2(255, 124)
+[ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
+[ext_resource type="Texture2D" uid="uid://ggvx8g04o24t" path="res://art/Crab/Idle/Crab1.png" id="2_dld8j"]
 
-[node name="Submarine" type="Node2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ucp48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwy0q"]
+size = Vector2(282, 251)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl7x4"]
+atlas = ExtResource("2_dld8j")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ls03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl7x4")
+}],
+"loop": true,
+"name": &"sub",
+"speed": 5.0
+}]
+
+[node name="submarine" type="CharacterBody2D"]
+script = ExtResource("1_uaken")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(138, 75)
-shape = SubResource("RectangleShape2D_d4wcj")
+material = SubResource("CanvasItemMaterial_ucp48")
+position = Vector2(-3, -5)
+shape = SubResource("RectangleShape2D_pwy0q")
+debug_color = Color(0.417429, 0.552356, 0.672516, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(15.8333, 14.6944)
+sprite_frames = SubResource("SpriteFrames_1ls03")
+animation = &"sub"
+frame_progress = 0.436989

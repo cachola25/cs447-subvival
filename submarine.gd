@@ -1,0 +1,32 @@
+extends CharacterBody2D
+
+
+const SPEED = 300
+var bubble_scene = load("res://bubble.tscn")
+
+func spawn_bubble():
+	var bubble = bubble_scene.instantiate()
+	bubble.position = position
+	get_parent().add_child(bubble)
+	
+func _ready():
+	pass
+	
+func _process(delta):
+	var direction = Vector2.ZERO # (0,0d)
+	
+	if Input.is_action_pressed("move_up"):
+		direction.y -= 1
+	if Input.is_action_pressed("move_down"):
+		direction.y += 1
+	if Input.is_action_pressed("move_left"):
+		direction.x -= 1
+	if Input.is_action_pressed("move_right"):
+		direction.x += 1
+	if Input.is_action_just_pressed("release_bubble"):
+		spawn_bubble()
+	
+	if direction.length() > 1:
+		direction = direction.normalized()
+	
+	move_and_collide(direction * SPEED * delta)

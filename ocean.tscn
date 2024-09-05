@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1kby2nijf6uj"]
+
+[ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
+[ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
+
+[node name="ocean" type="Node2D"]
+script = ExtResource("1_t8jae")
+
+[node name="submarine" parent="." instance=ExtResource("1_5pwii")]
+position = Vector2(312, 361)
