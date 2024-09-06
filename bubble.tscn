@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6olq3cp8bc6a"]
 
-[ext_resource type="Texture2D" uid="uid://bl6y1gvdn67ic" path="res://art/pngegg.png" id="1_34duo"]
+[ext_resource type="Texture2D" uid="uid://dv8ser6mp7k7x" path="res://art/pngegg.png" id="1_34duo"]
 [ext_resource type="Script" path="res://bubble.gd" id="1_gvl63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ae1"]
-radius = 145.454
+radius = 70.1142
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjudh"]
 atlas = ExtResource("1_34duo")
@@ -27,11 +27,11 @@ collision_mask = 2
 script = ExtResource("1_gvl63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
+position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_h5ae1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.255833, 0.251458)
+position = Vector2(-1.12495, 1)
+scale = Vector2(0.123542, 0.119062)
 sprite_frames = SubResource("SpriteFrames_o3hfk")
 animation = &"bubble"

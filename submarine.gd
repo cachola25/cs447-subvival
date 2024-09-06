@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300
+const SPEED = 500
 var bubble_scene = load("res://bubble.tscn")
 
 func spawn_bubble():
@@ -21,6 +21,7 @@ func _process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
+		
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
 	if Input.is_action_just_pressed("release_bubble"):
@@ -28,5 +29,9 @@ func _process(delta):
 	
 	if direction.length() > 1:
 		direction = direction.normalized()
+	if direction.x > 0:
+		$AnimatedSprite2D.flip_h = true
+	elif direction.x < 0: 
+		$AnimatedSprite2D.flip_h = false
 	
 	move_and_collide(direction * SPEED * delta)
