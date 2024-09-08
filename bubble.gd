@@ -8,4 +8,5 @@ func _ready():
 	velocity.y = -SPEED  # Set the bubble to move upwards
 
 func _process(delta):
-	position += velocity * delta  # Move the bubble upwards
+	#position += velocity * delta  # Move the bubble upwards
+	var collision_info = move_and_collide(velocity * delta)

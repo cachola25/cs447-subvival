@@ -21,6 +21,8 @@ animations = [{
 }]
 
 [node name="money_fish" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fp3nj")
