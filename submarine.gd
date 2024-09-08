@@ -6,7 +6,9 @@ var bubble_scene = load("res://bubble.tscn")
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
-	bubble.position = position
+	var temp_position = position
+	temp_position.y -= 30
+	bubble.position = temp_position
 	get_parent().add_child(bubble)
 	
 func _ready():

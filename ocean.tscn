@@ -1,10 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1kby2nijf6uj"]
+[gd_scene load_steps=7 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
+[ext_resource type="Texture2D" uid="uid://ceuicsai2b4te" path="res://art/ocean_art.png" id="2_8ddkb"]
+[ext_resource type="PackedScene" uid="uid://ckuhsdp13b5ex" path="res://money_fish.tscn" id="4_hh6vl"]
+[ext_resource type="Script" path="res://money_fish_path.gd" id="4_ow8ml"]
+
+[sub_resource type="Curve2D" id="Curve2D_2no4m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8, 101, 0, 0, 0, 0, 2549, 88)
+}
+point_count = 2
 
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 2564.0
+offset_bottom = 1449.0
+texture = ExtResource("2_8ddkb")
+
 [node name="submarine" parent="." instance=ExtResource("1_5pwii")]
-position = Vector2(312, 361)
+position = Vector2(1024, 711)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-46.1448, 0)
+scale = Vector2(1.0181, 1)
+curve = SubResource("Curve2D_2no4m")
+
+[node name="money_fish_path" type="PathFollow2D" parent="Path2D"]
+position = Vector2(8, 101)
+rotation = -0.00511605
+script = ExtResource("4_ow8ml")
+
+[node name="money_fish" parent="Path2D/money_fish_path" instance=ExtResource("4_hh6vl")]
+position = Vector2(3.8147e-06, 1.92225e-06)

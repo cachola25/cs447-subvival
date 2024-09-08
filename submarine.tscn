@@ -24,6 +24,7 @@ animations = [{
 }]
 
 [node name="submarine" type="CharacterBody2D"]
+z_index = 2
 script = ExtResource("1_uaken")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

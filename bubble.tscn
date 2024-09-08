@@ -22,15 +22,22 @@ animations = [{
 }]
 
 [node name="bubble" type="CharacterBody2D"]
+show_behind_parent = true
+z_index = 1
+z_as_relative = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_gvl63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+z_as_relative = false
 position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_h5ae1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+z_as_relative = false
 position = Vector2(-1.12495, 1)
 scale = Vector2(0.123542, 0.119062)
 sprite_frames = SubResource("SpriteFrames_o3hfk")
