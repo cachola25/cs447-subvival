@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckuhsdp13b5ex"]
+[gd_scene load_steps=6 format=3 uid="uid://ckuhsdp13b5ex"]
 
 [ext_resource type="Texture2D" uid="uid://dpixamx56528s" path="res://art/money_fish.png" id="1_0hbif"]
+[ext_resource type="Script" path="res://money_fish.gd" id="1_4jxdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fp3nj"]
 size = Vector2(44, 20)
@@ -23,6 +24,7 @@ animations = [{
 [node name="money_fish" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_4jxdb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fp3nj")

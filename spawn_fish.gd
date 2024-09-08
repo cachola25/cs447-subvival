@@ -11,6 +11,7 @@ func spawn_fish():
 	var random_path = paths[randi() % paths.size()]
 	var money_fish = money_fish_scene.instantiate()
 	var path_follow = PathFollow2D.new()
+	path_follow.z_index = 2
 	random_path.add_child(path_follow)
 	path_follow.add_child(money_fish)
 	add_child(path_follow)
@@ -25,7 +26,7 @@ func _ready() -> void:
 	paths.append($Path2D_1)
 	paths.append($Path2D_2)
 	paths.append($Path2D_3)
-	$spawn_timer.start()
+	$money_fish_spawn_timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,8 +39,7 @@ func _process(delta: float) -> void:
 			active_money_fish.remove_at(i)
 			curr_fish.queue_free()
 
-
-func _on_spawn_timer_timeout() -> void:
+func _on_money_fish_spawn_timer_timeout() -> void:
 	if not len(active_money_fish) <= MAX_FISH:
 		return
 	spawn_fish()

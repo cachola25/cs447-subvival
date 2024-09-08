@@ -37,6 +37,7 @@ texture = ExtResource("2_8ddkb")
 position = Vector2(1078, 1051)
 
 [node name="spawn_fish" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_jvoty")
 
 [node name="Path2D_1" type="Path2D" parent="spawn_fish"]
