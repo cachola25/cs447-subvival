@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://wd2vio45h1j5"]
+
+[node name="GUI" type="MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Oxygen Bar" type="HBoxContainer" parent="HBoxContainer/Bars"]
+layout_mode = 2
+
+[node name="Count" type="MarginContainer" parent="HBoxContainer/Bars/Oxygen Bar"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bars/Oxygen Bar/Count"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="HBoxContainer/Bars/Oxygen Bar/Count"]
+layout_mode = 2
+
+[node name="Number" type="Label" parent="HBoxContainer/Bars/Oxygen Bar/Count"]
+layout_mode = 2
+
+[node name="Counters" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
