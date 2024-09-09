@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://1hnoh3dfe6hp"]
+[gd_scene load_steps=10 format=3 uid="uid://1hnoh3dfe6hp"]
 
+[ext_resource type="Script" path="res://level_1.gd" id="1_3wsid"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_pdhn7"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="1_u6ig5"]
 [ext_resource type="Script" path="res://spawn_fish.gd" id="2_okg1x"]
@@ -23,7 +24,14 @@ _data = {
 }
 point_count = 11
 
+[sub_resource type="Curve2D" id="Curve2D_7lum1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, 861, 0, 0, 0, 0, 1916, 887)
+}
+point_count = 2
+
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_3wsid")
 
 [node name="spawn_fish" type="Node2D" parent="."]
 z_index = 1
@@ -60,6 +68,11 @@ rotation = 0.592427
 
 [node name="money_fish_spawn_timer" type="Timer" parent="spawn_fish"]
 
+[node name="eel_spawn_timer" type="Timer" parent="spawn_fish"]
+
+[node name="Path2D_4" type="Path2D" parent="spawn_fish"]
+curve = SubResource("Curve2D_7lum1")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 151.0
 offset_bottom = 88.0
@@ -87,6 +100,14 @@ position = Vector2(1191, 721)
 polygon = PackedVector2Array(12, -1, 30, 5, 39, 10, 49, 20, 57, 33, 69, 56, 76, 69, 81, 83, 84, 95, 90, 108, 96, 131, 109, 145, 121, 164, 134, 181, 140, 193, 140, 207, 138, 223, 133, 236, 123, 245, 115, 248, 4, 247, -53, 244, -77, 239, -99, 229, -112, 222, -116, 206, -113, 181, -107, 156, -97, 133, -81, 99, -61, 57, -49, 33, -33, 10, -22, 0, -1, 0)
 
 [node name="submarine" parent="rocks" instance=ExtResource("1_pdhn7")]
-position = Vector2(292, 926)
+position = Vector2(211, 744)
+
+[node name="oxygen_bar" type="ProgressBar" parent="."]
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 250.0
+offset_bottom = 34.0
+fill_mode = 1
 
 [connection signal="timeout" from="spawn_fish/money_fish_spawn_timer" to="spawn_fish" method="_on_money_fish_spawn_timer_timeout"]
+[connection signal="timeout" from="spawn_fish/eel_spawn_timer" to="spawn_fish" method="_on_eel_spawn_timer_timeout"]

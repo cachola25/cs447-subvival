@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8a5lnd1uvs1a"]
+
+[ext_resource type="Script" path="res://eel.gd" id="1_18xai"]
+[ext_resource type="Texture2D" uid="uid://dxnr84nr6ify" path="res://art/Eel/Eel Enemy Spritesheet.png" id="1_rx4am"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvc8p"]
+size = Vector2(57, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc2op"]
+atlas = ExtResource("1_rx4am")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f7gd"]
+atlas = ExtResource("1_rx4am")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnda6"]
+atlas = ExtResource("1_rx4am")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg5jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc2op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f7gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnda6")
+}],
+"loop": true,
+"name": &"eel",
+"speed": 10.0
+}]
+
+[node name="eel" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_18xai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2.5)
+shape = SubResource("RectangleShape2D_bvc8p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lg5jl")
+animation = &"eel"
+frame_progress = 0.987393
