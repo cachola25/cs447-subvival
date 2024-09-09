@@ -15,8 +15,9 @@ func _process(delta):
 		var collider = collision_info.get_collider()
 		if (collider is money_fish 
 		and $AnimatedSprite2D.animation == "bubble"):
-			collision_layer = 3
-			collision_mask = 1
+			collision_layer = 6
+			collision_mask = 6
+			name = "fish_captured_bubble"
 			$AnimatedSprite2D.play("fish_captured")
 			collider.in_bubble = true
 		elif (collider is rock):
