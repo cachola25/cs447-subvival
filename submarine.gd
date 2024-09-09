@@ -16,14 +16,13 @@ func _ready():
 	
 func _process(delta):
 	var direction = Vector2.ZERO # (0,0d)
-	
+	$AnimatedSprite2D.rotation = 0
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
 	if Input.is_action_pressed("move_down"):
 		direction.y += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
-		
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
 	if Input.is_action_just_pressed("release_bubble"):
@@ -31,9 +30,27 @@ func _process(delta):
 	
 	if direction.length() > 1:
 		direction = direction.normalized()
-	if direction.x > 0:
-		$AnimatedSprite2D.flip_h = true
-	elif direction.x < 0: 
-		$AnimatedSprite2D.flip_h = false
+		
+	if direction.length() > 0:
+		if direction.x < 0:
+			$AnimatedSprite2D.flip_h = false
+		elif direction.x > 0:
+			$AnimatedSprite2D.flip_h = true
+		elif direction.x == 0:
+			if $AnimatedSprite2D.flip_h:
+				if direction.y < 0:
+					$AnimatedSprite2D.rotation = -PI/2
+				elif direction.y > 0:
+					$AnimatedSprite2D.rotation = PI/2
+			else:
+				if direction.y < 0:
+					$AnimatedSprite2D.rotation = PI/2
+				elif direction.y > 0:
+					$AnimatedSprite2D.rotation = -PI/2
+		if direction.x != 0 and direction.y != 0:
+			if direction.x < 0:
+				$AnimatedSprite2D.rotation = direction.angle() - PI
+			else:
+				$AnimatedSprite2D.rotation = direction.angle()
 	
 	move_and_collide(direction * SPEED * delta)

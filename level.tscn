@@ -25,9 +25,6 @@ point_count = 11
 
 [node name="Level1" type="Node2D"]
 
-[node name="submarine" parent="." instance=ExtResource("1_pdhn7")]
-position = Vector2(287, 960)
-
 [node name="spawn_fish" type="Node2D" parent="."]
 z_index = 1
 script = ExtResource("2_okg1x")
@@ -69,8 +66,8 @@ offset_bottom = 88.0
 texture = ExtResource("1_u6ig5")
 
 [node name="rocks" type="StaticBody2D" parent="."]
-collision_layer = 10
-collision_mask = 10
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("4_rrbfm")
 
 [node name="Rock1" type="CollisionPolygon2D" parent="rocks"]
@@ -88,5 +85,8 @@ polygon = PackedVector2Array(11, 1, 65, 1, 97, 4, 136, 18, 168, 36, 206, 58, 221
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rocks"]
 position = Vector2(1191, 721)
 polygon = PackedVector2Array(12, -1, 30, 5, 39, 10, 49, 20, 57, 33, 69, 56, 76, 69, 81, 83, 84, 95, 90, 108, 96, 131, 109, 145, 121, 164, 134, 181, 140, 193, 140, 207, 138, 223, 133, 236, 123, 245, 115, 248, 4, 247, -53, 244, -77, 239, -99, 229, -112, 222, -116, 206, -113, 181, -107, 156, -97, 133, -81, 99, -61, 57, -49, 33, -33, 10, -22, 0, -1, 0)
+
+[node name="submarine" parent="rocks" instance=ExtResource("1_pdhn7")]
+position = Vector2(292, 926)
 
 [connection signal="timeout" from="spawn_fish/money_fish_spawn_timer" to="spawn_fish" method="_on_money_fish_spawn_timer_timeout"]
