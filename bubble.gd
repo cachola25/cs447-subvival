@@ -1,4 +1,13 @@
 extends CharacterBody2D
+######################################
+# Handles how the bubble should interact
+# with the other entities and environment
+# A bubble should only collide with and do:
+#		- money_fish —> capture fish
+#		- rocks —> pop and exit from scene
+# A captured_fish bubble should only collide with and do:
+#		- rocks —> pop and exit from scene
+######################################
 
 const SPEED = 800
 signal fish_captured

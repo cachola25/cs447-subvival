@@ -1,7 +1,14 @@
 extends CharacterBody2D
 
+######################################
+# Controls the subamrine's movements 
+# actions
+# A submarine should only collide with and do:
+#		- eel —> take damage
+#		- rocks —> collide regularly
+######################################
 
-const SPEED = 500
+var SPEED = 500
 var bubble_scene = load("res://bubble.tscn")
 
 func spawn_bubble():

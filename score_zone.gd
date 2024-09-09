@@ -1,5 +1,14 @@
 extends Area2D
 
+######################################
+# Used to keep track of the players
+# score by incrementing the score
+# if a captured fish bubble animation enters
+# the top of the screen
+# A score zone should only collide with and do:
+#		- capture fish bubbles -> increment score by fish value
+######################################
+
 var score_tracker
 var curr_score = 0
 # Called when the node enters the scene tree for the first time.

@@ -1,5 +1,12 @@
 extends Node2D
 
+######################################
+# Used to spawn the fish and the eels
+# Spawn the fish and eels on randomly 
+# selected paths. Keeps track of the booleans
+# associated with each scene and handles them accordingly
+######################################
+
 const MIN_FISH_SPEED = 350
 const MAX_FISH_SPEED = 500
 const MAX_FISH = 10
@@ -7,8 +14,8 @@ const MAX_EELS = 1
 var money_fish_scene = preload("res://money_fish.tscn")
 var eel_scene = preload("res://eel.tscn")
 var paths = []
-var active_money_fish = []
-var active_eels = []
+var active_money_fish = [] # stores the PathFollow2D node, not the money fish scene
+var active_eels = [] # stores the PathFollow2D node, not the eel scene
 var oxygen_bar
 
 func spawn_money_fish():
@@ -18,7 +25,6 @@ func spawn_money_fish():
 	path_follow.z_index = 2
 	random_path.add_child(path_follow)
 	path_follow.add_child(money_fish)
-	add_child(path_follow)
 	path_follow.progress_ratio = randf()
 	path_follow.set_meta("speed", randf_range(MIN_FISH_SPEED, MAX_FISH_SPEED))
 	active_money_fish.append(path_follow)
@@ -29,7 +35,6 @@ func spawn_eel():
 	path_follow.z_index = 2
 	$Path2D_4.add_child(path_follow)
 	path_follow.add_child(eel)
-	add_child(path_follow)
 	active_eels.append(path_follow)
 	
 	
