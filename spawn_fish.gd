@@ -28,11 +28,15 @@ func _ready() -> void:
 	paths.append($Path2D_3)
 	$money_fish_spawn_timer.start()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for i in range(len(active_money_fish)-1, -1, -1):
 		var curr_fish = active_money_fish[i]
+		var money_fish_scene = curr_fish.get_child(0)
+		if (money_fish_scene.in_bubble):
+			active_money_fish.remove_at(i)
+			curr_fish.queue_free()
+			continue
 		var curr_fish_speed = curr_fish.get_meta("speed")
 		curr_fish.progress += curr_fish_speed * delta
 		if curr_fish.progress_ratio >= 1:

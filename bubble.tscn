@@ -1,24 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6olq3cp8bc6a"]
+[gd_scene load_steps=10 format=3 uid="uid://b6olq3cp8bc6a"]
 
-[ext_resource type="Texture2D" uid="uid://dv8ser6mp7k7x" path="res://art/pngegg.png" id="1_34duo"]
 [ext_resource type="Script" path="res://bubble.gd" id="1_gvl63"]
+[ext_resource type="Texture2D" uid="uid://7fl3qgsh2etw" path="res://art/bubble.png" id="2_xw18t"]
+[ext_resource type="Texture2D" uid="uid://bxcks8640ye2c" path="res://art/fish_capture_bubble.png" id="3_5lqhq"]
+[ext_resource type="Texture2D" uid="uid://dypepupe3gemm" path="res://art/bubble_pop.png" id="3_fonab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ae1"]
 radius = 70.1142
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjudh"]
-atlas = ExtResource("1_34duo")
-region = Rect2(0, 0, 1200, 1200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tafn3"]
+atlas = ExtResource("2_xw18t")
+region = Rect2(7, 5, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f17y6"]
+atlas = ExtResource("3_5lqhq")
+region = Rect2(8, 5, 82, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iett"]
+atlas = ExtResource("3_fonab")
+region = Rect2(0, 4, 100, 88)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o3hfk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pjudh")
+"texture": SubResource("AtlasTexture_tafn3")
 }],
 "loop": true,
 "name": &"bubble",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f17y6")
+}],
+"loop": true,
+"name": &"fish_captured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iett")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 10.0
 }]
 
 [node name="bubble" type="CharacterBody2D"]
@@ -37,7 +63,9 @@ shape = SubResource("CircleShape2D_h5ae1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 z_as_relative = false
-position = Vector2(-1.12495, 1)
-scale = Vector2(0.123542, 0.119062)
+position = Vector2(-1.41413, 1)
+scale = Vector2(1.76901, 1.69419)
 sprite_frames = SubResource("SpriteFrames_o3hfk")
 animation = &"bubble"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
