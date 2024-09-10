@@ -111,6 +111,7 @@ offset_left = 1201.0
 offset_top = 16.0
 offset_right = 1903.0
 offset_bottom = 84.0
+allow_greater = true
 fill_mode = 1
 show_percentage = false
 
