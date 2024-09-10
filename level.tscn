@@ -112,6 +112,7 @@ offset_top = 16.0
 offset_right = 1903.0
 offset_bottom = 84.0
 fill_mode = 1
+show_percentage = false
 
 [node name="score_zone" type="Area2D" parent="."]
 collision_layer = 0

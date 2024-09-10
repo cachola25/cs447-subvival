@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq5bch8xddh6j"]
 
+[ext_resource type="Script" path="res://upgrade_menu.gd" id="1_07rx6"]
 [ext_resource type="Texture2D" uid="uid://br244qh06q42f" path="res://art/O2.png" id="1_lxtg1"]
-[ext_resource type="Script" path="res://o_2.gd" id="2_6ctkl"]
 
 [node name="UpgradeMenu" type="Node2D"]
+script = ExtResource("1_07rx6")
 
 [node name="O2" type="Sprite2D" parent="."]
+position = Vector2(102, 194)
 texture = ExtResource("1_lxtg1")
-script = ExtResource("2_6ctkl")
 
 [node name="TextureButton" type="TextureButton" parent="O2"]
 offset_left = -63.0
@@ -15,8 +16,10 @@ offset_top = -48.0
 offset_right = 91.0
 offset_bottom = 57.0
 
-[node name="O2ProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 147.0
+[node name="O2ProgressBar" type="ProgressBar" parent="O2"]
+offset_left = 172.0
 offset_top = -27.0
-offset_right = 863.0
-offset_bottom = 40.0
+offset_right = 874.0
+offset_bottom = 41.0
+max_value = 10.0
+show_percentage = false
