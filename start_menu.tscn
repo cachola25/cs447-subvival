@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgv07nfc61iwj"]
+
+[ext_resource type="Script" path="res://start_menu.gd" id="1_cpv6u"]
+[ext_resource type="Texture2D" uid="uid://br244qh06q42f" path="res://art/O2.png" id="2_d21gb"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_cpv6u")
+
+[node name="Start" type="Sprite2D" parent="."]
+position = Vector2(1002, 209)
+texture = ExtResource("2_d21gb")
+
+[node name="TextureButton" type="TextureButton" parent="Start"]
+offset_left = -63.0
+offset_top = -48.0
+offset_right = 91.0
+offset_bottom = 57.0
+
+[node name="Quit" type="Sprite2D" parent="."]
+position = Vector2(1008, 878)
+texture = ExtResource("2_d21gb")
+
+[node name="TextureButton" type="TextureButton" parent="Quit"]
+offset_left = -63.0
+offset_top = -48.0
+offset_right = 91.0
+offset_bottom = 57.0
