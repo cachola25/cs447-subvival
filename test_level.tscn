@@ -16,6 +16,10 @@ texture = ExtResource("1_o57x3")
 [node name="submarine" parent="." instance=ExtResource("2_1pgvb")]
 position = Vector2(199, 144)
 
+[node name="Camera2D" type="Camera2D" parent="submarine"]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
 [node name="wall" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 8
