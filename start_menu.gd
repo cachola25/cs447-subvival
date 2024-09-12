@@ -8,9 +8,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if $Quit/TextureButton.button_pressed && changeState:
-		get_tree().quit()
-		changeState = false;
-	
-	if !$Quit/TextureButton.button_pressed:
-		changeState = true
+	pass
+
+
+func _on_start_texture_button_button_down() -> void:
+	#get_tree().change_scene(load("res://level.tscn"))
+	get_tree().root.add_child(load("res://level.tscn").instantiate())
+
+func _on_quit_texture_button_button_down() -> void:
+	get_tree().quit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1hnoh3dfe6hp"]
+[gd_scene load_steps=13 format=3 uid="uid://1hnoh3dfe6hp"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3wsid"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_pdhn7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://spawn_fish.gd" id="2_okg1x"]
 [ext_resource type="Script" path="res://rocks.gd" id="4_rrbfm"]
 [ext_resource type="Script" path="res://score_zone.gd" id="6_l7xix"]
+[ext_resource type="PackedScene" uid="uid://dq5bch8xddh6j" path="res://upgrade_menu.tscn" id="7_yrbul"]
 
 [sub_resource type="Curve2D" id="Curve2D_sp0ak"]
 _data = {
@@ -134,6 +135,9 @@ offset_right = 968.0
 offset_bottom = 84.0
 theme_override_font_sizes/font_size = 100
 metadata/_edit_use_anchors_ = true
+
+[node name="UpgradeMenu" parent="." instance=ExtResource("7_yrbul")]
+position = Vector2(-555, -1388)
 
 [connection signal="timeout" from="spawn_fish/money_fish_spawn_timer" to="spawn_fish" method="_on_money_fish_spawn_timer_timeout"]
 [connection signal="timeout" from="spawn_fish/eel_spawn_timer" to="spawn_fish" method="_on_eel_spawn_timer_timeout"]
