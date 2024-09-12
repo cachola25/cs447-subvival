@@ -25,7 +25,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"money_fish",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="money_fish" type="CharacterBody2D"]
@@ -42,5 +42,5 @@ position = Vector2(1, 0.499998)
 scale = Vector2(2.21875, 1.73438)
 sprite_frames = SubResource("SpriteFrames_melhr")
 animation = &"money_fish"
-frame_progress = 0.0715959
+frame_progress = 0.427086
 flip_h = true

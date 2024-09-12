@@ -8,7 +8,7 @@ extends CharacterBody2D
 #		- rocks —> collide regularly
 ######################################
 
-var SPEED = 500
+var SPEED = 2000
 var bubble_scene = load("res://bubble.tscn")
 
 func spawn_bubble():
@@ -65,5 +65,3 @@ func _process(delta):
 		var collider = collision_info.get_collider()
 		if collider is eel:
 			collider.hit_sub = true
-			
-			

@@ -84,6 +84,7 @@ curve = SubResource("Curve2D_7lum1")
 offset_right = 151.0
 offset_bottom = 88.0
 texture = ExtResource("1_u6ig5")
+metadata/_edit_use_anchors_ = true
 
 [node name="rocks" type="StaticBody2D" parent="."]
 collision_layer = 143
@@ -114,6 +115,7 @@ offset_bottom = 84.0
 allow_greater = true
 fill_mode = 1
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="score_zone" type="Area2D" parent="."]
 collision_layer = 0
@@ -131,6 +133,7 @@ offset_top = 22.0
 offset_right = 968.0
 offset_bottom = 84.0
 theme_override_font_sizes/font_size = 100
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="spawn_fish/money_fish_spawn_timer" to="spawn_fish" method="_on_money_fish_spawn_timer_timeout"]
 [connection signal="timeout" from="spawn_fish/eel_spawn_timer" to="spawn_fish" method="_on_eel_spawn_timer_timeout"]

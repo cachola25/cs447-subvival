@@ -18,6 +18,7 @@ texture = ExtResource("1_o57x3")
 position = Vector2(199, 144)
 
 [node name="Camera2D" type="Camera2D" parent="submarine"]
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 

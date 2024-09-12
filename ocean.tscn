@@ -1,66 +1,47 @@
-[gd_scene load_steps=8 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=6 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
-[ext_resource type="Texture2D" uid="uid://ceuicsai2b4te" path="res://art/ocean_art.png" id="2_8ddkb"]
-[ext_resource type="Script" path="res://spawn_fish.gd" id="4_jvoty"]
-
-[sub_resource type="Curve2D" id="Curve2D_q1cre"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 4, 126, 0, 0, 0, 0, 2565, 105)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_85fq5"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2564, 256, 0, 0, 0, 0, 4, 276)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_f2tkm"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 421, -35.3176, -166.497, 35.3176, 166.497, 209, 561, 100.908, -211.906, -100.908, 211.906, 514, 448, 556.673, 136.225, -556.673, -136.225, 860, 557, 563.401, 139.589, -563.401, -139.589, 1198, 446, -272.45, 289.268, 272.45, -289.268, 1491, 598, 289.268, -198.452, -289.268, 198.452, 1955, 482, 0, 0, 0, 0, 2192, 609, 262.36, -264.041, -262.36, 264.041, 2475, 466, 0, 0, 0, 0, 2560, 598)
-}
-point_count = 10
+[ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="3_3udq1"]
+[ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="4_ctxmj"]
+[ext_resource type="Script" path="res://sub_viewport.gd" id="4_vltdk"]
 
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_top = -1.0
-offset_right = 2564.0
-offset_bottom = 1449.0
-texture = ExtResource("2_8ddkb")
+[node name="background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(10, 10)
+texture = ExtResource("3_3udq1")
 
 [node name="submarine" parent="." instance=ExtResource("1_5pwii")]
-position = Vector2(1078, 1051)
+position = Vector2(957, 537)
 
-[node name="spawn_fish" type="Node2D" parent="."]
-visible = false
-script = ExtResource("4_jvoty")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Path2D_1" type="Path2D" parent="spawn_fish"]
-curve = SubResource("Curve2D_q1cre")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_left = 1642.0
+offset_top = 15.0
+offset_right = 1892.0
+offset_bottom = 265.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="spawn_fish/Path2D_1"]
-position = Vector2(4, 126)
-rotation = -0.00819974
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(250, 250)
+render_target_update_mode = 4
+script = ExtResource("4_vltdk")
 
-[node name="Path2D_2" type="Path2D" parent="spawn_fish"]
-curve = SubResource("Curve2D_85fq5")
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+scale = Vector2(10, 10)
+texture = ExtResource("3_3udq1")
+centered = false
 
-[node name="PathFollow2D" type="PathFollow2D" parent="spawn_fish/Path2D_2"]
-position = Vector2(2564, 256)
-rotation = 3.13378
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.05, 0.05)
 
-[node name="Path2D_3" type="Path2D" parent="spawn_fish"]
-curve = SubResource("Curve2D_f2tkm")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="spawn_fish/Path2D_3"]
-position = Vector2(1, 421)
-rotation = 0.592427
-
-[node name="spawn_timer" type="Timer" parent="spawn_fish"]
-
-[connection signal="timeout" from="spawn_fish/spawn_timer" to="spawn_fish" method="_on_spawn_timer_timeout"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
+position = Vector2(122, 121)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_ctxmj")
+centered = false
