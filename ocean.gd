@@ -14,13 +14,12 @@ var minimap_camera
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$background.z_index = 0
-	$background.scale = Vector2(10,10)
 	map_right_limit = $background.size.x
 	map_bottom_limit = $background.size.y
 	map_right_limit *= MAP_SCALE_X
 	map_bottom_limit *= MAP_SCALE_Y
 	submarine_camera = submarine.get_node("Camera2D")
-	minimap_camera = $submarine/SubViewportContainer/SubViewport/Camera2D
+	minimap_camera = $CanvasLayer/SubViewportContainer/SubViewport/Camera2D
 	
 	submarine_camera.limit_left = map_left_limit
 	submarine_camera.limit_right = map_right_limit
