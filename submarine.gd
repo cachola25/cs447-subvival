@@ -7,7 +7,7 @@ extends CharacterBody2D
 #		- eel —> take damage
 #		- rocks —> collide regularly
 ######################################
-
+class_name submarine
 var SPEED = 2000
 var bubble_scene = load("res://bubble.tscn")
 
@@ -61,7 +61,3 @@ func _process(delta):
 				$AnimatedSprite2D.rotation = direction.angle()
 	
 	var collision_info = move_and_collide(direction * SPEED * delta)
-	if collision_info:
-		var collider = collision_info.get_collider()
-		if collider is eel:
-			collider.hit_sub = true

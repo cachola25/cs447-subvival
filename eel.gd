@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 ######################################
 # Currently only used to declare the 
@@ -10,10 +10,39 @@ extends CharacterBody2D
 ######################################
 
 class_name eel
-var hit_sub = false
+
+const SPEED = 500
+signal despawned
+signal hit_sub
+
+var velocity = Vector2.ZERO
+var acceleration = Vector2.ZERO
+
+func start(_transform, submarine_position):
+	global_transform = _transform
+	print(transform)
+	var direction = (submarine_position - global_position).normalized()
+	velocity = direction * SPEED
+
+func _physics_process(delta):
+	velocity += acceleration * delta
+	velocity = velocity.limit_length(SPEED)
+	rotation = velocity.angle()
+	position += velocity * delta
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is submarine:
+		emit_signal("hit_sub")
+		emit_signal("despawned")
+		queue_free()
+
+func _on_timer_timeout() -> void:
+	emit_signal("despawned")
+	queue_free() 
