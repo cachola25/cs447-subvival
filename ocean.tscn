@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=12 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://sub_viewport.gd" id="4_vltdk"]
 [ext_resource type="Script" path="res://fish_spawn_area_1.gd" id="6_rp0rw"]
 [ext_resource type="Script" path="res://eel_spawn_area_1.gd" id="7_1hbr4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k32ew"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3080.25
@@ -30,17 +33,33 @@ scale = Vector2(10, 10)
 texture = ExtResource("3_3udq1")
 
 [node name="submarine" parent="." instance=ExtResource("1_5pwii")]
-position = Vector2(957, 537)
+position = Vector2(959, 541)
 collision_layer = 9
 collision_mask = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1079.0
+offset_top = 7.0
+offset_right = 1655.0
+offset_bottom = 53.0
+value = 100.0
+allow_greater = true
+fill_mode = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 1662.0
+offset_top = 6.0
+offset_right = 1916.0
+offset_bottom = 260.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k32ew")
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_left = 1642.0
-offset_top = 15.0
-offset_right = 1892.0
-offset_bottom = 265.0
+offset_left = 1664.0
+offset_top = 8.0
+offset_right = 1914.0
+offset_bottom = 258.0
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
@@ -60,15 +79,6 @@ zoom = Vector2(0.05, 0.05)
 position = Vector2(125, 125)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_ctxmj")
-
-[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 1065.0
-offset_top = 12.0
-offset_right = 1641.0
-offset_bottom = 58.0
-value = 100.0
-allow_greater = true
-fill_mode = 1
 
 [node name="fish_spawn_area_1" type="Area2D" parent="."]
 collision_layer = 9

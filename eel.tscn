@@ -49,7 +49,7 @@ position = Vector2(-5, 12)
 scale = Vector2(5.21093, 4.625)
 sprite_frames = SubResource("SpriteFrames_lg5jl")
 animation = &"eel_swim"
-frame_progress = 0.755533
+frame_progress = 0.559519
 flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
