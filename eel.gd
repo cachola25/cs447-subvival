@@ -20,7 +20,6 @@ var acceleration = Vector2.ZERO
 
 func start(_transform, submarine_position):
 	global_transform = _transform
-	print(transform)
 	var direction = (submarine_position - global_position).normalized()
 	velocity = direction * SPEED
 

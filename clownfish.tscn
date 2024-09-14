@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckuhsdp13b5ex"]
 
-[ext_resource type="Script" path="res://money_fish.gd" id="1_4jxdb"]
-[ext_resource type="Texture2D" uid="uid://236qmiq8svu2" path="res://art/Fish/Clownfish Spritesheet.png" id="2_d8llm"]
+[ext_resource type="Script" path="res://clownfish.gd" id="1_3xofb"]
+[ext_resource type="Texture2D" uid="uid://236qmiq8svu2" path="res://art/Fish/Clownfish Spritesheet.png" id="2_jittq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fp3nj"]
-size = Vector2(70, 35)
+size = Vector2(102, 51.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ivjo"]
-atlas = ExtResource("2_d8llm")
+atlas = ExtResource("2_jittq")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tb68"]
-atlas = ExtResource("2_d8llm")
+atlas = ExtResource("2_jittq")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_melhr"]
@@ -24,23 +24,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_8tb68")
 }],
 "loop": true,
-"name": &"money_fish",
+"name": &"clownfish_swim",
 "speed": 4.0
 }]
 
-[node name="money_fish" type="CharacterBody2D"]
+[node name="clownfish" type="CharacterBody2D"]
 collision_layer = 128
 collision_mask = 128
-script = ExtResource("1_4jxdb")
+script = ExtResource("1_3xofb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0.5)
+position = Vector2(4, 0.25)
 shape = SubResource("RectangleShape2D_fp3nj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0.499998)
-scale = Vector2(2.21875, 1.73438)
+scale = Vector2(3.1875, 2.625)
 sprite_frames = SubResource("SpriteFrames_melhr")
-animation = &"money_fish"
-frame_progress = 0.427086
+animation = &"clownfish_swim"
+frame_progress = 0.287795
 flip_h = true

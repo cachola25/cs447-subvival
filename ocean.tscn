@@ -1,24 +1,48 @@
-[gd_scene load_steps=12 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=16 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="3_3udq1"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="4_ctxmj"]
 [ext_resource type="Script" path="res://sub_viewport.gd" id="4_vltdk"]
-[ext_resource type="Script" path="res://fish_spawn_area_1.gd" id="6_rp0rw"]
+[ext_resource type="Script" path="res://clownfish_spawn_area_1.gd" id="6_rp0rw"]
 [ext_resource type="Script" path="res://eel_spawn_area_1.gd" id="7_1hbr4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k32ew"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
-radius = 3080.25
+radius = 3632.0
 
-[sub_resource type="Curve2D" id="Curve2D_uw5vp"]
+[sub_resource type="Curve2D" id="Curve2D_5sbij"]
 _data = {
-"points": PackedVector2Array(0, -62.8579, 0, 62.8579, 5001, 2904, 251.432, -516.333, -251.432, 516.333, 4436, 3304, 0, 0, 0, 0, 3834, 3807, 170.614, 242.452, -170.614, -242.452, 3403, 3645, -116.736, 125.716, 116.736, -125.716, 3187, 2810, 139.185, -175.104, -139.185, 175.104, 3196, 2208, 0, 0, 0, 0, 2613, 2334)
+"points": PackedVector2Array(0, 0, 0, 0, 7830, 4476, 1838.81, -491.776, -1838.81, 491.776, 5849, 6222, -1111.84, 1133.22, 1111.84, -1133.22, 3711, 5089, 292.215, 990.679, -292.215, -990.679, 4152, 3122, 1917.21, -49.8903, -1917.21, 49.8903, 3497, 2444, 0, 0, 0, 0, 2278, 2651)
 }
-point_count = 7
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_ud2w8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7514, 2785, 1320.72, 285.732, -1320.72, -285.732, 5622, 4271, -876.245, 1219.12, 876.245, -1219.12, 3495, 3389, 107.943, 673.058, -107.943, -673.058, 2581, 1662, -1441.36, -88.8944, 1441.36, 88.8944, 4466, 601, 311.13, -679.407, -311.13, 679.407, 5832, 1611, 781.001, -457.171, -781.001, 457.171, 4828, 2652, 0, 0, 0, 0, 2758, 3420)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_ssgrc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2955, 5128, -1441.36, 946.091, 1441.36, -946.091, 3762, 3763, 0, 0, 0, 0, 5533, 3846)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_5d773"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2739, 1109, -850.847, -101.594, 850.847, 101.594, 4911, 1141, -152.39, -546.066, 152.39, 546.066, 6562, 1852, 584.163, -368.277, -584.163, 368.277, 6657, 3808, 768.302, -44.4472, -768.302, 44.4472, 4739, 4506, -215.886, 755.603, 215.886, -755.603, 3533, 3522, -507.968, -184.138, 507.968, 184.138, 5298, 2582, -203.187, -812.749, 203.187, 812.749, 5736, 2855, -1263.57, 552.415, 1263.57, -552.415, 6028, 5046)
+}
+point_count = 9
+
+[sub_resource type="Curve2D" id="Curve2D_pij1u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2104, 4627, -3803.41, 1739.79, 3803.41, -1739.79, 6111, 5128, 0, 0, 0, 0, 6867, 1565)
+}
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ch1h"]
 radius = 3681.07
@@ -80,33 +104,47 @@ position = Vector2(125, 125)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_ctxmj")
 
-[node name="fish_spawn_area_1" type="Area2D" parent="."]
+[node name="clownfish_spawn_area_1" type="Area2D" parent="."]
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("6_rp0rw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fish_spawn_area_1"]
-position = Vector2(4330, 3077)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="clownfish_spawn_area_1"]
+position = Vector2(4457, 3782)
 shape = SubResource("CircleShape2D_hpbr3")
 debug_color = Color(0.998763, 0, 0.133291, 0.42)
 
-[node name="Path2D_1" type="Path2D" parent="fish_spawn_area_1"]
-position = Vector2(-2605.47, -3693.89)
-scale = Vector2(2.00209, 2.70989)
-curve = SubResource("Curve2D_uw5vp")
+[node name="Path2D_1" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_5sbij")
+
+[node name="Path2D_2" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_ud2w8")
+
+[node name="Path2D_3" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_ssgrc")
+
+[node name="Path2D_4" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_5d773")
+
+[node name="Path2D_5" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_pij1u")
+
+[node name="spawn_timer" type="Timer" parent="clownfish_spawn_area_1"]
+autostart = true
 
 [node name="eel_spawn_area_1" type="Area2D" parent="."]
 script = ExtResource("7_1hbr4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="eel_spawn_area_1"]
-position = Vector2(4474, 3692)
+position = Vector2(4483, 3775)
 shape = SubResource("CircleShape2D_1ch1h")
 
 [node name="spawn_delay_timer" type="Timer" parent="eel_spawn_area_1"]
 autostart = true
 
-[connection signal="body_entered" from="fish_spawn_area_1" to="fish_spawn_area_1" method="_on_body_entered"]
-[connection signal="body_exited" from="fish_spawn_area_1" to="fish_spawn_area_1" method="_on_body_exited"]
+[connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="clownfish_spawn_area_1/spawn_timer" to="clownfish_spawn_area_1" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="eel_spawn_area_1" to="eel_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="eel_spawn_area_1" to="eel_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="eel_spawn_area_1/spawn_delay_timer" to="eel_spawn_area_1" method="_on_spawn_delay_timer_timeout"]

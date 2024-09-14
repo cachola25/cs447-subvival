@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cev184hd54l1n" path="res://art/Bubble/Bubble Pop.png" id="4_cpyui"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ae1"]
-radius = 50.0
+radius = 85.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ayjx"]
 atlas = ExtResource("2_s6noh")
@@ -112,8 +112,8 @@ shape = SubResource("CircleShape2D_h5ae1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 z_as_relative = false
-position = Vector2(-1.13687e-13, 2)
-scale = Vector2(2.38193, 2.34697)
+position = Vector2(0.223562, 1.44252)
+scale = Vector2(3.94309, 3.88639)
 sprite_frames = SubResource("SpriteFrames_o3hfk")
 animation = &"pop"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=9 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -24,6 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
+size = Vector2(1920.5, 1074.5)
+
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 8
@@ -45,3 +48,10 @@ frame_progress = 0.436989
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_g023d")
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(1.75, 0.75)
+shape = SubResource("RectangleShape2D_ppgoy")
+debug_color = Color(0.866512, 0.295501, 0.510766, 0.42)

@@ -22,7 +22,7 @@ func _process(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
-		if (collider is money_fish 
+		if (collider is clownfish
 		and $AnimatedSprite2D.animation == "bubble"):
 			collision_layer = 6
 			collision_mask = 6

@@ -10,7 +10,11 @@ extends CharacterBody2D
 #					since bubble.gd will handle 
 #					post capture actions
 ######################################
-class_name money_fish
+class_name clownfish
+
+const MIN_SPEED = 500
+const MAX_SPEED = 1000
+
 var in_bubble = false
 
 func _ready() -> void:
