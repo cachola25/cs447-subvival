@@ -12,6 +12,7 @@ extends Area2D
 class_name eel
 
 const SPEED = 500
+const DAMAGE_DEALT = 5
 signal despawned
 signal hit_sub
 
@@ -38,7 +39,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
-		emit_signal("hit_sub")
+		body.get_node("AnimatedSprite2D").play("damage_taken")
+		body.get_node("CanvasLayer/oxygen_bar").value -= DAMAGE_DEALT
 		emit_signal("despawned")
 		queue_free()
 

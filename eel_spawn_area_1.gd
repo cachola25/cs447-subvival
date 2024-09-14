@@ -27,7 +27,6 @@ func spawn_eel():
 	
 	transform_position.origin = spawn_pos
 	eel_instance.connect("despawned", _on_eel_despawned)
-	eel_instance.connect("hit_sub", _on_hit_sub)
 	eel_instance.start(transform_position, submarine.global_position)
 	eel_instance.get_node("AnimatedSprite2D").play("eel_swim")
 	add_child(eel_instance)
@@ -39,9 +38,6 @@ func _on_body_exited(body: Node2D) -> void:
 	submarine_in_area = false
 func _on_eel_despawned():
 	curr_num_eels -= 1
-func _on_hit_sub():
-	var oxygen_bar = submarine.get_node("CanvasLayer/oxygen_bar")
-	oxygen_bar.value -= 5
 func _on_spawn_delay_timer_timeout() -> void:
 	if (submarine_in_area && curr_num_eels <= MAX_EELs):
 		spawn_eel()

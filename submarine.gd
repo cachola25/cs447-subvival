@@ -22,7 +22,7 @@ func spawn_bubble():
 	get_parent().add_child(bubble)
 	
 func _ready():
-	pass
+	$AnimatedSprite2D.play("submarine_default")
 	
 func _process(delta):
 	var direction = Vector2.ZERO # (0,0d)
@@ -64,6 +64,9 @@ func _process(delta):
 				$AnimatedSprite2D.rotation = direction.angle()
 	
 	var collision_info = move_and_collide(direction * SPEED * delta)
+	if collision_info:
+		var collider = collision_info.get_collider()
+		print(collider)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -72,4 +75,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		total_money.text = "$" + str(curr_score)
 	elif body.name.begins_with("bubble"):
 		body.get_node("AnimatedSprite2D").play("pop")
-		
+	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "damage_taken":
+		$AnimatedSprite2D.play("submarine_default")

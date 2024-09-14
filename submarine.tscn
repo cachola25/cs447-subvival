@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=14 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
+[ext_resource type="Texture2D" uid="uid://cixacg00jhq64" path="res://art/krita-submarine-damage-taken.png" id="3_00n82"]
 [ext_resource type="Script" path="res://submarine_camera_2d.gd" id="3_g023d"]
 [ext_resource type="Script" path="res://sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="5_1k2w0"]
@@ -14,6 +15,10 @@ size = Vector2(1920.5, 1074.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwy0q"]
 size = Vector2(160, 97)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tje5v"]
+atlas = ExtResource("3_00n82")
+region = Rect2(2, 12, 96, 73)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc4d1"]
 atlas = ExtResource("2_ipk4e")
 region = Rect2(2, 12, 96, 73)
@@ -22,10 +27,18 @@ region = Rect2(2, 12, 96, 73)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tje5v")
+}],
+"loop": false,
+"name": &"damage_taken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cc4d1")
 }],
 "loop": true,
-"name": &"sub",
+"name": &"submarine_default",
 "speed": 5.0
 }]
 
@@ -61,8 +74,7 @@ debug_color = Color(0.417429, 0.552356, 0.672516, 0.42)
 position = Vector2(1, 0)
 scale = Vector2(1.68208, 1.33437)
 sprite_frames = SubResource("SpriteFrames_1ls03")
-animation = &"sub"
-frame_progress = 0.436989
+animation = &"damage_taken"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -119,3 +131,4 @@ theme_override_font_sizes/font_size = 30
 text = "$0"
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
