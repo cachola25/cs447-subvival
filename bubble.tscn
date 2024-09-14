@@ -63,7 +63,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bvc60")
 }],
 "loop": false,
-"name": &"fish_captured",
+"name": &"captured",
 "speed": 5.0
 }, {
 "frames": [{
@@ -115,6 +115,6 @@ z_as_relative = false
 position = Vector2(0.223562, 1.44252)
 scale = Vector2(3.94309, 3.88639)
 sprite_frames = SubResource("SpriteFrames_o3hfk")
-animation = &"pop"
+animation = &"captured"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

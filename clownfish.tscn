@@ -41,5 +41,5 @@ shape = SubResource("RectangleShape2D_fp3nj")
 scale = Vector2(3.1875, 2.625)
 sprite_frames = SubResource("SpriteFrames_melhr")
 animation = &"clownfish_swim"
-frame_progress = 0.287795
+frame_progress = 0.949088
 flip_h = true

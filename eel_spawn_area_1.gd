@@ -40,7 +40,7 @@ func _on_body_exited(body: Node2D) -> void:
 func _on_eel_despawned():
 	curr_num_eels -= 1
 func _on_hit_sub():
-	var oxygen_bar = get_parent().get_node("CanvasLayer/oxygen_bar")
+	var oxygen_bar = submarine.get_node("CanvasLayer/oxygen_bar")
 	oxygen_bar.value -= 5
 func _on_spawn_delay_timer_timeout() -> void:
 	if (submarine_in_area && curr_num_eels <= MAX_EELs):

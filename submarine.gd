@@ -8,8 +8,11 @@ extends CharacterBody2D
 #		- rocks —> collide regularly
 ######################################
 class_name submarine
+
+@onready var total_money = $CanvasLayer/total_money
 var SPEED = 2000
 var bubble_scene = load("res://bubble.tscn")
+var curr_score = 0
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
@@ -61,3 +64,12 @@ func _process(delta):
 				$AnimatedSprite2D.rotation = direction.angle()
 	
 	var collision_info = move_and_collide(direction * SPEED * delta)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name.begins_with("captured_bubble"):
+		curr_score += body.get_meta("FISH_VALUE")
+		total_money.text = "$" + str(curr_score)
+	elif body.name.begins_with("bubble"):
+		body.get_node("AnimatedSprite2D").play("pop")
+		

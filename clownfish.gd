@@ -14,6 +14,7 @@ class_name clownfish
 
 const MIN_SPEED = 500
 const MAX_SPEED = 1000
+const VALUE = 1
 
 var in_bubble = false
 
