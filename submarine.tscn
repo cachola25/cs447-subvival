@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=12 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
 [ext_resource type="Script" path="res://submarine_camera_2d.gd" id="3_g023d"]
+[ext_resource type="Script" path="res://sub_viewport.gd" id="4_6bchf"]
+[ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="5_1k2w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
+size = Vector2(1920.5, 1074.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ucp48"]
 
@@ -24,14 +29,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
-size = Vector2(1920.5, 1074.5)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d84qk"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
+position = Vector2(957, 542)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_uaken")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_g023d")
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_ppgoy")
+debug_color = Color(0.866512, 0.295501, 0.510766, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 material = SubResource("CanvasItemMaterial_ucp48")
@@ -46,12 +64,48 @@ sprite_frames = SubResource("SpriteFrames_1ls03")
 animation = &"sub"
 frame_progress = 0.436989
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_g023d")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Camera2D"]
+[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1079.0
+offset_top = 7.0
+offset_right = 1655.0
+offset_bottom = 53.0
+value = 100.0
+allow_greater = true
+fill_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2(1.75, 0.75)
-shape = SubResource("RectangleShape2D_ppgoy")
-debug_color = Color(0.866512, 0.295501, 0.510766, 0.42)
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 1662.0
+offset_top = 6.0
+offset_right = 1916.0
+offset_bottom = 260.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d84qk")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_left = 1664.0
+offset_top = 8.0
+offset_right = 1914.0
+offset_bottom = 258.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(250, 250)
+render_target_update_mode = 4
+script = ExtResource("4_6bchf")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+scale = Vector2(10, 10)
+texture = ExtResource("5_1k2w0")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
+position = Vector2(125, 125)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ipk4e")

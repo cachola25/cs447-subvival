@@ -1,15 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=13 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="3_3udq1"]
-[ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="4_ctxmj"]
-[ext_resource type="Script" path="res://sub_viewport.gd" id="4_vltdk"]
 [ext_resource type="Script" path="res://clownfish_spawn_area_1.gd" id="6_rp0rw"]
 [ext_resource type="Script" path="res://eel_spawn_area_1.gd" id="7_1hbr4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k32ew"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3632.0
@@ -60,49 +55,6 @@ texture = ExtResource("3_3udq1")
 position = Vector2(959, 541)
 collision_layer = 9
 collision_mask = 9
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 1079.0
-offset_top = 7.0
-offset_right = 1655.0
-offset_bottom = 53.0
-value = 100.0
-allow_greater = true
-fill_mode = 1
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 1662.0
-offset_top = 6.0
-offset_right = 1916.0
-offset_bottom = 260.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_k32ew")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_left = 1664.0
-offset_top = 8.0
-offset_right = 1914.0
-offset_bottom = 258.0
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(250, 250)
-render_target_update_mode = 4
-script = ExtResource("4_vltdk")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-scale = Vector2(10, 10)
-texture = ExtResource("3_3udq1")
-centered = false
-
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-zoom = Vector2(0.05, 0.05)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
-position = Vector2(125, 125)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_ctxmj")
 
 [node name="clownfish_spawn_area_1" type="Area2D" parent="."]
 collision_layer = 9
