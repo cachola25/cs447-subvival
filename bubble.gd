@@ -22,13 +22,14 @@ func _process(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
-		if (collider is clownfish
+		if (collider is Fish
 		and $AnimatedSprite2D.animation == "bubble"):
+			var animation = "captured_" + collider.fish_type
 			collision_layer = 0b100000
 			collision_mask = 0b10000
-			name = "captured_bubble"
-			$AnimatedSprite2D.play("captured")
 			collider.in_bubble = true
+			name = "captured_bubble"
+			$AnimatedSprite2D.play(animation)
 			set_meta("FISH_VALUE", collider.VALUE)
 		elif (collider is rock):
 			$AnimatedSprite2D.play("pop")

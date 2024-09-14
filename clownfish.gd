@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Fish
 
 ######################################
 # Currently only used to declare the 
@@ -19,7 +19,7 @@ const VALUE = 1
 var in_bubble = false
 
 func _ready() -> void:
-	pass
+	fish_type = "clownfish"
 	
 func _process(delta: float) -> void:
 	pass
