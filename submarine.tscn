@@ -111,6 +111,7 @@ script = ExtResource("5_sriyo")
 metadata/_edit_use_anchors_ = true
 
 [node name="health_regen_timer" type="Timer" parent="CanvasLayer/health_bar"]
+process_mode = 1
 wait_time = 5.0
 
 [node name="health_icon" type="Sprite2D" parent="CanvasLayer/health_bar"]
@@ -128,6 +129,7 @@ fill_mode = 1
 script = ExtResource("6_5wr0v")
 
 [node name="o2_regen_timer" type="Timer" parent="CanvasLayer/oxygen_bar"]
+process_mode = 1
 wait_time = 3.0
 autostart = true
 

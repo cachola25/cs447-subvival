@@ -54,12 +54,14 @@ metadata/MAX_EELS_IN_AREA = 5
 metadata/SWORDFISH_SPEED = 750
 metadata/SWORDFISH_DAMAGE = 10
 metadata/MAX_SWORDFISH_IN_AREA = 3
+metadata/_edit_horizontal_guides_ = [5.0, 19931.0, 16803.0]
+metadata/_edit_vertical_guides_ = [19259.0, 19633.0, 19502.0, 13158.0]
 
 [node name="background" type="TextureRect" parent="."]
-offset_left = -91.0
-offset_top = -10.0
-offset_right = 1829.0
-offset_bottom = 1070.0
+offset_left = 1.99999
+offset_top = 3.0
+offset_right = 1922.0
+offset_bottom = 1083.0
 scale = Vector2(10, 10)
 texture = ExtResource("3_3udq1")
 
