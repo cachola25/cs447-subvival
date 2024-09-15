@@ -83,6 +83,7 @@ curve = SubResource("Curve2D_5d773")
 curve = SubResource("Curve2D_pij1u")
 
 [node name="spawn_timer" type="Timer" parent="clownfish_spawn_area_1"]
+wait_time = 1.2
 autostart = true
 
 [node name="eel_spawn_area_1" type="Area2D" parent="."]
@@ -126,6 +127,7 @@ position = Vector2(10021, 1881.54)
 curve = SubResource("Curve2D_pij1u")
 
 [node name="spawn_timer" type="Timer" parent="blue_tang_spawn_area_1"]
+wait_time = 1.2
 autostart = true
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]

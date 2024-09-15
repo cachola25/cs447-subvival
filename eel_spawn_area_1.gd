@@ -4,11 +4,11 @@ const eel_scene = preload("res://eel.tscn")
 const MAX_EELs = 3
 
 var submarine_in_area = false
-var submarine
+var submarine_instance
 var curr_num_eels = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	submarine = get_parent().get_node("submarine")
+	submarine_instance = get_parent().get_node("submarine")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,16 +18,16 @@ func _process(delta: float) -> void:
 func spawn_eel():
 	var eel_instance = eel_scene.instantiate()
 	var transform_position = Transform2D()
-	var spawn_pos = submarine.global_position
+	var spawn_pos = submarine_instance.global_position
 	var min_distance = 300
-	while spawn_pos.distance_to(submarine.global_position) < min_distance:
+	while spawn_pos.distance_to(submarine_instance.global_position) < min_distance:
 		var randX = randi_range(-1000,1000)
 		var randY = randi_range(-1000,1000)
-		spawn_pos = submarine.global_position + Vector2(randX,randY)
+		spawn_pos = submarine_instance.global_position + Vector2(randX,randY)
 	
 	transform_position.origin = spawn_pos
 	eel_instance.connect("despawned", _on_eel_despawned)
-	eel_instance.start(transform_position, submarine.global_position)
+	eel_instance.start(transform_position, submarine_instance.global_position)
 	eel_instance.get_node("AnimatedSprite2D").play("eel_swim")
 	add_child(eel_instance)
 	curr_num_eels += 1

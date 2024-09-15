@@ -1,6 +1,6 @@
 extends Area2D
 
-const MAX_FISH = 15
+var MAX_FISH = 15
 var blue_tang_scene = preload("res://blue_tang.tscn")
 var paths = []
 var active_blue_tang = [] # Array of PathFollow2D nodes that have the fish swimming
@@ -23,6 +23,9 @@ func _ready() -> void:
 		if child is Path2D:
 			paths.append(child)
 
+func _on_luck_updated(luck):
+	MAX_FISH = MAX_FISH + (MAX_FISH * luck)
+	$spawn_timer.wait_time -= 0.2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for i in range(len(active_blue_tang) - 1, -1 , -1):
@@ -41,9 +44,14 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
 		submarine_in_area = true
+		body.get_node("CanvasLayer").get_node("upgrade_menu").connect(
+			"luck_updated", _on_luck_updated, body.LUCK
+		)
 func _on_body_exited(body: Node2D) -> void:
 	if body is submarine:
 		submarine_in_area = false
 func _on_spawn_timer_timeout() -> void:
 	if (submarine_in_area and len(active_blue_tang) < MAX_FISH):
+		print("MAX_FISH: ", MAX_FISH)
+		print("RATE: ", $spawn_timer.wait_time)
 		spawn_blue_tang()
