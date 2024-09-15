@@ -19,7 +19,6 @@ func _ready() -> void:
 	map_right_limit *= MAP_SCALE_X
 	map_bottom_limit *= MAP_SCALE_Y
 	submarine_camera = submarine.get_node("Camera2D")
-	minimap_camera = $CanvasLayer/SubViewportContainer/SubViewport/Camera2D
 	
 	submarine_camera.limit_left = map_left_limit
 	submarine_camera.limit_right = map_right_limit

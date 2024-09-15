@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=19 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://submarine_camera_2d.gd" id="3_g023d"]
 [ext_resource type="Script" path="res://sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="5_1k2w0"]
+[ext_resource type="Script" path="res://health_bar.gd" id="5_sriyo"]
+[ext_resource type="Script" path="res://oxygen_bar.gd" id="6_5wr0v"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="7_ka1aj"]
 [ext_resource type="Texture2D" uid="uid://br244qh06q42f" path="res://art/O2.png" id="8_jqwla"]
 [ext_resource type="Script" path="res://upgrade_menu.gd" id="8_mq8qe"]
@@ -81,7 +83,7 @@ animation = &"damage_taken"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
+[node name="health_bar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 1079.0
 offset_top = 7.0
 offset_right = 1655.0
@@ -89,7 +91,17 @@ offset_bottom = 53.0
 value = 100.0
 allow_greater = true
 fill_mode = 1
+script = ExtResource("5_sriyo")
 metadata/_edit_use_anchors_ = true
+
+[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1079.0
+offset_top = 58.0
+offset_right = 1657.0
+offset_bottom = 106.0
+value = 100.0
+fill_mode = 1
+script = ExtResource("6_5wr0v")
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = 1662.0
@@ -180,7 +192,6 @@ offset_bottom = -16.9359
 scale = Vector2(9.76087, 3.65821)
 max_value = 5.0
 step = 1.0
-value = 4.0
 show_percentage = false
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]

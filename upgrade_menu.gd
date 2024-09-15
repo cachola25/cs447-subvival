@@ -17,8 +17,9 @@ func _on_upgrade_02_button_pressed() -> void:
 	var o2_cost = int(o2_cost_node.text.substr(1))
 	var total_money = int(total_money_node.text.substr(1))
 	var result = total_money - o2_cost
-	if result < 0:
+	var check = $o2/o2_upgrade_progress.value + $o2/o2_upgrade_progress.step
+	if result < 0 or check >= $o2/o2_upgrade_progress.max_value:
 		return
 	total_money_node.text = "$" + str(result)
 	o2_cost_node.text = "$" + str(o2_cost + 1)
-	print(result)
+	$o2/o2_upgrade_progress.value += $o2/o2_upgrade_progress.step
