@@ -3,8 +3,6 @@ extends ProgressBar
 var BUBBLE_COST = 5
 var O2_REGENERATION_RATE = 3
 var O2_REGENERATION_AMOUNT = 5
-var flag1 = false
-var flag2 = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var style = StyleBoxFlat.new()
@@ -15,14 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not flag1:
-		print("RATE: ", $o2_regen_timer.wait_time)
-		print("AMOUNT: ", O2_REGENERATION_AMOUNT)
-		flag1 = true
-	if flag2:
-		print("RATE: ", $o2_regen_timer.wait_time)
-		print("AMOUNT: ", O2_REGENERATION_AMOUNT)
-		flag2 = false
+	pass
 		
 	
 

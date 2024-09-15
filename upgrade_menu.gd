@@ -44,8 +44,6 @@ func _on_upgrade_02_button_pressed() -> void:
 	# peform upgrade
 	oxygen_bar.O2_REGENERATION_AMOUNT += oxygen_bar.BUBBLE_COST
 	oxygen_bar.get_node("o2_regen_timer").wait_time -= 0.5
-	oxygen_bar.flag2 = true
-
 
 func _on_upgrade_armor_button_pressed() -> void:
 	print("armor button pressed")
@@ -56,3 +54,7 @@ func _on_upgrade_armor_button_pressed() -> void:
 	
 	# perform upgrade
 	submarine_scene.ARMOR += 1
+
+
+func _on_upgrade_health_button_pressed() -> void:
+	print("Health button pressed")
