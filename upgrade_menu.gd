@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_upgrade_02_button_pressed() -> void:
+	print("o2 button pressed")
 	var o2_cost = int(o2_cost_node.text.substr(1))
 	var total_money = int(total_money_node.text.substr(1))
 	var result = total_money - o2_cost
@@ -23,3 +24,7 @@ func _on_upgrade_02_button_pressed() -> void:
 	total_money_node.text = "$" + str(result)
 	o2_cost_node.text = "$" + str(o2_cost + 1)
 	$o2/o2_upgrade_progress.value += $o2/o2_upgrade_progress.step
+
+
+func _on_upgrade_armor_button_pressed() -> void:
+	print("armor button pressed")
