@@ -116,7 +116,7 @@ fill_mode = 1
 script = ExtResource("6_5wr0v")
 
 [node name="o2_regen_timer" type="Timer" parent="CanvasLayer/oxygen_bar"]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="o2_icon" type="Sprite2D" parent="CanvasLayer/oxygen_bar"]
@@ -207,13 +207,14 @@ script = ExtResource("13_2832f")
 
 [node name="o2_cost" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
-offset_left = -668.372
-offset_top = -256.006
-offset_right = -542.372
-offset_bottom = -105.006
+offset_left = -903.714
+offset_top = -265.488
+offset_right = -715.714
+offset_bottom = -114.488
 scale = Vector2(3.00296, 3.3452)
 theme_override_font_sizes/font_size = 110
-text = "$5"
+text = "$5
+"
 
 [node name="upgrade_02_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
@@ -251,13 +252,14 @@ offset_bottom = 104.0
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
-offset_left = 395.375
-offset_top = -1024.03
-offset_right = 5413.38
-offset_bottom = -199.026
-scale = Vector2(0.823976, 0.978446)
+offset_left = 442.443
+offset_top = -919.727
+offset_right = 5921.44
+offset_bottom = -370.727
+scale = Vector2(1.02774, 1.38803)
 theme_override_font_sizes/font_size = 200
-text = "This upgrade will decrease the amount of oxygen used to create a bubble and increase the rate and amount at which oxygen is replenished."
+text = "This upgrade will increase the 
+rate and amount of O2 regeneration"
 autowrap_mode = 3
 
 [node name="armor" type="Control" parent="CanvasLayer/upgrade_menu"]
@@ -271,14 +273,13 @@ script = ExtResource("15_skr2a")
 
 [node name="armor_cost" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
 layout_mode = 0
-offset_left = -23.9955
-offset_top = -9.22125
-offset_right = 90.0045
-offset_bottom = 127.779
+offset_left = -30.0
+offset_top = -9.0
+offset_right = 141.0
+offset_bottom = 128.0
 scale = Vector2(0.124639, 0.108764)
 theme_override_font_sizes/font_size = 100
-text = "$6
-"
+text = "$6"
 
 [node name="upgrade_armor_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/armor"]
 layout_mode = 1
@@ -322,6 +323,7 @@ offset_bottom = 37.2336
 scale = Vector2(0.175145, 0.125252)
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
+layout_mode = 0
 offset_left = 13.7574
 offset_top = -25.5121
 offset_right = 3567.76
