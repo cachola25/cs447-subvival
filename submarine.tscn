@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=32 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -19,6 +19,10 @@
 [ext_resource type="Script" path="res://health_upgrade.gd" id="17_f0xre"]
 [ext_resource type="Script" path="res://luck_upgrade.gd" id="18_bnfrb"]
 [ext_resource type="Texture2D" uid="uid://q6mlx6ysrofs" path="res://art/Bubble/clover.png" id="18_p8wfa"]
+[ext_resource type="Texture2D" uid="uid://cggu0iphyegp6" path="res://art/Bubble/undiscovered_fish.png" id="20_3amhb"]
+[ext_resource type="Script" path="res://fish_compendium.gd" id="20_3p7ap"]
+[ext_resource type="Texture2D" uid="uid://ccqjtmm105hww" path="res://art/Bubble/loupe.png" id="21_5xm55"]
+[ext_resource type="Texture2D" uid="uid://dsvmk0q8tqn34" path="res://art/Bubble/book.png" id="22_mjqdk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -57,6 +61,11 @@ animations = [{
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d84qk"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q08o6"]
+outline_size = 2
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.796078)
 
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
@@ -452,9 +461,60 @@ autowrap_mode = 3
 
 [node name="fish_compendium" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.784
+anchor_top = 0.584
+anchor_right = 0.784
+anchor_bottom = 0.584
+offset_left = -20.28
+offset_top = -21.72
+offset_right = 19.72
+offset_bottom = 18.28
+script = ExtResource("20_3p7ap")
+
+[node name="clownfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-18.0001, 377)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="blue_tang" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(195, 381)
+scale = Vector2(0.314453, 0.313477)
+texture = ExtResource("20_3amhb")
+
+[node name="fish3" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(296, 208)
+scale = Vector2(0.331667, 0.323242)
+texture = ExtResource("20_3amhb")
+
+[node name="fish4" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(82, 203)
+scale = Vector2(0.326172, 0.305664)
+texture = ExtResource("20_3amhb")
+
+[node name="fish5" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-139, 209)
+scale = Vector2(0.329102, 0.314453)
+texture = ExtResource("20_3amhb")
+
+[node name="title" type="Label" parent="CanvasLayer/fish_compendium"]
+layout_mode = 0
+offset_left = -92.0
+offset_top = 54.0
+offset_right = 92.0
+offset_bottom = 77.0
+scale = Vector2(2.07624, 2.09309)
+text = "Discovery Compendium"
+label_settings = SubResource("LabelSettings_q08o6")
+
+[node name="comp_icon_1" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(337, 80)
+scale = Vector2(0.106934, 0.102539)
+texture = ExtResource("21_5xm55")
+
+[node name="comp_icon_2" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-151, 83)
+scale = Vector2(0.133789, 0.115234)
+texture = ExtResource("22_mjqdk")
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

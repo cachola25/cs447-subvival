@@ -31,6 +31,7 @@ func _process(delta):
 			name = "captured_bubble"
 			$AnimatedSprite2D.play(animation)
 			set_meta("FISH_VALUE", collider.VALUE)
+			set_meta("FISH_TYPE", collider.fish_type)
 		elif (collider is rock):
 			$AnimatedSprite2D.play("pop")
 

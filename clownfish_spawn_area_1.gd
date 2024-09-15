@@ -52,6 +52,4 @@ func _on_body_exited(body: Node2D) -> void:
 		submarine_in_area = false
 func _on_spawn_timer_timeout() -> void:
 	if (submarine_in_area and len(active_clownfish) < MAX_FISH):
-		print("MAX_FISH: ", MAX_FISH)
-		print("RATE: ", $spawn_timer.wait_time)
 		spawn_clownfish()

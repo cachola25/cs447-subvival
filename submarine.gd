@@ -15,6 +15,9 @@ var ARMOR = 0
 var SPEED = 2000
 var LUCK = 0
 var bubble_scene = load("res://bubble.tscn")
+var discovered_fish = {} # This is a dict but will be used as a set
+
+signal discovered_new
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
@@ -25,11 +28,13 @@ func spawn_bubble():
 	oxygen_bar.value -= oxygen_bar.BUBBLE_COST
 	
 func display_user_menu():
+	$CanvasLayer/fish_compendium.visible = true
 	$CanvasLayer/upgrade_menu.visible = true
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_tree().paused = true
 	
 func undisplay_user_menu():
+	$CanvasLayer/fish_compendium.visible = false
 	$CanvasLayer/upgrade_menu.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
@@ -37,6 +42,7 @@ func undisplay_user_menu():
 func _ready():
 	$AnimatedSprite2D.play("submarine_default")
 	$CanvasLayer/upgrade_menu.visible = false
+	$CanvasLayer/fish_compendium.visible = false
 	
 func _process(delta):
 	var direction = Vector2.ZERO # (0,0d)
@@ -95,6 +101,12 @@ func _process(delta):
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name.begins_with("captured_bubble"):
+		var fish_type = body.get_meta("FISH_TYPE")
+		if not fish_type in discovered_fish:
+			discovered_fish[fish_type] = true
+			set_meta("discovered_new_fish_type", fish_type)
+			emit_signal("discovered_new")
+			
 		var curr_money = int(total_money.text.substr(1))
 		curr_money += body.get_meta("FISH_VALUE")
 		total_money.text = "$" + str(curr_money)

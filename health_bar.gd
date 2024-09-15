@@ -20,15 +20,6 @@ func _process(delta: float) -> void:
 	else:
 		if $health_regen_timer.is_stopped():
 			$health_regen_timer.start()
-			
-	if not flag1:
-		print("RATE: ", $health_regen_timer.wait_time)
-		print("AMOUNT: ", HEALTH_REGENERATION_AMOUNT)
-		flag1 = true
-	if flag2:
-		print("RATE: ", $health_regen_timer.wait_time)
-		print("AMOUNT: ", HEALTH_REGENERATION_AMOUNT)
-		flag2 = false
 
 
 func _on_health_regen_timer_timeout() -> void:
