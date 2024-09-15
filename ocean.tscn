@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=17 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://blue_tang_spawn_area_1.gd" id="6_ay7p0"]
 [ext_resource type="Script" path="res://clownfish_spawn_area_1.gd" id="6_rp0rw"]
 [ext_resource type="Script" path="res://eel_spawn_area_1.gd" id="7_1hbr4"]
+[ext_resource type="Script" path="res://swordfish_spawn_area_1.gd" id="7_ohjgx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3632.0
@@ -46,16 +47,17 @@ radius = 3681.07
 [sub_resource type="CircleShape2D" id="CircleShape2D_itgb2"]
 radius = 159.542
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hisal"]
+radius = 3675.18
+
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
 metadata/EEL_DAMAGE = 5
 metadata/EEL_SPEED = 500
 metadata/MAX_EELS_IN_AREA = 5
-metadata/SWORDFISH_SPEED = 750
+metadata/SWORDFISH_SPEED = 600
 metadata/SWORDFISH_DAMAGE = 10
 metadata/MAX_SWORDFISH_IN_AREA = 3
-metadata/_edit_horizontal_guides_ = [5.0, 19931.0, 16803.0]
-metadata/_edit_vertical_guides_ = [19259.0, 19633.0, 19502.0, 13158.0]
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = 1.99999
@@ -67,6 +69,7 @@ texture = ExtResource("3_3udq1")
 
 [node name="submarine" parent="." instance=ExtResource("1_5pwii")]
 position = Vector2(959, 541)
+scale = Vector2(0.996654, 1)
 collision_layer = 9
 collision_mask = 9
 
@@ -110,6 +113,7 @@ shape = SubResource("CircleShape2D_1ch1h")
 autostart = true
 
 [node name="blue_tang_spawn_area_1" type="Area2D" parent="."]
+position = Vector2(-3416, -2241)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("6_ay7p0")
@@ -143,6 +147,17 @@ curve = SubResource("Curve2D_pij1u")
 wait_time = 1.2
 autostart = true
 
+[node name="swordfish_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("7_ohjgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swordfish_spawn_area_1"]
+position = Vector2(11791, 3453)
+shape = SubResource("CircleShape2D_hisal")
+debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
+
+[node name="spawn_delay_timer" type="Timer" parent="swordfish_spawn_area_1"]
+autostart = true
+
 [node name="player_alive_time" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -156,4 +171,7 @@ autostart = true
 [connection signal="body_entered" from="blue_tang_spawn_area_1" to="blue_tang_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="blue_tang_spawn_area_1" to="blue_tang_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="blue_tang_spawn_area_1/spawn_timer" to="blue_tang_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="swordfish_spawn_area_1" to="swordfish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="swordfish_spawn_area_1" to="swordfish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="swordfish_spawn_area_1/spawn_delay_timer" to="swordfish_spawn_area_1" method="_on_spawn_delay_timer_timeout"]
 [connection signal="timeout" from="player_alive_time" to="." method="_on_player_alive_time_timeout"]

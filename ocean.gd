@@ -34,7 +34,7 @@ func _ready() -> void:
 			eel_spawn_areas.append(child)
 	
 func _process(delta: float) -> void:
-	pass
+	set_meta("SUBMARINE_POSITION", $submarine.global_position)
 	
 func update_eel_metadata():
 	var updated_speed = get_meta("EEL_SPEED") + 100

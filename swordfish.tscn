@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://swordfish.gd" id="1_o5ukm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nchda"]
-size = Vector2(1676, 826)
+size = Vector2(306.5, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7otb"]
 atlas = ExtResource("1_606q8")
@@ -22,15 +22,24 @@ animations = [{
 }]
 
 [node name="swordfish" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_o5ukm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 3)
+position = Vector2(1.75, 2)
 shape = SubResource("RectangleShape2D_nchda")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.99982, 5.99991)
-scale = Vector2(52.25, 51.75)
+position = Vector2(2, 0.999992)
+scale = Vector2(9.51563, 9.625)
 sprite_frames = SubResource("SpriteFrames_l26bt")
 animation = &"swordfish_swim"
-frame_progress = 0.814226
+frame_progress = 0.00921328
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
