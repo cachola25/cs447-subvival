@@ -24,12 +24,12 @@ func spawn_bubble():
 	get_parent().add_child(bubble)
 	oxygen_bar.value -= oxygen_bar.BUBBLE_COST
 	
-func display_upgrade_menu():
+func display_user_menu():
 	$CanvasLayer/upgrade_menu.visible = true
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_tree().paused = true
 	
-func undisplay_upgrade_menu():
+func undisplay_user_menu():
 	$CanvasLayer/upgrade_menu.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
@@ -42,11 +42,11 @@ func _process(delta):
 	var direction = Vector2.ZERO # (0,0d)
 	$AnimatedSprite2D.rotation = 0
 	
-	if Input.is_action_just_pressed("display_upgrade_menu"):
+	if Input.is_action_just_pressed("display_user_menu"):
 		if get_tree().paused:
-			undisplay_upgrade_menu()
+			undisplay_user_menu()
 		else:
-			display_upgrade_menu()
+			display_user_menu()
 	if get_tree().paused:
 		return
 	if Input.is_action_pressed("move_up"):
