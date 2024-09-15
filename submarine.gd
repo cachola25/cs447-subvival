@@ -10,6 +10,7 @@ extends CharacterBody2D
 class_name submarine
 
 @onready var total_money = $CanvasLayer/total_money
+@onready var oxygen_bar = $CanvasLayer/oxygen_bar
 var SPEED = 2000
 var bubble_scene = load("res://bubble.tscn")
 var curr_score = 0
@@ -20,6 +21,7 @@ func spawn_bubble():
 	temp_position.y -= 30
 	bubble.position = temp_position
 	get_parent().add_child(bubble)
+	oxygen_bar.value -= oxygen_bar.BUBBLE_COST
 	
 func display_upgrade_menu():
 	$CanvasLayer/upgrade_menu.visible = true
@@ -55,6 +57,9 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
 	if Input.is_action_just_pressed("release_bubble"):
+		#UNCOMMENT THIS TO TURN ON BUBBLE LIMITS
+		#if oxygen_bar.value >= oxygen_bar.BUBBLE_COST:
+			#spawn_bubble()
 		spawn_bubble()
 	
 	if direction.length() > 1:

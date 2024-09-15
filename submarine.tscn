@@ -89,10 +89,12 @@ offset_top = 7.0
 offset_right = 1655.0
 offset_bottom = 53.0
 value = 100.0
-allow_greater = true
 fill_mode = 1
 script = ExtResource("5_sriyo")
 metadata/_edit_use_anchors_ = true
+
+[node name="health_regen_timer" type="Timer" parent="CanvasLayer/health_bar"]
+wait_time = 5.0
 
 [node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 1079.0
@@ -102,6 +104,10 @@ offset_bottom = 106.0
 value = 100.0
 fill_mode = 1
 script = ExtResource("6_5wr0v")
+
+[node name="o2_regen_timer" type="Timer" parent="CanvasLayer/oxygen_bar"]
+wait_time = 2.0
+autostart = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = 1662.0
@@ -196,4 +202,6 @@ show_percentage = false
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="CanvasLayer/health_bar/health_regen_timer" to="CanvasLayer/health_bar" method="_on_health_regen_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/oxygen_bar/o2_regen_timer" to="CanvasLayer/oxygen_bar" method="_on_o_2_regen_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/o2/upgrade_02_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_02_button_pressed"]
