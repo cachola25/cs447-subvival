@@ -11,17 +11,19 @@ extends Area2D
 
 class_name eel
 
-const SPEED = 500
-const DAMAGE_DEALT = 5
+var SPEED = 500
+var DAMAGE_DEALT = 5
 signal despawned
 signal hit_sub
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 
-func start(_transform, submarine_position):
+func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	global_transform = _transform
 	var direction = (submarine_position - global_position).normalized()
+	SPEED = _SPEED
+	DAMAGE_DEALT = _DAMAGE_DEALT
 	velocity = direction * SPEED
 
 func _physics_process(delta):

@@ -1,7 +1,6 @@
 extends Area2D
 
 const eel_scene = preload("res://eel.tscn")
-const MAX_EELs = 3
 
 var submarine_in_area = false
 var submarine_instance
@@ -26,8 +25,11 @@ func spawn_eel():
 		spawn_pos = submarine_instance.global_position + Vector2(randX,randY)
 	
 	transform_position.origin = spawn_pos
+	var EEL_SPEED = get_parent().get_meta("EEL_SPEED")
+	var EEL_DAMAGE = get_parent().get_meta("EEL_DAMAGE")
 	eel_instance.connect("despawned", _on_eel_despawned)
-	eel_instance.start(transform_position, submarine_instance.global_position)
+	eel_instance.start(transform_position, 
+		submarine_instance.global_position, EEL_SPEED, EEL_DAMAGE)
 	eel_instance.get_node("AnimatedSprite2D").play("eel_swim")
 	add_child(eel_instance)
 	curr_num_eels += 1
@@ -39,5 +41,5 @@ func _on_body_exited(body: Node2D) -> void:
 func _on_eel_despawned():
 	curr_num_eels -= 1
 func _on_spawn_delay_timer_timeout() -> void:
-	if (submarine_in_area && curr_num_eels <= MAX_EELs):
+	if (submarine_in_area && curr_num_eels < get_parent().get_meta("MAX_EELS_IN_AREA")):
 		spawn_eel()

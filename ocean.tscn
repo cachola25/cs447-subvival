@@ -45,6 +45,9 @@ radius = 3681.07
 
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
+metadata/EEL_DAMAGE = 5
+metadata/EEL_SPEED = 500
+metadata/MAX_EELS_IN_AREA = 5
 
 [node name="background" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -130,6 +133,10 @@ curve = SubResource("Curve2D_pij1u")
 wait_time = 1.2
 autostart = true
 
+[node name="player_alive_time" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="clownfish_spawn_area_1/spawn_timer" to="clownfish_spawn_area_1" method="_on_spawn_timer_timeout"]
@@ -139,3 +146,4 @@ autostart = true
 [connection signal="body_entered" from="blue_tang_spawn_area_1" to="blue_tang_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="blue_tang_spawn_area_1" to="blue_tang_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="blue_tang_spawn_area_1/spawn_timer" to="blue_tang_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="player_alive_time" to="." method="_on_player_alive_time_timeout"]
