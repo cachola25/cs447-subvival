@@ -15,7 +15,6 @@ var ARMOR = 0
 var SPEED = 2000
 var LUCK = 0
 var bubble_scene = load("res://bubble.tscn")
-var curr_score = 0
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
@@ -96,8 +95,9 @@ func _process(delta):
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name.begins_with("captured_bubble"):
-		curr_score += body.get_meta("FISH_VALUE")
-		total_money.text = "$" + str(curr_score)
+		var curr_money = int(total_money.text.substr(1))
+		curr_money += body.get_meta("FISH_VALUE")
+		total_money.text = "$" + str(curr_money)
 	elif body.name.begins_with("bubble"):
 		body.get_node("AnimatedSprite2D").play("pop")
 	
