@@ -69,3 +69,7 @@ func _on_upgrade_health_button_pressed() -> void:
 	health_bar.HEALTH_REGENERATION_AMOUNT += 5
 	health_bar.get_node("health_regen_timer").wait_time -= 0.5
 	health_bar.flag2 = true
+
+
+func _on_upgrade_luck_button_pressed() -> void:
+	print("luck button pressed")

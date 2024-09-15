@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=27 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -12,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="7_ka1aj"]
 [ext_resource type="Texture2D" uid="uid://pi3tokna8coe" path="res://art/Bubble/o2.png" id="8_fmifh"]
 [ext_resource type="Script" path="res://upgrade_menu.gd" id="8_mq8qe"]
-[ext_resource type="Texture2D" uid="uid://irh4oox4rp6g" path="res://art/Bubble/Sheild.png" id="12_ovwqp"]
 [ext_resource type="Script" path="res://o_2.gd" id="13_2832f"]
 [ext_resource type="Texture2D" uid="uid://cwr3npvmhmpps" path="res://art/Bubble/question_tooltip.png" id="14_vk5j5"]
 [ext_resource type="Script" path="res://upgrade_armor.gd" id="15_skr2a"]
+[ext_resource type="Texture2D" uid="uid://bgb43auyxwgtt" path="res://art/Bubble/shield.png" id="16_87jto"]
 [ext_resource type="Script" path="res://health_upgrade.gd" id="17_f0xre"]
+[ext_resource type="Script" path="res://luck_upgrade.gd" id="18_bnfrb"]
+[ext_resource type="Texture2D" uid="uid://q6mlx6ysrofs" path="res://art/Bubble/clover.png" id="18_p8wfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -173,10 +175,10 @@ visible = false
 [node name="upgrade_menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 30.0
-offset_top = 157.0
-offset_right = 798.0
-offset_bottom = 1044.0
+offset_left = 35.0
+offset_top = 148.0
+offset_right = 803.0
+offset_bottom = 1035.0
 script = ExtResource("8_mq8qe")
 
 [node name="menu_info" type="Label" parent="CanvasLayer/upgrade_menu"]
@@ -208,10 +210,10 @@ script = ExtResource("13_2832f")
 
 [node name="o2_cost" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
-offset_left = -1327.33
-offset_top = -303.415
-offset_right = -1307.33
-offset_bottom = -280.415
+offset_left = -1421.47
+offset_top = -284.452
+offset_right = -1401.47
+offset_bottom = -261.452
 scale = Vector2(28.3337, 24.6278)
 text = "$5
 "
@@ -235,7 +237,7 @@ step = 1.0
 show_percentage = false
 
 [node name="o2_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/o2"]
-position = Vector2(18.8274, 18.9634)
+position = Vector2(-112.964, 18.9634)
 texture = ExtResource("8_fmifh")
 
 [node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/o2"]
@@ -253,12 +255,11 @@ offset_bottom = 104.0
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
 offset_left = 404.788
-offset_top = -777.501
-offset_right = 734.788
-offset_bottom = -725.501
-scale = Vector2(9.4564, 11.999)
-text = "This upgrade will increase the 
-rate and amount of O2 regeneration"
+offset_top = -673.202
+offset_right = 712.788
+offset_bottom = -621.202
+scale = Vector2(9.44191, 10.1602)
+text = "O2 replenishes faster and in larger amounts"
 autowrap_mode = 3
 
 [node name="armor" type="Control" parent="CanvasLayer/upgrade_menu"]
@@ -272,10 +273,10 @@ script = ExtResource("15_skr2a")
 
 [node name="armor_cost" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
 layout_mode = 0
-offset_left = -43.1919
-offset_top = -10.4508
-offset_right = -22.1919
-offset_bottom = 12.5492
+offset_left = -48.3109
+offset_top = -9.836
+offset_right = -27.3109
+offset_bottom = 13.164
 scale = Vector2(0.914982, 0.836882)
 text = "$6"
 
@@ -286,10 +287,10 @@ anchor_left = -1.183
 anchor_top = -0.287
 anchor_right = -1.183
 anchor_bottom = -0.287
-offset_left = -7.67856
-offset_top = -7.99175
-offset_right = 8.32144
-offset_bottom = 8.00825
+offset_left = -11.5178
+offset_top = -9.52863
+offset_right = 4.48217
+offset_bottom = 6.47137
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -305,7 +306,9 @@ step = 1.0
 show_percentage = false
 
 [node name="armor_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/armor"]
-texture = ExtResource("12_ovwqp")
+position = Vector2(-3.83927, -0.922129)
+scale = Vector2(0.0351614, 0.0297063)
+texture = ExtResource("16_87jto")
 
 [node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/armor"]
 position = Vector2(168.928, -0.307373)
@@ -322,12 +325,12 @@ scale = Vector2(0.175145, 0.125252)
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
 layout_mode = 0
-offset_left = 14.0773
-offset_top = -15.9835
-offset_right = 528.077
-offset_bottom = 7.01649
-scale = Vector2(0.316834, 0.3912)
-text = "This upgrade will decrease the damage taken from enemies"
+offset_left = 14.0
+offset_top = -16.0
+offset_right = 315.0
+offset_bottom = 7.0
+scale = Vector2(0.341464, 0.3912)
+text = "Decrease damage taken from enemies"
 autowrap_mode = 2
 
 [node name="health" type="Control" parent="CanvasLayer/upgrade_menu"]
@@ -338,10 +341,10 @@ script = ExtResource("17_f0xre")
 
 [node name="health_cost" type="Label" parent="CanvasLayer/upgrade_menu/health"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 439.0
-offset_right = 56.0
-offset_bottom = 467.0
+offset_left = 15.0
+offset_top = 440.0
+offset_right = 43.0
+offset_bottom = 468.0
 scale = Vector2(3.08074, 2.25293)
 text = "$7"
 
@@ -354,9 +357,9 @@ offset_bottom = 496.0
 
 [node name="health_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/health"]
 layout_mode = 0
-offset_left = 204.0
+offset_left = 196.0
 offset_top = 450.0
-offset_right = 682.0
+offset_right = 674.0
 offset_bottom = 486.0
 scale = Vector2(0.990367, 0.947386)
 max_value = 5.0
@@ -364,30 +367,88 @@ step = 1.0
 show_percentage = false
 
 [node name="health_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/health"]
-position = Vector2(159, 468)
+position = Vector2(149, 468)
 scale = Vector2(0.12207, 0.113281)
 texture = ExtResource("6_4qh78")
 
 [node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/health"]
-position = Vector2(694, 467)
+position = Vector2(685, 466.375)
 scale = Vector2(0.041992, 0.0327148)
 texture = ExtResource("14_vk5j5")
 
 [node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/health"]
 layout_mode = 0
-offset_left = 683.0
-offset_top = 458.0
-offset_right = 705.0
-offset_bottom = 476.0
+offset_left = 673.0
+offset_top = 458.375
+offset_right = 695.0
+offset_bottom = 476.375
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/health"]
 layout_mode = 0
-offset_left = 208.0
-offset_top = 396.0
-offset_right = 517.0
-offset_bottom = 445.0
-text = "This upgrade will increase the
-rate and amount of health regeneration"
+offset_left = 198.0
+offset_top = 397.0
+offset_right = 507.0
+offset_bottom = 446.0
+text = "Health regenerates faster and in larger amounts"
+autowrap_mode = 3
+
+[node name="luck" type="Control" parent="CanvasLayer/upgrade_menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_bnfrb")
+
+[node name="luck_cost" type="Label" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 596.0
+offset_right = 59.0
+offset_bottom = 619.0
+scale = Vector2(2.30101, 2.48214)
+text = "$10"
+
+[node name="upgrade_luck_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 597.0
+offset_right = 180.0
+offset_bottom = 652.0
+
+[node name="luck_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 608.0
+offset_right = 663.0
+offset_bottom = 638.0
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="luck_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/luck"]
+position = Vector2(148, 622)
+scale = Vector2(0.116211, 0.0986328)
+texture = ExtResource("18_p8wfa")
+
+[node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/luck"]
+position = Vector2(682, 623)
+scale = Vector2(0.0390625, 0.0341796)
+texture = ExtResource("14_vk5j5")
+
+[node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 614.0
+offset_right = 692.0
+offset_bottom = 632.0
+
+[node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 557.0
+offset_right = 506.0
+offset_bottom = 606.0
+text = "Fish spawn more frequently and in larger batches"
+autowrap_mode = 3
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
@@ -402,3 +463,6 @@ rate and amount of health regeneration"
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/health/upgrade_health_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_health_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/health/tooltip_button" to="CanvasLayer/upgrade_menu/health" method="_on_tooltip_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/health/tooltip_button" to="CanvasLayer/upgrade_menu/health" method="_on_tooltip_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/luck/upgrade_luck_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_luck_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_exited"]
