@@ -21,12 +21,31 @@ func spawn_bubble():
 	bubble.position = temp_position
 	get_parent().add_child(bubble)
 	
+func display_upgrade_menu():
+	$CanvasLayer/upgrade_menu.visible = true
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	get_tree().paused = true
+	
+func undisplay_upgrade_menu():
+	$CanvasLayer/upgrade_menu.visible = false
+	process_mode = Node.PROCESS_MODE_INHERIT
+	get_tree().paused = false
+	
 func _ready():
 	$AnimatedSprite2D.play("submarine_default")
+	$CanvasLayer/upgrade_menu.visible = false
 	
 func _process(delta):
 	var direction = Vector2.ZERO # (0,0d)
 	$AnimatedSprite2D.rotation = 0
+	
+	if Input.is_action_just_pressed("display_upgrade_menu"):
+		if get_tree().paused:
+			undisplay_upgrade_menu()
+		else:
+			display_upgrade_menu()
+	if get_tree().paused:
+		return
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
 	if Input.is_action_pressed("move_down"):
@@ -66,7 +85,6 @@ func _process(delta):
 	var collision_info = move_and_collide(direction * SPEED * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
-		print(collider)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:

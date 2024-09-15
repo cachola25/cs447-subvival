@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=17 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="5_1k2w0"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="7_ka1aj"]
+[ext_resource type="Texture2D" uid="uid://br244qh06q42f" path="res://art/O2.png" id="8_jqwla"]
+[ext_resource type="Script" path="res://upgrade_menu.gd" id="8_mq8qe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -132,6 +134,55 @@ theme_override_font_sizes/font_size = 30
 text = "$0"
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("7_ka1aj")]
+visible = false
+
+[node name="upgrade_menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 157.0
+offset_right = 798.0
+offset_bottom = 1044.0
+script = ExtResource("8_mq8qe")
+
+[node name="quit_upgrade_menu" type="Label" parent="CanvasLayer/upgrade_menu"]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 1.0
+offset_right = 575.0
+offset_bottom = 24.0
+text = "Press F again to exit out of the upgrade menu"
+
+[node name="o2" type="Sprite2D" parent="CanvasLayer/upgrade_menu"]
+position = Vector2(146, 90)
+scale = Vector2(0.331285, 0.378317)
+texture = ExtResource("8_jqwla")
+
+[node name="o2_cost" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
+offset_left = -205.261
+offset_top = -71.3688
+offset_right = -91.261
+offset_bottom = 65.6312
+theme_override_font_sizes/font_size = 100
+text = "$5"
+
+[node name="upgrade_02_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/o2"]
+offset_left = -57.0
+offset_top = -40.0
+offset_right = 79.0
+offset_bottom = 53.0
+
+[node name="o2_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/o2"]
+offset_left = 102.631
+offset_top = -44.9359
+offset_right = 240.631
+offset_bottom = -16.9359
+scale = Vector2(9.76087, 3.65821)
+max_value = 5.0
+step = 1.0
+value = 4.0
+show_percentage = false
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/o2/upgrade_02_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_02_button_pressed"]
