@@ -2,6 +2,8 @@ extends ProgressBar
 
 var HEALTH_REGENERATION_RATE = 5
 var HEALTH_REGENERATION_AMOUNT = 10
+var flag1 = false
+var flag2 = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var style = StyleBoxFlat.new()
@@ -18,6 +20,15 @@ func _process(delta: float) -> void:
 	else:
 		if $health_regen_timer.is_stopped():
 			$health_regen_timer.start()
+			
+	if not flag1:
+		print("RATE: ", $health_regen_timer.wait_time)
+		print("AMOUNT: ", HEALTH_REGENERATION_AMOUNT)
+		flag1 = true
+	if flag2:
+		print("RATE: ", $health_regen_timer.wait_time)
+		print("AMOUNT: ", HEALTH_REGENERATION_AMOUNT)
+		flag2 = false
 
 
 func _on_health_regen_timer_timeout() -> void:

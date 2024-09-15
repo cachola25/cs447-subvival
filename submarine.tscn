@@ -208,12 +208,11 @@ script = ExtResource("13_2832f")
 
 [node name="o2_cost" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
-offset_left = -1035.51
-offset_top = -284.452
-offset_right = -847.505
-offset_bottom = -133.452
-scale = Vector2(3.00296, 3.3452)
-theme_override_font_sizes/font_size = 110
+offset_left = -1327.33
+offset_top = -303.415
+offset_right = -1307.33
+offset_bottom = -280.415
+scale = Vector2(28.3337, 24.6278)
 text = "$5
 "
 
@@ -273,12 +272,11 @@ script = ExtResource("15_skr2a")
 
 [node name="armor_cost" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
 layout_mode = 0
-offset_left = -34.8734
-offset_top = -8.6065
-offset_right = 136.127
-offset_bottom = 128.393
-scale = Vector2(0.124639, 0.108764)
-theme_override_font_sizes/font_size = 100
+offset_left = -43.1919
+offset_top = -10.4508
+offset_right = -22.1919
+offset_bottom = 12.5492
+scale = Vector2(0.914982, 0.836882)
 text = "$6"
 
 [node name="upgrade_armor_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/armor"]
@@ -340,12 +338,11 @@ script = ExtResource("17_f0xre")
 
 [node name="health_cost" type="Label" parent="CanvasLayer/upgrade_menu/health"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 440.0
-offset_right = 182.0
-offset_bottom = 577.0
-scale = Vector2(0.432535, 0.394458)
-theme_override_font_sizes/font_size = 100
+offset_left = 28.0
+offset_top = 439.0
+offset_right = 56.0
+offset_bottom = 467.0
+scale = Vector2(3.08074, 2.25293)
 text = "$7"
 
 [node name="upgrade_health_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/health"]

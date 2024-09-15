@@ -4,9 +4,12 @@ extends Control
 @onready var total_money_node = get_parent().get_node("total_money")
 @onready var o2_cost_node = $o2/o2_cost
 @onready var o2_upgrade_progress = $o2/o2_upgrade_progress
-@onready var oxygen_bar = get_parent().get_node("oxygen_bar")
 @onready var armor_cost_node = $armor/armor_cost
 @onready var armor_upgrade_progress = $armor/armor_upgrade_progress
+@onready var health_cost_node = $health/health_cost
+@onready var health_upgrade_progress = $health/health_upgrade_progress
+@onready var oxygen_bar = get_parent().get_node("oxygen_bar")
+@onready var health_bar = get_parent().get_node("health_bar")
 @onready var submarine_scene = get_parent().get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +22,7 @@ func _process(delta: float) -> void:
 
 func check_if_valid_upgrade(cost_node, progress_bar):
 	var cost = get_cost(cost_node)
-	var total_money = int(total_money_node.text.substr(1))
+	var total_money = get_cost(total_money_node)
 	var result = total_money - cost
 	var check = progress_bar.value + progress_bar.step
 	if check > progress_bar.max_value:
@@ -58,3 +61,11 @@ func _on_upgrade_armor_button_pressed() -> void:
 
 func _on_upgrade_health_button_pressed() -> void:
 	print("Health button pressed")
+	var result = check_if_valid_upgrade(health_cost_node, health_upgrade_progress)
+	if (result < 0):
+		return
+	update_labels_and_progress(health_cost_node, result, get_cost(health_cost_node), health_upgrade_progress)
+	
+	health_bar.HEALTH_REGENERATION_AMOUNT += 5
+	health_bar.get_node("health_regen_timer").wait_time -= 0.5
+	health_bar.flag2 = true
