@@ -11,6 +11,7 @@ class_name submarine
 
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
+var ARMOR = 0
 var SPEED = 2000
 var bubble_scene = load("res://bubble.tscn")
 var curr_score = 0
