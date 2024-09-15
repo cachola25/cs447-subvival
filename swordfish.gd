@@ -24,8 +24,8 @@ func _physics_process(delta):
 	if not hit_sub:
 		position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
 	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
-	look_at(target_position)
 	position = position.move_toward(target_position, SPEED * delta)
+	look_at(target_position)
 
 func _ready() -> void:
 	pass

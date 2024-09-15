@@ -18,7 +18,7 @@ func spawn_swordfish():
 	var swordfish_instance = swordfish_scene.instantiate()
 	var transform_position = Transform2D()
 	var spawn_pos = submarine_instance.global_position
-	var min_distance = 300
+	var min_distance = 600
 	while spawn_pos.distance_to(submarine_instance.global_position) < min_distance:
 		var randX = randi_range(-1500,1500)
 		var randY = randi_range(-1500,1500)
