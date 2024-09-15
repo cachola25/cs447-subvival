@@ -48,10 +48,10 @@ func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
 	
 func _process(delta):
-	if is_submarine_destroyed():
-		var death_scene = load("res://death_screen.tscn").instantiate()
-		get_tree().root.get_child(0).queue_free()
-		get_tree().root.add_child(death_scene)
+	#if is_submarine_destroyed():
+		#var death_scene = load("res://death_screen.tscn").instantiate()
+		#get_tree().root.get_child(0).queue_free()
+		#get_tree().root.add_child(death_scene)
 		
 	var direction = Vector2.ZERO # (0,0d)
 	$AnimatedSprite2D.rotation = 0

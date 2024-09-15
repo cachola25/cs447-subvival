@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://3ym41mjej34v"]
+
+[ext_resource type="Texture2D" uid="uid://cks0gqs6kd7n2" path="res://art/Fish/32bit-swordfish.png" id="1_606q8"]
+[ext_resource type="Script" path="res://swordfish.gd" id="1_o5ukm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nchda"]
+size = Vector2(1676, 826)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7otb"]
+atlas = ExtResource("1_606q8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l26bt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7otb")
+}],
+"loop": true,
+"name": &"swordfish_swim",
+"speed": 5.0
+}]
+
+[node name="swordfish" type="Area2D"]
+script = ExtResource("1_o5ukm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_nchda")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.99982, 5.99991)
+scale = Vector2(52.25, 51.75)
+sprite_frames = SubResource("SpriteFrames_l26bt")
+animation = &"swordfish_swim"
+frame_progress = 0.814226
