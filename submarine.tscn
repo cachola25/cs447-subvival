@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=33 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="7_ka1aj"]
 [ext_resource type="Texture2D" uid="uid://pi3tokna8coe" path="res://art/Bubble/o2.png" id="8_fmifh"]
 [ext_resource type="Script" path="res://upgrade_menu.gd" id="8_mq8qe"]
+[ext_resource type="Texture2D" uid="uid://df0iy1c16qgiy" path="res://art/Upgrade Icon.png" id="13_3rcuf"]
 [ext_resource type="Script" path="res://o_2.gd" id="13_2832f"]
 [ext_resource type="Texture2D" uid="uid://cwr3npvmhmpps" path="res://art/Bubble/question_tooltip.png" id="14_vk5j5"]
 [ext_resource type="Script" path="res://upgrade_armor.gd" id="15_skr2a"]
@@ -186,25 +187,34 @@ visible = false
 [node name="upgrade_menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 35.0
-offset_top = 148.0
-offset_right = 803.0
-offset_bottom = 1035.0
+offset_left = 19.0
+offset_top = 45.0
+offset_right = 787.0
+offset_bottom = 1059.0
 script = ExtResource("8_mq8qe")
 
 [node name="menu_info" type="Label" parent="CanvasLayer/upgrade_menu"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -3.0
+offset_top = 39.0
+offset_right = 183.0
+offset_bottom = 62.0
+scale = Vector2(1.79502, 2.22379)
 text = "Click an icon to upgrade"
 
 [node name="quit_upgrade_menu" type="Label" parent="CanvasLayer/upgrade_menu"]
 layout_mode = 0
-offset_left = 407.0
-offset_top = 2.0
-offset_right = 759.0
-offset_bottom = 25.0
+offset_left = -4.0
+offset_top = 108.0
+offset_right = 348.0
+offset_bottom = 131.0
+scale = Vector2(1.33651, 1.93434)
 text = "Press F again to exit out of the upgrade menu"
+
+[node name="upgrade_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu"]
+position = Vector2(565, 72)
+scale = Vector2(5.96875, 5.71875)
+texture = ExtResource("13_3rcuf")
 
 [node name="o2" type="Control" parent="CanvasLayer/upgrade_menu"]
 layout_mode = 1
@@ -213,9 +223,9 @@ anchor_top = 0.114
 anchor_right = 0.081
 anchor_bottom = 0.114
 offset_left = 97.792
-offset_top = 61.882
+offset_top = 205.404
 offset_right = 97.792
-offset_bottom = 61.882
+offset_bottom = 205.404
 scale = Vector2(0.106228, 0.105466)
 script = ExtResource("13_2832f")
 
@@ -265,20 +275,20 @@ offset_bottom = 104.0
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
 layout_mode = 0
-offset_left = 404.788
-offset_top = -673.202
-offset_right = 712.788
-offset_bottom = -621.202
-scale = Vector2(9.44191, 10.1602)
+offset_left = 414.203
+offset_top = -962.187
+offset_right = 722.203
+offset_bottom = -910.187
+scale = Vector2(13.1831, 17.1686)
 text = "O2 replenishes faster and in larger amounts"
 autowrap_mode = 3
 
 [node name="armor" type="Control" parent="CanvasLayer/upgrade_menu"]
 anchors_preset = 0
-offset_left = 159.0
-offset_top = 318.0
-offset_right = 159.0
-offset_bottom = 318.0
+offset_left = 160.0
+offset_top = 481.0
+offset_right = 160.0
+offset_bottom = 481.0
 scale = Vector2(3.12559, 3.25335)
 script = ExtResource("15_skr2a")
 
@@ -336,18 +346,20 @@ scale = Vector2(0.175145, 0.125252)
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = -16.0
-offset_right = 315.0
-offset_bottom = 7.0
-scale = Vector2(0.341464, 0.3912)
+offset_left = 14.3973
+offset_top = -22.131
+offset_right = 315.397
+offset_bottom = 0.868961
+scale = Vector2(0.496109, 0.727688)
 text = "Decrease damage taken from enemies"
 autowrap_mode = 2
 
 [node name="health" type="Control" parent="CanvasLayer/upgrade_menu"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -2.0
+offset_top = 170.0
+offset_right = 38.0
+offset_bottom = 210.0
 script = ExtResource("17_f0xre")
 
 [node name="health_cost" type="Label" parent="CanvasLayer/upgrade_menu/health"]
@@ -396,26 +408,29 @@ offset_bottom = 476.375
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/health"]
 layout_mode = 0
-offset_left = 198.0
-offset_top = 397.0
-offset_right = 507.0
-offset_bottom = 446.0
+offset_left = 197.0
+offset_top = 375.0
+offset_right = 506.0
+offset_bottom = 424.0
+scale = Vector2(1.41818, 1.61987)
 text = "Health regenerates faster and in larger amounts"
 autowrap_mode = 3
 
 [node name="luck" type="Control" parent="CanvasLayer/upgrade_menu"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -7.0
+offset_top = 178.0
+offset_right = 33.0
+offset_bottom = 218.0
 script = ExtResource("18_bnfrb")
 
 [node name="luck_cost" type="Label" parent="CanvasLayer/upgrade_menu/luck"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 596.0
-offset_right = 59.0
-offset_bottom = 619.0
-scale = Vector2(2.30101, 2.48214)
+offset_left = 18.0
+offset_top = 588.0
+offset_right = 47.0
+offset_bottom = 611.0
+scale = Vector2(2.50681, 2.68388)
 text = "$10"
 
 [node name="upgrade_luck_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/luck"]
@@ -429,8 +444,9 @@ offset_bottom = 652.0
 layout_mode = 0
 offset_left = 193.0
 offset_top = 608.0
-offset_right = 663.0
+offset_right = 671.0
 offset_bottom = 638.0
+scale = Vector2(1.0075, 1.04634)
 max_value = 5.0
 step = 1.0
 show_percentage = false
@@ -441,23 +457,24 @@ scale = Vector2(0.116211, 0.0986328)
 texture = ExtResource("18_p8wfa")
 
 [node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/luck"]
-position = Vector2(682, 623)
+position = Vector2(690, 623)
 scale = Vector2(0.0390625, 0.0341796)
 texture = ExtResource("14_vk5j5")
 
 [node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/luck"]
 layout_mode = 0
-offset_left = 672.0
+offset_left = 680.0
 offset_top = 614.0
-offset_right = 692.0
+offset_right = 700.0
 offset_bottom = 632.0
 
 [node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/luck"]
 layout_mode = 0
 offset_left = 195.0
-offset_top = 557.0
+offset_top = 531.0
 offset_right = 506.0
-offset_bottom = 606.0
+offset_bottom = 580.0
+scale = Vector2(1.40812, 1.57367)
 text = "Fish spawn more frequently and in larger batches"
 autowrap_mode = 3
 
@@ -493,7 +510,7 @@ position = Vector2(82, 203)
 scale = Vector2(0.326172, 0.305664)
 texture = ExtResource("20_3amhb")
 
-[node name="fish5" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+[node name="turtle" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
 position = Vector2(-139, 209)
 scale = Vector2(0.329102, 0.314453)
 texture = ExtResource("20_3amhb")

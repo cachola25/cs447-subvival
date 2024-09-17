@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=20 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://clownfish_spawn_area_1.gd" id="6_rp0rw"]
 [ext_resource type="Script" path="res://eel_spawn_area_1.gd" id="7_1hbr4"]
 [ext_resource type="Script" path="res://swordfish_spawn_area_1.gd" id="7_ohjgx"]
+[ext_resource type="Script" path="res://turtle_spawn_area_1.gd" id="8_o1ivg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3632.0
@@ -50,6 +51,15 @@ radius = 159.542
 [sub_resource type="CircleShape2D" id="CircleShape2D_hisal"]
 radius = 3675.18
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf52c"]
+radius = 1813.08
+
+[sub_resource type="Curve2D" id="Curve2D_w4clk"]
+_data = {
+"points": PackedVector2Array(-377.573, -335.621, 377.573, 335.621, 16848, 10167, 1042.82, 922.957, -1042.82, -922.957, 15716, 9370, -299.661, 95.8916, 299.661, -95.8916, 15554, 8147, -1582.21, 713.194, 1582.21, -713.194, 16321, 7440, 0, 0, 0, 0, 18113, 7716)
+}
+point_count = 5
+
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
 metadata/EEL_DAMAGE = 5
@@ -58,6 +68,9 @@ metadata/MAX_EELS_IN_AREA = 5
 metadata/SWORDFISH_SPEED = 600
 metadata/SWORDFISH_DAMAGE = 10
 metadata/MAX_SWORDFISH_IN_AREA = 3
+metadata/OG_EEL_DAMAGE = 5
+metadata/OG_EEL_SPEED = 500
+metadata/OG_MAX_EELS_IN_AREA = 5
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = 1.99999
@@ -158,6 +171,19 @@ debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
 [node name="spawn_delay_timer" type="Timer" parent="swordfish_spawn_area_1"]
 autostart = true
 
+[node name="turtle_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("8_o1ivg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="turtle_spawn_area_1"]
+position = Vector2(16854, 8761)
+shape = SubResource("CircleShape2D_bf52c")
+
+[node name="spawn_timer" type="Timer" parent="turtle_spawn_area_1"]
+autostart = true
+
+[node name="Path2D_1" type="Path2D" parent="turtle_spawn_area_1"]
+curve = SubResource("Curve2D_w4clk")
+
 [node name="player_alive_time" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -174,4 +200,7 @@ autostart = true
 [connection signal="body_entered" from="swordfish_spawn_area_1" to="swordfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="swordfish_spawn_area_1" to="swordfish_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="swordfish_spawn_area_1/spawn_delay_timer" to="swordfish_spawn_area_1" method="_on_spawn_delay_timer_timeout"]
+[connection signal="body_entered" from="turtle_spawn_area_1" to="turtle_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="turtle_spawn_area_1" to="turtle_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="turtle_spawn_area_1/spawn_timer" to="turtle_spawn_area_1" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="player_alive_time" to="." method="_on_player_alive_time_timeout"]

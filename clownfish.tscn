@@ -32,6 +32,8 @@ animations = [{
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_3xofb")
+metadata/_edit_horizontal_guides_ = [26.0, -26.0]
+metadata/_edit_vertical_guides_ = [-48.0, 56.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0.25)

@@ -2,7 +2,7 @@ extends Control
 
 func resume():
 	get_tree().paused = false
-	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play_backwards("RESET")
 	
 func paused():
 	get_tree().paused  = true
@@ -11,6 +11,8 @@ func paused():
 func testEsc():
 	if Input.is_action_just_pressed("escape") and not get_tree().paused:
 		paused()
+	elif Input.is_action_just_pressed("escape") and get_tree().paused:
+		resume()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
