@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=32 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://health_bar.gd" id="5_sriyo"]
 [ext_resource type="Texture2D" uid="uid://bqhp52foyapmo" path="res://art/Bubble/health.png" id="6_4qh78"]
 [ext_resource type="Script" path="res://oxygen_bar.gd" id="6_5wr0v"]
-[ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="7_ka1aj"]
 [ext_resource type="Texture2D" uid="uid://pi3tokna8coe" path="res://art/Bubble/o2.png" id="8_fmifh"]
 [ext_resource type="Script" path="res://upgrade_menu.gd" id="8_mq8qe"]
 [ext_resource type="Texture2D" uid="uid://df0iy1c16qgiy" path="res://art/Upgrade Icon.png" id="13_3rcuf"]
@@ -180,9 +179,6 @@ offset_right = 1702.0
 offset_bottom = 280.0
 theme_override_font_sizes/font_size = 30
 text = "$0"
-
-[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("7_ka1aj")]
-visible = false
 
 [node name="upgrade_menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3

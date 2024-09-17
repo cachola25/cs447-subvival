@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=24 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://swordfish_spawn_area_1.gd" id="7_ohjgx"]
 [ext_resource type="Script" path="res://turtle_spawn_area_1.gd" id="8_o1ivg"]
 [ext_resource type="Script" path="res://parrot_fish_spawn_area_1.gd" id="9_ffkia"]
+[ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="10_661rv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3632.0
@@ -211,6 +212,10 @@ autostart = true
 [node name="player_alive_time" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("10_661rv")]
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
