@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdty3e8tf7aln"
-path="res://.godot/imported/Tuna.png-a91275cffeb9c3bf06c5f8e23e114ab9.ctex"
+uid="uid://d0kcpvhkwux10"
+path="res://.godot/imported/Turtle Bubble.png-1bf20ba35e9ecc5d6fac9304e197c553.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Fish/Tuna.png"
-dest_files=["res://.godot/imported/Tuna.png-a91275cffeb9c3bf06c5f8e23e114ab9.ctex"]
+source_file="res://art/Fish/Turtle Bubble.png"
+dest_files=["res://.godot/imported/Turtle Bubble.png-1bf20ba35e9ecc5d6fac9304e197c553.ctex"]
 
 [params]
 

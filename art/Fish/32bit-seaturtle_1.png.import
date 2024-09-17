@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdty3e8tf7aln"
-path="res://.godot/imported/Tuna.png-a91275cffeb9c3bf06c5f8e23e114ab9.ctex"
+uid="uid://b7217syyybtks"
+path="res://.godot/imported/32bit-seaturtle_1.png-a19934a1f17f64fd1744b6d2fe813bfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Fish/Tuna.png"
-dest_files=["res://.godot/imported/Tuna.png-a91275cffeb9c3bf06c5f8e23e114ab9.ctex"]
+source_file="res://art/Fish/32bit-seaturtle_1.png"
+dest_files=["res://.godot/imported/32bit-seaturtle_1.png-a19934a1f17f64fd1744b6d2fe813bfb.ctex"]
 
 [params]
 

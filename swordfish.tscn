@@ -35,7 +35,7 @@ position = Vector2(2, 0.999992)
 scale = Vector2(9.51563, 9.625)
 sprite_frames = SubResource("SpriteFrames_l26bt")
 animation = &"swordfish_swim"
-frame_progress = 0.00921328
+frame_progress = 0.113331
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

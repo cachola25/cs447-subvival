@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsoivkc4g77xv"]
+[gd_scene load_steps=5 format=3 uid="uid://dkqm454d5v6w"]
 
 [ext_resource type="Texture2D" uid="uid://b7swwe6475taq" path="res://art/Levels/4.png" id="1_o57x3"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="2_1pgvb"]
