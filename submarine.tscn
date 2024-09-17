@@ -505,7 +505,7 @@ position = Vector2(296, 208)
 scale = Vector2(0.331667, 0.323242)
 texture = ExtResource("20_3amhb")
 
-[node name="fish4" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+[node name="parrot_fish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
 position = Vector2(82, 203)
 scale = Vector2(0.326172, 0.305664)
 texture = ExtResource("20_3amhb")

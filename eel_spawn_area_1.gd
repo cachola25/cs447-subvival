@@ -38,6 +38,9 @@ func _on_body_entered(body: Node2D) -> void:
 	submarine_in_area = true
 func _on_body_exited(body: Node2D) -> void:
 	submarine_in_area = false
+	for child in get_children():
+		if child is eel:
+			child.queue_free()
 func _on_eel_despawned():
 	curr_num_eels -= 1
 func _on_spawn_delay_timer_timeout() -> void:
