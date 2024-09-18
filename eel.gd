@@ -42,6 +42,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
 		body.get_node("AnimatedSprite2D").play("damage_taken")
 		body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
+		$Electric_shock.play()
 		emit_signal("despawned")
 		queue_free()
 
