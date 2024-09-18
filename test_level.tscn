@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkqm454d5v6w"]
+[gd_scene load_steps=4 format=3 uid="uid://dkqm454d5v6w"]
 
 [ext_resource type="Texture2D" uid="uid://b7swwe6475taq" path="res://art/Levels/4.png" id="1_o57x3"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="2_1pgvb"]
-[ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="3_ildu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8cx"]
 size = Vector2(3621, 83)
@@ -63,7 +62,3 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
 position = Vector2(-371, -1650)
 shape = SubResource("RectangleShape2D_ol8cx")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("3_ildu0")]

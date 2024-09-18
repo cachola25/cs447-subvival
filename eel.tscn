@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8a5lnd1uvs1a"]
+[gd_scene load_steps=9 format=3 uid="uid://b8a5lnd1uvs1a"]
 
 [ext_resource type="Script" path="res://eel.gd" id="1_18xai"]
 [ext_resource type="Texture2D" uid="uid://dxnr84nr6ify" path="res://art/Eel/Eel Enemy Spritesheet.png" id="1_rx4am"]
+[ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://sounds/electrical-shock-zap-106412.mp3" id="3_v07me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvc8p"]
 size = Vector2(296, 72.5)
@@ -49,12 +50,16 @@ position = Vector2(-5, 12)
 scale = Vector2(5.21093, 4.625)
 sprite_frames = SubResource("SpriteFrames_lg5jl")
 animation = &"eel_swim"
-frame_progress = 0.559519
+frame_progress = 0.484791
 flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="electric_shock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v07me")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

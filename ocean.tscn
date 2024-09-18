@@ -1,112 +1,273 @@
-[gd_scene load_steps=12 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=29 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
 [ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="3_3udq1"]
-[ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="4_ctxmj"]
-[ext_resource type="Script" path="res://sub_viewport.gd" id="4_vltdk"]
-[ext_resource type="Script" path="res://fish_spawn_area_1.gd" id="6_rp0rw"]
+[ext_resource type="Script" path="res://blue_tang_spawn_area_1.gd" id="6_ay7p0"]
+[ext_resource type="Script" path="res://clownfish_spawn_area_1.gd" id="6_rp0rw"]
 [ext_resource type="Script" path="res://eel_spawn_area_1.gd" id="7_1hbr4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k32ew"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Script" path="res://swordfish_spawn_area_1.gd" id="7_ohjgx"]
+[ext_resource type="Script" path="res://turtle_spawn_area_1.gd" id="8_o1ivg"]
+[ext_resource type="Script" path="res://parrot_fish_spawn_area_1.gd" id="9_ffkia"]
+[ext_resource type="Script" path="res://triggerfish_spawn_area_1.gd" id="10_3wugs"]
+[ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="10_661rv"]
+[ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://sounds/electrical-shock-zap-106412.mp3" id="11_e3ucm"]
+[ext_resource type="AudioStream" uid="uid://c85rvuqbmvhy5" path="res://sounds/metal-beaten-sfx-230501.mp3" id="12_hid5v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
-radius = 3080.25
+radius = 3632.0
 
-[sub_resource type="Curve2D" id="Curve2D_uw5vp"]
+[sub_resource type="Curve2D" id="Curve2D_5sbij"]
 _data = {
-"points": PackedVector2Array(0, -62.8579, 0, 62.8579, 5001, 2904, 251.432, -516.333, -251.432, 516.333, 4436, 3304, 0, 0, 0, 0, 3834, 3807, 170.614, 242.452, -170.614, -242.452, 3403, 3645, -116.736, 125.716, 116.736, -125.716, 3187, 2810, 139.185, -175.104, -139.185, 175.104, 3196, 2208, 0, 0, 0, 0, 2613, 2334)
+"points": PackedVector2Array(0, 0, 0, 0, 7830, 4476, 1838.81, -491.776, -1838.81, 491.776, 5849, 6222, -1111.84, 1133.22, 1111.84, -1133.22, 3711, 5089, 292.215, 990.679, -292.215, -990.679, 4152, 3122, 1917.21, -49.8903, -1917.21, 49.8903, 3497, 2444, 0, 0, 0, 0, 2278, 2651)
 }
-point_count = 7
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_ud2w8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7514, 2785, 1320.72, 285.732, -1320.72, -285.732, 5622, 4271, -876.245, 1219.12, 876.245, -1219.12, 3495, 3389, 107.943, 673.058, -107.943, -673.058, 2581, 1662, -1441.36, -88.8944, 1441.36, 88.8944, 4466, 601, 311.13, -679.407, -311.13, 679.407, 5832, 1611, 781.001, -457.171, -781.001, 457.171, 4828, 2652, 0, 0, 0, 0, 2758, 3420)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_ssgrc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2955, 5128, -1441.36, 946.091, 1441.36, -946.091, 3762, 3763, 0, 0, 0, 0, 5533, 3846)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_5d773"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2739, 1109, -850.847, -101.594, 850.847, 101.594, 4911, 1141, -152.39, -546.066, 152.39, 546.066, 6562, 1852, 584.163, -368.277, -584.163, 368.277, 6657, 3808, 768.302, -44.4472, -768.302, 44.4472, 4739, 4506, -215.886, 755.603, 215.886, -755.603, 3533, 3522, -507.968, -184.138, 507.968, 184.138, 5298, 2582, -203.187, -812.749, 203.187, 812.749, 5736, 2855, -1263.57, 552.415, 1263.57, -552.415, 6028, 5046)
+}
+point_count = 9
+
+[sub_resource type="Curve2D" id="Curve2D_pij1u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2104, 4627, -3803.41, 1739.79, 3803.41, -1739.79, 6111, 5128, 0, 0, 0, 0, 6867, 1565)
+}
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ch1h"]
 radius = 3681.07
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_itgb2"]
+radius = 159.542
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hisal"]
+radius = 3675.18
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf52c"]
+radius = 1813.08
+
+[sub_resource type="Curve2D" id="Curve2D_w4clk"]
+_data = {
+"points": PackedVector2Array(-377.573, -335.621, 377.573, 335.621, 16848, 10167, 1042.82, 922.957, -1042.82, -922.957, 15716, 9370, -299.661, 95.8916, 299.661, -95.8916, 15554, 8147, -1582.21, 713.194, 1582.21, -713.194, 16321, 7440, 0, 0, 0, 0, 18113, 7716)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81wg5"]
+radius = 2864.72
+
+[sub_resource type="Curve2D" id="Curve2D_wsgcw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7047, 10028, -245.542, 733.262, 245.542, -733.262, 6562, 9130, -511.265, 36.9994, 511.265, -36.9994, 8365, 9181, 0, 0, 0, 0, 8389, 8528, 151.361, 517.992, -151.361, -517.992, 7121, 6843, -847.624, -827.442, 847.624, 827.442, 7467, 6204, 393.54, -918.259, -393.54, 918.259, 9388, 6379, 417.085, -450.72, -417.085, 450.72, 8765, 5585, 77.3625, -1079.71, -77.3625, 1079.71, 10222, 6157, 0, 0, 0, 0, 9643, 8387)
+}
+point_count = 10
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j12n1"]
+radius = 3308.93
+
+[sub_resource type="Curve2D" id="Curve2D_smkos"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 18945, 3555, 0, 0, 0, 0, 18676, 5265, 0, 0, 0, 0, 18029, 6321, 0, 0, 0, 0, 16143, 6940, 0, 0, 0, 0, 17782, 5602, 0, 0, 0, 0, 15210, 5863, 0, 0, 0, 0, 14294, 5548, 0, 0, 0, 0, 17621, 4332, 0, 0, 0, 0, 15376, 3658)
+}
+point_count = 9
+
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
+metadata/EEL_DAMAGE = 5
+metadata/EEL_SPEED = 500
+metadata/MAX_EELS_IN_AREA = 5
+metadata/SWORDFISH_SPEED = 600
+metadata/SWORDFISH_DAMAGE = 10
+metadata/MAX_SWORDFISH_IN_AREA = 3
+metadata/OG_EEL_DAMAGE = 5
+metadata/OG_EEL_SPEED = 500
+metadata/OG_MAX_EELS_IN_AREA = 5
 
 [node name="background" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 1.99999
+offset_top = 3.0
+offset_right = 1922.0
+offset_bottom = 1083.0
 scale = Vector2(10, 10)
 texture = ExtResource("3_3udq1")
 
 [node name="submarine" parent="." instance=ExtResource("1_5pwii")]
 position = Vector2(959, 541)
+scale = Vector2(0.996654, 1)
 collision_layer = 9
 collision_mask = 9
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 1079.0
-offset_top = 7.0
-offset_right = 1655.0
-offset_bottom = 53.0
-value = 100.0
-allow_greater = true
-fill_mode = 1
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 1662.0
-offset_top = 6.0
-offset_right = 1916.0
-offset_bottom = 260.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_k32ew")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_left = 1664.0
-offset_top = 8.0
-offset_right = 1914.0
-offset_bottom = 258.0
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(250, 250)
-render_target_update_mode = 4
-script = ExtResource("4_vltdk")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-scale = Vector2(10, 10)
-texture = ExtResource("3_3udq1")
-centered = false
-
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-zoom = Vector2(0.05, 0.05)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
-position = Vector2(125, 125)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_ctxmj")
-
-[node name="fish_spawn_area_1" type="Area2D" parent="."]
+[node name="clownfish_spawn_area_1" type="Area2D" parent="."]
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("6_rp0rw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fish_spawn_area_1"]
-position = Vector2(4330, 3077)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="clownfish_spawn_area_1"]
+position = Vector2(4457, 3782)
 shape = SubResource("CircleShape2D_hpbr3")
 debug_color = Color(0.998763, 0, 0.133291, 0.42)
 
-[node name="Path2D_1" type="Path2D" parent="fish_spawn_area_1"]
-position = Vector2(-2605.47, -3693.89)
-scale = Vector2(2.00209, 2.70989)
-curve = SubResource("Curve2D_uw5vp")
+[node name="Path2D_1" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_5sbij")
+
+[node name="Path2D_2" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_ud2w8")
+
+[node name="Path2D_3" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_ssgrc")
+
+[node name="Path2D_4" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_5d773")
+
+[node name="Path2D_5" type="Path2D" parent="clownfish_spawn_area_1"]
+curve = SubResource("Curve2D_pij1u")
+
+[node name="spawn_timer" type="Timer" parent="clownfish_spawn_area_1"]
+wait_time = 1.2
+autostart = true
 
 [node name="eel_spawn_area_1" type="Area2D" parent="."]
 script = ExtResource("7_1hbr4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="eel_spawn_area_1"]
-position = Vector2(4474, 3692)
+position = Vector2(4483, 3775)
 shape = SubResource("CircleShape2D_1ch1h")
 
 [node name="spawn_delay_timer" type="Timer" parent="eel_spawn_area_1"]
 autostart = true
 
-[connection signal="body_entered" from="fish_spawn_area_1" to="fish_spawn_area_1" method="_on_body_entered"]
-[connection signal="body_exited" from="fish_spawn_area_1" to="fish_spawn_area_1" method="_on_body_exited"]
+[node name="blue_tang_spawn_area_1" type="Area2D" parent="."]
+position = Vector2(-3416, -2241)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("6_ay7p0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blue_tang_spawn_area_1"]
+position = Vector2(15116, 5265)
+scale = Vector2(23.4556, 19.7109)
+shape = SubResource("CircleShape2D_itgb2")
+
+[node name="Path2D_1" type="Path2D" parent="blue_tang_spawn_area_1"]
+position = Vector2(10021, 1881.54)
+curve = SubResource("Curve2D_5sbij")
+
+[node name="Path2D_2" type="Path2D" parent="blue_tang_spawn_area_1"]
+position = Vector2(10021, 1881.54)
+curve = SubResource("Curve2D_ud2w8")
+
+[node name="Path2D_3" type="Path2D" parent="blue_tang_spawn_area_1"]
+position = Vector2(10021, 1881.54)
+curve = SubResource("Curve2D_ssgrc")
+
+[node name="Path2D_4" type="Path2D" parent="blue_tang_spawn_area_1"]
+position = Vector2(10021, 1881.54)
+curve = SubResource("Curve2D_5d773")
+
+[node name="Path2D_5" type="Path2D" parent="blue_tang_spawn_area_1"]
+position = Vector2(10021, 1881.54)
+curve = SubResource("Curve2D_pij1u")
+
+[node name="spawn_timer" type="Timer" parent="blue_tang_spawn_area_1"]
+wait_time = 1.2
+autostart = true
+
+[node name="swordfish_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("7_ohjgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swordfish_spawn_area_1"]
+position = Vector2(11791, 3453)
+shape = SubResource("CircleShape2D_hisal")
+debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
+
+[node name="spawn_delay_timer" type="Timer" parent="swordfish_spawn_area_1"]
+autostart = true
+
+[node name="turtle_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("8_o1ivg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="turtle_spawn_area_1"]
+position = Vector2(16854, 8761)
+shape = SubResource("CircleShape2D_bf52c")
+
+[node name="Path2D_1" type="Path2D" parent="turtle_spawn_area_1"]
+curve = SubResource("Curve2D_w4clk")
+
+[node name="spawn_timer" type="Timer" parent="turtle_spawn_area_1"]
+autostart = true
+
+[node name="parrot_fish_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("9_ffkia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parrot_fish_spawn_area_1"]
+position = Vector2(8337, 7945)
+shape = SubResource("CircleShape2D_81wg5")
+
+[node name="Path2D_1" type="Path2D" parent="parrot_fish_spawn_area_1"]
+position = Vector2(-135, 148)
+curve = SubResource("Curve2D_wsgcw")
+
+[node name="spawn_timer" type="Timer" parent="parrot_fish_spawn_area_1"]
+autostart = true
+
+[node name="triggerfish_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("10_3wugs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggerfish_spawn_area_1"]
+position = Vector2(16037, 4293)
+shape = SubResource("CircleShape2D_j12n1")
+
+[node name="Path2D_1" type="Path2D" parent="triggerfish_spawn_area_1"]
+curve = SubResource("Curve2D_smkos")
+
+[node name="spawn_timer" type="Timer" parent="triggerfish_spawn_area_1"]
+autostart = true
+
+[node name="player_alive_time" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("10_661rv")]
+
+[node name="electric_shock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_e3ucm")
+
+[node name="sub_damaged" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hid5v")
+volume_db = -10.0
+
+[connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="clownfish_spawn_area_1/spawn_timer" to="clownfish_spawn_area_1" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="eel_spawn_area_1" to="eel_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="eel_spawn_area_1" to="eel_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="eel_spawn_area_1/spawn_delay_timer" to="eel_spawn_area_1" method="_on_spawn_delay_timer_timeout"]
+[connection signal="body_entered" from="blue_tang_spawn_area_1" to="blue_tang_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="blue_tang_spawn_area_1" to="blue_tang_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="blue_tang_spawn_area_1/spawn_timer" to="blue_tang_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="swordfish_spawn_area_1" to="swordfish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="swordfish_spawn_area_1" to="swordfish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="swordfish_spawn_area_1/spawn_delay_timer" to="swordfish_spawn_area_1" method="_on_spawn_delay_timer_timeout"]
+[connection signal="body_entered" from="turtle_spawn_area_1" to="turtle_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="turtle_spawn_area_1" to="turtle_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="turtle_spawn_area_1/spawn_timer" to="turtle_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="parrot_fish_spawn_area_1" to="parrot_fish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="parrot_fish_spawn_area_1" to="parrot_fish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="parrot_fish_spawn_area_1/spawn_timer" to="parrot_fish_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="triggerfish_spawn_area_1" to="triggerfish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="triggerfish_spawn_area_1" to="triggerfish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="triggerfish_spawn_area_1/spawn_timer" to="triggerfish_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="player_alive_time" to="." method="_on_player_alive_time_timeout"]

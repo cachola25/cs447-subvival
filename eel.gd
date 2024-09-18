@@ -11,17 +11,20 @@ extends Area2D
 
 class_name eel
 
-const SPEED = 500
+var SPEED
+var DAMAGE_DEALT
 signal despawned
 signal hit_sub
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 
-func start(_transform, submarine_position):
+
+func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	global_transform = _transform
-	print(transform)
 	var direction = (submarine_position - global_position).normalized()
+	SPEED = _SPEED
+	DAMAGE_DEALT = _DAMAGE_DEALT
 	velocity = direction * SPEED
 
 func _physics_process(delta):
@@ -39,10 +42,12 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
+		body.get_node("AnimatedSprite2D").play("damage_taken")
+		body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
 		emit_signal("hit_sub")
 		emit_signal("despawned")
 		queue_free()
 
 func _on_timer_timeout() -> void:
 	emit_signal("despawned")
-	queue_free() 
+	queue_free()

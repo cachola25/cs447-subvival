@@ -1,12 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=32 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
+[ext_resource type="Texture2D" uid="uid://cixacg00jhq64" path="res://art/krita-submarine-damage-taken.png" id="3_00n82"]
+[ext_resource type="Script" path="res://submarine_camera_2d.gd" id="3_g023d"]
+[ext_resource type="Script" path="res://sub_viewport.gd" id="4_6bchf"]
+[ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://art/Levels/1.png" id="5_1k2w0"]
+[ext_resource type="Script" path="res://health_bar.gd" id="5_sriyo"]
+[ext_resource type="Texture2D" uid="uid://bqhp52foyapmo" path="res://art/Bubble/health.png" id="6_4qh78"]
+[ext_resource type="Script" path="res://oxygen_bar.gd" id="6_5wr0v"]
+[ext_resource type="Texture2D" uid="uid://pi3tokna8coe" path="res://art/Bubble/o2.png" id="8_fmifh"]
+[ext_resource type="Script" path="res://upgrade_menu.gd" id="8_mq8qe"]
+[ext_resource type="Texture2D" uid="uid://df0iy1c16qgiy" path="res://art/Upgrade Icon.png" id="13_3rcuf"]
+[ext_resource type="Script" path="res://o_2.gd" id="13_2832f"]
+[ext_resource type="Texture2D" uid="uid://cwr3npvmhmpps" path="res://art/Bubble/question_tooltip.png" id="14_vk5j5"]
+[ext_resource type="Script" path="res://upgrade_armor.gd" id="15_skr2a"]
+[ext_resource type="Texture2D" uid="uid://bgb43auyxwgtt" path="res://art/Bubble/shield.png" id="16_87jto"]
+[ext_resource type="Script" path="res://health_upgrade.gd" id="17_f0xre"]
+[ext_resource type="Script" path="res://luck_upgrade.gd" id="18_bnfrb"]
+[ext_resource type="Texture2D" uid="uid://q6mlx6ysrofs" path="res://art/Bubble/clover.png" id="18_p8wfa"]
+[ext_resource type="Texture2D" uid="uid://cggu0iphyegp6" path="res://art/Bubble/undiscovered_fish.png" id="20_3amhb"]
+[ext_resource type="Script" path="res://fish_compendium.gd" id="20_3p7ap"]
+[ext_resource type="Texture2D" uid="uid://ccqjtmm105hww" path="res://art/Bubble/loupe.png" id="21_5xm55"]
+[ext_resource type="Texture2D" uid="uid://dsvmk0q8tqn34" path="res://art/Bubble/book.png" id="22_mjqdk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
+size = Vector2(1920.5, 1074.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ucp48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwy0q"]
-size = Vector2(272, 148.5)
+size = Vector2(160, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tje5v"]
+atlas = ExtResource("3_00n82")
+region = Rect2(2, 12, 96, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc4d1"]
 atlas = ExtResource("2_ipk4e")
@@ -16,28 +44,507 @@ region = Rect2(2, 12, 96, 73)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tje5v")
+}],
+"loop": false,
+"name": &"damage_taken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cc4d1")
 }],
 "loop": true,
-"name": &"sub",
+"name": &"submarine_default",
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d84qk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q08o6"]
+outline_size = 2
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.796078)
+
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
+position = Vector2(957, 542)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_uaken")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("3_g023d")
+
+[node name="scoring_zone" type="Area2D" parent="Camera2D"]
+collision_layer = 33
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/scoring_zone"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_ppgoy")
+debug_color = Color(0.866512, 0.295501, 0.510766, 0.42)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 material = SubResource("CanvasItemMaterial_ucp48")
-position = Vector2(0, -1)
+position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_pwy0q")
 debug_color = Color(0.417429, 0.552356, 0.672516, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.90735e-06, 0)
-scale = Vector2(2.84332, 2.0386)
+position = Vector2(1, 0)
+scale = Vector2(1.68208, 1.33437)
 sprite_frames = SubResource("SpriteFrames_1ls03")
-animation = &"sub"
-frame_progress = 0.436989
+animation = &"damage_taken"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="health_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1079.0
+offset_top = 7.0
+offset_right = 1655.0
+offset_bottom = 53.0
+value = 100.0
+fill_mode = 1
+script = ExtResource("5_sriyo")
+metadata/_edit_use_anchors_ = true
+
+[node name="health_regen_timer" type="Timer" parent="CanvasLayer/health_bar"]
+process_mode = 1
+wait_time = 5.0
+
+[node name="health_icon" type="Sprite2D" parent="CanvasLayer/health_bar"]
+position = Vector2(24, 23)
+scale = Vector2(0.0747071, 0.0683594)
+texture = ExtResource("6_4qh78")
+
+[node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1079.0
+offset_top = 58.0
+offset_right = 1657.0
+offset_bottom = 106.0
+value = 100.0
+fill_mode = 1
+script = ExtResource("6_5wr0v")
+
+[node name="o2_regen_timer" type="Timer" parent="CanvasLayer/oxygen_bar"]
+process_mode = 1
+wait_time = 3.0
+autostart = true
+
+[node name="o2_icon" type="Sprite2D" parent="CanvasLayer/oxygen_bar"]
+position = Vector2(27, 23)
+scale = Vector2(0.0898437, 0.0859375)
+texture = ExtResource("8_fmifh")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 1662.0
+offset_top = 6.0
+offset_right = 1916.0
+offset_bottom = 260.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d84qk")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_left = 1664.0
+offset_top = 8.0
+offset_right = 1914.0
+offset_bottom = 258.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(250, 250)
+render_target_update_mode = 4
+script = ExtResource("4_6bchf")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+scale = Vector2(10, 10)
+texture = ExtResource("5_1k2w0")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
+position = Vector2(125, 125)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ipk4e")
+
+[node name="total_money" type="Label" parent="CanvasLayer"]
+offset_left = 1662.0
+offset_top = 257.0
+offset_right = 1702.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 30
+text = "$0"
+
+[node name="upgrade_menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 19.0
+offset_top = 45.0
+offset_right = 787.0
+offset_bottom = 1059.0
+script = ExtResource("8_mq8qe")
+
+[node name="menu_info" type="Label" parent="CanvasLayer/upgrade_menu"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 39.0
+offset_right = 183.0
+offset_bottom = 62.0
+scale = Vector2(1.79502, 2.22379)
+text = "Click an icon to upgrade"
+
+[node name="quit_upgrade_menu" type="Label" parent="CanvasLayer/upgrade_menu"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 108.0
+offset_right = 348.0
+offset_bottom = 131.0
+scale = Vector2(1.33651, 1.93434)
+text = "Press F again to exit out of the upgrade menu"
+
+[node name="upgrade_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu"]
+position = Vector2(565, 72)
+scale = Vector2(5.96875, 5.71875)
+texture = ExtResource("13_3rcuf")
+
+[node name="o2" type="Control" parent="CanvasLayer/upgrade_menu"]
+layout_mode = 1
+anchor_left = 0.081
+anchor_top = 0.114
+anchor_right = 0.081
+anchor_bottom = 0.114
+offset_left = 97.792
+offset_top = 205.404
+offset_right = 97.792
+offset_bottom = 205.404
+scale = Vector2(0.106228, 0.105466)
+script = ExtResource("13_2832f")
+
+[node name="o2_cost" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
+layout_mode = 0
+offset_left = -1421.47
+offset_top = -284.452
+offset_right = -1401.47
+offset_bottom = -261.452
+scale = Vector2(28.3337, 24.6278)
+text = "$5
+"
+
+[node name="upgrade_02_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/o2"]
+layout_mode = 0
+offset_left = -254.0
+offset_top = -247.0
+offset_right = 264.0
+offset_bottom = 275.0
+
+[node name="o2_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/o2"]
+layout_mode = 0
+offset_left = 367.134
+offset_top = -151.708
+offset_right = 505.134
+offset_bottom = -123.708
+scale = Vector2(32.0819, 11.8904)
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="o2_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/o2"]
+position = Vector2(-112.964, 18.9634)
+texture = ExtResource("8_fmifh")
+
+[node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/o2"]
+position = Vector2(4998.67, 9.48172)
+scale = Vector2(0.334837, 0.294825)
+texture = ExtResource("14_vk5j5")
+
+[node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/o2"]
+layout_mode = 0
+offset_left = 4914.0
+offset_top = -76.0
+offset_right = 5093.0
+offset_bottom = 104.0
+
+[node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/o2"]
+layout_mode = 0
+offset_left = 414.203
+offset_top = -962.187
+offset_right = 722.203
+offset_bottom = -910.187
+scale = Vector2(13.1831, 17.1686)
+text = "O2 replenishes faster and in larger amounts"
+autowrap_mode = 3
+
+[node name="armor" type="Control" parent="CanvasLayer/upgrade_menu"]
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 481.0
+offset_right = 160.0
+offset_bottom = 481.0
+scale = Vector2(3.12559, 3.25335)
+script = ExtResource("15_skr2a")
+
+[node name="armor_cost" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
+layout_mode = 0
+offset_left = -48.3109
+offset_top = -9.836
+offset_right = -27.3109
+offset_bottom = 13.164
+scale = Vector2(0.914982, 0.836882)
+text = "$6"
+
+[node name="upgrade_armor_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/armor"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.183
+anchor_top = -0.287
+anchor_right = -1.183
+anchor_bottom = -0.287
+offset_left = -11.5178
+offset_top = -9.52863
+offset_right = 4.48217
+offset_bottom = 6.47137
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="armor_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/armor"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 164.0
+offset_bottom = 21.0
+scale = Vector2(0.99771, 0.424166)
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="armor_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/armor"]
+position = Vector2(-3.83927, -0.922129)
+scale = Vector2(0.0351614, 0.0297063)
+texture = ExtResource("16_87jto")
+
+[node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/armor"]
+position = Vector2(168.928, -0.307373)
+scale = Vector2(0.0130325, 0.00965281)
+texture = ExtResource("14_vk5j5")
+
+[node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/armor"]
+layout_mode = 0
+offset_left = 165.409
+offset_top = -2.76638
+offset_right = 205.409
+offset_bottom = 37.2336
+scale = Vector2(0.175145, 0.125252)
+
+[node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/armor"]
+layout_mode = 0
+offset_left = 14.3973
+offset_top = -22.131
+offset_right = 315.397
+offset_bottom = 0.868961
+scale = Vector2(0.496109, 0.727688)
+text = "Decrease damage taken from enemies"
+autowrap_mode = 2
+
+[node name="health" type="Control" parent="CanvasLayer/upgrade_menu"]
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 170.0
+offset_right = 38.0
+offset_bottom = 210.0
+script = ExtResource("17_f0xre")
+
+[node name="health_cost" type="Label" parent="CanvasLayer/upgrade_menu/health"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 440.0
+offset_right = 43.0
+offset_bottom = 468.0
+scale = Vector2(3.08074, 2.25293)
+text = "$7"
+
+[node name="upgrade_health_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/health"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 438.0
+offset_right = 191.0
+offset_bottom = 496.0
+
+[node name="health_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/health"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 450.0
+offset_right = 674.0
+offset_bottom = 486.0
+scale = Vector2(0.990367, 0.947386)
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="health_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/health"]
+position = Vector2(149, 468)
+scale = Vector2(0.12207, 0.113281)
+texture = ExtResource("6_4qh78")
+
+[node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/health"]
+position = Vector2(685, 466.375)
+scale = Vector2(0.041992, 0.0327148)
+texture = ExtResource("14_vk5j5")
+
+[node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/health"]
+layout_mode = 0
+offset_left = 673.0
+offset_top = 458.375
+offset_right = 695.0
+offset_bottom = 476.375
+
+[node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/health"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 375.0
+offset_right = 506.0
+offset_bottom = 424.0
+scale = Vector2(1.41818, 1.61987)
+text = "Health regenerates faster and in larger amounts"
+autowrap_mode = 3
+
+[node name="luck" type="Control" parent="CanvasLayer/upgrade_menu"]
+anchors_preset = 0
+offset_left = -7.0
+offset_top = 178.0
+offset_right = 33.0
+offset_bottom = 218.0
+script = ExtResource("18_bnfrb")
+
+[node name="luck_cost" type="Label" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 588.0
+offset_right = 47.0
+offset_bottom = 611.0
+scale = Vector2(2.50681, 2.68388)
+text = "$10"
+
+[node name="upgrade_luck_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 597.0
+offset_right = 180.0
+offset_bottom = 652.0
+
+[node name="luck_upgrade_progress" type="ProgressBar" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 608.0
+offset_right = 671.0
+offset_bottom = 638.0
+scale = Vector2(1.0075, 1.04634)
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="luck_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/luck"]
+position = Vector2(148, 622)
+scale = Vector2(0.116211, 0.0986328)
+texture = ExtResource("18_p8wfa")
+
+[node name="tooltip_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/luck"]
+position = Vector2(690, 623)
+scale = Vector2(0.0390625, 0.0341796)
+texture = ExtResource("14_vk5j5")
+
+[node name="tooltip_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 614.0
+offset_right = 700.0
+offset_bottom = 632.0
+
+[node name="tooltip_text" type="Label" parent="CanvasLayer/upgrade_menu/luck"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 531.0
+offset_right = 506.0
+offset_bottom = 580.0
+scale = Vector2(1.40812, 1.57367)
+text = "Fish spawn more frequently and in larger batches"
+autowrap_mode = 3
+
+[node name="fish_compendium" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.784
+anchor_top = 0.584
+anchor_right = 0.784
+anchor_bottom = 0.584
+offset_left = -20.28
+offset_top = -21.72
+offset_right = 19.72
+offset_bottom = 18.28
+script = ExtResource("20_3p7ap")
+
+[node name="clownfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-18.0001, 377)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="blue_tang" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(195, 381)
+scale = Vector2(0.314453, 0.313477)
+texture = ExtResource("20_3amhb")
+
+[node name="triggerfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(296, 208)
+scale = Vector2(0.331667, 0.323242)
+texture = ExtResource("20_3amhb")
+
+[node name="parrot_fish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(82, 203)
+scale = Vector2(0.326172, 0.305664)
+texture = ExtResource("20_3amhb")
+
+[node name="turtle" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-139, 209)
+scale = Vector2(0.329102, 0.314453)
+texture = ExtResource("20_3amhb")
+
+[node name="title" type="Label" parent="CanvasLayer/fish_compendium"]
+layout_mode = 0
+offset_left = -92.0
+offset_top = 54.0
+offset_right = 92.0
+offset_bottom = 77.0
+scale = Vector2(2.07624, 2.09309)
+text = "Discovery Compendium"
+label_settings = SubResource("LabelSettings_q08o6")
+
+[node name="comp_icon_1" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(337, 80)
+scale = Vector2(0.106934, 0.102539)
+texture = ExtResource("21_5xm55")
+
+[node name="comp_icon_2" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-151, 83)
+scale = Vector2(0.133789, 0.115234)
+texture = ExtResource("22_mjqdk")
+
+[connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="CanvasLayer/health_bar/health_regen_timer" to="CanvasLayer/health_bar" method="_on_health_regen_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/oxygen_bar/o2_regen_timer" to="CanvasLayer/oxygen_bar" method="_on_o_2_regen_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/o2/upgrade_02_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_02_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/o2/tooltip_button" to="CanvasLayer/upgrade_menu/o2" method="_on_tooltip_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/o2/tooltip_button" to="CanvasLayer/upgrade_menu/o2" method="_on_tooltip_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/armor/upgrade_armor_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_armor_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/armor/tooltip_button" to="CanvasLayer/upgrade_menu/armor" method="_on_tooltip_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/armor/tooltip_button" to="CanvasLayer/upgrade_menu/armor" method="_on_tooltip_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/health/upgrade_health_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_health_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/health/tooltip_button" to="CanvasLayer/upgrade_menu/health" method="_on_tooltip_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/health/tooltip_button" to="CanvasLayer/upgrade_menu/health" method="_on_tooltip_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/luck/upgrade_luck_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_luck_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_exited"]
