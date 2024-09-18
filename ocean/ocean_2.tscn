@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://8eomw0vycgln"]
 
-[ext_resource type="Texture2D" uid="uid://b487bh8ym7l8x" path="res://art/Assets/Background.png" id="1_iw4cm"]
-[ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="2_jkcuj"]
-[ext_resource type="Texture2D" uid="uid://cr44fjysp1dsj" path="res://art/Assets/Cliff Background.png" id="3_mfob6"]
-[ext_resource type="Texture2D" uid="uid://kl3aam1hv8lu" path="res://art/Assets/Stone Cliffs.png" id="4_axisf"]
-[ext_resource type="Texture2D" uid="uid://jviwfp5yruwg" path="res://art/Assets/Background Shapes.png" id="4_jteeh"]
-[ext_resource type="Texture2D" uid="uid://bxeck3frips56" path="res://art/Assets/Background Sand.png" id="6_les7n"]
-[ext_resource type="Texture2D" uid="uid://cqlcipgs5jdt2" path="res://art/Assets/Total Background.png" id="7_cjv7h"]
+[ext_resource type="Texture2D" uid="uid://b487bh8ym7l8x" path="res://assets/ocean_assets/Background.png" id="1_iw4cm"]
+[ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
+[ext_resource type="Texture2D" uid="uid://cr44fjysp1dsj" path="res://assets/ocean_assets/Cliff Background.png" id="3_mfob6"]
+[ext_resource type="Texture2D" uid="uid://kl3aam1hv8lu" path="res://assets/ocean_assets/Stone Cliffs.png" id="4_axisf"]
+[ext_resource type="Texture2D" uid="uid://jviwfp5yruwg" path="res://assets/ocean_assets/Background Shapes.png" id="4_jteeh"]
+[ext_resource type="Texture2D" uid="uid://bxeck3frips56" path="res://assets/ocean_assets/Background Sand.png" id="6_les7n"]
+[ext_resource type="Texture2D" uid="uid://cqlcipgs5jdt2" path="res://assets/ocean_assets/Total Background.png" id="7_cjv7h"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://wd2vio45h1j5"]
 
-[ext_resource type="Texture2D" uid="uid://06p0qifydu" path="res://art/GUI/Oxygen Background.png" id="1_c3bdi"]
-[ext_resource type="Texture2D" uid="uid://ggljoa8n0exo" path="res://art/GUI/Oxygen Label.png" id="2_mdnbj"]
-[ext_resource type="Texture2D" uid="uid://ba20foncs5inf" path="res://art/GUI/Oxygen Bar Full.png" id="3_3t8yi"]
-[ext_resource type="Texture2D" uid="uid://drrd1pcw026d7" path="res://art/GUI/Oxygen Bar Empty.png" id="4_am6gn"]
-[ext_resource type="Texture2D" uid="uid://b27b0n80yjad5" path="res://art/GUI/Oxygen Bar Under.png" id="5_42fop"]
+[ext_resource type="Texture2D" uid="uid://06p0qifydu" path="res://assets/art/GUI/o2/Oxygen Background.png" id="1_c3bdi"]
+[ext_resource type="Texture2D" uid="uid://ggljoa8n0exo" path="res://assets/art/GUI/o2/Oxygen Label.png" id="2_mdnbj"]
+[ext_resource type="Texture2D" uid="uid://ba20foncs5inf" path="res://assets/art/GUI/o2/Oxygen Bar Full.png" id="3_3t8yi"]
+[ext_resource type="Texture2D" uid="uid://drrd1pcw026d7" path="res://assets/art/GUI/o2/Oxygen Bar Empty.png" id="4_am6gn"]
+[ext_resource type="Texture2D" uid="uid://b27b0n80yjad5" path="res://assets/art/GUI/o2/Oxygen Bar Under.png" id="5_42fop"]
 
 [node name="GUI" type="MarginContainer"]
 custom_minimum_size = Vector2(32, 32)
