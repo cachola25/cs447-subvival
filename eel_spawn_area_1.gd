@@ -9,7 +9,6 @@ var curr_num_eels = 0
 func _ready() -> void:
 	submarine_instance = get_parent().get_node("submarine")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -28,6 +27,7 @@ func spawn_eel():
 	var EEL_SPEED = get_parent().get_meta("EEL_SPEED")
 	var EEL_DAMAGE = get_parent().get_meta("EEL_DAMAGE")
 	eel_instance.connect("despawned", _on_eel_despawned)
+	eel_instance.connect("hit_sub", _on_eel_hit_sub)
 	eel_instance.start(transform_position, 
 		submarine_instance.global_position, EEL_SPEED, EEL_DAMAGE)
 	eel_instance.get_node("AnimatedSprite2D").play("eel_swim")
@@ -38,9 +38,8 @@ func _on_body_entered(body: Node2D) -> void:
 	submarine_in_area = true
 func _on_body_exited(body: Node2D) -> void:
 	submarine_in_area = false
-	for child in get_children():
-		if child is eel:
-			child.queue_free()
+func _on_eel_hit_sub():
+	get_parent().get_node("electric_shock").play(1.8)
 func _on_eel_despawned():
 	curr_num_eels -= 1
 func _on_spawn_delay_timer_timeout() -> void:

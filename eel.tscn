@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://eel.gd" id="1_18xai"]
 [ext_resource type="Texture2D" uid="uid://dxnr84nr6ify" path="res://art/Eel/Eel Enemy Spritesheet.png" id="1_rx4am"]
-[ext_resource type="AudioStream" uid="uid://c85rvuqbmvhy5" path="res://sounds/metal-beaten-sfx-230501.mp3" id="3_it830"]
+[ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://sounds/electrical-shock-zap-106412.mp3" id="3_v07me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvc8p"]
 size = Vector2(296, 72.5)
@@ -57,9 +57,9 @@ flip_h = true
 wait_time = 3.0
 autostart = true
 
-[node name="Electric_shock" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_it830")
-panning_strength = 1.57
+[node name="electric_shock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v07me")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -37,7 +37,8 @@ script = ExtResource("1_u1o3v")
 scale = Vector2(2.09375, 1.76562)
 sprite_frames = SubResource("SpriteFrames_0aamy")
 animation = &"blue_tang_swim"
-frame_progress = 0.699939
+frame = 1
+frame_progress = 0.0369119
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
