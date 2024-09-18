@@ -1,10 +1,15 @@
-[gd_scene format=3 uid="uid://wd2vio45h1j5"]
+[gd_scene load_steps=6 format=3 uid="uid://wd2vio45h1j5"]
+
+[ext_resource type="Texture2D" uid="uid://06p0qifydu" path="res://art/GUI/Oxygen Background.png" id="1_c3bdi"]
+[ext_resource type="Texture2D" uid="uid://ggljoa8n0exo" path="res://art/GUI/Oxygen Label.png" id="2_mdnbj"]
+[ext_resource type="Texture2D" uid="uid://ba20foncs5inf" path="res://art/GUI/Oxygen Bar Full.png" id="3_3t8yi"]
+[ext_resource type="Texture2D" uid="uid://drrd1pcw026d7" path="res://art/GUI/Oxygen Bar Empty.png" id="4_am6gn"]
+[ext_resource type="Texture2D" uid="uid://b27b0n80yjad5" path="res://art/GUI/Oxygen Bar Under.png" id="5_42fop"]
 
 [node name="GUI" type="MarginContainer"]
-custom_minimum_size = Vector2(20, 20)
-offset_right = 20.0
-offset_bottom = 20.0
-metadata/_edit_group_ = true
+custom_minimum_size = Vector2(32, 32)
+offset_right = 364.0
+offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -12,20 +17,41 @@ layout_mode = 2
 [node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Oxygen Bar" type="HBoxContainer" parent="HBoxContainer/Bars"]
+[node name="Oxygen Bar Label" type="HBoxContainer" parent="HBoxContainer/Bars"]
 layout_mode = 2
 
-[node name="Count" type="MarginContainer" parent="HBoxContainer/Bars/Oxygen Bar"]
+[node name="Count" type="MarginContainer" parent="HBoxContainer/Bars/Oxygen Bar Label"]
 layout_mode = 2
 
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bars/Oxygen Bar/Count"]
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bars/Oxygen Bar Label/Count"]
+custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
+texture = ExtResource("1_c3bdi")
 
-[node name="Title" type="TextureRect" parent="HBoxContainer/Bars/Oxygen Bar/Count"]
+[node name="Title" type="TextureRect" parent="HBoxContainer/Bars/Oxygen Bar Label/Count/Background"]
 layout_mode = 2
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 42.0
+texture = ExtResource("2_mdnbj")
+stretch_mode = 3
 
-[node name="Number" type="Label" parent="HBoxContainer/Bars/Oxygen Bar/Count"]
+[node name="Number" type="Label" parent="HBoxContainer/Bars/Oxygen Bar Label/Count/Background"]
 layout_mode = 2
+offset_top = 7.0
+offset_right = 90.0
+offset_bottom = 30.0
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Oxygen Progress Bar" type="TextureProgressBar" parent="HBoxContainer/Bars/Oxygen Bar Label"]
+layout_mode = 2
+value = 60.0
+fill_mode = 1
+texture_under = ExtResource("3_3t8yi")
+texture_over = ExtResource("4_am6gn")
+texture_progress = ExtResource("5_42fop")
 
 [node name="Counters" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
