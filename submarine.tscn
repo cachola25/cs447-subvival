@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=7 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://art/krita-submarine.png" id="2_ipk4e"]
-[ext_resource type="Script" path="res://submarine_camera_2d.gd" id="3_g023d"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ucp48"]
 
@@ -42,6 +41,3 @@ scale = Vector2(1.68208, 1.33437)
 sprite_frames = SubResource("SpriteFrames_1ls03")
 animation = &"sub"
 frame_progress = 0.436989
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_g023d")

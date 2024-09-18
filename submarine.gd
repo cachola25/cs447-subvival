@@ -8,7 +8,7 @@ extends CharacterBody2D
 #		- rocks —> collide regularly
 ######################################
 class_name submarine
-var SPEED = 2000
+var SPEED = 500
 var bubble_scene = load("res://bubble.tscn")
 
 func spawn_bubble():

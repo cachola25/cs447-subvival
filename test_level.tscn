@@ -15,10 +15,15 @@ offset_bottom = 2087.0
 texture = ExtResource("1_o57x3")
 
 [node name="submarine" parent="." instance=ExtResource("2_1pgvb")]
-position = Vector2(199, 144)
+position = Vector2(1299, 752)
 
 [node name="Camera2D2" type="Camera2D" parent="submarine"]
 zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 3000
+limit_bottom = 2500
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
