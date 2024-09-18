@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=29 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://swordfish_spawn_area_1.gd" id="7_ohjgx"]
 [ext_resource type="Script" path="res://turtle_spawn_area_1.gd" id="8_o1ivg"]
 [ext_resource type="Script" path="res://parrot_fish_spawn_area_1.gd" id="9_ffkia"]
+[ext_resource type="Script" path="res://triggerfish_spawn_area_1.gd" id="10_3wugs"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="10_661rv"]
 [ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://sounds/electrical-shock-zap-106412.mp3" id="11_e3ucm"]
 [ext_resource type="AudioStream" uid="uid://c85rvuqbmvhy5" path="res://sounds/metal-beaten-sfx-230501.mp3" id="12_hid5v"]
@@ -72,6 +73,15 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 7047, 10028, -245.542, 733.262, 245.542, -733.262, 6562, 9130, -511.265, 36.9994, 511.265, -36.9994, 8365, 9181, 0, 0, 0, 0, 8389, 8528, 151.361, 517.992, -151.361, -517.992, 7121, 6843, -847.624, -827.442, 847.624, 827.442, 7467, 6204, 393.54, -918.259, -393.54, 918.259, 9388, 6379, 417.085, -450.72, -417.085, 450.72, 8765, 5585, 77.3625, -1079.71, -77.3625, 1079.71, 10222, 6157, 0, 0, 0, 0, 9643, 8387)
 }
 point_count = 10
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j12n1"]
+radius = 3308.93
+
+[sub_resource type="Curve2D" id="Curve2D_smkos"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 18945, 3555, 0, 0, 0, 0, 18676, 5265, 0, 0, 0, 0, 18029, 6321, 0, 0, 0, 0, 16143, 6940, 0, 0, 0, 0, 17782, 5602, 0, 0, 0, 0, 15210, 5863, 0, 0, 0, 0, 14294, 5548, 0, 0, 0, 0, 17621, 4332, 0, 0, 0, 0, 15376, 3658)
+}
+point_count = 9
 
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_t8jae")
@@ -211,6 +221,19 @@ curve = SubResource("Curve2D_wsgcw")
 [node name="spawn_timer" type="Timer" parent="parrot_fish_spawn_area_1"]
 autostart = true
 
+[node name="triggerfish_spawn_area_1" type="Area2D" parent="."]
+script = ExtResource("10_3wugs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggerfish_spawn_area_1"]
+position = Vector2(16037, 4293)
+shape = SubResource("CircleShape2D_j12n1")
+
+[node name="Path2D_1" type="Path2D" parent="triggerfish_spawn_area_1"]
+curve = SubResource("Curve2D_smkos")
+
+[node name="spawn_timer" type="Timer" parent="triggerfish_spawn_area_1"]
+autostart = true
+
 [node name="player_alive_time" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -244,4 +267,7 @@ volume_db = -10.0
 [connection signal="body_entered" from="parrot_fish_spawn_area_1" to="parrot_fish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="parrot_fish_spawn_area_1" to="parrot_fish_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="parrot_fish_spawn_area_1/spawn_timer" to="parrot_fish_spawn_area_1" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="triggerfish_spawn_area_1" to="triggerfish_spawn_area_1" method="_on_body_entered"]
+[connection signal="body_exited" from="triggerfish_spawn_area_1" to="triggerfish_spawn_area_1" method="_on_body_exited"]
+[connection signal="timeout" from="triggerfish_spawn_area_1/spawn_timer" to="triggerfish_spawn_area_1" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="player_alive_time" to="." method="_on_player_alive_time_timeout"]

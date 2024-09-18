@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bec4vss4ox70n"]
+
+[ext_resource type="Script" path="res://triggerfish.gd" id="1_tn50e"]
+[ext_resource type="Texture2D" uid="uid://df85g0wejcolh" path="res://art/Fish/32bit-fish-trigger-Sheet.png" id="2_dltd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ct3y2"]
+size = Vector2(141, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oiu3"]
+atlas = ExtResource("2_dltd3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca0o0"]
+atlas = ExtResource("2_dltd3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vc1f"]
+atlas = ExtResource("2_dltd3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwu6c"]
+atlas = ExtResource("2_dltd3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8d8ix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oiu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca0o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vc1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwu6c")
+}],
+"loop": true,
+"name": &"triggerfish_swim",
+"speed": 6.0
+}]
+
+[node name="triggerfish" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_tn50e")
+metadata/_edit_horizontal_guides_ = [30.0, -30.0]
+metadata/_edit_vertical_guides_ = [50.0, -50.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_ct3y2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.4375, 3.5625)
+sprite_frames = SubResource("SpriteFrames_8d8ix")
+animation = &"triggerfish_swim"
+frame_progress = 0.512974
