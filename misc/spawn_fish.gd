@@ -44,8 +44,8 @@ func _ready() -> void:
 	paths.append($Path2D_1)
 	paths.append($Path2D_2)
 	paths.append($Path2D_3)
-	$money_fish_spawn_timer.start()
-	$eel_spawn_timer.start()
+	#$money_fish_spawn_timer.start()
+	#$eel_spawn_timer.start()
 	oxygen_bar = get_parent().get_node("oxygen_bar")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
