@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://btxvcbvdsjd6"]
+
+[ext_resource type="Script" path="res://money_fish/turtle/turtle.gd" id="1_ejcst"]
+[ext_resource type="Texture2D" uid="uid://ll5qsdbgy7dj" path="res://assets/art/money_fish/turtle/32bit-seaturtle1.png" id="1_xmtv4"]
+[ext_resource type="Texture2D" uid="uid://det02blvws0hy" path="res://assets/art/money_fish/turtle/32bit-seaturtle2.png" id="2_m1df2"]
+[ext_resource type="Texture2D" uid="uid://c2eleg5mr2td3" path="res://assets/art/money_fish/turtle/32bit-seaturtle3.png" id="3_8dhw4"]
+[ext_resource type="Texture2D" uid="uid://7imfhym6hx67" path="res://assets/art/money_fish/turtle/32bit-seaturtle4.png" id="4_n0nse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgx0j"]
+size = Vector2(76, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31wvr"]
+atlas = ExtResource("1_xmtv4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuc4q"]
+atlas = ExtResource("2_m1df2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhhck"]
+atlas = ExtResource("3_8dhw4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvi7y"]
+atlas = ExtResource("4_n0nse")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2232d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31wvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuc4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhhck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvi7y")
+}],
+"loop": true,
+"name": &"turtle_swim",
+"speed": 6.0
+}]
+
+[node name="turtle" type="CharacterBody2D"]
+position = Vector2(-2.84217e-14, 0)
+scale = Vector2(1.95763, 2.02505)
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_ejcst")
+metadata/_edit_horizontal_guides_ = [30.0, -30.0]
+metadata/_edit_vertical_guides_ = [50.0, -50.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.197006, -0.303345)
+shape = SubResource("RectangleShape2D_mgx0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.80299, 0.196655)
+scale = Vector2(2.4375, 1.875)
+sprite_frames = SubResource("SpriteFrames_2232d")
+animation = &"turtle_swim"
+frame_progress = 0.532801
+flip_h = true

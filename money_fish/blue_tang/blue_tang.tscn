@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bchhljrc3va31"]
+
+[ext_resource type="Texture2D" uid="uid://c5km2bjbpr60i" path="res://assets/art/money_fish/blue_tang/Blue Tang Spritesheet.png" id="1_jqv5q"]
+[ext_resource type="Script" path="res://money_fish/blue_tang/blue_tang.gd" id="1_u1o3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqa2x"]
+atlas = ExtResource("1_jqv5q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q0ee"]
+atlas = ExtResource("1_jqv5q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0aamy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqa2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q0ee")
+}],
+"loop": true,
+"name": &"blue_tang_swim",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf1gv"]
+size = Vector2(93, 46)
+
+[node name="blue_tang" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_u1o3v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.09375, 1.76562)
+sprite_frames = SubResource("SpriteFrames_0aamy")
+animation = &"blue_tang_swim"
+frame = 1
+frame_progress = 0.0369119
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_tf1gv")

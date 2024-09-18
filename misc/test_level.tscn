@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkqm454d5v6w"]
+
+[ext_resource type="Texture2D" uid="uid://b7swwe6475taq" path="res://assets/art/Levels/4.png" id="1_o57x3"]
+[ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_1pgvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8cx"]
+size = Vector2(3621, 83)
+
+[node name="test_level" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 3601.0
+offset_bottom = 2087.0
+texture = ExtResource("1_o57x3")
+
+[node name="submarine" parent="." instance=ExtResource("2_1pgvb")]
+position = Vector2(199, 144)
+
+[node name="Camera2D2" type="Camera2D" parent="submarine"]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="wall" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+position = Vector2(1800.5, -37)
+shape = SubResource("RectangleShape2D_ol8cx")
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2(4, 2167)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2(1800.5, -37)
+shape = SubResource("RectangleShape2D_ol8cx")
+
+[node name="wall3" type="StaticBody2D" parent="."]
+position = Vector2(1697, 2066)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+position = Vector2(1953.5, -902)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ol8cx")
+
+[node name="wall4" type="StaticBody2D" parent="."]
+position = Vector2(-1704, 1171)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+position = Vector2(-371, -1650)
+shape = SubResource("RectangleShape2D_ol8cx")
