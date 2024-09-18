@@ -40,6 +40,7 @@ func _on_body_exited(body: Node2D) -> void:
 	submarine_in_area = false
 func _on_eel_hit_sub():
 	get_parent().get_node("electric_shock").play(1.8)
+	get_parent().get_node("sub_damaged").play()
 func _on_eel_despawned():
 	curr_num_eels -= 1
 func _on_spawn_delay_timer_timeout() -> void:

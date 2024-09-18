@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://urtocxps537d"]
+[gd_scene load_steps=26 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine.tscn" id="1_5pwii"]
 [ext_resource type="Script" path="res://ocean.gd" id="1_t8jae"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://parrot_fish_spawn_area_1.gd" id="9_ffkia"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://pause_menu.tscn" id="10_661rv"]
 [ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://sounds/electrical-shock-zap-106412.mp3" id="11_e3ucm"]
+[ext_resource type="AudioStream" uid="uid://c85rvuqbmvhy5" path="res://sounds/metal-beaten-sfx-230501.mp3" id="12_hid5v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3632.0
@@ -220,6 +221,10 @@ autostart = true
 
 [node name="electric_shock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_e3ucm")
+
+[node name="sub_damaged" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hid5v")
+volume_db = -10.0
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
