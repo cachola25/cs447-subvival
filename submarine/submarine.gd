@@ -49,7 +49,7 @@ func is_submarine_destroyed():
 	
 func _process(delta):
 	if is_submarine_destroyed():
-		var death_scene = load("res://death_screen.tscn").instantiate()
+		var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
 		get_tree().root.get_child(0).queue_free()
 		get_tree().root.add_child(death_scene)
 		

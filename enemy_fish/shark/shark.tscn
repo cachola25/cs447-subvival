@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxjscptjxba08"]
+
+[ext_resource type="Texture2D" uid="uid://3c06gy12lxef" path="res://assets/art/enemy_fish/shark/Shark.png" id="1_qa6hw"]
+[ext_resource type="Script" path="res://enemy_fish/shark/shark.gd" id="1_slxds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilf72"]
+size = Vector2(258, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58jdm"]
+atlas = ExtResource("1_qa6hw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rorur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58jdm")
+}],
+"loop": true,
+"name": &"shark_swim",
+"speed": 5.0
+}]
+
+[node name="shark" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_slxds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -15)
+shape = SubResource("RectangleShape2D_ilf72")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -2)
+scale = Vector2(4.09375, 3.75)
+sprite_frames = SubResource("SpriteFrames_rorur")
+animation = &"shark_swim"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

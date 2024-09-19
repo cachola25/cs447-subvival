@@ -1,6 +1,6 @@
 extends Area2D
 
-class_name swordfish
+class_name shark
 
 var SPEED = 0
 var DAMAGE_DEALT
@@ -24,8 +24,10 @@ func _physics_process(delta):
 	if not hit_sub:
 		position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
 	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
-	look_at(target_position)
 	position = position.move_toward(target_position, SPEED * delta)
+	look_at(target_position)
+	target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
+	position = position.move_toward(target_position, 1.5 * SPEED * delta)
 
 func _ready() -> void:
 	pass
