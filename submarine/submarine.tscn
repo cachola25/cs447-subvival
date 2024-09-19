@@ -1,27 +1,31 @@
-[gd_scene load_steps=31 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=35 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
-[ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
-[ext_resource type="Texture2D" uid="uid://cixacg00jhq64" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="3_00n82"]
+[ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
+[ext_resource type="Texture2D" uid="uid://bnhxeo1giqu83" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="3_00n82"]
 [ext_resource type="Script" path="res://submarine/sub_viewport.gd" id="4_6bchf"]
-[ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://assets/art/Levels/1.png" id="5_1k2w0"]
 [ext_resource type="Script" path="res://submarine/UI/health_bar/health_bar.gd" id="5_sriyo"]
-[ext_resource type="Texture2D" uid="uid://bqhp52foyapmo" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
+[ext_resource type="Texture2D" uid="uid://bywvdjp7cgytu" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
 [ext_resource type="Script" path="res://submarine/UI/oxygen_bar/oxygen_bar.gd" id="6_5wr0v"]
-[ext_resource type="Texture2D" uid="uid://pi3tokna8coe" path="res://assets/art/GUI/upgrade_menu/o2.png" id="8_fmifh"]
+[ext_resource type="Texture2D" uid="uid://bbtts2da5a1l0" path="res://assets/art/GUI/upgrade_menu/o2.png" id="8_fmifh"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/upgrade_menu.gd" id="8_mq8qe"]
-[ext_resource type="Texture2D" uid="uid://df0iy1c16qgiy" path="res://assets/art/GUI/upgrade_menu/Upgrade Icon.png" id="13_3rcuf"]
+[ext_resource type="Texture2D" uid="uid://02j2gj17q3f" path="res://assets/ocean_assets/Background.png" id="9_x6lmm"]
+[ext_resource type="Texture2D" uid="uid://cvtxta87iibbp" path="res://assets/ocean_assets/Background Shapes.png" id="10_x20si"]
+[ext_resource type="Texture2D" uid="uid://ce7j7865k04c8" path="res://assets/ocean_assets/Cliff Background.png" id="11_x28st"]
+[ext_resource type="Texture2D" uid="uid://bmp4hjtdq40ns" path="res://assets/ocean_assets/Stone Cliffs.png" id="12_k5da7"]
+[ext_resource type="Texture2D" uid="uid://dae0pejo7qgrh" path="res://assets/art/GUI/upgrade_menu/Upgrade Icon.png" id="13_3rcuf"]
+[ext_resource type="Texture2D" uid="uid://grpt25kkw6kw" path="res://assets/ocean_assets/Background Sand.png" id="13_14uku"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/o2/o_2.gd" id="13_2832f"]
-[ext_resource type="Texture2D" uid="uid://cwr3npvmhmpps" path="res://assets/art/GUI/upgrade_menu/question_tooltip.png" id="14_vk5j5"]
+[ext_resource type="Texture2D" uid="uid://cdy0ij8f6n7pp" path="res://assets/art/GUI/upgrade_menu/question_tooltip.png" id="14_vk5j5"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/armor/upgrade_armor.gd" id="15_skr2a"]
-[ext_resource type="Texture2D" uid="uid://bgb43auyxwgtt" path="res://assets/art/GUI/upgrade_menu/shield.png" id="16_87jto"]
+[ext_resource type="Texture2D" uid="uid://hqa3xobsmx2d" path="res://assets/art/GUI/upgrade_menu/shield.png" id="16_87jto"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/health/health_upgrade.gd" id="17_f0xre"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/luck/luck_upgrade.gd" id="18_bnfrb"]
-[ext_resource type="Texture2D" uid="uid://q6mlx6ysrofs" path="res://assets/art/GUI/upgrade_menu/clover.png" id="18_p8wfa"]
-[ext_resource type="Texture2D" uid="uid://cggu0iphyegp6" path="res://assets/art/GUI/compendium/undiscovered_fish.png" id="20_3amhb"]
+[ext_resource type="Texture2D" uid="uid://dexe67kh7alab" path="res://assets/art/GUI/upgrade_menu/clover.png" id="18_p8wfa"]
+[ext_resource type="Texture2D" uid="uid://bctdmecmj12kh" path="res://assets/art/GUI/compendium/undiscovered_fish.png" id="20_3amhb"]
 [ext_resource type="Script" path="res://submarine/UI/fish_compendium.gd" id="20_3p7ap"]
-[ext_resource type="Texture2D" uid="uid://ccqjtmm105hww" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
-[ext_resource type="Texture2D" uid="uid://dsvmk0q8tqn34" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
+[ext_resource type="Texture2D" uid="uid://ldexuhrnijjc" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
+[ext_resource type="Texture2D" uid="uid://bx1egd3xvne7q" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -74,7 +78,7 @@ collision_mask = 8
 script = ExtResource("1_uaken")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(2, 2)
 
 [node name="scoring_zone" type="Area2D" parent="Camera2D"]
 collision_layer = 33
@@ -158,13 +162,28 @@ size = Vector2i(250, 250)
 render_target_update_mode = 4
 script = ExtResource("4_6bchf")
 
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.5, 0.5)
+
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-scale = Vector2(10, 10)
-texture = ExtResource("5_1k2w0")
+texture = ExtResource("9_x6lmm")
 centered = false
 
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-zoom = Vector2(0.05, 0.05)
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+texture = ExtResource("10_x20si")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+texture = ExtResource("11_x28st")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+texture = ExtResource("12_k5da7")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+texture = ExtResource("13_14uku")
+centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
 position = Vector2(125, 125)
