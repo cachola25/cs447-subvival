@@ -1,31 +1,110 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4h7ihf1exd1q"]
+[gd_scene load_steps=11 format=3 uid="uid://b4h7ihf1exd1q"]
 
 [ext_resource type="Script" path="res://menu_scenes/start_menu/start_menu.gd" id="1_cpv6u"]
 [ext_resource type="Texture2D" uid="uid://t1ukk8k47gkl" path="res://assets/art/GUI/start_menu/Start.png" id="2_jc0uu"]
 [ext_resource type="Texture2D" uid="uid://dlc8ey4rrehfo" path="res://assets/art/GUI/start_menu/Quit.png" id="3_eymbv"]
+[ext_resource type="Texture2D" uid="uid://bdy30hqrnlubn" path="res://assets/art/GUI/start_menu/Picture1.png" id="4_5qveb"]
+[ext_resource type="Texture2D" uid="uid://c0wx3ph10b5ky" path="res://assets/art/submarine/krita-submarine.png" id="5_gnth4"]
+[ext_resource type="Texture2D" uid="uid://dijglpgf4qnaf" path="res://assets/art/Bubble/Empty Bubble.png" id="6_gdfyx"]
+[ext_resource type="Texture2D" uid="uid://ofndpmrlwl6b" path="res://assets/art/Bubble/Bubble Clownfish.png" id="7_ioawl"]
+[ext_resource type="Texture2D" uid="uid://r1q3jpqe3h4s" path="res://assets/art/enemy_fish/Eel/Eel 1.png" id="8_wdj36"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dkb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yptup"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_cpv6u")
 
-[node name="Start" type="Sprite2D" parent="."]
-position = Vector2(1002, 209)
+[node name="StartTextureButton" type="TextureButton" parent="."]
+offset_left = 765.0
+offset_top = 569.0
+offset_right = 1914.0
+offset_bottom = 790.0
+
+[node name="start_bg" type="Panel" parent="StartTextureButton"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -10.0
+offset_right = 1153.0
+offset_bottom = 225.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6dkb")
+
+[node name="Start" type="Sprite2D" parent="StartTextureButton"]
+position = Vector2(568, 109)
 texture = ExtResource("2_jc0uu")
 
-[node name="StartTextureButton" type="TextureButton" parent="Start"]
-offset_left = -132.0
-offset_top = -58.0
-offset_right = 129.0
-offset_bottom = 57.0
+[node name="QuitTextureButton" type="TextureButton" parent="."]
+offset_left = 772.0
+offset_top = 845.0
+offset_right = 1918.0
+offset_bottom = 1070.0
 
-[node name="Quit" type="Sprite2D" parent="."]
-position = Vector2(1008, 878)
+[node name="quit_bg" type="Panel" parent="QuitTextureButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -11.0
+offset_top = -5.0
+offset_right = 1148.0
+offset_bottom = 230.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_yptup")
+
+[node name="Quit" type="Sprite2D" parent="QuitTextureButton"]
+position = Vector2(568, 109)
 texture = ExtResource("3_eymbv")
 
-[node name="QuitTextureButton" type="TextureButton" parent="Quit"]
-offset_left = -111.0
-offset_top = -62.0
-offset_right = 114.0
-offset_bottom = 57.0
+[node name="controls" type="Sprite2D" parent="."]
+position = Vector2(282.125, 834.5)
+scale = Vector2(1.65504, 1.5463)
+texture = ExtResource("4_5qveb")
 
-[connection signal="button_down" from="Start/StartTextureButton" to="." method="_on_start_texture_button_button_down"]
-[connection signal="button_down" from="Quit/QuitTextureButton" to="." method="_on_quit_texture_button_button_down"]
+[node name="submarine" type="Sprite2D" parent="."]
+position = Vector2(267, 418)
+rotation = -0.570563
+scale = Vector2(2.9119, 2.05523)
+texture = ExtResource("5_gnth4")
+
+[node name="bubble1" type="Sprite2D" parent="."]
+position = Vector2(118, 113)
+scale = Vector2(3.45941, 3.33088)
+texture = ExtResource("6_gdfyx")
+
+[node name="bubble2" type="Sprite2D" parent="."]
+position = Vector2(266, 96)
+scale = Vector2(3.45941, 3.33088)
+texture = ExtResource("6_gdfyx")
+
+[node name="bubble3" type="Sprite2D" parent="."]
+position = Vector2(107, 282)
+scale = Vector2(3.45941, 3.33088)
+texture = ExtResource("6_gdfyx")
+
+[node name="bubble4" type="Sprite2D" parent="."]
+position = Vector2(230, 226)
+rotation = -0.744268
+scale = Vector2(3.45941, 3.33088)
+texture = ExtResource("7_ioawl")
+
+[node name="title" type="Label" parent="."]
+offset_left = 758.0
+offset_right = 1923.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 290
+text = "Subvival"
+
+[node name="eel" type="Sprite2D" parent="."]
+position = Vector2(532, 175)
+rotation = -0.822584
+scale = Vector2(4.19146, 4.51928)
+texture = ExtResource("8_wdj36")
+
+[connection signal="button_down" from="StartTextureButton" to="." method="_on_start_texture_button_button_down"]
+[connection signal="mouse_entered" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_exited"]
+[connection signal="button_down" from="QuitTextureButton" to="." method="_on_quit_texture_button_button_down"]
+[connection signal="mouse_entered" from="QuitTextureButton" to="." method="_on_quit_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="QuitTextureButton" to="." method="_on_quit_texture_button_mouse_exited"]
