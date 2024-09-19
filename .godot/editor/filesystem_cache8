@@ -1,0 +1,187 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1726708882
+README.md::TextFile::-1::1726708666::0::1::::<><>::
+::res://assets/::1726708666
+::res://assets/art/::1726708666
+::res://assets/art/Bubble/::1726708688
+Bubble Blue Tang.png::CompressedTexture2D::8007782123992100679::1726708666::1726708688::1::::<><>::
+Bubble Clownfish.png::CompressedTexture2D::6280225748732008443::1726708666::1726708688::1::::<><>::
+Bubble Pop.png::CompressedTexture2D::2997043459866300860::1726708666::1726708688::1::::<><>::
+Empty Bubble.png::CompressedTexture2D::8460582954253425322::1726708666::1726708688::1::::<><>::
+Parrot Fish Bubble.png::CompressedTexture2D::4964416170440788740::1726708666::1726708688::1::::<><>::
+TriggerFish Bubble.png::CompressedTexture2D::8891481863454825229::1726708666::1726708688::1::::<><>::
+Turtle Bubble.png::CompressedTexture2D::1484717893391834036::1726708666::1726708688::1::::<><>::
+::res://assets/art/enemy_fish/::1726708666
+::res://assets/art/enemy_fish/Eel/::1726708688
+Eel 1.png::CompressedTexture2D::8613388916208564516::1726708666::1726708688::1::::<><>::
+Eel 2.png::CompressedTexture2D::1662890294615376413::1726708666::1726708688::1::::<><>::
+Eel 3.png::CompressedTexture2D::1192457282858960679::1726708666::1726708688::1::::<><>::
+Eel Enemy Spritesheet.png::CompressedTexture2D::5807374103727591118::1726708666::1726708688::1::::<><>::
+::res://assets/art/enemy_fish/swordfish/::1726708688
+32bit-swordfish.png::CompressedTexture2D::5550260510773231316::1726708666::1726708688::1::::<><>::
+::res://assets/art/GUI/::1726708666
+::res://assets/art/GUI/compendium/::1726708688
+blue_tang_comp.png::CompressedTexture2D::3044921320546119501::1726708666::1726708688::1::::<><>::
+book.png::CompressedTexture2D::4054691693606063864::1726708666::1726708688::1::::<><>::
+clownfish_comp.png::CompressedTexture2D::3323177780432284894::1726708666::1726708688::1::::<><>::
+loupe.png::CompressedTexture2D::778555416582147528::1726708666::1726708688::1::::<><>::
+parrot_fish_comp.png::CompressedTexture2D::8541423307660458448::1726708666::1726708688::1::::<><>::
+triggerfish_comp.png::CompressedTexture2D::6938283062265078404::1726708666::1726708688::1::::<><>::
+turtle_comp.png::CompressedTexture2D::5968788281072959155::1726708666::1726708688::1::::<><>::
+undiscovered_fish.png::CompressedTexture2D::2566225342542774695::1726708666::1726708688::1::::<><>::
+::res://assets/art/GUI/o2/::1726708688
+Oxygen Background.png::CompressedTexture2D::8656355411329441949::1726708666::1726708688::1::::<><>::
+Oxygen Bar Empty.png::CompressedTexture2D::1573463663551528674::1726708666::1726708688::1::::<><>::
+Oxygen Bar Full.png::CompressedTexture2D::2689444194794823984::1726708666::1726708688::1::::<><>::
+Oxygen Bar Under.png::CompressedTexture2D::2340260939135580697::1726708666::1726708688::1::::<><>::
+Oxygen Label.png::CompressedTexture2D::8065530436260451043::1726708666::1726708688::1::::<><>::
+::res://assets/art/GUI/start_menu/::1726708688
+Picture1.png::CompressedTexture2D::5343242383113391272::1726708666::1726708688::1::::<><>::
+Quit.png::CompressedTexture2D::4196559722532445654::1726708666::1726708688::1::::<><>::
+Start.png::CompressedTexture2D::8362665392740375846::1726708666::1726708688::1::::<><>::
+::res://assets/art/GUI/upgrade_menu/::1726708688
+clover.png::CompressedTexture2D::7487798038112997389::1726708666::1726708688::1::::<><>::
+health.png::CompressedTexture2D::4117650153164091786::1726708666::1726708688::1::::<><>::
+o2.png::CompressedTexture2D::2497019894616107799::1726708666::1726708688::1::::<><>::
+question_tooltip.png::CompressedTexture2D::5034485699525983685::1726708666::1726708688::1::::<><>::
+shield.png::CompressedTexture2D::524403181494823957::1726708666::1726708688::1::::<><>::
+Upgrade Icon.png::CompressedTexture2D::7169064498499412705::1726708666::1726708688::1::::<><>::
+::res://assets/art/Levels/::1726708688
+1.png::CompressedTexture2D::2992785873983880724::1726708666::1726708688::1::::<><>::
+2.png::CompressedTexture2D::9060047897478239115::1726708666::1726708688::1::::<><>::
+3.png::CompressedTexture2D::1633909088663698948::1726708666::1726708688::1::::<><>::
+4.png::CompressedTexture2D::4350133595479645586::1726708666::1726708688::1::::<><>::
+::res://assets/art/misc/::1726708688
+O2.png::CompressedTexture2D::7664645535178855474::1726708666::1726708688::1::::<><>::
+UpgradeMenuBackground.png::CompressedTexture2D::398105422631439301::1726708666::1726708687::1::::<><>::
+::res://assets/art/money_fish/::1726708666
+::res://assets/art/money_fish/blue_tang/::1726708687
+Blue Tang 1.png::CompressedTexture2D::5474675185653781128::1726708666::1726708687::1::::<><>::
+Blue Tang 2.png::CompressedTexture2D::5363289055283794941::1726708666::1726708687::1::::<><>::
+Blue Tang Spritesheet.png::CompressedTexture2D::4029661570066382519::1726708666::1726708687::1::::<><>::
+::res://assets/art/money_fish/clownfish/::1726708687
+Clownfish 1.png::CompressedTexture2D::911613609153034903::1726708666::1726708687::1::::<><>::
+Clownfish 2.png::CompressedTexture2D::1667541848198523953::1726708666::1726708687::1::::<><>::
+Clownfish Spritesheet.png::CompressedTexture2D::9023697493661283428::1726708666::1726708687::1::::<><>::
+::res://assets/art/money_fish/parrot_fish/::1726708687
+32bit-fish-parrot1.png::CompressedTexture2D::362945313475945995::1726708666::1726708687::1::::<><>::
+32bit-fish-parrot1b.png::CompressedTexture2D::7818576246471188356::1726708666::1726708687::1::::<><>::
+32bit-fish-parrot2.png::CompressedTexture2D::3092626252986177077::1726708666::1726708687::1::::<><>::
+32bit-fish-parrot3.png::CompressedTexture2D::6766469274076577880::1726708666::1726708687::1::::<><>::
+::res://assets/art/money_fish/triggerfish/::1726708687
+32bit-fish-trigger-Sheet.png::CompressedTexture2D::7198718809964665654::1726708666::1726708687::1::::<><>::
+::res://assets/art/money_fish/turtle/::1726708687
+32bit-seaturtle1.png::CompressedTexture2D::6962150980526160477::1726708666::1726708687::1::::<><>::
+32bit-seaturtle2.png::CompressedTexture2D::8036917632830454685::1726708666::1726708687::1::::<><>::
+32bit-seaturtle3.png::CompressedTexture2D::3339514082592932327::1726708666::1726708687::1::::<><>::
+32bit-seaturtle4.png::CompressedTexture2D::6400565317805824772::1726708666::1726708687::1::::<><>::
+::res://assets/art/submarine/::1726708687
+krita-submarine-damage-taken.png::CompressedTexture2D::3314730705050961934::1726708666::1726708687::1::::<><>::
+krita-submarine.png::CompressedTexture2D::6412624794892376788::1726708666::1726708687::1::::<><>::
+::res://assets/Ocean Tiles/::1726708687
+Ocean Tilemap.png::CompressedTexture2D::6288185355914011899::1726708666::1726708687::1::::<><>::
+::res://assets/ocean_assets/::1726708688
+Background 1.png::CompressedTexture2D::2360976812926351293::1726708666::1726708688::1::::<><>::
+Background 2t.png::CompressedTexture2D::7148773792327193625::1726708666::1726708688::1::::<><>::
+Background 3.png::CompressedTexture2D::2875839667353790591::1726708666::1726708688::1::::<><>::
+Background Cliffs.png::CompressedTexture2D::7854146537230614808::1726708666::1726708688::1::::<><>::
+Background Sand.png::CompressedTexture2D::457173633566105334::1726708666::1726708688::1::::<><>::
+Background Shapes.png::CompressedTexture2D::6287460734473325237::1726708666::1726708688::1::::<><>::
+Background Test.png::CompressedTexture2D::3956856773927391106::1726708666::1726708688::1::::<><>::
+Background.png::CompressedTexture2D::53266302645554109::1726708666::1726708688::1::::<><>::
+Blue Coral.png::CompressedTexture2D::1272580086989951327::1726708666::1726708687::1::::<><>::
+Cliff Background.png::CompressedTexture2D::5120262210945033281::1726708666::1726708688::1::::<><>::
+Pink Coral.png::CompressedTexture2D::4985017015395762402::1726708666::1726708687::1::::<><>::
+Rock 1.png::CompressedTexture2D::2591539744814299418::1726708666::1726708687::1::::<><>::
+Rock Tile 1.png::CompressedTexture2D::4001516711761867694::1726708666::1726708687::1::::<><>::
+Seaweed 1.png::CompressedTexture2D::2410752867069705220::1726708666::1726708687::1::::<><>::
+Seaweed 2.png::CompressedTexture2D::8121279230921714915::1726708666::1726708687::1::::<><>::
+Stone Cliffs.png::CompressedTexture2D::3261426269228240056::1726708666::1726708688::1::::<><>::
+Total Background.png::CompressedTexture2D::8246669596254754069::1726708666::1726708688::1::::<><>::
+Yellow Fan Coral.png::CompressedTexture2D::2515619042146301142::1726708666::1726708687::1::::<><>::
+::res://assets/sounds/::1726708688
+electrical-shock-zap-106412.mp3::AudioStreamMP3::5769265385439287990::1726708666::1726708687::1::::<><>::
+electrical-shock-zap-106412.wav::AudioStreamWAV::4438668163437844735::1726708666::1726708688::1::::<><>::
+metal-beaten-sfx-230501.mp3::AudioStreamMP3::7722613336516448157::1726708666::1726708687::1::::<><>::
+::res://enemy_fish/::1726708666
+::res://enemy_fish/eel/::1726708666
+eel.gd::GDScript::-1::1726708666::0::1::::eel<>Area2D<>::
+eel.tscn::PackedScene::4704494365910977444::1726708666::0::1::::<><>::res://enemy_fish/eel/eel.gd<>uid://dxnr84nr6ify::::res://assets/art/enemy_fish/Eel/Eel Enemy Spritesheet.png<>uid://bdjhdk4p035u6::::res://assets/sounds/electrical-shock-zap-106412.mp3
+::res://enemy_fish/swordfish/::1726708666
+swordfish.gd::GDScript::-1::1726708666::0::1::::swordfish<>Area2D<>::
+swordfish.tscn::PackedScene::2015614464458188935::1726708666::0::1::::<><>::uid://cks0gqs6kd7n2::::res://assets/art/enemy_fish/swordfish/32bit-swordfish.png<>res://enemy_fish/swordfish/swordfish.gd
+::res://menu_scenes/::1726708666
+::res://menu_scenes/death_screen/::1726708666
+death_screen.gd::GDScript::-1::1726708666::0::1::::<>Node2D<>::
+death_screen.tscn::PackedScene::5921208419423129019::1726708666::0::1::::<><>::res://menu_scenes/death_screen/death_screen.gd
+::res://menu_scenes/start_menu/::1726708666
+start_menu.gd::GDScript::-1::1726708666::0::1::::<>Node2D<>::
+start_menu.tscn::PackedScene::4438305400169272456::1726708666::0::1::::<><>::res://menu_scenes/start_menu/start_menu.gd<>uid://t1ukk8k47gkl::::res://assets/art/GUI/start_menu/Start.png<>uid://dlc8ey4rrehfo::::res://assets/art/GUI/start_menu/Quit.png<>uid://bdy30hqrnlubn::::res://assets/art/GUI/start_menu/Picture1.png<>uid://c0wx3ph10b5ky::::res://assets/art/submarine/krita-submarine.png<>uid://dijglpgf4qnaf::::res://assets/art/Bubble/Empty Bubble.png<>uid://ofndpmrlwl6b::::res://assets/art/Bubble/Bubble Clownfish.png<>uid://r1q3jpqe3h4s::::res://assets/art/enemy_fish/Eel/Eel 1.png
+::res://misc/::1726708666
+gui.tscn::PackedScene::1552024996947674992::1726708666::0::1::::<><>::uid://06p0qifydu::::res://assets/art/GUI/o2/Oxygen Background.png<>uid://ggljoa8n0exo::::res://assets/art/GUI/o2/Oxygen Label.png<>uid://ba20foncs5inf::::res://assets/art/GUI/o2/Oxygen Bar Full.png<>uid://drrd1pcw026d7::::res://assets/art/GUI/o2/Oxygen Bar Empty.png<>uid://b27b0n80yjad5::::res://assets/art/GUI/o2/Oxygen Bar Under.png
+level.tscn::PackedScene::1840175311949048905::1726708666::0::1::::<><>::res://misc/level_1.gd<>uid://cnemvuq4712kt::::res://submarine/submarine.tscn<>uid://bqmltib1gqkeq::::res://assets/art/Levels/1.png<>res://misc/spawn_fish.gd<>res://misc/rocks.gd<>res://submarine/score_zone.gd<>uid://dq5bch8xddh6j::::res://submarine/UI/upgrade_menu/upgrade_menu.tscn
+level_1.gd::GDScript::-1::1726708666::0::1::::<>Node2D<>::
+level_2.tscn::PackedScene::2125571185893582967::1726708666::0::1::::<><>::uid://ubknvppxupod::::res://assets/art/Levels/2.png<>uid://cnemvuq4712kt::::res://submarine/submarine.tscn
+rocks.gd::GDScript::-1::1726708666::0::1::::rock<>StaticBody2D<>::
+spawn_fish.gd::GDScript::-1::1726708666::0::1::::<>Node2D<>::
+test_level.tscn::PackedScene::232204780709944520::1726708666::0::1::::<><>::uid://b7swwe6475taq::::res://assets/art/Levels/4.png<>uid://cnemvuq4712kt::::res://submarine/submarine.tscn
+::res://money_fish/::1726708666
+Fish.gd::GDScript::-1::1726708666::0::1::::Fish<>CharacterBody2D<>::
+::res://money_fish/blue_tang/::1726708666
+blue_tang.gd::GDScript::-1::1726708666::0::1::::blue_tang<>Fish<>::
+blue_tang.tscn::PackedScene::2541694177030844346::1726708666::0::1::::<><>::uid://c5km2bjbpr60i::::res://assets/art/money_fish/blue_tang/Blue Tang Spritesheet.png<>res://money_fish/blue_tang/blue_tang.gd
+::res://money_fish/clownfish/::1726708666
+clownfish.gd::GDScript::-1::1726708666::0::1::::clownfish<>Fish<>::
+clownfish.tscn::PackedScene::5516474704048304095::1726708666::0::1::::<><>::res://money_fish/clownfish/clownfish.gd<>uid://236qmiq8svu2::::res://assets/art/money_fish/clownfish/Clownfish Spritesheet.png
+::res://money_fish/parrot_fish/::1726708666
+parrot_fish.gd::GDScript::-1::1726708666::0::1::::parrot_fish<>Fish<>::
+parrot_fish.tscn::PackedScene::5754218284442585931::1726708666::0::1::::<><>::res://money_fish/parrot_fish/parrot_fish.gd<>uid://ctlia8geiy33n::::res://assets/art/money_fish/parrot_fish/32bit-fish-parrot1.png<>uid://bjh0rhpitv3sw::::res://assets/art/money_fish/parrot_fish/32bit-fish-parrot1b.png<>uid://bp15nnasjt3hd::::res://assets/art/money_fish/parrot_fish/32bit-fish-parrot2.png<>uid://dbq1uu7q6f6be::::res://assets/art/money_fish/parrot_fish/32bit-fish-parrot3.png
+::res://money_fish/triggerfish/::1726708666
+triggerfish.gd::GDScript::-1::1726708666::0::1::::triggerfish<>Fish<>::
+triggerfish.tscn::PackedScene::2673104082779640343::1726708666::0::1::::<><>::res://money_fish/triggerfish/triggerfish.gd<>uid://df85g0wejcolh::::res://assets/art/money_fish/triggerfish/32bit-fish-trigger-Sheet.png
+::res://money_fish/turtle/::1726708666
+turtle.gd::GDScript::-1::1726708666::0::1::::turtle<>Fish<>::
+turtle.tscn::PackedScene::110846121021175241::1726708666::0::1::::<><>::res://money_fish/turtle/turtle.gd<>uid://ll5qsdbgy7dj::::res://assets/art/money_fish/turtle/32bit-seaturtle1.png<>uid://det02blvws0hy::::res://assets/art/money_fish/turtle/32bit-seaturtle2.png<>uid://c2eleg5mr2td3::::res://assets/art/money_fish/turtle/32bit-seaturtle3.png<>uid://7imfhym6hx67::::res://assets/art/money_fish/turtle/32bit-seaturtle4.png
+::res://ocean/::1726708666
+ocean.gd::GDScript::-1::1726708666::0::1::::ocean<>Node2D<>::
+ocean.tscn::PackedScene::1440050059840895075::1726708666::0::1::::<><>::res://ocean/ocean.gd<>uid://bqmltib1gqkeq::::res://assets/art/Levels/1.png<>uid://cnemvuq4712kt::::res://submarine/submarine.tscn<>res://ocean/spawn_areas/money_fish/clownfish_spawn_area_1.gd<>res://ocean/spawn_areas/enemy_fish/eel_spawn_area_1.gd<>res://ocean/spawn_areas/money_fish/blue_tang_spawn_area_1.gd<>res://ocean/spawn_areas/enemy_fish/swordfish_spawn_area_1.gd<>res://ocean/spawn_areas/money_fish/turtle_spawn_area_1.gd<>res://ocean/spawn_areas/money_fish/parrot_fish_spawn_area_1.gd<>res://ocean/spawn_areas/money_fish/triggerfish_spawn_area_1.gd<>uid://hj2rb74cv53f::::res://submarine/UI/pause_menu/pause_menu.tscn<>uid://bdjhdk4p035u6::::res://assets/sounds/electrical-shock-zap-106412.mp3<>uid://c85rvuqbmvhy5::::res://assets/sounds/metal-beaten-sfx-230501.mp3
+ocean_2.tscn::PackedScene::2325362013617012491::1726707946::0::1::::<><>::uid://crlip21lk73sn::::res://assets/ocean_assets/Background.png<>uid://cnemvuq4712kt::::res://submarine/submarine.tscn<>uid://bep78xky2c14n::::res://assets/ocean_assets/Cliff Background.png<>uid://chiwd0dpyiran::::res://assets/ocean_assets/Stone Cliffs.png<>uid://cnek0gsfy3ku3::::res://assets/ocean_assets/Background Shapes.png<>uid://biw7xuuihoq3n::::res://assets/ocean_assets/Background Sand.png<>uid://ofmfg66lflp5::::res://assets/ocean_assets/Total Background.png
+::res://ocean/spawn_areas/::1726708666
+::res://ocean/spawn_areas/enemy_fish/::1726708666
+eel_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+swordfish_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+::res://ocean/spawn_areas/money_fish/::1726708666
+blue_tang_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+clownfish_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+parrot_fish_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+triggerfish_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+turtle_spawn_area_1.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+::res://submarine/::1726708666
+score_zone.gd::GDScript::-1::1726708666::0::1::::<>Area2D<>::
+submarine.gd::GDScript::-1::1726708666::0::1::::submarine<>CharacterBody2D<>::
+submarine.tscn::PackedScene::5694321027827379651::1726708666::0::1::::<><>::res://submarine/submarine.gd<>uid://c0wx3ph10b5ky::::res://assets/art/submarine/krita-submarine.png<>uid://cixacg00jhq64::::res://assets/art/submarine/krita-submarine-damage-taken.png<>res://submarine/sub_viewport.gd<>uid://bqmltib1gqkeq::::res://assets/art/Levels/1.png<>res://submarine/UI/health_bar/health_bar.gd<>uid://bqhp52foyapmo::::res://assets/art/GUI/upgrade_menu/health.png<>res://submarine/UI/oxygen_bar/oxygen_bar.gd<>uid://pi3tokna8coe::::res://assets/art/GUI/upgrade_menu/o2.png<>res://submarine/UI/upgrade_menu/upgrade_menu.gd<>uid://df0iy1c16qgiy::::res://assets/art/GUI/upgrade_menu/Upgrade Icon.png<>res://submarine/UI/upgrade_menu/o2/o_2.gd<>uid://cwr3npvmhmpps::::res://assets/art/GUI/upgrade_menu/question_tooltip.png<>res://submarine/UI/upgrade_menu/armor/upgrade_armor.gd<>uid://bgb43auyxwgtt::::res://assets/art/GUI/upgrade_menu/shield.png<>res://submarine/UI/upgrade_menu/health/health_upgrade.gd<>res://submarine/UI/upgrade_menu/luck/luck_upgrade.gd<>uid://q6mlx6ysrofs::::res://assets/art/GUI/upgrade_menu/clover.png<>uid://cggu0iphyegp6::::res://assets/art/GUI/compendium/undiscovered_fish.png<>res://submarine/UI/fish_compendium.gd<>uid://ccqjtmm105hww::::res://assets/art/GUI/compendium/loupe.png<>uid://dsvmk0q8tqn34::::res://assets/art/GUI/compendium/book.png
+sub_viewport.gd::GDScript::-1::1726708666::0::1::::<>SubViewport<>::
+::res://submarine/bubble/::1726708666
+bubble.gd::GDScript::-1::1726708666::0::1::::<>CharacterBody2D<>::
+bubble.tscn::PackedScene::4591874059120937246::1726708666::0::1::::<><>::res://submarine/bubble/bubble.gd<>uid://dijglpgf4qnaf::::res://assets/art/Bubble/Empty Bubble.png<>uid://b16rpqv3wvxxb::::res://assets/art/Bubble/Bubble Blue Tang.png<>uid://ofndpmrlwl6b::::res://assets/art/Bubble/Bubble Clownfish.png<>uid://cev184hd54l1n::::res://assets/art/Bubble/Bubble Pop.png<>uid://d0kcpvhkwux10::::res://assets/art/Bubble/Turtle Bubble.png<>uid://cnlh5dp2xgged::::res://assets/art/Bubble/Parrot Fish Bubble.png<>uid://kw1v8r3ub3hw::::res://assets/art/Bubble/TriggerFish Bubble.png
+::res://submarine/UI/::1726708666
+fish_compendium.gd::GDScript::-1::1726708666::0::1::::<>Control<>::
+::res://submarine/UI/health_bar/::1726708666
+health_bar.gd::GDScript::-1::1726708666::0::1::::<>ProgressBar<>::
+::res://submarine/UI/oxygen_bar/::1726708666
+oxygen_bar.gd::GDScript::-1::1726708666::0::1::::<>ProgressBar<>::
+::res://submarine/UI/pause_menu/::1726708666
+pause_menu.gd::GDScript::-1::1726708666::0::1::::<>Control<>::
+pause_menu.gdshader::Shader::-1::1726708666::0::1::::<><>::
+pause_menu.tscn::PackedScene::511571125832094877::1726708666::0::1::::<><>::res://submarine/UI/pause_menu/pause_menu.gd<>res://submarine/UI/pause_menu/pause_menu.gdshader
+::res://submarine/UI/upgrade_menu/::1726708666
+upgrade_menu.gd::GDScript::-1::1726708666::0::1::::<>Control<>::
+upgrade_menu.tscn::PackedScene::8344279590181338411::1726708666::0::1::::<><>::res://submarine/UI/upgrade_menu/upgrade_menu.gd<>uid://br244qh06q42f::::res://assets/art/misc/O2.png<>uid://cw6sgvr85whmc::::res://assets/art/misc/UpgradeMenuBackground.png
+::res://submarine/UI/upgrade_menu/armor/::1726708666
+upgrade_armor.gd::GDScript::-1::1726708666::0::1::::<>Control<>::
+::res://submarine/UI/upgrade_menu/health/::1726708666
+health_upgrade.gd::GDScript::-1::1726708666::0::1::::<>Control<>::
+::res://submarine/UI/upgrade_menu/luck/::1726708666
+luck_upgrade.gd::GDScript::-1::1726708666::0::1::::<>Control<>::
+::res://submarine/UI/upgrade_menu/o2/::1726708666
+o_2.gd::GDScript::-1::1726708666::0::1::::<>Control<>::

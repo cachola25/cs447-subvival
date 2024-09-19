@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 func _on_start_texture_button_button_down() -> void:
 	#get_tree().change_scene(load("res://level.tscn"))
-	var game_scene = load("res://ocean/ocean.tscn").instantiate()
+	var game_scene = load("res://ocean/ocean_2.tscn").instantiate()
 	get_tree().root.get_child(0).queue_free()
 	get_tree().root.add_child(game_scene)
 
