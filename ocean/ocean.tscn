@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://urtocxps537d"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_jhkga"]
-[ext_resource type="Texture2D" uid="uid://bqmltib1gqkeq" path="res://assets/art/Levels/1.png" id="2_rpj2f"]
+[ext_resource type="Texture2D" uid="uid://bivy0mqo78rai" path="res://assets/art/Levels/1.png" id="2_rpj2f"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="3_4g2ps"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/clownfish_spawn_area_1.gd" id="4_l02jo"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/eel_spawn_area_1.gd" id="5_w8jh4"]
@@ -12,8 +12,8 @@
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/triggerfish_spawn_area_1.gd" id="10_wsp20"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://submarine/UI/pause_menu/pause_menu.tscn" id="11_itehb"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/shark_spawn_area_1.gd" id="11_iwwlm"]
-[ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="12_leatp"]
-[ext_resource type="AudioStream" uid="uid://c85rvuqbmvhy5" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="13_tb302"]
+[ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="12_leatp"]
+[ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="13_tb302"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpbr3"]
 radius = 3632.0

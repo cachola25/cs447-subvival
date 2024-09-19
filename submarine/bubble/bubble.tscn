@@ -1,13 +1,13 @@
 [gd_scene load_steps=25 format=3 uid="uid://b6olq3cp8bc6a"]
 
 [ext_resource type="Script" path="res://submarine/bubble/bubble.gd" id="1_gvl63"]
-[ext_resource type="Texture2D" uid="uid://dijglpgf4qnaf" path="res://assets/art/Bubble/Empty Bubble.png" id="2_s6noh"]
-[ext_resource type="Texture2D" uid="uid://b16rpqv3wvxxb" path="res://assets/art/Bubble/Bubble Blue Tang.png" id="3_fsngj"]
-[ext_resource type="Texture2D" uid="uid://ofndpmrlwl6b" path="res://assets/art/Bubble/Bubble Clownfish.png" id="3_rdvbg"]
-[ext_resource type="Texture2D" uid="uid://cev184hd54l1n" path="res://assets/art/Bubble/Bubble Pop.png" id="4_cpyui"]
-[ext_resource type="Texture2D" uid="uid://d0kcpvhkwux10" path="res://assets/art/Bubble/Turtle Bubble.png" id="5_bf5g2"]
-[ext_resource type="Texture2D" uid="uid://cnlh5dp2xgged" path="res://assets/art/Bubble/Parrot Fish Bubble.png" id="5_nvlcr"]
-[ext_resource type="Texture2D" uid="uid://kw1v8r3ub3hw" path="res://assets/art/Bubble/TriggerFish Bubble.png" id="6_niafe"]
+[ext_resource type="Texture2D" uid="uid://dssmthkwf8q31" path="res://assets/art/Bubble/Empty Bubble.png" id="2_s6noh"]
+[ext_resource type="Texture2D" uid="uid://dmdbab5c7i3ct" path="res://assets/art/Bubble/Bubble Blue Tang.png" id="3_fsngj"]
+[ext_resource type="Texture2D" uid="uid://cvqgnvanr2m7d" path="res://assets/art/Bubble/Bubble Clownfish.png" id="3_rdvbg"]
+[ext_resource type="Texture2D" uid="uid://bix14rkmaeov1" path="res://assets/art/Bubble/Bubble Pop.png" id="4_cpyui"]
+[ext_resource type="Texture2D" uid="uid://vfhc7k72kuoi" path="res://assets/art/Bubble/Turtle Bubble.png" id="5_bf5g2"]
+[ext_resource type="Texture2D" uid="uid://ccy2hdvg1tjx1" path="res://assets/art/Bubble/Parrot Fish Bubble.png" id="5_nvlcr"]
+[ext_resource type="Texture2D" uid="uid://dyxdn300h4lbh" path="res://assets/art/Bubble/TriggerFish Bubble.png" id="6_niafe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ae1"]
 radius = 85.0

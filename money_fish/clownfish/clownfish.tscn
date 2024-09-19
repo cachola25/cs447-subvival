@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckuhsdp13b5ex"]
 
 [ext_resource type="Script" path="res://money_fish/clownfish/clownfish.gd" id="1_3xofb"]
-[ext_resource type="Texture2D" uid="uid://236qmiq8svu2" path="res://assets/art/money_fish/clownfish/Clownfish Spritesheet.png" id="2_jittq"]
+[ext_resource type="Texture2D" uid="uid://d1te8keb3m2jg" path="res://assets/art/money_fish/clownfish/Clownfish Spritesheet.png" id="2_jittq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fp3nj"]
 size = Vector2(102, 51.5)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bchhljrc3va31"]
 
-[ext_resource type="Texture2D" uid="uid://c5km2bjbpr60i" path="res://assets/art/money_fish/blue_tang/Blue Tang Spritesheet.png" id="1_jqv5q"]
+[ext_resource type="Texture2D" uid="uid://bxn864sl46qnv" path="res://assets/art/money_fish/blue_tang/Blue Tang Spritesheet.png" id="1_jqv5q"]
 [ext_resource type="Script" path="res://money_fish/blue_tang/blue_tang.gd" id="1_u1o3v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqa2x"]
