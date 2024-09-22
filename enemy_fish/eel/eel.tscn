@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b8a5lnd1uvs1a"]
 
 [ext_resource type="Script" path="res://enemy_fish/eel/eel.gd" id="1_18xai"]
-[ext_resource type="Texture2D" uid="uid://dxnr84nr6ify" path="res://assets/art/enemy_fish/Eel/Eel Enemy Spritesheet.png" id="1_rx4am"]
-[ext_resource type="AudioStream" uid="uid://bdjhdk4p035u6" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="3_v07me"]
+[ext_resource type="Texture2D" uid="uid://co0eurdd5nd4a" path="res://assets/art/enemy_fish/Eel/Eel Enemy Spritesheet.png" id="1_rx4am"]
+[ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="3_v07me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvc8p"]
 size = Vector2(296, 72.5)

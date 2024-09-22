@@ -96,7 +96,7 @@ metadata/SWORDFISH_SPEED = 600
 metadata/SWORDFISH_DAMAGE = 10
 metadata/MAX_SWORDFISH_IN_AREA = 3
 metadata/SHARK_DAMAGE = 30
-metadata/SHARK_SPEED = 500
+metadata/SHARK_SPEED = 50
 metadata/MAX_SHARK_IN_AREA = 3
 
 [node name="background" type="TextureRect" parent="."]

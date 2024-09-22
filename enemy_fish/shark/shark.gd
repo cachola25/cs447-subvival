@@ -26,8 +26,8 @@ func _physics_process(delta):
 	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
 	position = position.move_toward(target_position, SPEED * delta)
 	look_at(target_position)
-	target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
-	position = position.move_toward(target_position, 1.5 * SPEED * delta)
+	#target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
+	#position = position.move_toward(target_position, 1.5 * SPEED * delta)
 
 func _ready() -> void:
 	pass
@@ -42,7 +42,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
 		hit_sub = true
 		emit_signal("despawned")
-		queue_free()
+		#queue_free()
 
 func _on_timer_timeout() -> void:
 	emit_signal("despawned")

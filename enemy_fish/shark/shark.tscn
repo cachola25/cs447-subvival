@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://enemy_fish/shark/shark.gd" id="1_slxds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilf72"]
-size = Vector2(258, 148)
+size = Vector2(3237.5, 1564)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58jdm"]
 atlas = ExtResource("1_qa6hw")
@@ -27,12 +27,12 @@ collision_mask = 8
 script = ExtResource("1_slxds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -15)
+position = Vector2(-9.25, -191)
 shape = SubResource("RectangleShape2D_ilf72")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -2)
-scale = Vector2(4.09375, 3.75)
+position = Vector2(4, 5.99994)
+scale = Vector2(27.7734, 24.082)
 sprite_frames = SubResource("SpriteFrames_rorur")
 animation = &"shark_swim"
 

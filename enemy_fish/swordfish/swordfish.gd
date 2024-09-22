@@ -10,6 +10,9 @@ signal despawned
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
+var thrusting = false
+var thrust_factor = 2.0
+
 
 func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	global_transform = _transform
@@ -21,10 +24,15 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 
 func _physics_process(delta):
 	rotation = velocity.angle()
+	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
+	var distance_to_target = global_position.distance_to(target_position)
+	if distance_to_target < 500 and not thrusting:
+		thrusting = true
+			
 	if not hit_sub:
 		position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
-	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
 	look_at(target_position)
+	position = position.move_toward(target_position, SPEED * delta)
 	position = position.move_toward(target_position, SPEED * delta)
 
 func _ready() -> void:
