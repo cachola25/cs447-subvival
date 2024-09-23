@@ -23,14 +23,12 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	ocean_scene = get_tree().root.get_child(0)
 
 func _physics_process(delta):
+	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")
+	var direction = (submarine_position - global_position).normalized()
+	velocity = direction * SPEED
 	rotation = velocity.angle()
-	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
-			
-	if not hit_sub:
-		position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
-	look_at(target_position)
-	position = position.move_toward(target_position, SPEED * delta)
-	position = position.move_toward(target_position, SPEED * delta)
+	position += 2 * SPEED * Vector2.RIGHT.rotated(rotation) * delta
+	look_at(submarine_position)
 
 func _ready() -> void:
 	pass

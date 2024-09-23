@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=39 format=3 uid="uid://8eomw0vycgln"]
+[gd_scene load_steps=35 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -106,12 +105,9 @@ metadata/SWORDFISH_DAMAGE = 10
 metadata/SWORDFISH_SPEED = 600
 metadata/MAX_SWORDFISH_IN_AREA = 3
 metadata/SHARK_DAMAGE = 60
-metadata/SHARK_SPEED = 500
+metadata/SHARK_SPEED = 600
 metadata/MAX_SHARK_IN_AREA = 1
 metadata/SUBMARINE_POSITION = 0
-metadata/MAX_SHARK_IN_AREA = 1
-metadata/SHARK_DAMAGE = 60
-metadata/SHARK_SPEED = 600
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -1
@@ -129,8 +125,7 @@ position = Vector2(321, 181)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_iqnev")
 
-[node name="CliffCollisionArea" type="StaticBody2D" parent="."]
-position = Vector2(20, 0)
+[node name="CollisionArea" type="StaticBody2D" parent="."]
 scale = Vector2(8, 8)
 collision_layer = 8
 collision_mask = 8
@@ -310,7 +305,7 @@ debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
 autostart = true
 
 [node name="shark_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-906, -3210)
+position = Vector2(-8982, -10573)
 script = ExtResource("16_t07ly")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shark_spawn_area_1"]
