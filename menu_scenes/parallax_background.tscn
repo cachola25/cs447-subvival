@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbm4jvmnp6uxo"]
+
+[ext_resource type="Texture2D" uid="uid://02j2gj17q3f" path="res://assets/ocean_assets/Background.png" id="1_7clqw"]
+[ext_resource type="Texture2D" uid="uid://cvtxta87iibbp" path="res://assets/ocean_assets/Background Shapes.png" id="2_tsify"]
+[ext_resource type="Texture2D" uid="uid://ce7j7865k04c8" path="res://assets/ocean_assets/Cliff Background.png" id="3_icy07"]
+[ext_resource type="Texture2D" uid="uid://bmp4hjtdq40ns" path="res://assets/ocean_assets/Stone Cliffs.png" id="4_2ouna"]
+[ext_resource type="Texture2D" uid="uid://grpt25kkw6kw" path="res://assets/ocean_assets/Background Sand.png" id="5_6w4c2"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scale = Vector2(8, 8)
+transform = Transform2D(8, 0, 0, 8, 0, 0)
+follow_viewport_enabled = true
+follow_viewport_scale = 0.1
+
+[node name="Background Ocean" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Ocean"]
+texture = ExtResource("1_7clqw")
+centered = false
+
+[node name="Background shapes" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background shapes"]
+texture = ExtResource("2_tsify")
+centered = false
+
+[node name="Cliff Background" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cliff Background"]
+texture = ExtResource("3_icy07")
+centered = false
+
+[node name="Stone Cliffs" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stone Cliffs"]
+texture = ExtResource("4_2ouna")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
+texture = ExtResource("5_6w4c2")
+centered = false

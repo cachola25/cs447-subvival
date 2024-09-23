@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://8eomw0vycgln"]
+[gd_scene load_steps=37 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="Texture2D" uid="uid://02j2gj17q3f" path="res://assets/ocean_assets/Background.png" id="1_iw4cm"]
@@ -102,6 +102,9 @@ metadata/MAX_EEL_IN_AREA = 5
 metadata/SWORDFISH_DAMAGE = 10
 metadata/SWORDFISH_SPEED = 600
 metadata/MAX_SWORDFISH_IN_AREA = 3
+metadata/MAX_SHARK_IN_AREA = 1
+metadata/SHARK_DAMAGE = 60
+metadata/SHARK_SPEED = 600
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -1
@@ -190,7 +193,7 @@ polygon = PackedVector2Array(1424, 639, 1448, 630, 1452, 630, 1457, 633, 1475, 6
 polygon = PackedVector2Array(1678, 690, 1743, 673, 1795, 668, 1851, 665, 1920, 675, 1920, 744, 1915, 743, 1883, 743, 1866, 745, 1843, 753, 1822, 758, 1810, 762, 1795, 768, 1774, 773, 1762, 776, 1751, 779, 1747, 782, 1733, 781, 1723, 777, 1711, 770, 1702, 763, 1686, 748, 1678, 733, 1672, 715, 1671, 706, 1673, 696)
 
 [node name="clownfish_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-753, -262)
+position = Vector2(-1897, -382)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("9_wbmaf")
@@ -220,7 +223,7 @@ wait_time = 1.2
 autostart = true
 
 [node name="blue_tang_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-12501, -1789)
+position = Vector2(-4805, -2493)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("10_n787b")
@@ -255,7 +258,7 @@ wait_time = 1.2
 autostart = true
 
 [node name="triggerfish_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-13449, -755)
+position = Vector2(-9905, 405)
 script = ExtResource("11_n50i2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="triggerfish_spawn_area_1"]
@@ -269,7 +272,7 @@ curve = SubResource("Curve2D_f70ak")
 autostart = true
 
 [node name="parrot_fish_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-5849, -4267)
+position = Vector2(-6241, -1443)
 script = ExtResource("12_mtbj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="parrot_fish_spawn_area_1"]
@@ -284,7 +287,7 @@ curve = SubResource("Curve2D_b4uhe")
 autostart = true
 
 [node name="turtle_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-14408, -4543)
+position = Vector2(-10664, -5103)
 script = ExtResource("13_chf3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="turtle_spawn_area_1"]
@@ -292,13 +295,14 @@ position = Vector2(24298, 11170)
 shape = SubResource("CircleShape2D_r8o26")
 
 [node name="Path2D_1" type="Path2D" parent="turtle_spawn_area_1"]
+position = Vector2(8584, 2432)
 curve = SubResource("Curve2D_xum6q")
 
 [node name="spawn_timer" type="Timer" parent="turtle_spawn_area_1"]
 autostart = true
 
 [node name="eel_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-9681, -2053)
+position = Vector2(-9465, -3309)
 script = ExtResource("14_rt8tm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="eel_spawn_area_1"]
@@ -309,6 +313,7 @@ shape = SubResource("CircleShape2D_udfst")
 autostart = true
 
 [node name="swordfish_spawn_area_1" type="Area2D" parent="."]
+position = Vector2(-1816, 480)
 script = ExtResource("15_weewt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="swordfish_spawn_area_1"]
@@ -320,7 +325,7 @@ debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
 autostart = true
 
 [node name="shark_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-4687, -10740)
+position = Vector2(-906, -3210)
 script = ExtResource("16_t07ly")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shark_spawn_area_1"]
