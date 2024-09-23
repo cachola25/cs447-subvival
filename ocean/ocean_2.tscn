@@ -94,7 +94,7 @@ radius = 4511.01
 radius = 3675.18
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvcau"]
-radius = 5180.32
+radius = 2644.66
 
 [node name="Ocean 2" type="Node2D"]
 script = ExtResource("1_6pvg6")
@@ -102,7 +102,7 @@ metadata/EEL_DAMAGE = 5
 metadata/EEL_SPEED = 500
 metadata/MAX_EEL_IN_AREA = 5
 metadata/SWORDFISH_DAMAGE = 10
-metadata/SWORDFISH_SPEED = 600
+metadata/SWORDFISH_SPEED = 1000
 metadata/MAX_SWORDFISH_IN_AREA = 3
 metadata/SHARK_DAMAGE = 60
 metadata/SHARK_SPEED = 600
@@ -309,7 +309,7 @@ position = Vector2(-8982, -10573)
 script = ExtResource("16_t07ly")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shark_spawn_area_1"]
-position = Vector2(15989, 14660)
+position = Vector2(20644, 16004)
 shape = SubResource("CircleShape2D_pvcau")
 debug_color = Color(0.87007, 0.327028, 0.339665, 0.42)
 

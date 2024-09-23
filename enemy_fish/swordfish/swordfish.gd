@@ -27,7 +27,7 @@ func _physics_process(delta):
 	var direction = (submarine_position - global_position).normalized()
 	velocity = direction * SPEED
 	rotation = velocity.angle()
-	position += 2 * SPEED * Vector2.RIGHT.rotated(rotation) * delta
+	position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
 	look_at(submarine_position)
 
 func _ready() -> void:
