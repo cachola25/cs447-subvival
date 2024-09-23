@@ -118,6 +118,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		var curr_money = int(total_money.text.substr(1))
 		curr_money += body.get_meta("FISH_VALUE")
 		total_money.text = "$" + str(curr_money)
+		body.queue_free()
 	elif body.name.begins_with("bubble"):
 		body.get_node("AnimatedSprite2D").play("pop")
 	
