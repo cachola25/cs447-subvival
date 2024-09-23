@@ -44,9 +44,11 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
 		submarine_in_area = true
-		body.get_node("CanvasLayer").get_node("upgrade_menu").connect(
-			"luck_updated", _on_luck_updated, body.LUCK
-		)
+		var ug_menu = body.get_node("CanvasLayer").get_node("upgrade_menu")
+		if not ug_menu.is_connected("luck_updated", _on_luck_updated):
+			body.get_node("CanvasLayer").get_node("upgrade_menu").connect(
+				"luck_updated", _on_luck_updated, body.LUCK
+			)
 func _on_body_exited(body: Node2D) -> void:
 	if body is submarine:
 		submarine_in_area = false
