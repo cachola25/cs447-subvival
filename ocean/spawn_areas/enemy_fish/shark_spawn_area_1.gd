@@ -20,8 +20,8 @@ func spawn_shark():
 	var spawn_pos = submarine_instance.global_position
 	var min_distance = 600
 	while spawn_pos.distance_to(submarine_instance.global_position) < min_distance:
-		var randX = randi_range(-1500,1500)
-		var randY = randi_range(-1500,1500)
+		var randX = randi_range(-2000,2000)
+		var randY = randi_range(-2000,2000)
 		spawn_pos = submarine_instance.global_position + Vector2(randX,randY)
 	
 	transform_position.origin = spawn_pos
