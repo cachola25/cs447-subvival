@@ -1,12 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://bl83olmxxaih4"]
+
+[gd_scene load_steps=39 format=3 uid="uid://8eomw0vycgln"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
-[ext_resource type="Texture2D" uid="uid://02j2gj17q3f" path="res://assets/ocean_assets/Background.png" id="1_iw4cm"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
-[ext_resource type="Texture2D" uid="uid://ce7j7865k04c8" path="res://assets/ocean_assets/Cliff Background.png" id="3_mfob6"]
-[ext_resource type="Texture2D" uid="uid://bmp4hjtdq40ns" path="res://assets/ocean_assets/Stone Cliffs.png" id="4_axisf"]
-[ext_resource type="Texture2D" uid="uid://cvtxta87iibbp" path="res://assets/ocean_assets/Background Shapes.png" id="4_jteeh"]
-[ext_resource type="Texture2D" uid="uid://grpt25kkw6kw" path="res://assets/ocean_assets/Background Sand.png" id="6_les7n"]
+[ext_resource type="PackedScene" uid="uid://bbm4jvmnp6uxo" path="res://menu_scenes/parallax_background.tscn" id="3_t6e1f"]
 [ext_resource type="Texture2D" uid="uid://dpq0pctjeav6d" path="res://assets/ocean_assets/Total Background.png" id="7_cjv7h"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/clownfish_spawn_area_1.gd" id="9_wbmaf"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/blue_tang_spawn_area_1.gd" id="10_n787b"]
@@ -21,6 +18,12 @@
 [ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="19_ehfsq"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kirq"]
+size = Vector2(1921, 10.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f4sm"]
+size = Vector2(10, 1086.63)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucri0"]
 radius = 2398.14
@@ -86,13 +89,13 @@ _data = {
 point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udfst"]
-radius = 5963.74
+radius = 4511.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umemo"]
 radius = 3675.18
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvcau"]
-radius = 2401.23
+radius = 5180.32
 
 [node name="Ocean 2" type="Node2D"]
 script = ExtResource("1_6pvg6")
@@ -102,6 +105,10 @@ metadata/MAX_EEL_IN_AREA = 5
 metadata/SWORDFISH_DAMAGE = 10
 metadata/SWORDFISH_SPEED = 600
 metadata/MAX_SWORDFISH_IN_AREA = 3
+metadata/SHARK_DAMAGE = 60
+metadata/SHARK_SPEED = 500
+metadata/MAX_SHARK_IN_AREA = 1
+metadata/SUBMARINE_POSITION = 0
 metadata/MAX_SHARK_IN_AREA = 1
 metadata/SHARK_DAMAGE = 60
 metadata/SHARK_SPEED = 600
@@ -113,42 +120,7 @@ offset_bottom = 1080.0
 scale = Vector2(8, 8)
 texture = ExtResource("7_cjv7h")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scale = Vector2(8, 8)
-transform = Transform2D(8, 0, 0, 8, 0, 0)
-follow_viewport_enabled = true
-follow_viewport_scale = 0.1
-
-[node name="Background Ocean" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background Ocean"]
-texture = ExtResource("1_iw4cm")
-centered = false
-
-[node name="Background shapes" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1, 0.9)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background shapes"]
-texture = ExtResource("4_jteeh")
-centered = false
-
-[node name="Cliff Background" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cliff Background"]
-texture = ExtResource("3_mfob6")
-centered = false
-
-[node name="Stone Cliffs" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Stone Cliffs"]
-texture = ExtResource("4_axisf")
-centered = false
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-texture = ExtResource("6_les7n")
-centered = false
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_t6e1f")]
 
 [node name="submarine" parent="." instance=ExtResource("2_jkcuj")]
 z_index = 3
@@ -158,39 +130,52 @@ position = Vector2(321, 181)
 tile_set = SubResource("TileSet_iqnev")
 
 [node name="CliffCollisionArea" type="StaticBody2D" parent="."]
+position = Vector2(20, 0)
 scale = Vector2(8, 8)
 collision_layer = 8
 collision_mask = 8
 
-[node name="GroundCollision" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="GroundCollision" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(9, 966, 37, 954, 213, 969, 370, 940, 468, 961, 523, 958, 575, 936, 608, 935, 663, 952, 707, 947, 744, 943, 772, 932, 834, 946, 913, 967, 962, 963, 1018, 935, 1267, 970, 1290, 965, 1410, 979, 1441, 978, 1492, 967, 1539, 964, 1602, 941, 1750, 924, 1811, 925, 1919, 938, 1920, 1081, 0, 1079, 0, 968)
 
-[node name="CliffCollision1" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision1" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(0, 195, 25, 186, 62, 181, 130, 185, 149, 197, 161, 214, 165, 236, 166, 252, 165, 266, 152, 295, 147, 317, 148, 331, 151, 358, 157, 376, 162, 385, 166, 404, 166, 415, 160, 427, 157, 446, 156, 468, 155, 494, 156, 518, 160, 536, 160, 544, 156, 563, 158, 579, 158, 603, 166, 619, 175, 634, 177, 644, 177, 659, 177, 672, 175, 685, 171, 698, 155, 717, 143, 726, 121, 732, 97, 739, 64, 740, 29, 733, 1, 695)
 
-[node name="CliffCollision2" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision2" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(439, 193, 515, 172, 577, 162, 605, 163, 614, 167, 621, 173, 628, 177, 676, 178, 725, 173, 780, 161, 860, 141, 877, 145, 897, 146, 956, 169, 986, 177, 1029, 177, 1081, 161, 1098, 155, 1161, 155, 1180, 161, 1191, 176, 1201, 181, 1209, 195, 1209, 201, 1200, 225, 1193, 244, 1188, 276, 1176, 302, 1122, 322, 1048, 330, 988, 342, 967, 351, 898, 365, 843, 339, 812, 327, 795, 325, 779, 326, 759, 335, 734, 353, 720, 360, 700, 374, 690, 378, 658, 378, 631, 388, 623, 394, 617, 402, 616, 412, 619, 424, 619, 435, 617, 454, 610, 466, 588, 473, 568, 482, 552, 491, 535, 502, 434, 521, 402, 522, 395, 513, 386, 478, 388, 475, 388, 463, 374, 382, 384, 340, 391, 331, 399, 302, 399, 288, 410, 258, 417, 230, 429, 203)
 
-[node name="CliffCollision3" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision3" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(1619, 117, 1656, 106, 1681, 105, 1739, 114, 1775, 114, 1819, 107, 1857, 104, 1897, 107, 1920, 111, 1919, 477, 1907, 479, 1895, 476, 1876, 468, 1861, 463, 1848, 461, 1824, 461, 1815, 463, 1803, 464, 1767, 442, 1762, 431, 1751, 423, 1736, 414, 1720, 408, 1706, 399, 1692, 385, 1682, 374, 1675, 372, 1672, 347, 1664, 327, 1656, 315, 1644, 305, 1625, 298, 1615, 294, 1609, 280, 1610, 267, 1603, 236, 1598, 189, 1599, 164, 1606, 142)
 
-[node name="CliffCollision4" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision4" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(397, 642, 406, 634, 416, 629, 427, 624, 450, 617, 467, 611, 505, 600, 543, 595, 577, 595, 602, 601, 622, 610, 637, 625, 637, 654, 635, 660, 635, 683, 647, 727, 646, 730, 646, 749, 647, 751, 647, 763, 643, 776, 643, 782, 650, 790, 654, 808, 661, 825, 661, 835, 658, 843, 658, 868, 650, 876, 640, 878, 633, 878, 620, 875, 615, 872, 613, 868, 615, 863, 616, 844, 611, 824, 606, 815, 592, 803, 586, 796, 584, 785, 565, 766, 552, 759, 542, 756, 524, 756, 498, 756, 480, 762, 471, 771, 461, 790, 456, 807, 453, 828, 443, 831, 428, 828, 387, 816, 381, 799, 374, 778, 372, 759, 372, 737, 373, 726, 388, 680)
 
-[node name="CliffCollision5" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision5" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(386, 859, 392, 853, 405, 854, 425, 859, 443, 866, 450, 875, 454, 885, 453, 889, 453, 897, 452, 900, 452, 922, 456, 940, 460, 949, 464, 954, 473, 960, 480, 961, 488, 962, 497, 968, 515, 969, 525, 965, 536, 957, 545, 947, 547, 944, 548, 945, 545, 953, 542, 961, 541, 966, 543, 971, 547, 976, 551, 978, 558, 978, 563, 975, 568, 967, 568, 966, 576, 966, 583, 963, 592, 954, 598, 943, 601, 929, 602, 917, 616, 909, 622, 908, 633, 908, 650, 915, 651, 918, 645, 936, 645, 939, 640, 949, 639, 953, 633, 962, 614, 991, 602, 1000, 594, 1000, 586, 1004, 577, 1003, 567, 998, 563, 994, 557, 985, 553, 983, 546, 979, 540, 972, 539, 970, 534, 970, 532, 974, 532, 983, 527, 994, 516, 1002, 511, 1004, 502, 1003, 497, 1000, 490, 996, 486, 990, 482, 983, 480, 976, 480, 967, 479, 967, 479, 969, 478, 970, 478, 1038, 476, 1045, 471, 1052, 466, 1056, 461, 1059, 455, 1060, 446, 1060, 438, 1056, 431, 1049, 427, 1042, 425, 1033, 425, 1021, 415, 1025, 401, 1022, 390, 1011, 383, 992, 380, 979, 380, 966, 378, 955, 379, 953, 381, 954, 385, 963, 389, 967, 395, 975, 403, 984, 415, 984, 420, 978, 421, 966, 402, 933, 401, 928, 401, 915, 396, 900, 391, 893, 391, 882, 387, 872)
 
-[node name="CliffCollision6" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision6" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(1010, 397, 1029, 377, 1044, 371, 1125, 363, 1163, 363, 1180, 370, 1186, 375, 1197, 418, 1200, 424, 1207, 468, 1204, 482, 1197, 497, 1193, 512, 1193, 542, 1196, 549, 1210, 562, 1229, 572, 1266, 589, 1282, 592, 1308, 596, 1313, 596, 1329, 605, 1334, 609, 1338, 619, 1341, 629, 1344, 645, 1345, 653, 1344, 660, 1341, 667, 1333, 675, 1323, 682, 1310, 690, 1299, 695, 1290, 699, 1281, 705, 1260, 705, 1251, 702, 1236, 699, 1219, 696, 1202, 695, 1178, 694, 1163, 698, 1144, 698, 1113, 703, 1090, 703, 1075, 696, 1049, 686, 1026, 673, 973, 653, 963, 648, 960, 647, 956, 642, 955, 631, 954, 630, 954, 621, 955, 615, 965, 603, 967, 590, 969, 568, 962, 544, 957, 533, 958, 522, 956, 500, 961, 489, 977, 464, 996, 447, 1004, 440, 1010, 428)
 
-[node name="CliffCollision7" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision7" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(921, 686, 987, 704, 995, 710, 1004, 722, 1015, 736, 1010, 757, 998, 769, 990, 779, 984, 794, 981, 801, 981, 824, 983, 829, 979, 840, 976, 845, 974, 853, 967, 868, 966, 877, 951, 911, 946, 917, 942, 928, 937, 939, 930, 949, 927, 953, 920, 968, 915, 973, 908, 985, 900, 995, 894, 1008, 885, 1020, 876, 1026, 868, 1027, 858, 1026, 849, 1020, 839, 1015, 837, 1016, 832, 1027, 823, 1033, 816, 1036, 807, 1036, 800, 1033, 795, 1030, 793, 1029, 791, 1029, 790, 1031, 778, 1029, 769, 1024, 762, 1012, 763, 1010, 761, 1008, 757, 1008, 753, 1013, 748, 1019, 739, 1023, 734, 1024, 726, 1024, 720, 1021, 714, 1016, 709, 1008, 708, 997, 708, 981, 712, 983, 715, 985, 719, 985, 723, 983, 730, 976, 738, 955, 749, 931, 760, 915, 774, 888, 791, 866, 808, 845, 819, 829, 830, 809, 841, 781, 845, 777, 849, 754, 859, 735, 868, 722, 878, 714, 888, 701, 894, 692, 903, 688, 912, 686, 920, 686)
 
-[node name="CliffCollision8" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision8" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(1424, 639, 1448, 630, 1452, 630, 1457, 633, 1475, 633, 1483, 638, 1508, 644, 1520, 655, 1549, 673, 1558, 680, 1581, 685, 1585, 686, 1588, 690, 1604, 709, 1616, 734, 1628, 757, 1639, 777, 1650, 793, 1649, 802, 1646, 815, 1642, 825, 1638, 825, 1626, 835, 1612, 849, 1605, 865, 1604, 870, 1603, 873, 1603, 896, 1610, 919, 1611, 923, 1607, 941, 1606, 955, 1606, 967, 1613, 975, 1616, 975, 1616, 977, 1604, 1013, 1603, 1021, 1602, 1026, 1600, 1028, 1600, 1040, 1597, 1047, 1593, 1053, 1581, 1060, 1571, 1060, 1563, 1057, 1556, 1050, 1551, 1052, 1541, 1051, 1530, 1045, 1523, 1036, 1520, 1025, 1521, 1001, 1516, 1005, 1509, 1007, 1500, 1007, 1489, 1000, 1485, 993, 1491, 979, 1505, 947, 1513, 925, 1512, 898, 1510, 874, 1508, 856, 1502, 839, 1492, 822, 1492, 804, 1485, 787, 1471, 772, 1455, 759, 1442, 754, 1433, 754, 1419, 745, 1407, 742, 1397, 724, 1393, 716, 1393, 703, 1397, 681, 1407, 663, 1418, 647)
 
-[node name="CliffCollision9" type="CollisionPolygon2D" parent="CliffCollisionArea"]
+[node name="CliffCollision9" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(1678, 690, 1743, 673, 1795, 668, 1851, 665, 1920, 675, 1920, 744, 1915, 743, 1883, 743, 1866, 745, 1843, 753, 1822, 758, 1810, 762, 1795, 768, 1774, 773, 1762, 776, 1751, 779, 1747, 782, 1733, 781, 1723, 777, 1711, 770, 1702, 763, 1686, 748, 1678, 733, 1672, 715, 1671, 706, 1673, 696)
+
+[node name="Top" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(960.5, -4.9375)
+shape = SubResource("RectangleShape2D_1kirq")
+
+[node name="Left" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(-5, 542.813)
+shape = SubResource("RectangleShape2D_3f4sm")
+
+[node name="Right" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(1920, 538.75)
+shape = SubResource("RectangleShape2D_3f4sm")
 
 [node name="clownfish_spawn_area_1" type="Area2D" parent="."]
 position = Vector2(-1897, -382)
@@ -306,7 +291,7 @@ position = Vector2(-9465, -3309)
 script = ExtResource("14_rt8tm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="eel_spawn_area_1"]
-position = Vector2(14095, 7722)
+position = Vector2(12815, 7218)
 shape = SubResource("CircleShape2D_udfst")
 
 [node name="spawn_delay_timer" type="Timer" parent="eel_spawn_area_1"]
@@ -317,7 +302,7 @@ position = Vector2(-1816, 480)
 script = ExtResource("15_weewt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="swordfish_spawn_area_1"]
-position = Vector2(11791, 3453)
+position = Vector2(11630, 3544)
 shape = SubResource("CircleShape2D_umemo")
 debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
 
@@ -329,7 +314,7 @@ position = Vector2(-906, -3210)
 script = ExtResource("16_t07ly")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shark_spawn_area_1"]
-position = Vector2(12996, 8533)
+position = Vector2(15989, 14660)
 shape = SubResource("CircleShape2D_pvcau")
 debug_color = Color(0.87007, 0.327028, 0.339665, 0.42)
 
