@@ -12,7 +12,7 @@ class_name submarine
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 var ARMOR = 0
-var SPEED = 5000
+var SPEED = 2000
 var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
@@ -73,9 +73,9 @@ func _process(delta):
 		direction.x += 1
 	if Input.is_action_just_pressed("release_bubble"):
 		#UNCOMMENT THIS TO TURN ON BUBBLE LIMITS
-		if oxygen_bar.value >= oxygen_bar.BUBBLE_COST:
-			spawn_bubble()
-		#spawn_bubble()
+		#if oxygen_bar.value >= oxygen_bar.BUBBLE_COST:
+			#spawn_bubble()
+		spawn_bubble()
 	
 	if direction.length() > 1:
 		direction = direction.normalized()

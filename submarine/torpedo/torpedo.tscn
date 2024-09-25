@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdgwtalgu3n4q"]
+
+[ext_resource type="Texture2D" uid="uid://be0bru22yeukt" path="res://assets/art/submarine/Torpedo.png" id="1_va82a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74x54"]
+size = Vector2(179, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yaqs"]
+atlas = ExtResource("1_va82a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk7g2"]
+atlas = ExtResource("1_va82a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8ivl"]
+atlas = ExtResource("1_va82a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i02b"]
+atlas = ExtResource("1_va82a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sueix"]
+atlas = ExtResource("1_va82a")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6x72"]
+atlas = ExtResource("1_va82a")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qflxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yaqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk7g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8ivl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i02b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sueix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6x72")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 10.0
+}]
+
+[node name="torpedo" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -1.5)
+shape = SubResource("RectangleShape2D_74x54")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.00002, 7.62939e-06)
+scale = Vector2(8.1875, 4.46875)
+sprite_frames = SubResource("SpriteFrames_qflxd")
+animation = &"firing"
+frame_progress = 0.291484
