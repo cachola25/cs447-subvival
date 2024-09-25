@@ -85,7 +85,7 @@ radius = 3681.07
 radius = 3675.18
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpmcc"]
-radius = 2401.23
+radius = 8323.1
 
 [node name="ocean" type="Node2D"]
 script = ExtResource("1_jhkga")
@@ -96,7 +96,7 @@ metadata/SWORDFISH_SPEED = 600
 metadata/SWORDFISH_DAMAGE = 10
 metadata/MAX_SWORDFISH_IN_AREA = 3
 metadata/SHARK_DAMAGE = 30
-metadata/SHARK_SPEED = 500
+metadata/SHARK_SPEED = 50
 metadata/MAX_SHARK_IN_AREA = 3
 
 [node name="background" type="TextureRect" parent="."]
@@ -110,8 +110,6 @@ texture = ExtResource("2_rpj2f")
 [node name="submarine" parent="." instance=ExtResource("3_4g2ps")]
 position = Vector2(959, 541)
 scale = Vector2(0.996654, 1)
-collision_layer = 9
-collision_mask = 9
 
 [node name="clownfish_spawn_area_1" type="Area2D" parent="."]
 collision_layer = 9
@@ -242,7 +240,7 @@ autostart = true
 script = ExtResource("11_iwwlm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shark_spawn_area_1"]
-position = Vector2(12996, 8533)
+position = Vector2(5084, 4421)
 shape = SubResource("CircleShape2D_cpmcc")
 debug_color = Color(0.87007, 0.327028, 0.339665, 0.42)
 

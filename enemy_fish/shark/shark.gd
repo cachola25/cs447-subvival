@@ -20,14 +20,12 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	ocean_scene = get_tree().root.get_child(0)
 
 func _physics_process(delta):
+	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")
+	var direction = (submarine_position - global_position).normalized()
+	velocity = direction * SPEED
 	rotation = velocity.angle()
-	if not hit_sub:
-		position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
-	var target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
-	position = position.move_toward(target_position, SPEED * delta)
-	look_at(target_position)
-	target_position = ocean_scene.get_meta("SUBMARINE_POSITION")
-	position = position.move_toward(target_position, 1.5 * SPEED * delta)
+	position += SPEED * Vector2.RIGHT.rotated(rotation) * delta
+	look_at(submarine_position)
 
 func _ready() -> void:
 	pass
@@ -45,5 +43,6 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 
 func _on_timer_timeout() -> void:
-	emit_signal("despawned")
-	queue_free()
+	pass
+	#emit_signal("despawned")
+	#queue_free()

@@ -12,7 +12,7 @@ class_name submarine
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 var ARMOR = 0
-var SPEED = 500
+var SPEED = 5000
 var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
@@ -48,10 +48,10 @@ func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
 	
 func _process(delta):
-	if is_submarine_destroyed():
-		var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
-		get_tree().root.get_child(0).queue_free()
-		get_tree().root.add_child(death_scene)
+	#if is_submarine_destroyed():
+		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
+		#get_tree().root.get_child(0).queue_free()
+		#get_tree().root.add_child(death_scene)
 		
 	var direction = Vector2.ZERO # (0,0d)
 	$AnimatedSprite2D.rotation = 0
@@ -118,6 +118,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		var curr_money = int(total_money.text.substr(1))
 		curr_money += body.get_meta("FISH_VALUE")
 		total_money.text = "$" + str(curr_money)
+		body.queue_free()
 	elif body.name.begins_with("bubble"):
 		body.get_node("AnimatedSprite2D").play("pop")
 	

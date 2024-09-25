@@ -2,8 +2,8 @@ extends Node2D
 
 class_name ocean
 
-const MAP_SCALE_X = 10
-const MAP_SCALE_Y = 10
+const MAP_SCALE_X = 8
+const MAP_SCALE_Y = 8
 
 @onready var submarine = $submarine
 var map_left_limit = 0
@@ -17,9 +17,10 @@ var eel_spawn_areas = []
 var update_damage_flag = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$background.z_index = 0
+	print()
 	map_right_limit = $background.size.x
 	map_bottom_limit = $background.size.y
+	
 	map_right_limit *= MAP_SCALE_X
 	map_bottom_limit *= MAP_SCALE_Y
 	submarine_camera = submarine.get_node("Camera2D")
