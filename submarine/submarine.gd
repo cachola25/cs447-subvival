@@ -12,10 +12,10 @@ var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
 var acceleration = 4000 
 var friction = 0.9
-var elapsed = 0.0
+var elapsed = 0.5
 var gravity = Vector2(0,10)
 var previous_direction = Vector2.ZERO
-var previous_rotation = -2
+var previous_rotation = -100
 
 signal discovered_new
 
@@ -50,39 +50,20 @@ func is_submarine_destroyed():
 func apply_movement_rotation(direction: Vector2, delta):
 	var target_rotation = 0
 	if direction.length() > 0:
-		if direction != previous_direction:
-			elapsed = 0.0
-			previous_direction = direction
-		if direction.x < 0:
-			$AnimatedSprite2D.flip_h = false
-		elif direction.x > 0:
-			$AnimatedSprite2D.flip_h = true
-		if direction.x == 0:
-			if $AnimatedSprite2D.flip_h:
-				if direction.y < 0:
-					target_rotation = -PI/2
-				elif direction.y > 0:
-					target_rotation = PI/2
-			else:
-				if direction.y < 0:
-					target_rotation = PI/2
-				elif direction.y > 0:
-					target_rotation = -PI/2
-		if direction.x != 0 and direction.y != 0:
-			if direction.x < 0:
-				target_rotation = direction.angle() - PI
-			else:
-				target_rotation = direction.angle()
+		target_rotation = direction.angle()
+		target_rotation = wrapf(target_rotation, -PI, PI)
+		var angle_difference = target_rotation - $AnimatedSprite2D.rotation
+		angle_difference = wrapf(angle_difference + PI, 0, 2 * PI) - PI
+		target_rotation = $AnimatedSprite2D.rotation + angle_difference
 	else:
-		previous_direction = Vector2.ZERO
-	if previous_rotation == -2:
-		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, target_rotation, elapsed)
-		previous_rotation = $AnimatedSprite2D.rotation
+		target_rotation = $AnimatedSprite2D.rotation
+	var rotation_speed = 5 * delta
+	$AnimatedSprite2D.rotation = lerp($AnimatedSprite2D.rotation, target_rotation, rotation_speed)
+	$AnimatedSprite2D.rotation = wrapf($AnimatedSprite2D.rotation, -PI, PI)
+	if $AnimatedSprite2D.rotation > PI / 2 or $AnimatedSprite2D.rotation < -PI / 2:
+			$AnimatedSprite2D.flip_v = true
 	else:
-		$AnimatedSprite2D.rotation = lerp_angle(previous_rotation, target_rotation, elapsed)
-		previous_rotation = $AnimatedSprite2D.rotation
-	if elapsed <= 1:
-		elapsed += delta
+		$AnimatedSprite2D.flip_v = false
 		
 func _process(delta):
 	#if is_submarine_destroyed():
@@ -91,8 +72,8 @@ func _process(delta):
 		#get_tree().root.add_child(death_scene)
 		
 	var direction = Vector2.ZERO # (0,0d)
-	$AnimatedSprite2D.rotation = 0
-	
+	if elapsed > 1:
+		elapsed = 1
 	if Input.is_action_just_pressed("display_user_menu"):
 		if get_tree().paused:
 			undisplay_user_menu()
