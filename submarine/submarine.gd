@@ -15,6 +15,7 @@ var friction = 0.9
 var elapsed = 0.0
 var gravity = Vector2(0,10)
 var previous_direction = Vector2.ZERO
+var previous_rotation = -2
 
 signal discovered_new
 
@@ -47,7 +48,7 @@ func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
 	
 func apply_movement_rotation(direction: Vector2, delta):
-	var target_rotation = $AnimatedSprite2D.rotation
+	var target_rotation = 0
 	if direction.length() > 0:
 		if direction != previous_direction:
 			elapsed = 0.0
@@ -74,7 +75,12 @@ func apply_movement_rotation(direction: Vector2, delta):
 				target_rotation = direction.angle()
 	else:
 		previous_direction = Vector2.ZERO
-	$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, target_rotation, elapsed)
+	if previous_rotation == -2:
+		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, target_rotation, elapsed)
+		previous_rotation = $AnimatedSprite2D.rotation
+	else:
+		$AnimatedSprite2D.rotation = lerp_angle(previous_rotation, target_rotation, elapsed)
+		previous_rotation = $AnimatedSprite2D.rotation
 	if elapsed <= 1:
 		elapsed += delta
 		
