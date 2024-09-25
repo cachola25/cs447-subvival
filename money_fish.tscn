@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://olrigl7mmkb6"]
+
+[ext_resource type="Script" path="res://money_fish.gd" id="1_4jxdb"]
+[ext_resource type="Texture2D" uid="uid://236qmiq8svu2" path="res://art/Fish/Clownfish Spritesheet.png" id="2_d8llm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp3nj"]
+size = Vector2(70, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivjo"]
+atlas = ExtResource("2_d8llm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tb68"]
+atlas = ExtResource("2_d8llm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_melhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ivjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tb68")
+}],
+"loop": true,
+"name": &"money_fish",
+"speed": 4.0
+}]
+
+[node name="money_fish" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_4jxdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0.5)
+shape = SubResource("RectangleShape2D_fp3nj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0.499998)
+scale = Vector2(2.21875, 1.73438)
+sprite_frames = SubResource("SpriteFrames_melhr")
+animation = &"money_fish"
+frame_progress = 0.427086
+flip_h = true
