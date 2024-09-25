@@ -1,24 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://3ym41mjej34v"]
+[gd_scene load_steps=9 format=3 uid="uid://3ym41mjej34v"]
 
-[ext_resource type="Texture2D" uid="uid://clct8ksqyc1r1" path="res://assets/art/enemy_fish/swordfish/32bit-swordfish.png" id="1_606q8"]
 [ext_resource type="Script" path="res://enemy_fish/swordfish/swordfish.gd" id="1_o5ukm"]
+[ext_resource type="Texture2D" uid="uid://bgxmtebs76kyn" path="res://assets/art/enemy_fish/swordfish/Updated Swordfish.png" id="2_4s36g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nchda"]
 size = Vector2(306.5, 154)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7otb"]
-atlas = ExtResource("1_606q8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_envve"]
+atlas = ExtResource("2_4s36g")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ierny"]
+atlas = ExtResource("2_4s36g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h11ld"]
+atlas = ExtResource("2_4s36g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw244"]
+atlas = ExtResource("2_4s36g")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l26bt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b7otb")
+"texture": SubResource("AtlasTexture_envve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ierny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h11ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw244")
 }],
 "loop": true,
 "name": &"swordfish_swim",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="swordfish" type="Area2D"]
@@ -35,7 +56,7 @@ position = Vector2(2, 0.999992)
 scale = Vector2(9.51563, 9.625)
 sprite_frames = SubResource("SpriteFrames_l26bt")
 animation = &"swordfish_swim"
-frame_progress = 0.113331
+frame_progress = 0.38049
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
