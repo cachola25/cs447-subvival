@@ -1,12 +1,5 @@
 extends CharacterBody2D
 
-######################################
-# Controls the subamrine's movements 
-# actions
-# A submarine should only collide with and do:
-#		- eel —> take damage
-#		- rocks —> collide regularly
-######################################
 class_name submarine
 
 @onready var total_money = $CanvasLayer/total_money
@@ -15,6 +8,7 @@ var ARMOR = 0
 var SPEED = 2000
 var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
+var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
 
 signal discovered_new
@@ -101,7 +95,8 @@ func _process(delta):
 				$AnimatedSprite2D.rotation = direction.angle() - PI
 			else:
 				$AnimatedSprite2D.rotation = direction.angle()
-	
+	if Input.is_action_just_pressed("fire_torpedo"):
+		fire_torpedo()
 	var collision_info = move_and_collide(direction * SPEED * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
@@ -125,3 +120,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "damage_taken":
 		$AnimatedSprite2D.play("submarine_default")
+		
+func fire_torpedo():
+	var torpedo = torpedo_scene.instantiate()
+	torpedo.position = position  # Start at submarine's position
+	get_parent().add_child(torpedo)  # Add to the scene

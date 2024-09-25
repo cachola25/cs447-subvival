@@ -23,7 +23,7 @@ animations = [{
 
 [node name="swordfish" type="Area2D"]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 264
 script = ExtResource("1_o5ukm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

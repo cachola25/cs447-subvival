@@ -44,6 +44,11 @@ func _on_body_entered(body: Node2D) -> void:
 		hit_sub = true
 		emit_signal("despawned")
 		queue_free()
+	elif body is torpedo:
+		print("swordfish hit by torpedo")
+		body.queue_free()
+		emit_signal("despawned")
+		queue_free()
 
 func _on_timer_timeout() -> void:
 	emit_signal("despawned")
