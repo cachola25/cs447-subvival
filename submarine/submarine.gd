@@ -10,6 +10,9 @@ var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
+var acceleration = 4000 
+var friction = 0.9
+var gravity = Vector2(0,10)
 
 signal discovered_new
 
@@ -41,6 +44,29 @@ func _ready():
 func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
 	
+func apply_movement_rotation(direction: Vector2):
+	if direction.length() > 0:
+		if direction.x < 0:
+			$AnimatedSprite2D.flip_h = false
+		elif direction.x > 0:
+			$AnimatedSprite2D.flip_h = true
+		elif direction.x == 0:
+			if $AnimatedSprite2D.flip_h:
+				if direction.y < 0:
+					$AnimatedSprite2D.rotation = -PI/2
+				elif direction.y > 0:
+					$AnimatedSprite2D.rotation = PI/2
+			else:
+				if direction.y < 0:
+					$AnimatedSprite2D.rotation = PI/2
+				elif direction.y > 0:
+					$AnimatedSprite2D.rotation = -PI/2
+		if direction.x != 0 and direction.y != 0:
+			if direction.x < 0:
+				$AnimatedSprite2D.rotation = direction.angle() - PI
+			else:
+				$AnimatedSprite2D.rotation = direction.angle()
+				
 func _process(delta):
 	#if is_submarine_destroyed():
 		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
@@ -73,31 +99,19 @@ func _process(delta):
 	
 	if direction.length() > 1:
 		direction = direction.normalized()
+	
+	if direction != Vector2.ZERO:
+		velocity += direction * acceleration * delta
+		velocity = velocity.limit_length(SPEED)
+	else:
+		velocity += gravity
 		
-	if direction.length() > 0:
-		if direction.x < 0:
-			$AnimatedSprite2D.flip_h = false
-		elif direction.x > 0:
-			$AnimatedSprite2D.flip_h = true
-		elif direction.x == 0:
-			if $AnimatedSprite2D.flip_h:
-				if direction.y < 0:
-					$AnimatedSprite2D.rotation = -PI/2
-				elif direction.y > 0:
-					$AnimatedSprite2D.rotation = PI/2
-			else:
-				if direction.y < 0:
-					$AnimatedSprite2D.rotation = PI/2
-				elif direction.y > 0:
-					$AnimatedSprite2D.rotation = -PI/2
-		if direction.x != 0 and direction.y != 0:
-			if direction.x < 0:
-				$AnimatedSprite2D.rotation = direction.angle() - PI
-			else:
-				$AnimatedSprite2D.rotation = direction.angle()
+	velocity *= friction
+	
+	apply_movement_rotation(direction)
 	if Input.is_action_just_pressed("fire_torpedo"):
 		fire_torpedo()
-	var collision_info = move_and_collide(direction * SPEED * delta)
+	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
 
@@ -123,5 +137,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		
 func fire_torpedo():
 	var torpedo = torpedo_scene.instantiate()
-	torpedo.position = position  # Start at submarine's position
-	get_parent().add_child(torpedo)  # Add to the scene
+	torpedo.position = position
+	get_parent().add_child(torpedo)
