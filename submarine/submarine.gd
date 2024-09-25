@@ -12,7 +12,9 @@ var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
 var acceleration = 4000 
 var friction = 0.9
+var elapsed = 0.0
 var gravity = Vector2(0,10)
+var previous_direction = Vector2.ZERO
 
 signal discovered_new
 
@@ -44,29 +46,38 @@ func _ready():
 func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
 	
-func apply_movement_rotation(direction: Vector2):
+func apply_movement_rotation(direction: Vector2, delta):
+	var target_rotation = $AnimatedSprite2D.rotation
 	if direction.length() > 0:
+		if direction != previous_direction:
+			elapsed = 0.0
+			previous_direction = direction
 		if direction.x < 0:
 			$AnimatedSprite2D.flip_h = false
 		elif direction.x > 0:
 			$AnimatedSprite2D.flip_h = true
-		elif direction.x == 0:
+		if direction.x == 0:
 			if $AnimatedSprite2D.flip_h:
 				if direction.y < 0:
-					$AnimatedSprite2D.rotation = -PI/2
+					target_rotation = -PI/2
 				elif direction.y > 0:
-					$AnimatedSprite2D.rotation = PI/2
+					target_rotation = PI/2
 			else:
 				if direction.y < 0:
-					$AnimatedSprite2D.rotation = PI/2
+					target_rotation = PI/2
 				elif direction.y > 0:
-					$AnimatedSprite2D.rotation = -PI/2
+					target_rotation = -PI/2
 		if direction.x != 0 and direction.y != 0:
 			if direction.x < 0:
-				$AnimatedSprite2D.rotation = direction.angle() - PI
+				target_rotation = direction.angle() - PI
 			else:
-				$AnimatedSprite2D.rotation = direction.angle()
-				
+				target_rotation = direction.angle()
+	else:
+		previous_direction = Vector2.ZERO
+	$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, target_rotation, elapsed)
+	if elapsed <= 1:
+		elapsed += delta
+		
 func _process(delta):
 	#if is_submarine_destroyed():
 		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
@@ -108,7 +119,7 @@ func _process(delta):
 		
 	velocity *= friction
 	
-	apply_movement_rotation(direction)
+	apply_movement_rotation(direction, delta)
 	if Input.is_action_just_pressed("fire_torpedo"):
 		fire_torpedo()
 	var collision_info = move_and_collide(velocity * delta)
