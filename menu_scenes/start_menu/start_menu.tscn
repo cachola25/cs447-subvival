@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dssmthkwf8q31" path="res://assets/art/Bubble/Empty Bubble.png" id="6_gdfyx"]
 [ext_resource type="Texture2D" uid="uid://cvqgnvanr2m7d" path="res://assets/art/Bubble/Bubble Clownfish.png" id="7_ioawl"]
 [ext_resource type="Texture2D" uid="uid://duyni0d3rw5bk" path="res://assets/art/enemy_fish/Eel/Eel 1.png" id="8_wdj36"]
-[ext_resource type="AudioStream" uid="uid://en8buqh0lsbb" path="res://assets/sounds/start_menu.mp3" id="9_nem1b"]
+[ext_resource type="AudioStream" uid="uid://c6fkq3drbtxqm" path="res://assets/sounds/start_menu.mp3" id="9_nem1b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dkb"]
 bg_color = Color(0, 0, 0, 1)
