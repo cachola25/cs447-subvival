@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://blv21qiq5wvtm"]
+
+[ext_resource type="Script" path="res://menu_scenes/help_menu/help_scene.gd" id="1_nogxq"]
+
+[node name="help_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 3138.0
+offset_bottom = 2908.0
+script = ExtResource("1_nogxq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -12.0
+offset_right = 1949.0
+offset_bottom = 1021.0
+
+[node name="title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Subvival"
+horizontal_alignment = 1
+
+[node name="instructions" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "How to Play"
+
+[node name="controls" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "WASD"
+
+[node name="close" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Exit Help Menu"
+
+[connection signal="pressed" from="Panel/VBoxContainer/close" to="." method="_on_close_pressed"]
