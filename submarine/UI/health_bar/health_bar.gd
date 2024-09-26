@@ -20,6 +20,12 @@ func _process(delta: float) -> void:
 	else:
 		if $health_regen_timer.is_stopped():
 			$health_regen_timer.start()
+	if value <= max_value / 4:
+		if not $low_health.playing:
+			$low_health.play(1)
+	else:
+		if $low_health.playing:
+			$low_health.stop()
 
 
 func _on_health_regen_timer_timeout() -> void:

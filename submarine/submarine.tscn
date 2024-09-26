@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=36 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
 [ext_resource type="Texture2D" uid="uid://bnhxeo1giqu83" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="3_00n82"]
 [ext_resource type="Script" path="res://submarine/sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="Script" path="res://submarine/UI/health_bar/health_bar.gd" id="5_sriyo"]
+[ext_resource type="AudioStream" uid="uid://n7r2xl1ke5ty" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
 [ext_resource type="Texture2D" uid="uid://bywvdjp7cgytu" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
 [ext_resource type="Script" path="res://submarine/UI/oxygen_bar/oxygen_bar.gd" id="6_5wr0v"]
 [ext_resource type="Texture2D" uid="uid://bbtts2da5a1l0" path="res://assets/art/GUI/upgrade_menu/o2.png" id="8_fmifh"]
@@ -122,6 +123,11 @@ wait_time = 5.0
 position = Vector2(24, 23)
 scale = Vector2(0.0747071, 0.0683594)
 texture = ExtResource("6_4qh78")
+
+[node name="low_health" type="AudioStreamPlayer" parent="CanvasLayer/health_bar"]
+stream = ExtResource("6_1n6uy")
+pitch_scale = 0.4
+parameters/looping = true
 
 [node name="oxygen_bar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 1079.0
