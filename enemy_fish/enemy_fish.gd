@@ -1,14 +1,13 @@
-extends enemy_fish
+extends Area2D
 
-var health = 100;
+class_name enemy_fish
 
+var enemy_fish_type = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (health == 0):
-		get_tree().change_scene(load("res://menu_scenes/death_screen/death_screen.tscn"))
-	
+	pass

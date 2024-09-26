@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 class_name submarine
 
+const TOTAL_MONEY_FISH = 5
+const UPGRADES_LIST = ["o2", "armor", "health", "luck"]
+
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 var ARMOR = 0
@@ -29,15 +32,29 @@ func spawn_bubble():
 	get_parent().add_child(bubble)
 	oxygen_bar.value -= oxygen_bar.BUBBLE_COST
 	
+func display_final_compendium():
+	if discovered_fish.size() != TOTAL_MONEY_FISH:
+		return false
+	for upgrade in $CanvasLayer/upgrade_menu.get_children():
+		if upgrade.name in UPGRADES_LIST:
+			var progress_bar = upgrade.name+"_upgrade_progress"
+			var progress_bar_node = upgrade.get_node(progress_bar)
+			if not (progress_bar_node.value >= progress_bar_node.max_value):
+				return false
+	return true
+	
+		
 func display_user_menu():
 	$CanvasLayer/fish_compendium.visible = true
 	$CanvasLayer/upgrade_menu.visible = true
+	$CanvasLayer/enemy_fish_compendium.visible = display_final_compendium()
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_tree().paused = true
 	
 func undisplay_user_menu():
 	$CanvasLayer/fish_compendium.visible = false
 	$CanvasLayer/upgrade_menu.visible = false
+	$CanvasLayer/enemy_fish_compendium.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
 	
@@ -45,6 +62,7 @@ func _ready():
 	$AnimatedSprite2D.play("submarine_default")
 	$CanvasLayer/upgrade_menu.visible = false
 	$CanvasLayer/fish_compendium.visible = false
+	$CanvasLayer/enemy_fish_compendium.visible = false
 	
 func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value

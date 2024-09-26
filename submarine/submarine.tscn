@@ -1,12 +1,12 @@
-[gd_scene load_steps=38 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=39 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
 [ext_resource type="Texture2D" uid="uid://bnhxeo1giqu83" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="3_00n82"]
-[ext_resource type="Texture2D" uid="uid://pw52aosb7r16" path="res://assets/art/GUI/upgrade_menu/NuxButton.png" id="4_4csxp"]
+[ext_resource type="Texture2D" uid="uid://3v0h43a6cfh8" path="res://assets/art/GUI/upgrade_menu/NuxButton.png" id="4_4csxp"]
 [ext_resource type="Script" path="res://submarine/sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="Script" path="res://submarine/UI/health_bar/health_bar.gd" id="5_sriyo"]
-[ext_resource type="AudioStream" uid="uid://e7dbva7igf52" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
+[ext_resource type="AudioStream" uid="uid://n7r2xl1ke5ty" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
 [ext_resource type="Texture2D" uid="uid://bywvdjp7cgytu" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
 [ext_resource type="Script" path="res://submarine/UI/oxygen_bar/oxygen_bar.gd" id="6_5wr0v"]
 [ext_resource type="Texture2D" uid="uid://bbtts2da5a1l0" path="res://assets/art/GUI/upgrade_menu/o2.png" id="8_fmifh"]
@@ -24,11 +24,12 @@
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/health/health_upgrade.gd" id="17_f0xre"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/luck/luck_upgrade.gd" id="18_bnfrb"]
 [ext_resource type="Texture2D" uid="uid://dexe67kh7alab" path="res://assets/art/GUI/upgrade_menu/clover.png" id="18_p8wfa"]
-[ext_resource type="Texture2D" uid="uid://c6w8fuspy5c5e" path="res://assets/art/GUI/upgrade_menu/NuxButtonPressed.png" id="18_tr3ih"]
+[ext_resource type="Texture2D" uid="uid://c4auaxw162ct7" path="res://assets/art/GUI/upgrade_menu/NuxButtonPressed.png" id="18_tr3ih"]
 [ext_resource type="Texture2D" uid="uid://bctdmecmj12kh" path="res://assets/art/GUI/compendium/undiscovered_fish.png" id="20_3amhb"]
 [ext_resource type="Script" path="res://submarine/UI/fish_compendium.gd" id="20_3p7ap"]
 [ext_resource type="Texture2D" uid="uid://ldexuhrnijjc" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
 [ext_resource type="Texture2D" uid="uid://bx1egd3xvne7q" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
+[ext_resource type="AudioStream" uid="uid://cvgdkij4yx062" path="res://assets/sounds/submarine_moving.MP3" id="28_1ex1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -81,7 +82,7 @@ collision_mask = 9
 script = ExtResource("1_uaken")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.5, 0.5)
 
 [node name="scoring_zone" type="Area2D" parent="Camera2D"]
 collision_layer = 33
@@ -245,6 +246,7 @@ scale = Vector2(5.96875, 5.71875)
 texture = ExtResource("13_3rcuf")
 
 [node name="NuxModeButton" type="TextureButton" parent="CanvasLayer/upgrade_menu"]
+layout_mode = 0
 offset_left = 233.0
 offset_top = 888.0
 offset_right = 607.0
@@ -572,6 +574,43 @@ texture = ExtResource("21_5xm55")
 position = Vector2(-151, 83)
 scale = Vector2(0.133789, 0.115234)
 texture = ExtResource("22_mjqdk")
+
+[node name="enemy_fish_compendium" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1315.0
+offset_top = 473.0
+offset_right = 1355.0
+offset_bottom = 513.0
+
+[node name="title" type="Label" parent="CanvasLayer/enemy_fish_compendium"]
+offset_left = 94.0
+offset_top = -94.0
+offset_right = 290.0
+offset_bottom = -71.0
+scale = Vector2(2.07624, 2.09309)
+text = "Enemy Fish Compendium"
+label_settings = SubResource("LabelSettings_q08o6")
+
+[node name="shark" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
+position = Vector2(66, 67)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="swordfish" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
+position = Vector2(300, 70)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="eel" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
+position = Vector2(518, 70)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="moving_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_1ex1o")
+volume_db = -8.0
+parameters/looping = true
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

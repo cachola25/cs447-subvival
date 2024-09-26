@@ -1,4 +1,4 @@
-extends Area2D
+extends enemy_fish
 
 class_name swordfish
 
@@ -21,6 +21,7 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	DAMAGE_DEALT = _DAMAGE_DEALT
 	velocity = direction * SPEED
 	ocean_scene = get_tree().root.get_child(0)
+	enemy_fish_type = "swordfish"
 
 func _physics_process(delta):
 	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")

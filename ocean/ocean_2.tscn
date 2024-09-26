@@ -1,10 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=38 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
 [ext_resource type="PackedScene" uid="uid://bbm4jvmnp6uxo" path="res://menu_scenes/parallax_background.tscn" id="3_t6e1f"]
-[ext_resource type="Script" path="res://ocean/octopusPath.gd" id="5_gcyu1"]
-[ext_resource type="PackedScene" uid="uid://ct4eupmso5e2o" path="res://enemy_fish/octopus/octopus.tscn" id="5_vgj08"]
 [ext_resource type="Texture2D" uid="uid://dpq0pctjeav6d" path="res://assets/ocean_assets/Total Background.png" id="7_cjv7h"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/clownfish_spawn_area_1.gd" id="9_wbmaf"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/blue_tang_spawn_area_1.gd" id="10_n787b"]
@@ -13,21 +11,15 @@
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/turtle_spawn_area_1.gd" id="13_chf3f"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/eel_spawn_area_1.gd" id="14_rt8tm"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/swordfish_spawn_area_1.gd" id="15_weewt"]
-[ext_resource type="AudioStream" uid="uid://cx660uj7kyggt" path="res://assets/sounds/background_ambiance.mp3" id="16_f3l5o"]
+[ext_resource type="AudioStream" uid="uid://c5pjpbocyq54m" path="res://assets/sounds/background_ambiance.mp3" id="16_f3l5o"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/shark_spawn_area_1.gd" id="16_t07ly"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://submarine/UI/pause_menu/pause_menu.tscn" id="17_xqj6h"]
-[ext_resource type="AudioStream" uid="uid://y5r730o6iq30" path="res://assets/sounds/swordfish_hit_sub.mp3" id="17_y8k1h"]
-[ext_resource type="AudioStream" uid="uid://b88hxdq66rllw" path="res://assets/sounds/shark_bite.MP3" id="18_3patq"]
+[ext_resource type="AudioStream" uid="uid://c4ihfo6x7l0kg" path="res://assets/sounds/swordfish_hit_sub.mp3" id="17_y8k1h"]
+[ext_resource type="AudioStream" uid="uid://cnxggw4tftgie" path="res://assets/sounds/shark_bite.MP3" id="18_3patq"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
 [ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="19_ehfsq"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
-
-[sub_resource type="Curve2D" id="Curve2D_r8xg1"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2162, 1286, 0, 0, 0, 0, 2105, 2710, 0, 0, 0, 0, 2076, 4447, 0, 0, 0, 0, 2262, 7110, 0, 0, 0, 0, 624, 6924, 0, 0, 0, 0, 1365, 6241, 0, 0, 0, 0, 2800, 6658, 0, 0, 0, 0, 3941, 6797, 0, 0, 0, 0, 4411, 7101, 0, 0, 0, 0, 5621, 7170, 0, 0, 0, 0, 5931, 6381, 0, 0, 0, 0, 6398, 3399, 0, 0, 0, 0, 8076, 2928, 0, 0, 0, 0, 9646, 2629, 0, 0, 0, 0, 10952, 3179, 0, 0, 0, 0, 11137, 4653, 0, 0, 0, 0, 10539, 6846, 0, 0, 0, 0, 9016, 6141, 0, 0, 0, 0, 8063, 5489, 0, 0, 0, 0, 7290, 5263, 0, 0, 0, 0, 4527, 4330, 0, 0, 0, 0, 2827, 4639, 0, 0, 0, 0, 2864, 731, 0, 0, 0, 0, 10538, 731, 0, 0, 0, 0, 11880, 2399, 0, 0, 0, 0, 12786, 4309, 0, 0, 0, 0, 13627, 6883, 0, 0, 0, 0, 14658, 7194, 0, 0, 0, 0, 15015, 6303, 0, 0, 0, 0, 13419, 6545, 0, 0, 0, 0, 12538, 3233, 0, 0, 0, 0, 9724, 423, 0, 0, 0, 0, 2240, 507, 0, 0, 0, 0, 2162, 1286)
-}
-point_count = 34
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kirq"]
 size = Vector2(1921, 10.125)
@@ -136,19 +128,8 @@ position = Vector2(321, 181)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_iqnev")
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_r8xg1")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(2162, 1286)
-rotation = 1.6108
-script = ExtResource("5_gcyu1")
-
-[node name="Octopus" parent="Path2D/PathFollow2D" instance=ExtResource("5_vgj08")]
-rotation = 3.14159
-scale = Vector2(3, 3)
-
 [node name="CollisionArea" type="StaticBody2D" parent="."]
+visible = false
 scale = Vector2(8, 8)
 collision_layer = 8
 collision_mask = 8

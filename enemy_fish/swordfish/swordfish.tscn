@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://3ym41mjej34v"]
 
 [ext_resource type="Script" path="res://enemy_fish/swordfish/swordfish.gd" id="1_o5ukm"]
-[ext_resource type="Texture2D" uid="uid://col22wcp4xu6b" path="res://assets/art/enemy_fish/swordfish/Updated Swordfish.png" id="2_4s36g"]
+[ext_resource type="Texture2D" uid="uid://bgxmtebs76kyn" path="res://assets/art/enemy_fish/swordfish/Updated Swordfish.png" id="2_4s36g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nchda"]
 size = Vector2(306.5, 154)
