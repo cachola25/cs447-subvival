@@ -2,20 +2,25 @@ extends CharacterBody2D
 
 class_name submarine
 
+const TOTAL_MONEY_FISH = 5
+const UPGRADES_LIST = ["o2", "armor", "health", "luck"]
+
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 var ARMOR = 0
-var SPEED = 2000
+var SPEED = 20000
 var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
-var acceleration = 4000 
+var acceleration = 20000 
 var friction = 0.9
-var elapsed = 0.0
+var elapsed = 0.5
 var gravity = Vector2(0,10)
 var previous_direction = Vector2.ZERO
-var previous_rotation = -2
+var previous_rotation = -100
+
+var nuxMode = false;
 
 signal discovered_new
 
@@ -27,15 +32,29 @@ func spawn_bubble():
 	get_parent().add_child(bubble)
 	oxygen_bar.value -= oxygen_bar.BUBBLE_COST
 	
+func display_final_compendium():
+	if discovered_fish.size() != TOTAL_MONEY_FISH:
+		return false
+	for upgrade in $CanvasLayer/upgrade_menu.get_children():
+		if upgrade.name in UPGRADES_LIST:
+			var progress_bar = upgrade.name+"_upgrade_progress"
+			var progress_bar_node = upgrade.get_node(progress_bar)
+			if not (progress_bar_node.value >= progress_bar_node.max_value):
+				return false
+	return true
+	
+		
 func display_user_menu():
 	$CanvasLayer/fish_compendium.visible = true
 	$CanvasLayer/upgrade_menu.visible = true
+	$CanvasLayer/enemy_fish_compendium.visible = display_final_compendium()
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_tree().paused = true
 	
 func undisplay_user_menu():
 	$CanvasLayer/fish_compendium.visible = false
 	$CanvasLayer/upgrade_menu.visible = false
+	$CanvasLayer/enemy_fish_compendium.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
 	
@@ -43,6 +62,7 @@ func _ready():
 	$AnimatedSprite2D.play("submarine_default")
 	$CanvasLayer/upgrade_menu.visible = false
 	$CanvasLayer/fish_compendium.visible = false
+	$CanvasLayer/enemy_fish_compendium.visible = false
 	
 func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
@@ -50,39 +70,20 @@ func is_submarine_destroyed():
 func apply_movement_rotation(direction: Vector2, delta):
 	var target_rotation = 0
 	if direction.length() > 0:
-		if direction != previous_direction:
-			elapsed = 0.0
-			previous_direction = direction
-		if direction.x < 0:
-			$AnimatedSprite2D.flip_h = false
-		elif direction.x > 0:
-			$AnimatedSprite2D.flip_h = true
-		if direction.x == 0:
-			if $AnimatedSprite2D.flip_h:
-				if direction.y < 0:
-					target_rotation = -PI/2
-				elif direction.y > 0:
-					target_rotation = PI/2
-			else:
-				if direction.y < 0:
-					target_rotation = PI/2
-				elif direction.y > 0:
-					target_rotation = -PI/2
-		if direction.x != 0 and direction.y != 0:
-			if direction.x < 0:
-				target_rotation = direction.angle() - PI
-			else:
-				target_rotation = direction.angle()
+		target_rotation = direction.angle()
+		target_rotation = wrapf(target_rotation, -PI, PI)
+		var angle_difference = target_rotation - $AnimatedSprite2D.rotation
+		angle_difference = wrapf(angle_difference + PI, 0, 2 * PI) - PI
+		target_rotation = $AnimatedSprite2D.rotation + angle_difference
 	else:
-		previous_direction = Vector2.ZERO
-	if previous_rotation == -2:
-		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, target_rotation, elapsed)
-		previous_rotation = $AnimatedSprite2D.rotation
+		target_rotation = $AnimatedSprite2D.rotation
+	var rotation_speed = 5 * delta
+	$AnimatedSprite2D.rotation = lerp($AnimatedSprite2D.rotation, target_rotation, rotation_speed)
+	$AnimatedSprite2D.rotation = wrapf($AnimatedSprite2D.rotation, -PI, PI)
+	if $AnimatedSprite2D.rotation > PI / 2 or $AnimatedSprite2D.rotation < -PI / 2:
+			$AnimatedSprite2D.flip_v = true
 	else:
-		$AnimatedSprite2D.rotation = lerp_angle(previous_rotation, target_rotation, elapsed)
-		previous_rotation = $AnimatedSprite2D.rotation
-	if elapsed <= 1:
-		elapsed += delta
+		$AnimatedSprite2D.flip_v = false
 		
 func _process(delta):
 	#if is_submarine_destroyed():
@@ -91,8 +92,8 @@ func _process(delta):
 		#get_tree().root.add_child(death_scene)
 		
 	var direction = Vector2.ZERO # (0,0d)
-	$AnimatedSprite2D.rotation = 0
-	
+	if elapsed > 1:
+		elapsed = 1
 	if Input.is_action_just_pressed("display_user_menu"):
 		if get_tree().paused:
 			undisplay_user_menu()
@@ -120,8 +121,12 @@ func _process(delta):
 	if direction != Vector2.ZERO:
 		velocity += direction * acceleration * delta
 		velocity = velocity.limit_length(SPEED)
+		if not $moving_sound.playing:
+				$moving_sound.play()
 	else:
 		velocity += gravity
+		if $moving_sound.playing:
+			$moving_sound.stop()
 		
 	velocity *= friction
 	
@@ -156,3 +161,10 @@ func fire_torpedo():
 	var torpedo = torpedo_scene.instantiate()
 	torpedo.position = position
 	get_parent().add_child(torpedo)
+	
+
+func _on_nux_mode_button_button_down() -> void:
+	nuxMode = !nuxMode
+
+	if nuxMode:
+		pass

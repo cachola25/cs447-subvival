@@ -28,12 +28,16 @@ func spawn_eel():
 	var EEL_SPEED = get_parent().get_meta("EEL_SPEED")
 	var EEL_DAMAGE = get_parent().get_meta("EEL_DAMAGE")
 	eel_instance.connect("despawned", _on_eel_despawned)
+	eel_instance.connect("hit_sub", _on_hit_sub)
 	add_child(eel_instance)
 	eel_instance.start(transform_position, 
 		submarine_instance.global_position, EEL_SPEED, EEL_DAMAGE)
 	eel_instance.get_node("AnimatedSprite2D").play("eel_swim")
 	curr_num_eel += 1
-	
+
+func _on_hit_sub():
+	get_parent().get_node("electric_shock").play(1.8)
+	get_parent().get_node("sub_damaged").play()
 func _on_body_entered(body: Node2D) -> void:
 	submarine_in_area = true
 func _on_body_exited(body: Node2D) -> void:

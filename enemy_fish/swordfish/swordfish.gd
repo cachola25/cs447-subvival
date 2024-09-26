@@ -1,12 +1,12 @@
-extends Area2D
+extends enemy_fish
 
 class_name swordfish
 
 var SPEED = 0
 var DAMAGE_DEALT
 var ocean_scene
-var hit_sub = false
 signal despawned
+signal hit_sub
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -21,6 +21,7 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	DAMAGE_DEALT = _DAMAGE_DEALT
 	velocity = direction * SPEED
 	ocean_scene = get_tree().root.get_child(0)
+	enemy_fish_type = "swordfish"
 
 func _physics_process(delta):
 	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")
@@ -41,7 +42,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
 		body.get_node("AnimatedSprite2D").play("damage_taken")
 		body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
-		hit_sub = true
+		emit_signal("hit_sub")
 		emit_signal("despawned")
 		queue_free()
 	elif body is torpedo:

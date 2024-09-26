@@ -1,4 +1,4 @@
-extends Area2D
+extends enemy_fish
 
 ######################################
 # Currently only used to declare the 
@@ -26,6 +26,7 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	SPEED = _SPEED
 	DAMAGE_DEALT = _DAMAGE_DEALT
 	velocity = direction * SPEED
+	enemy_fish_type = "eel"
 
 func _physics_process(delta):
 	velocity += acceleration * delta

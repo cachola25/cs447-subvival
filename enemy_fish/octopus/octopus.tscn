@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct4eupmso5e2o"]
+
+[ext_resource type="Script" path="res://enemy_fish/octopus/octopus.gd" id="1_e6kwh"]
+[ext_resource type="Texture2D" uid="uid://bnhxeo1giqu83" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="2_ghejg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
+size = Vector2(101, 75)
+
+[node name="Octopus" type="Area2D"]
+script = ExtResource("1_e6kwh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -2.5)
+shape = SubResource("RectangleShape2D_qn4ou")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ghejg")

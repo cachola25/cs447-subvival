@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4h7ihf1exd1q"]
+[gd_scene load_steps=12 format=3 uid="uid://b4h7ihf1exd1q"]
 
 [ext_resource type="Script" path="res://menu_scenes/start_menu/start_menu.gd" id="1_cpv6u"]
 [ext_resource type="Texture2D" uid="uid://dre643cfvp767" path="res://assets/art/GUI/start_menu/Start.png" id="2_jc0uu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dssmthkwf8q31" path="res://assets/art/Bubble/Empty Bubble.png" id="6_gdfyx"]
 [ext_resource type="Texture2D" uid="uid://cvqgnvanr2m7d" path="res://assets/art/Bubble/Bubble Clownfish.png" id="7_ioawl"]
 [ext_resource type="Texture2D" uid="uid://duyni0d3rw5bk" path="res://assets/art/enemy_fish/Eel/Eel 1.png" id="8_wdj36"]
+[ext_resource type="AudioStream" uid="uid://en8buqh0lsbb" path="res://assets/sounds/start_menu.mp3" id="9_nem1b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dkb"]
 bg_color = Color(0, 0, 0, 1)
@@ -101,6 +102,11 @@ position = Vector2(532, 175)
 rotation = -0.822584
 scale = Vector2(4.19146, 4.51928)
 texture = ExtResource("8_wdj36")
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_nem1b")
+volume_db = -4.0
+autoplay = true
 
 [connection signal="button_down" from="StartTextureButton" to="." method="_on_start_texture_button_button_down"]
 [connection signal="mouse_entered" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_entered"]
