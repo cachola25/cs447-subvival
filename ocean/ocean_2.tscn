@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=36 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/turtle_spawn_area_1.gd" id="13_chf3f"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/eel_spawn_area_1.gd" id="14_rt8tm"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/swordfish_spawn_area_1.gd" id="15_weewt"]
+[ext_resource type="AudioStream" uid="uid://c5pjpbocyq54m" path="res://assets/sounds/background_ambiance.mp3" id="16_f3l5o"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/shark_spawn_area_1.gd" id="16_t07ly"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://submarine/UI/pause_menu/pause_menu.tscn" id="17_xqj6h"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
@@ -328,10 +329,14 @@ layer = 0
 
 [node name="electric_shock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_lrils")
+volume_db = -15.0
 
 [node name="sub_damaged" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_ehfsq")
-volume_db = -10.0
+volume_db = -15.0
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_f3l5o")
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
