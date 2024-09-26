@@ -5,12 +5,12 @@ class_name submarine
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 var ARMOR = 0
-var SPEED = 2000
+var SPEED = 20000
 var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
-var acceleration = 4000 
+var acceleration = 20000 
 var friction = 0.9
 var elapsed = 0.5
 var gravity = Vector2(0,10)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=38 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/shark_spawn_area_1.gd" id="16_t07ly"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://submarine/UI/pause_menu/pause_menu.tscn" id="17_xqj6h"]
 [ext_resource type="AudioStream" uid="uid://c4ihfo6x7l0kg" path="res://assets/sounds/swordfish_hit_sub.mp3" id="17_y8k1h"]
+[ext_resource type="AudioStream" uid="uid://cnxggw4tftgie" path="res://assets/sounds/shark_bite.MP3" id="18_3patq"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
 [ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="19_ehfsq"]
 
@@ -342,6 +343,11 @@ stream = ExtResource("16_f3l5o")
 [node name="swordfish_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_y8k1h")
 volume_db = -10.0
+
+[node name="shark_bite" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_3patq")
+volume_db = -5.0
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]

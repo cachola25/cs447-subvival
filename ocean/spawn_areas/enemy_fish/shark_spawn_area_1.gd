@@ -28,6 +28,7 @@ func spawn_shark():
 	var SHARK_SPEED = get_parent().get_meta("SHARK_SPEED")
 	var SHARK_DAMAGE = get_parent().get_meta("SHARK_DAMAGE")
 	shark_instance.connect("despawned", _on_shark_despawned)
+	shark_instance.connect("hit_sub", _on_hit_sub)
 	add_child(shark_instance)
 	shark_instance.start(transform_position, 
 		submarine_instance.global_position, SHARK_SPEED, SHARK_DAMAGE)
@@ -38,6 +39,9 @@ func _on_body_entered(body: Node2D) -> void:
 	submarine_in_area = true
 func _on_body_exited(body: Node2D) -> void:
 	submarine_in_area = false
+func _on_hit_sub():
+	get_parent().get_node("shark_bite").play()
+	get_parent().get_node("sub_damaged").play()
 func _on_shark_despawned():
 	curr_num_shark -= 1
 func _on_spawn_delay_timer_timeout() -> void:
