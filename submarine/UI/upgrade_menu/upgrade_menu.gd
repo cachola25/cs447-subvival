@@ -14,14 +14,19 @@ extends Control
 @onready var health_bar = get_parent().get_node("health_bar")
 @onready var submarine_scene = get_parent().get_parent()
 
+var nuxMode = false;
+
 signal luck_updated
+signal infinite
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if nuxMode:
+		total_money_node.text = "$1000"
+		emit_signal("infinite")
 
 func check_if_valid_upgrade(cost_node, progress_bar):
 	var cost = get_cost(cost_node)
@@ -33,7 +38,8 @@ func check_if_valid_upgrade(cost_node, progress_bar):
 	return result
 	
 func update_labels_and_progress(cost_node, updated_total_money, cost_node_val, increment, progress_node):
-	total_money_node.text = "$" + str(updated_total_money)
+	if !nuxMode:
+		total_money_node.text = "$" + str(updated_total_money)
 	cost_node.text = "$" + str(cost_node_val + increment)
 	progress_node.value += progress_node.step
 
@@ -81,3 +87,7 @@ func _on_upgrade_luck_button_pressed() -> void:
 	
 	submarine_scene.LUCK += 0.2
 	emit_signal("luck_updated", submarine_scene.LUCK)
+
+
+func _on_nux_mode_button_button_down() -> void:
+	nuxMode = !nuxMode

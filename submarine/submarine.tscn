@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=38 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
 [ext_resource type="Texture2D" uid="uid://bnhxeo1giqu83" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="3_00n82"]
+[ext_resource type="Texture2D" uid="uid://pw52aosb7r16" path="res://assets/art/GUI/upgrade_menu/NuxButton.png" id="4_4csxp"]
 [ext_resource type="Script" path="res://submarine/sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="Script" path="res://submarine/UI/health_bar/health_bar.gd" id="5_sriyo"]
-[ext_resource type="AudioStream" uid="uid://n7r2xl1ke5ty" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
+[ext_resource type="AudioStream" uid="uid://e7dbva7igf52" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
 [ext_resource type="Texture2D" uid="uid://bywvdjp7cgytu" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
 [ext_resource type="Script" path="res://submarine/UI/oxygen_bar/oxygen_bar.gd" id="6_5wr0v"]
 [ext_resource type="Texture2D" uid="uid://bbtts2da5a1l0" path="res://assets/art/GUI/upgrade_menu/o2.png" id="8_fmifh"]
@@ -23,6 +24,7 @@
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/health/health_upgrade.gd" id="17_f0xre"]
 [ext_resource type="Script" path="res://submarine/UI/upgrade_menu/luck/luck_upgrade.gd" id="18_bnfrb"]
 [ext_resource type="Texture2D" uid="uid://dexe67kh7alab" path="res://assets/art/GUI/upgrade_menu/clover.png" id="18_p8wfa"]
+[ext_resource type="Texture2D" uid="uid://c6w8fuspy5c5e" path="res://assets/art/GUI/upgrade_menu/NuxButtonPressed.png" id="18_tr3ih"]
 [ext_resource type="Texture2D" uid="uid://bctdmecmj12kh" path="res://assets/art/GUI/compendium/undiscovered_fish.png" id="20_3amhb"]
 [ext_resource type="Script" path="res://submarine/UI/fish_compendium.gd" id="20_3p7ap"]
 [ext_resource type="Texture2D" uid="uid://ldexuhrnijjc" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
@@ -208,7 +210,7 @@ offset_top = 257.0
 offset_right = 1702.0
 offset_bottom = 280.0
 theme_override_font_sizes/font_size = 30
-text = "$1000"
+text = "$10"
 
 [node name="upgrade_menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -241,6 +243,16 @@ text = "Press F again to exit out of the upgrade menu"
 position = Vector2(565, 72)
 scale = Vector2(5.96875, 5.71875)
 texture = ExtResource("13_3rcuf")
+
+[node name="NuxModeButton" type="TextureButton" parent="CanvasLayer/upgrade_menu"]
+offset_left = 233.0
+offset_top = 888.0
+offset_right = 607.0
+offset_bottom = 1034.0
+scale = Vector2(0.75, 0.75)
+toggle_mode = true
+texture_normal = ExtResource("4_4csxp")
+texture_pressed = ExtResource("18_tr3ih")
 
 [node name="o2" type="Control" parent="CanvasLayer/upgrade_menu"]
 layout_mode = 1
@@ -565,6 +577,10 @@ texture = ExtResource("22_mjqdk")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CanvasLayer/health_bar/health_regen_timer" to="CanvasLayer/health_bar" method="_on_health_regen_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/oxygen_bar/o2_regen_timer" to="CanvasLayer/oxygen_bar" method="_on_o_2_regen_timer_timeout"]
+[connection signal="infinite" from="CanvasLayer/upgrade_menu" to="CanvasLayer/health_bar" method="_on_upgrade_menu_infinite"]
+[connection signal="infinite" from="CanvasLayer/upgrade_menu" to="CanvasLayer/oxygen_bar" method="_on_upgrade_menu_infinite"]
+[connection signal="button_down" from="CanvasLayer/upgrade_menu/NuxModeButton" to="." method="_on_nux_mode_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/upgrade_menu/NuxModeButton" to="CanvasLayer/upgrade_menu" method="_on_nux_mode_button_button_down"]
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/o2/upgrade_02_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_02_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/o2/tooltip_button" to="CanvasLayer/upgrade_menu/o2" method="_on_tooltip_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/o2/tooltip_button" to="CanvasLayer/upgrade_menu/o2" method="_on_tooltip_button_mouse_exited"]

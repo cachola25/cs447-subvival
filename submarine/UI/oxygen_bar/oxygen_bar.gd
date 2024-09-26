@@ -21,3 +21,7 @@ func _on_o_2_regen_timer_timeout() -> void:
 	if value >= max_value:
 		return
 	value += O2_REGENERATION_AMOUNT
+
+
+func _on_upgrade_menu_infinite() -> void:
+	value = 100

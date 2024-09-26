@@ -17,6 +17,8 @@ var gravity = Vector2(0,10)
 var previous_direction = Vector2.ZERO
 var previous_rotation = -100
 
+var nuxMode = false;
+
 signal discovered_new
 
 func spawn_bubble():
@@ -137,3 +139,10 @@ func fire_torpedo():
 	var torpedo = torpedo_scene.instantiate()
 	torpedo.position = position
 	get_parent().add_child(torpedo)
+	
+
+func _on_nux_mode_button_button_down() -> void:
+	nuxMode = !nuxMode
+
+	if nuxMode:
+		pass

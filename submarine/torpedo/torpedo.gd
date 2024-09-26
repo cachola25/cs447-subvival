@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 class_name torpedo
-var SPEED = 400.0
+var SPEED = 1400.0
 
 func _ready():
 	$AnimatedSprite2D.play("firing")

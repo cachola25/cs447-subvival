@@ -32,3 +32,7 @@ func _on_health_regen_timer_timeout() -> void:
 	if value >= max_value:
 		return
 	value += HEALTH_REGENERATION_AMOUNT
+
+
+func _on_upgrade_menu_infinite() -> void:
+	value = 100

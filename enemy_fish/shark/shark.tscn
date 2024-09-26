@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxjscptjxba08"]
 
 [ext_resource type="Script" path="res://enemy_fish/shark/shark.gd" id="1_slxds"]
-[ext_resource type="Texture2D" uid="uid://dhq6w4qxqoy3b" path="res://assets/art/enemy_fish/shark/Shark-sheet.png" id="2_ejfca"]
-[ext_resource type="AudioStream" uid="uid://c7bbpaugaa5xs" path="res://assets/sounds/shark_nearby.mp3" id="3_txk3q"]
+[ext_resource type="Texture2D" uid="uid://dhqvsutrwfwhp" path="res://assets/art/enemy_fish/shark/Shark-sheet.png" id="2_ejfca"]
+[ext_resource type="AudioStream" uid="uid://isgpu72jl1y5" path="res://assets/sounds/shark_nearby.mp3" id="3_txk3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilf72"]
 size = Vector2(684, 356)
@@ -57,7 +57,8 @@ position = Vector2(-1.00006, -1)
 scale = Vector2(10.6836, 9.50975)
 sprite_frames = SubResource("SpriteFrames_rorur")
 animation = &"shark_swim"
-frame_progress = 0.747036
+frame = 1
+frame_progress = 0.087295
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
