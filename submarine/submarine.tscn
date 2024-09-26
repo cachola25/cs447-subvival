@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=37 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://submarine/UI/fish_compendium.gd" id="20_3p7ap"]
 [ext_resource type="Texture2D" uid="uid://ldexuhrnijjc" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
 [ext_resource type="Texture2D" uid="uid://bx1egd3xvne7q" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
+[ext_resource type="AudioStream" uid="uid://cvgdkij4yx062" path="res://assets/sounds/submarine_moving.MP3" id="28_1ex1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -560,6 +561,11 @@ texture = ExtResource("21_5xm55")
 position = Vector2(-151, 83)
 scale = Vector2(0.133789, 0.115234)
 texture = ExtResource("22_mjqdk")
+
+[node name="moving_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_1ex1o")
+volume_db = -3.0
+parameters/looping = true
 
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -101,8 +101,12 @@ func _process(delta):
 	if direction != Vector2.ZERO:
 		velocity += direction * acceleration * delta
 		velocity = velocity.limit_length(SPEED)
+		if not $moving_sound.playing:
+				$moving_sound.play()
 	else:
 		velocity += gravity
+		if $moving_sound.playing:
+			$moving_sound.stop()
 		
 	velocity *= friction
 	

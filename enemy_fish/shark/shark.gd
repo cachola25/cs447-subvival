@@ -23,11 +23,9 @@ func _physics_process(delta):
 	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")
 	if global_position.distance_to(submarine_position) <= 1500:
 		if not $near_sub.playing:
-			print("playing")
 			$near_sub.play()
 	else:
 		if $near_sub.playing:
-			print("stopping")
 			$near_sub.stop()
 	var direction = (submarine_position - global_position).normalized()
 	velocity = direction * SPEED
