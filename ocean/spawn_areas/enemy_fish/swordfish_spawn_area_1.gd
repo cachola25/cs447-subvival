@@ -28,6 +28,7 @@ func spawn_swordfish():
 	var SWORDFISH_SPEED = get_parent().get_meta("SWORDFISH_SPEED")
 	var SWORDFISH_DAMAGE = get_parent().get_meta("SWORDFISH_DAMAGE")
 	swordfish_instance.connect("despawned", _on_swordfish_despawned)
+	swordfish_instance.connect("hit_sub", _on_hit_sub)
 	add_child(swordfish_instance)
 	swordfish_instance.start(transform_position, 
 		submarine_instance.global_position, SWORDFISH_SPEED, SWORDFISH_DAMAGE)
@@ -38,6 +39,9 @@ func _on_body_entered(body: Node2D) -> void:
 	submarine_in_area = true
 func _on_body_exited(body: Node2D) -> void:
 	submarine_in_area = false
+func _on_hit_sub():
+	get_parent().get_node("swordfish_hit").play()
+	get_parent().get_node("sub_damaged").play()
 func _on_swordfish_despawned():
 	curr_num_swordfish -= 1
 func _on_spawn_delay_timer_timeout() -> void:

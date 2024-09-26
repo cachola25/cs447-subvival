@@ -5,8 +5,8 @@ class_name swordfish
 var SPEED = 0
 var DAMAGE_DEALT
 var ocean_scene
-var hit_sub = false
 signal despawned
+signal hit_sub
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -41,7 +41,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
 		body.get_node("AnimatedSprite2D").play("damage_taken")
 		body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
-		hit_sub = true
+		emit_signal("hit_sub")
 		emit_signal("despawned")
 		queue_free()
 	elif body is torpedo:
