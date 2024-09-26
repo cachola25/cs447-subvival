@@ -17,6 +17,7 @@ func _ready():
 	$AnimatedSprite2D.play("bubble")
 	velocity = Vector2.ZERO
 	velocity.y = -SPEED  # Set the bubble to move upwards
+	$released.play()
 
 func _process(delta):
 	var collision_info = move_and_collide(velocity * delta)
@@ -29,6 +30,7 @@ func _process(delta):
 			collision_mask = 0b10000
 			collider.in_bubble = true
 			name = "captured_bubble"
+			$captured.play(0.1)
 			$AnimatedSprite2D.play(animation)
 			set_meta("FISH_VALUE", collider.VALUE)
 			set_meta("FISH_TYPE", collider.fish_type)
