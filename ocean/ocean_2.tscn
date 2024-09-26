@@ -358,10 +358,11 @@ volume_db = -15.0
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_f3l5o")
+volume_db = -10.0
 
 [node name="swordfish_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_y8k1h")
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="shark_bite" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3patq")
