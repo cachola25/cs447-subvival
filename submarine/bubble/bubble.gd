@@ -39,4 +39,8 @@ func _process(delta):
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if ($AnimatedSprite2D.animation == "pop"):
-		queue_free()
+		$pop.play(0.3)
+
+
+func _on_pop_finished() -> void:
+	queue_free()

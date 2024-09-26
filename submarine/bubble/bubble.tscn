@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b6olq3cp8bc6a"]
+[gd_scene load_steps=28 format=3 uid="uid://b6olq3cp8bc6a"]
 
 [ext_resource type="Script" path="res://submarine/bubble/bubble.gd" id="1_gvl63"]
 [ext_resource type="Texture2D" uid="uid://dssmthkwf8q31" path="res://assets/art/Bubble/Empty Bubble.png" id="2_s6noh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dyxdn300h4lbh" path="res://assets/art/Bubble/TriggerFish Bubble.png" id="6_niafe"]
 [ext_resource type="AudioStream" uid="uid://baot2mdt7ir7u" path="res://assets/sounds/bubble_release.mp3" id="9_atnbw"]
 [ext_resource type="AudioStream" uid="uid://dwmooehitlqtf" path="res://assets/sounds/fish_captured.mp3" id="10_2bygj"]
+[ext_resource type="AudioStream" uid="uid://ckm1ycraaht62" path="res://assets/sounds/bubble_pop.mp3" id="11_4v23y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ae1"]
 radius = 85.0
@@ -153,7 +154,7 @@ animations = [{
 [node name="bubble" type="CharacterBody2D"]
 show_behind_parent = true
 z_as_relative = false
-collision_layer = 0
+collision_layer = 32768
 collision_mask = 128
 script = ExtResource("1_gvl63")
 
@@ -179,4 +180,9 @@ pitch_scale = 1.8
 [node name="captured" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_2bygj")
 
+[node name="pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_4v23y")
+pitch_scale = 0.9
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="finished" from="pop" to="." method="_on_pop_finished"]
