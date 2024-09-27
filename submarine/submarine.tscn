@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=40 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://ldexuhrnijjc" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
 [ext_resource type="Texture2D" uid="uid://bx1egd3xvne7q" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
 [ext_resource type="AudioStream" uid="uid://cvgdkij4yx062" path="res://assets/sounds/submarine_moving.MP3" id="28_1ex1o"]
+[ext_resource type="Script" path="res://submarine/UI/enemy_fish_compendium.gd" id="30_c5fem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -582,8 +583,10 @@ offset_left = 1315.0
 offset_top = 473.0
 offset_right = 1355.0
 offset_bottom = 513.0
+script = ExtResource("30_c5fem")
 
 [node name="title" type="Label" parent="CanvasLayer/enemy_fish_compendium"]
+layout_mode = 0
 offset_left = 94.0
 offset_top = -94.0
 offset_right = 290.0

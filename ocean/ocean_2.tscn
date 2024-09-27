@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/turtle_spawn_area_1.gd" id="13_chf3f"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/eel_spawn_area_1.gd" id="14_rt8tm"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/swordfish_spawn_area_1.gd" id="15_weewt"]
-[ext_resource type="AudioStream" uid="uid://p3ols8oy88fx" path="res://assets/sounds/underwater_ambience.mp3" id="16_ktqwa"]
+[ext_resource type="AudioStream" uid="uid://d3ckva7ptc4bh" path="res://assets/sounds/underwater_ambience.mp3" id="16_ktqwa"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/enemy_fish/shark_spawn_area_1.gd" id="16_t07ly"]
 [ext_resource type="PackedScene" uid="uid://hj2rb74cv53f" path="res://submarine/UI/pause_menu/pause_menu.tscn" id="17_xqj6h"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
