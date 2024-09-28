@@ -7,6 +7,7 @@ var DAMAGE_DEALT
 var ocean_scene
 signal hit_sub
 signal despawned
+signal hit_by_torpedo
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -51,7 +52,7 @@ func _on_body_entered(body: Node2D) -> void:
 	elif body is torpedo:
 		print("Shark hit by torpedo")
 		body.queue_free()
-		emit_signal("")
+		emit_signal("hit_by_torpedo")
 		emit_signal("despawned")
 		queue_free()
 

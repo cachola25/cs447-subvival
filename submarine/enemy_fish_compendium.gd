@@ -18,7 +18,7 @@ func _on_killed_new():
 	var new_fish_node = get_node(fish_type)
 	var comp_img_str = "res://assets/art/GUI/compendium/" + fish_type + "_comp.png"
 	new_fish_node.texture = load(comp_img_str)
-	#emit_signal("killedFish")
+	emit_signal("killedFish")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -7,7 +7,7 @@ var submarine_in_area = false
 var curr_num_eel = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	submarine_instance = get_parent().get_node("submarine")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
