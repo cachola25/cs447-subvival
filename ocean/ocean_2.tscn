@@ -337,7 +337,7 @@ volume_db = -15.0
 stream = ExtResource("19_ehfsq")
 volume_db = -15.0
 
-[node name="background_musi" type="AudioStreamPlayer" parent="."]
+[node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_f3l5o")
 volume_db = -10.0
 

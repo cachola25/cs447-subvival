@@ -13,6 +13,7 @@ var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
+var defeated_enemy_fish = {}
 var acceleration = 20000 
 var friction = 0.9
 var elapsed = 0.5
@@ -23,6 +24,7 @@ var previous_rotation = -100
 var nuxMode = false;
 
 signal discovered_new
+signal killed_new
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
@@ -41,6 +43,7 @@ func display_final_compendium():
 			var progress_bar_node = upgrade.get_node(progress_bar)
 			if not (progress_bar_node.value >= progress_bar_node.max_value):
 				return false
+	$CanvasLayer/enemy_fish_compendium.can_display = true
 	return true
 	
 		

@@ -51,6 +51,7 @@ func _on_body_entered(body: Node2D) -> void:
 	elif body is torpedo:
 		print("Shark hit by torpedo")
 		body.queue_free()
+		emit_signal("")
 		emit_signal("despawned")
 		queue_free()
 
