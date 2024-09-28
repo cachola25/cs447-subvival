@@ -584,6 +584,7 @@ offset_right = 1355.0
 offset_bottom = 513.0
 
 [node name="title" type="Label" parent="CanvasLayer/enemy_fish_compendium"]
+layout_mode = 0
 offset_left = 94.0
 offset_top = -94.0
 offset_right = 290.0
