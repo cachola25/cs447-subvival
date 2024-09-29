@@ -7,6 +7,7 @@ const UPGRADES_LIST = ["o2", "armor", "health", "luck"]
 
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
+@onready var popup = preload("res://menu_scenes/popup_message/popup_message.tscn")
 var ARMOR = 0
 var SPEED = 20000
 var LUCK = 0
@@ -36,6 +37,8 @@ func spawn_bubble():
 	oxygen_bar.value -= oxygen_bar.BUBBLE_COST
 	
 func display_final_compendium():
+	if $CanvasLayer/enemy_fish_compendium.can_display:
+		return true
 	if discovered_fish.size() != TOTAL_MONEY_FISH:
 		return false
 	for upgrade in $CanvasLayer/upgrade_menu.get_children():
@@ -52,6 +55,7 @@ func display_user_menu():
 	$CanvasLayer/fish_compendium.visible = true
 	$CanvasLayer/upgrade_menu.visible = true
 	$CanvasLayer/enemy_fish_compendium.visible = display_final_compendium()
+	$CanvasLayer/upgrade_menu/torpedo.visible = display_final_compendium()
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_tree().paused = true
 	
@@ -67,6 +71,7 @@ func _ready():
 	$CanvasLayer/upgrade_menu.visible = false
 	$CanvasLayer/fish_compendium.visible = false
 	$CanvasLayer/enemy_fish_compendium.visible = false
+	$CanvasLayer/total_torpedos.visible = false
 	
 	
 func is_submarine_destroyed():
@@ -89,7 +94,20 @@ func apply_movement_rotation(direction: Vector2, delta):
 			$AnimatedSprite2D.flip_v = true
 	else:
 		$AnimatedSprite2D.flip_v = false
-
+		
+func display_unlock_message():
+	var popup_instance = popup.instantiate()
+	popup_instance.position = position + Vector2(0, -100)
+	get_parent().add_child(popup_instance)
+	
+func get_total_torpedos():
+	var total = int($CanvasLayer/total_torpedos/num_torpedos.text)
+	return total
+	
+func update_total_torpedos(update_val):
+	var total = get_total_torpedos()
+	$CanvasLayer/total_torpedos/num_torpedos.text = str(total + update_val)
+	
 func check_if_boss_fight():
 	if defeated_enemy_fish.size() != 3:
 		return
@@ -142,8 +160,14 @@ func _process(delta):
 	
 	apply_movement_rotation(direction, delta)
 	if Input.is_action_just_pressed("fire_torpedo"):
-		fire_torpedo()
+		if get_total_torpedos() >= 1:
+			fire_torpedo()
 	check_if_boss_fight()
+	
+	if display_final_compendium():
+		if not $CanvasLayer/total_torpedos.visible:
+			display_unlock_message()
+		$CanvasLayer/total_torpedos.visible = true
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
@@ -172,6 +196,7 @@ func fire_torpedo():
 	var torpedo = torpedo_scene.instantiate()
 	torpedo.position = position
 	get_parent().add_child(torpedo)
+	update_total_torpedos(-1)
 	
 
 func _on_nux_mode_button_button_down() -> void:

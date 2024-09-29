@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://kw0anfqbxxlx"]
+
+[ext_resource type="Script" path="res://menu_scenes/popup_message/popup_message.gd" id="1_6n2f4"]
+
+[sub_resource type="Animation" id="Animation_cniyq"]
+resource_name = "show_and_hide"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.76667),
+"transitions": PackedFloat32Array(1, 1, 0.535886),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_khxt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tumku"]
+_data = {
+"RESET": SubResource("Animation_khxt6"),
+"show_and_hide": SubResource("Animation_cniyq")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_mggf1"]
+font_size = 20
+font_color = Color(1, 0.25098, 0.137255, 1)
+outline_size = 4
+shadow_size = 17
+shadow_offset = Vector2(10, 1)
+
+[node name="popup_message" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-92, -13)
+script = ExtResource("1_6n2f4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tumku")
+}
+
+[node name="text" type="Label" parent="."]
+offset_left = -252.0
+offset_top = -44.0
+offset_right = -73.0
+offset_bottom = -16.0
+scale = Vector2(2.65704, 3.39535)
+text = "Unlocked torpedo!"
+label_settings = SubResource("LabelSettings_mggf1")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

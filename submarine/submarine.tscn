@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=43 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://bx1egd3xvne7q" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
 [ext_resource type="AudioStream" uid="uid://cvgdkij4yx062" path="res://assets/sounds/submarine_moving.MP3" id="28_1ex1o"]
 [ext_resource type="Script" path="res://submarine/enemy_fish_compendium.gd" id="30_bl0wq"]
+[ext_resource type="Texture2D" uid="uid://cdmv13n4rg3bp" path="res://assets/art/submarine/one_torpedo.png" id="31_qoqab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -70,10 +71,16 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d84qk"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_i3x40"]
+font_size = 20
+
 [sub_resource type="LabelSettings" id="LabelSettings_q08o6"]
 outline_size = 2
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.796078)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e0py5"]
+font_size = 25
 
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
@@ -174,7 +181,7 @@ render_target_update_mode = 4
 script = ExtResource("4_6bchf")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-zoom = Vector2(0.04, 0.04)
+zoom = Vector2(0.03, 0.03)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 scale = Vector2(8, 8)
@@ -243,10 +250,10 @@ texture = ExtResource("13_3rcuf")
 
 [node name="NuxModeButton" type="TextureButton" parent="CanvasLayer/upgrade_menu"]
 layout_mode = 0
-offset_left = 233.0
-offset_top = 888.0
-offset_right = 607.0
-offset_bottom = 1034.0
+offset_left = 414.0
+offset_top = 879.0
+offset_right = 788.0
+offset_bottom = 1025.0
 scale = Vector2(0.75, 0.75)
 toggle_mode = true
 texture_normal = ExtResource("4_4csxp")
@@ -514,6 +521,34 @@ scale = Vector2(1.40812, 1.57367)
 text = "Fish spawn more frequently and in larger batches"
 autowrap_mode = 3
 
+[node name="torpedo" type="Control" parent="CanvasLayer/upgrade_menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="torpedo_icon" type="Sprite2D" parent="CanvasLayer/upgrade_menu/torpedo"]
+position = Vector2(146, 929)
+rotation = -1.5708
+scale = Vector2(5.18, 7.63334)
+texture = ExtResource("31_qoqab")
+
+[node name="torpedo_cost" type="Label" parent="CanvasLayer/upgrade_menu/torpedo"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 891.0
+offset_right = 33.0
+offset_bottom = 919.0
+scale = Vector2(3.34402, 3.00265)
+text = "$5"
+label_settings = SubResource("LabelSettings_i3x40")
+
+[node name="buy_torpedo_button" type="TextureButton" parent="CanvasLayer/upgrade_menu/torpedo"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 870.0
+offset_right = 191.0
+offset_bottom = 987.0
+
 [node name="fish_compendium" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchor_left = 0.784
@@ -605,6 +640,30 @@ position = Vector2(518, 70)
 scale = Vector2(0.320312, 0.337891)
 texture = ExtResource("20_3amhb")
 
+[node name="total_torpedos" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1864.0
+offset_top = 254.0
+offset_right = 1904.0
+offset_bottom = 294.0
+
+[node name="torpedo" type="Sprite2D" parent="CanvasLayer/total_torpedos"]
+position = Vector2(-47, 30)
+rotation = -1.5708
+scale = Vector2(2.10994, 2.40668)
+texture = ExtResource("31_qoqab")
+
+[node name="num_torpedos" type="Label" parent="CanvasLayer/total_torpedos"]
+layout_mode = 2
+offset_left = -27.0
+offset_top = 13.0
+offset_right = -17.0
+offset_bottom = 48.0
+text = "1"
+label_settings = SubResource("LabelSettings_e0py5")
+autowrap_mode = 2
+
 [node name="moving_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_1ex1o")
 volume_db = -8.0
@@ -630,3 +689,4 @@ parameters/looping = true
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/luck/upgrade_luck_button" to="CanvasLayer/upgrade_menu" method="_on_upgrade_luck_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/upgrade_menu/torpedo/buy_torpedo_button" to="CanvasLayer/upgrade_menu" method="_on_buy_torpedo_button_pressed"]

@@ -9,6 +9,7 @@ extends Control
 @onready var health_upgrade_progress = $health/health_upgrade_progress
 @onready var luck_cost_node = $luck/luck_cost
 @onready var luck_upgrade_progress = $luck/luck_upgrade_progress
+@onready var torpedo_cost_node = $torpedo/torpedo_cost
 @onready var total_money_node = get_parent().get_node("total_money")
 @onready var oxygen_bar = get_parent().get_node("oxygen_bar")
 @onready var health_bar = get_parent().get_node("health_bar")
@@ -87,7 +88,16 @@ func _on_upgrade_luck_button_pressed() -> void:
 	
 	submarine_scene.LUCK += 0.2
 	emit_signal("luck_updated", submarine_scene.LUCK)
-
+	
+func _on_buy_torpedo_button_pressed() -> void:
+	print("torpedo_button pressed")
+	var torpedo_cost = get_cost(torpedo_cost_node)
+	var total_money = get_cost(total_money_node)
+	if total_money - torpedo_cost < 0:
+		return
+	submarine_scene.update_total_torpedos(1)
+	total_money_node.text = "$" + str(total_money - torpedo_cost)
+	
 
 func _on_nux_mode_button_button_down() -> void:
 	nuxMode = !nuxMode
