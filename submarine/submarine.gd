@@ -21,6 +21,8 @@ var elapsed = 0.5
 var gravity = Vector2(0,10)
 var previous_direction = Vector2.ZERO
 var previous_rotation = -100
+var started_boss_fight = false
+var displayed_popup = false
 
 var nuxMode = false;
 
@@ -65,6 +67,9 @@ func undisplay_user_menu():
 	$CanvasLayer/enemy_fish_compendium.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
+	if not displayed_popup and display_final_compendium():
+		display_unlock_message()
+		displayed_popup = true
 	
 func _ready():
 	$AnimatedSprite2D.play("submarine_default")
@@ -100,7 +105,7 @@ func display_unlock_message():
 	var viewport_size = get_viewport().get_visible_rect().size
 	popup_instance.position = (viewport_size - popup_instance.size) / 2
 	popup_instance.position = position + Vector2(0, -100)
-	get_node("CanvasLayer").add_child(popup_instance)
+	get_parent().add_child(popup_instance)
 	
 func get_total_torpedos():
 	var total = int($CanvasLayer/total_torpedos/num_torpedos.text)
@@ -111,9 +116,12 @@ func update_total_torpedos(update_val):
 	$CanvasLayer/total_torpedos/num_torpedos.text = str(total + update_val)
 	
 func check_if_boss_fight():
+	if started_boss_fight:
+		return
 	if defeated_enemy_fish.size() != 3:
 		return
 	defeated_enemy_fish.clear()
+	started_boss_fight = true
 	emit_signal("start_boss_fight")
 func _process(delta):
 	#if is_submarine_destroyed():
@@ -167,8 +175,6 @@ func _process(delta):
 	check_if_boss_fight()
 	
 	if display_final_compendium():
-		if not $CanvasLayer/total_torpedos.visible:
-			display_unlock_message()
 		$CanvasLayer/total_torpedos.visible = true
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
