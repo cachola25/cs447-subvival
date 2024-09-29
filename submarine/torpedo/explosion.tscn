@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://i20qhb4h454x"]
+
+[ext_resource type="Script" path="res://submarine/torpedo/explosion.gd" id="1_vonjm"]
+[ext_resource type="AudioStream" uid="uid://btvci62urg4cu" path="res://assets/sounds/torpedo_explosion.mp3" id="2_pys07"]
+
+[node name="explosion" type="Node2D"]
+script = ExtResource("1_vonjm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pys07")
+volume_db = -2.0
+pitch_scale = 1.5
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 class_name torpedo
+
+@onready var explosion_sound = preload("res://submarine/torpedo/explosion.tscn")
 var SPEED = 1400.0
 
 func _ready():
@@ -18,4 +20,6 @@ func _ready():
 func _process(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
-		print(collision_info.get_collider())
+		if collision_info.get_collider() is rocks:
+			get_tree().current_scene.add_child(explosion_sound.instantiate())
+			queue_free()

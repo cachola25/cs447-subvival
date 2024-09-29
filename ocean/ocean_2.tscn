@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=39 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -18,7 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://c4ihfo6x7l0kg" path="res://assets/sounds/swordfish_hit_sub.mp3" id="17_y8k1h"]
 [ext_resource type="AudioStream" uid="uid://cnxggw4tftgie" path="res://assets/sounds/shark_bite.MP3" id="18_3patq"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
-[ext_resource type="AudioStream" uid="uid://btvci62urg4cu" path="res://assets/sounds/torpedo_explosion.mp3" id="19_dheru"]
 [ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="19_ehfsq"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
@@ -135,7 +134,7 @@ tile_set = SubResource("TileSet_iqnev")
 [node name="CollisionArea" type="StaticBody2D" parent="."]
 scale = Vector2(8, 8)
 collision_layer = 2056
-collision_mask = 2056
+collision_mask = 8
 script = ExtResource("5_gp117")
 
 [node name="GroundCollision" type="CollisionPolygon2D" parent="CollisionArea"]
@@ -352,11 +351,6 @@ volume_db = -15.0
 [node name="shark_bite" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3patq")
 volume_db = -5.0
-pitch_scale = 1.5
-
-[node name="torpedo_explosion" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_dheru")
-volume_db = -2.0
 pitch_scale = 1.5
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]

@@ -2,6 +2,8 @@ extends enemy_fish
 
 class_name swordfish
 
+@onready var explosion_sound = preload("res://submarine/torpedo/explosion.tscn")
+
 var SPEED = 0
 var DAMAGE_DEALT
 var ocean_scene
@@ -48,6 +50,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 	elif body is torpedo:
 		print("swordfish hit by torpedo")
+		get_tree().current_scene.add_child(explosion_sound.instantiate())
 		body.queue_free()
 		emit_signal("hit_by_torpedo")
 		emit_signal("despawned")

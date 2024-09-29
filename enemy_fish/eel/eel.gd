@@ -11,6 +11,8 @@ extends enemy_fish
 
 class_name eel
 
+@onready var explosion_sound = preload("res://submarine/torpedo/explosion.tscn")
+
 var SPEED
 var DAMAGE_DEALT
 signal despawned
@@ -53,6 +55,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 	elif body is torpedo:
 		print("Eel hit by torpedo")
+		get_tree().current_scene.add_child(explosion_sound.instantiate())
 		body.queue_free()
 		emit_signal("hit_by_torpedo")
 		emit_signal("despawned")
