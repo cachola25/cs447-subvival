@@ -12,8 +12,10 @@ func _ready():
 	if not submarine_animation.flip_h:
 		$AnimatedSprite2D.flip_h = true
 		SPEED = -SPEED
-		
+	$torpedo_launch.play()
 	velocity = direction * SPEED
 	
 func _process(delta):
 	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		print(collision_info.get_collider())

@@ -97,8 +97,10 @@ func apply_movement_rotation(direction: Vector2, delta):
 		
 func display_unlock_message():
 	var popup_instance = popup.instantiate()
+	var viewport_size = get_viewport().get_visible_rect().size
+	popup_instance.position = (viewport_size - popup_instance.size) / 2
 	popup_instance.position = position + Vector2(0, -100)
-	get_parent().add_child(popup_instance)
+	get_node("CanvasLayer").add_child(popup_instance)
 	
 func get_total_torpedos():
 	var total = int($CanvasLayer/total_torpedos/num_torpedos.text)

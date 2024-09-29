@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=40 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
 [ext_resource type="PackedScene" uid="uid://bbm4jvmnp6uxo" path="res://menu_scenes/parallax_background.tscn" id="3_t6e1f"]
+[ext_resource type="Script" path="res://ocean/collision_area.gd" id="5_gp117"]
 [ext_resource type="Texture2D" uid="uid://dpq0pctjeav6d" path="res://assets/ocean_assets/Total Background.png" id="7_cjv7h"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/clownfish_spawn_area_1.gd" id="9_wbmaf"]
 [ext_resource type="Script" path="res://ocean/spawn_areas/money_fish/blue_tang_spawn_area_1.gd" id="10_n787b"]
@@ -17,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://c4ihfo6x7l0kg" path="res://assets/sounds/swordfish_hit_sub.mp3" id="17_y8k1h"]
 [ext_resource type="AudioStream" uid="uid://cnxggw4tftgie" path="res://assets/sounds/shark_bite.MP3" id="18_3patq"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
+[ext_resource type="AudioStream" uid="uid://btvci62urg4cu" path="res://assets/sounds/torpedo_explosion.mp3" id="19_dheru"]
 [ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="19_ehfsq"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
@@ -131,10 +133,10 @@ position = Vector2(321, 181)
 tile_set = SubResource("TileSet_iqnev")
 
 [node name="CollisionArea" type="StaticBody2D" parent="."]
-visible = false
 scale = Vector2(8, 8)
-collision_layer = 8
-collision_mask = 8
+collision_layer = 2056
+collision_mask = 2056
+script = ExtResource("5_gp117")
 
 [node name="GroundCollision" type="CollisionPolygon2D" parent="CollisionArea"]
 polygon = PackedVector2Array(9, 966, 37, 954, 213, 969, 370, 940, 468, 961, 523, 958, 575, 936, 608, 935, 663, 952, 707, 947, 744, 943, 772, 932, 834, 946, 913, 967, 962, 963, 1018, 935, 1267, 970, 1290, 965, 1410, 979, 1441, 978, 1492, 967, 1539, 964, 1602, 941, 1750, 924, 1811, 925, 1919, 938, 1920, 1081, 0, 1079, 0, 968)
@@ -350,6 +352,11 @@ volume_db = -15.0
 [node name="shark_bite" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3patq")
 volume_db = -5.0
+pitch_scale = 1.5
+
+[node name="torpedo_explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_dheru")
+volume_db = -2.0
 pitch_scale = 1.5
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]

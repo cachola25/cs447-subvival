@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdgwtalgu3n4q"]
+[gd_scene load_steps=12 format=3 uid="uid://bdgwtalgu3n4q"]
 
 [ext_resource type="Script" path="res://submarine/torpedo/torpedo.gd" id="1_aj11l"]
 [ext_resource type="Texture2D" uid="uid://be0bru22yeukt" path="res://assets/art/submarine/Torpedo.png" id="1_va82a"]
+[ext_resource type="AudioStream" uid="uid://bbgi5fx8bsb1x" path="res://assets/sounds/torpedo_launch.mp3" id="3_bayfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74x54"]
 size = Vector2(179, 47)
@@ -57,7 +58,7 @@ animations = [{
 }]
 
 [node name="torpedo" type="CharacterBody2D"]
-collision_layer = 256
+collision_layer = 2304
 collision_mask = 0
 script = ExtResource("1_aj11l")
 
@@ -71,3 +72,8 @@ scale = Vector2(8.1875, 4.46875)
 sprite_frames = SubResource("SpriteFrames_qflxd")
 animation = &"firing"
 frame_progress = 0.759172
+
+[node name="torpedo_launch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bayfy")
+volume_db = -4.0
+pitch_scale = 1.3
