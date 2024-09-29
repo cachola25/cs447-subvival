@@ -174,7 +174,7 @@ render_target_update_mode = 4
 script = ExtResource("4_6bchf")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(0.04, 0.04)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 scale = Vector2(8, 8)
@@ -200,11 +200,6 @@ centered = false
 scale = Vector2(8, 8)
 texture = ExtResource("13_14uku")
 centered = false
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer"]
-position = Vector2(125, 125)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_ipk4e")
 
 [node name="total_money" type="Label" parent="CanvasLayer"]
 offset_left = 1662.0

@@ -1,5 +1,6 @@
 extends Control
 
+class_name pause_menu
 func resume():
 	get_tree().paused = false
 	var submarine_scene = get_tree().root.get_child(0).get_node("submarine")
@@ -33,6 +34,7 @@ func _on_help_pressed() -> void:
 	get_tree().paused = true
 	var help_menu = load("res://menu_scenes/help_menu/help_scene.tscn").instantiate()
 	help_menu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	$AnimationPlayer.play_backwards("RESET")
 	add_child(help_menu)
 func _on_quit_pressed() -> void:
 	get_tree().quit()

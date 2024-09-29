@@ -1,91 +1,114 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4h7ihf1exd1q"]
+[gd_scene load_steps=14 format=3 uid="uid://b4h7ihf1exd1q"]
 
 [ext_resource type="Script" path="res://menu_scenes/start_menu/start_menu.gd" id="1_cpv6u"]
 [ext_resource type="Texture2D" uid="uid://dre643cfvp767" path="res://assets/art/GUI/start_menu/Start.png" id="2_jc0uu"]
 [ext_resource type="Texture2D" uid="uid://b013ywxisbsbe" path="res://assets/art/GUI/start_menu/Quit.png" id="3_eymbv"]
-[ext_resource type="Texture2D" uid="uid://ciekolen3fmhc" path="res://assets/art/GUI/start_menu/Picture1.png" id="4_5qveb"]
 [ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="5_gnth4"]
 [ext_resource type="Texture2D" uid="uid://dssmthkwf8q31" path="res://assets/art/Bubble/Empty Bubble.png" id="6_gdfyx"]
 [ext_resource type="Texture2D" uid="uid://cvqgnvanr2m7d" path="res://assets/art/Bubble/Bubble Clownfish.png" id="7_ioawl"]
 [ext_resource type="Texture2D" uid="uid://duyni0d3rw5bk" path="res://assets/art/enemy_fish/Eel/Eel 1.png" id="8_wdj36"]
+[ext_resource type="Texture2D" uid="uid://dyxdn300h4lbh" path="res://assets/art/Bubble/TriggerFish Bubble.png" id="9_gqil8"]
 [ext_resource type="AudioStream" uid="uid://en8buqh0lsbb" path="res://assets/sounds/start_menu.mp3" id="9_nem1b"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dkb"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://bvxg2mxjb1kot" path="res://assets/art/enemy_fish/swordfish/swordfish.png" id="10_keino"]
+[ext_resource type="Texture2D" uid="uid://c6gruyspyy8fp" path="res://assets/art/money_fish/turtle/32bit-seaturtle1.png" id="11_e43th"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yptup"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dkb"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_cpv6u")
 
+[node name="HelpTextureButton" type="TextureButton" parent="."]
+offset_left = 1353.0
+offset_top = 768.0
+offset_right = 1843.0
+offset_bottom = 1000.0
+scale = Vector2(1.02818, 1.04326)
+
+[node name="Label" type="Label" parent="HelpTextureButton"]
+offset_left = -6.80814
+offset_top = -6.70976
+offset_right = 489.192
+offset_bottom = 225.29
+theme_override_font_sizes/font_size = 100
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="help_bg" type="Panel" parent="HelpTextureButton"]
+show_behind_parent = true
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 1157.0
+offset_bottom = 234.0
+scale = Vector2(0.428691, 0.993227)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_yptup")
+
+[node name="QuitTextureButton" type="TextureButton" parent="."]
+offset_left = 79.0
+offset_top = 779.0
+offset_right = 573.0
+offset_bottom = 1009.0
+
+[node name="Quit" type="Sprite2D" parent="QuitTextureButton"]
+position = Vector2(251, 113)
+texture = ExtResource("3_eymbv")
+
+[node name="quit_bg" type="Panel" parent="QuitTextureButton"]
+show_behind_parent = true
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 1157.0
+offset_bottom = 234.0
+scale = Vector2(0.428691, 0.993227)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_yptup")
+
 [node name="StartTextureButton" type="TextureButton" parent="."]
-offset_left = 765.0
-offset_top = 569.0
-offset_right = 1914.0
-offset_bottom = 790.0
+offset_left = 716.0
+offset_top = 775.0
+offset_right = 1211.0
+offset_bottom = 1007.0
 
 [node name="start_bg" type="Panel" parent="StartTextureButton"]
-layout_mode = 0
-offset_left = -6.0
-offset_top = -10.0
-offset_right = 1153.0
-offset_bottom = 225.0
+offset_right = 1159.0
+offset_bottom = 235.0
+scale = Vector2(0.428205, 0.993106)
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6dkb")
 
 [node name="Start" type="Sprite2D" parent="StartTextureButton"]
-position = Vector2(568, 109)
+position = Vector2(247, 106)
+scale = Vector2(0.908379, 0.896949)
 texture = ExtResource("2_jc0uu")
 
-[node name="QuitTextureButton" type="TextureButton" parent="."]
-offset_left = 772.0
-offset_top = 845.0
-offset_right = 1918.0
-offset_bottom = 1070.0
-
-[node name="quit_bg" type="Panel" parent="QuitTextureButton"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -11.0
-offset_top = -5.0
-offset_right = 1148.0
-offset_bottom = 230.0
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_yptup")
-
-[node name="Quit" type="Sprite2D" parent="QuitTextureButton"]
-position = Vector2(568, 109)
-texture = ExtResource("3_eymbv")
-
-[node name="controls" type="Sprite2D" parent="."]
-position = Vector2(282.125, 834.5)
-scale = Vector2(1.65504, 1.5463)
-texture = ExtResource("4_5qveb")
-
 [node name="submarine" type="Sprite2D" parent="."]
-position = Vector2(267, 418)
-rotation = -0.570563
+position = Vector2(314, 622)
+rotation = -0.272527
 scale = Vector2(2.9119, 2.05523)
 texture = ExtResource("5_gnth4")
 
 [node name="bubble1" type="Sprite2D" parent="."]
-position = Vector2(118, 113)
+position = Vector2(216, 334)
 scale = Vector2(3.45941, 3.33088)
 texture = ExtResource("6_gdfyx")
 
 [node name="bubble2" type="Sprite2D" parent="."]
-position = Vector2(266, 96)
+position = Vector2(465, 384)
 scale = Vector2(3.45941, 3.33088)
 texture = ExtResource("6_gdfyx")
 
 [node name="bubble3" type="Sprite2D" parent="."]
-position = Vector2(107, 282)
+position = Vector2(452, 143)
 scale = Vector2(3.45941, 3.33088)
 texture = ExtResource("6_gdfyx")
 
 [node name="bubble4" type="Sprite2D" parent="."]
-position = Vector2(230, 226)
+position = Vector2(247, 486)
 rotation = -0.744268
 scale = Vector2(3.45941, 3.33088)
 texture = ExtResource("7_ioawl")
@@ -98,8 +121,8 @@ theme_override_font_sizes/font_size = 290
 text = "Subvival"
 
 [node name="eel" type="Sprite2D" parent="."]
-position = Vector2(532, 175)
-rotation = -0.822584
+position = Vector2(1112, 674)
+rotation = -0.0967833
 scale = Vector2(4.19146, 4.51928)
 texture = ExtResource("8_wdj36")
 
@@ -108,9 +131,46 @@ stream = ExtResource("9_nem1b")
 volume_db = -4.0
 autoplay = true
 
-[connection signal="button_down" from="StartTextureButton" to="." method="_on_start_texture_button_button_down"]
-[connection signal="mouse_entered" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_entered"]
-[connection signal="mouse_exited" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_exited"]
+[node name="bubble5" type="Sprite2D" parent="."]
+position = Vector2(277, 139)
+rotation = 0.267192
+scale = Vector2(3.45941, 3.33088)
+texture = ExtResource("9_gqil8")
+
+[node name="eel3" type="Sprite2D" parent="."]
+position = Vector2(724, 634)
+rotation = -0.151603
+scale = Vector2(4.19789, 4.15355)
+skew = 0.0144981
+texture = ExtResource("8_wdj36")
+
+[node name="eel4" type="Sprite2D" parent="."]
+position = Vector2(1497, 509)
+rotation = -0.0980048
+scale = Vector2(11.7393, 13.4895)
+skew = 0.0144981
+texture = ExtResource("10_keino")
+flip_h = true
+
+[node name="eel5" type="Sprite2D" parent="."]
+position = Vector2(1915, 583)
+rotation = -0.114208
+scale = Vector2(7.38641, 7.68385)
+skew = 0.0144981
+texture = ExtResource("11_e43th")
+
+[node name="eel2" type="Sprite2D" parent="."]
+position = Vector2(1027, 455)
+rotation = -0.0967833
+scale = Vector2(4.19146, 4.51928)
+texture = ExtResource("8_wdj36")
+
+[connection signal="mouse_entered" from="HelpTextureButton" to="." method="_on_help_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="HelpTextureButton" to="." method="_on_help_texture_button_mouse_exited"]
+[connection signal="pressed" from="HelpTextureButton" to="." method="_on_help_texture_button_pressed"]
 [connection signal="button_down" from="QuitTextureButton" to="." method="_on_quit_texture_button_button_down"]
 [connection signal="mouse_entered" from="QuitTextureButton" to="." method="_on_quit_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="QuitTextureButton" to="." method="_on_quit_texture_button_mouse_exited"]
+[connection signal="button_down" from="StartTextureButton" to="." method="_on_start_texture_button_button_down"]
+[connection signal="mouse_entered" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="StartTextureButton" to="." method="_on_start_texture_button_mouse_exited"]

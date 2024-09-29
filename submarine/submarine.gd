@@ -68,6 +68,7 @@ func _ready():
 	$CanvasLayer/fish_compendium.visible = false
 	$CanvasLayer/enemy_fish_compendium.visible = false
 	
+	
 func is_submarine_destroyed():
 	return $CanvasLayer/health_bar.value <= $CanvasLayer/health_bar.min_value
 	

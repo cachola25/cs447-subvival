@@ -1,8 +1,9 @@
 extends Node2D
 
+class_name start_menu
 @onready var start_bg = $StartTextureButton/start_bg
 @onready var quit_bg = $QuitTextureButton/quit_bg
-
+@onready var help_bg = $HelpTextureButton/help_bg
 var changeState = false
 #var style
 # Called when the node enters the scene tree for the first time.
@@ -37,3 +38,13 @@ func _on_start_texture_button_mouse_exited() -> void:
 
 func _on_quit_texture_button_mouse_exited() -> void:
 	style_button(quit_bg, Color(0,0,0), 0)
+
+
+func _on_help_texture_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://menu_scenes/help_menu/help_scene.tscn")
+
+func _on_help_texture_button_mouse_entered() -> void:
+	style_button(help_bg, Color(0.5,0.5,0.5), 1)
+
+func _on_help_texture_button_mouse_exited() -> void:
+	style_button(help_bg, Color(0,0,0), 0)

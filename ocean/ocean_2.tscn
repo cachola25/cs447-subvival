@@ -111,6 +111,8 @@ metadata/SHARK_DAMAGE = 60
 metadata/SHARK_SPEED = 600
 metadata/MAX_SHARK_IN_AREA = 1
 metadata/SUBMARINE_POSITION = Vector2(0, 0)
+metadata/_edit_vertical_guides_ = [15368.0]
+metadata/_edit_horizontal_guides_ = [-1.0, 8648.0]
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -1
