@@ -18,7 +18,7 @@ var eel_spawn_areas = []
 var update_damage_flag = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+	#DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
 	$background_music.play(2)
 	map_right_limit = $background.size.x
 	map_bottom_limit = $background.size.y
