@@ -44,6 +44,8 @@ func _on_hit_sub():
 	get_parent().get_node("swordfish_hit").play()
 	get_parent().get_node("sub_damaged").play()
 func _on_hit_by_torpedo():
+	if not "swordfish" in submarine_instance.defeated_enemy_fish:
+		submarine_instance.defeated_enemy_fish["swordfish"] = true
 	submarine_instance.set_meta("killed_new_fish_type", "swordfish")
 	submarine_instance.emit_signal("killed_new")
 func _on_swordfish_despawned():
