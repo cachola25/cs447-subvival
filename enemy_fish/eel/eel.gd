@@ -15,9 +15,11 @@ var SPEED
 var DAMAGE_DEALT
 signal despawned
 signal hit_sub
+signal hit_by_torpedo
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
+var submarine_scene
 
 
 func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
@@ -27,6 +29,7 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 	DAMAGE_DEALT = _DAMAGE_DEALT
 	velocity = direction * SPEED
 	enemy_fish_type = "eel"
+	submarine_scene = get_parent().get_parent().get_node("submarine")
 
 func _physics_process(delta):
 	velocity += acceleration * delta
@@ -51,6 +54,7 @@ func _on_body_entered(body: Node2D) -> void:
 	elif body is torpedo:
 		print("Eel hit by torpedo")
 		body.queue_free()
+		emit_signal("hit_by_torpedo")
 		emit_signal("despawned")
 		queue_free()
 

@@ -13,6 +13,7 @@ var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
+var defeated_enemy_fish = {}
 var acceleration = 20000 
 var friction = 0.9
 var elapsed = 0.5
@@ -23,6 +24,8 @@ var previous_rotation = -100
 var nuxMode = false;
 
 signal discovered_new
+signal killed_new
+signal start_boss_fight
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
@@ -41,6 +44,7 @@ func display_final_compendium():
 			var progress_bar_node = upgrade.get_node(progress_bar)
 			if not (progress_bar_node.value >= progress_bar_node.max_value):
 				return false
+	$CanvasLayer/enemy_fish_compendium.can_display = true
 	return true
 	
 		
@@ -84,7 +88,12 @@ func apply_movement_rotation(direction: Vector2, delta):
 			$AnimatedSprite2D.flip_v = true
 	else:
 		$AnimatedSprite2D.flip_v = false
-		
+
+func check_if_boss_fight():
+	if defeated_enemy_fish.size() != 3:
+		return
+	defeated_enemy_fish.clear()
+	emit_signal("start_boss_fight")
 func _process(delta):
 	#if is_submarine_destroyed():
 		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
@@ -133,6 +142,7 @@ func _process(delta):
 	apply_movement_rotation(direction, delta)
 	if Input.is_action_just_pressed("fire_torpedo"):
 		fire_torpedo()
+	check_if_boss_fight()
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()

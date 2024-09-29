@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://ldexuhrnijjc" path="res://assets/art/GUI/compendium/loupe.png" id="21_5xm55"]
 [ext_resource type="Texture2D" uid="uid://bx1egd3xvne7q" path="res://assets/art/GUI/compendium/book.png" id="22_mjqdk"]
 [ext_resource type="AudioStream" uid="uid://cvgdkij4yx062" path="res://assets/sounds/submarine_moving.MP3" id="28_1ex1o"]
-[ext_resource type="Script" path="res://submarine/UI/enemy_fish_compendium.gd" id="30_c5fem"]
+[ext_resource type="Script" path="res://submarine/enemy_fish_compendium.gd" id="30_bl0wq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgoy"]
 size = Vector2(1920.5, 1074.5)
@@ -583,7 +583,7 @@ offset_left = 1315.0
 offset_top = 473.0
 offset_right = 1355.0
 offset_bottom = 513.0
-script = ExtResource("30_c5fem")
+script = ExtResource("30_bl0wq")
 
 [node name="title" type="Label" parent="CanvasLayer/enemy_fish_compendium"]
 layout_mode = 0

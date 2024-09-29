@@ -108,7 +108,7 @@ metadata/MAX_SWORDFISH_IN_AREA = 3
 metadata/SHARK_DAMAGE = 60
 metadata/SHARK_SPEED = 600
 metadata/MAX_SHARK_IN_AREA = 1
-metadata/SUBMARINE_POSITION = 0
+metadata/SUBMARINE_POSITION = Vector2(0, 0)
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -1
