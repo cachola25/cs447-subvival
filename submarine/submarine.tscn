@@ -660,7 +660,7 @@ offset_left = -27.0
 offset_top = 13.0
 offset_right = -17.0
 offset_bottom = 48.0
-text = "1"
+text = "10000"
 label_settings = SubResource("LabelSettings_e0py5")
 autowrap_mode = 2
 

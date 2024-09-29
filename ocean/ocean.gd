@@ -37,7 +37,6 @@ func _ready() -> void:
 		if child.name.begins_with("eel_spawn_area"):
 			eel_spawn_areas.append(child)
 	
-	_on_start_boss_fight()
 	
 func _process(delta: float) -> void:
 	set_meta("SUBMARINE_POSITION", $submarine.global_position)

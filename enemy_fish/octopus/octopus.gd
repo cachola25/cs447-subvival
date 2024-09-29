@@ -44,6 +44,8 @@ func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
 func _physics_process(delta):
 	if not ocean_scene:
 		return
+	if $octopus_health_bar.value <= $octopus_health_bar.min_value:
+		get_tree().change_scene_to_file("res://menu_scenes/victory_screen/victory_screen.tscn")
 	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")
 	circling_center = circling_center.lerp(submarine_position, circling_center_follow_speed * delta)
 	phase_timer += delta
