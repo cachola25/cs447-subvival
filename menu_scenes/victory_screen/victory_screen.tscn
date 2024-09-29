@@ -44,6 +44,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_1xeg2")
 
 [node name="victory_text" type="Label" parent="quit_button"]
+layout_mode = 0
 offset_left = 176.0
 offset_top = 34.9999
 offset_right = 333.0
