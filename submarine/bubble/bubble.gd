@@ -44,3 +44,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_pop_finished() -> void:
 	queue_free()
+
+
+func _on_new_fish_captured_finished() -> void:
+	$AnimatedSprite2D.play("pop")

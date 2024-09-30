@@ -3,7 +3,7 @@ extends enemy_fish
 class_name octopus
 
 var SPEED = 800
-var DAMAGE_DEALT = 90
+var DAMAGE_DEALT = 55
 var ocean_scene
 
 signal hit_sub

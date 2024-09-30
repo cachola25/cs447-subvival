@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=42 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -19,6 +19,9 @@
 [ext_resource type="AudioStream" uid="uid://cnxggw4tftgie" path="res://assets/sounds/shark_bite.MP3" id="18_3patq"]
 [ext_resource type="AudioStream" uid="uid://cogw7tpffwk2y" path="res://assets/sounds/electrical-shock-zap-106412.mp3" id="18_lrils"]
 [ext_resource type="AudioStream" uid="uid://dia5kwiqi1v1f" path="res://assets/sounds/metal-beaten-sfx-230501.mp3" id="19_ehfsq"]
+[ext_resource type="AudioStream" uid="uid://xsr3jhvyos7h" path="res://assets/sounds/log_enemy.MP3" id="20_1e8w5"]
+[ext_resource type="AudioStream" uid="uid://bm0qjyrifpyi2" path="res://assets/sounds/boss_fight_start.MP3" id="21_m3114"]
+[ext_resource type="AudioStream" uid="uid://uaoly4j8eu1b" path="res://assets/sounds/boss_fight_music.MP3" id="22_6dxdx"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
 
@@ -106,9 +109,9 @@ metadata/EEL_DAMAGE = 5
 metadata/EEL_SPEED = 500
 metadata/MAX_EEL_IN_AREA = 5
 metadata/SWORDFISH_DAMAGE = 10
-metadata/SWORDFISH_SPEED = 1000
+metadata/SWORDFISH_SPEED = 500
 metadata/MAX_SWORDFISH_IN_AREA = 3
-metadata/SHARK_DAMAGE = 60
+metadata/SHARK_DAMAGE = 30
 metadata/SHARK_SPEED = 600
 metadata/MAX_SHARK_IN_AREA = 1
 metadata/SUBMARINE_POSITION = Vector2(0, 0)
@@ -132,6 +135,7 @@ position = Vector2(321, 181)
 tile_set = SubResource("TileSet_iqnev")
 
 [node name="CollisionArea" type="StaticBody2D" parent="."]
+visible = false
 scale = Vector2(8, 8)
 collision_layer = 2056
 collision_mask = 8
@@ -353,6 +357,19 @@ stream = ExtResource("18_3patq")
 volume_db = -5.0
 pitch_scale = 1.5
 
+[node name="log_enemy_fish" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_1e8w5")
+volume_db = 5.0
+pitch_scale = 1.2
+
+[node name="start_boss_fight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_m3114")
+
+[node name="boss_fight_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_6dxdx")
+volume_db = -3.0
+parameters/looping = true
+
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="clownfish_spawn_area_1/spawn_timer" to="clownfish_spawn_area_1" method="_on_spawn_timer_timeout"]
@@ -377,3 +394,4 @@ pitch_scale = 1.5
 [connection signal="body_entered" from="shark_spawn_area_1" to="shark_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="shark_spawn_area_1" to="shark_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="shark_spawn_area_1/spawn_delay_timer" to="shark_spawn_area_1" method="_on_spawn_delay_timer_timeout"]
+[connection signal="finished" from="start_boss_fight" to="." method="_on_start_boss_fight_finished"]

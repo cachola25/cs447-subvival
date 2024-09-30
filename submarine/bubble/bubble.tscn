@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b6olq3cp8bc6a"]
+[gd_scene load_steps=29 format=3 uid="uid://b6olq3cp8bc6a"]
 
 [ext_resource type="Script" path="res://submarine/bubble/bubble.gd" id="1_gvl63"]
 [ext_resource type="Texture2D" uid="uid://dssmthkwf8q31" path="res://assets/art/Bubble/Empty Bubble.png" id="2_s6noh"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://baot2mdt7ir7u" path="res://assets/sounds/bubble_release.mp3" id="9_atnbw"]
 [ext_resource type="AudioStream" uid="uid://dwmooehitlqtf" path="res://assets/sounds/fish_captured.mp3" id="10_2bygj"]
 [ext_resource type="AudioStream" uid="uid://ckm1ycraaht62" path="res://assets/sounds/bubble_pop.mp3" id="11_4v23y"]
+[ext_resource type="AudioStream" uid="uid://xsr3jhvyos7h" path="res://assets/sounds/log_enemy.MP3" id="12_x6ug6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ae1"]
 radius = 85.0
@@ -184,5 +185,11 @@ stream = ExtResource("10_2bygj")
 stream = ExtResource("11_4v23y")
 pitch_scale = 0.9
 
+[node name="new_fish_captured" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_x6ug6")
+volume_db = 10.0
+pitch_scale = 3.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="finished" from="pop" to="." method="_on_pop_finished"]
+[connection signal="finished" from="new_fish_captured" to="." method="_on_new_fish_captured_finished"]

@@ -42,6 +42,7 @@ func _on_hit_sub():
 func _on_hit_by_torpedo():
 	if not "eel" in submarine_instance.defeated_enemy_fish:
 		submarine_instance.defeated_enemy_fish["eel"] = true
+		get_parent().get_node("log_enemy_fish").play()
 	submarine_instance.set_meta("killed_new_fish_type", "eel")
 	submarine_instance.emit_signal("killed_new")
 func _on_body_entered(body: Node2D) -> void:

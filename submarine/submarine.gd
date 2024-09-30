@@ -9,13 +9,13 @@ const UPGRADES_LIST = ["o2", "armor", "health", "luck"]
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 @onready var popup = preload("res://menu_scenes/popup_message/popup_message.tscn")
 var ARMOR = 0
-var SPEED = 20000
+var SPEED = 10000
 var LUCK = 0
 var bubble_scene = load("res://submarine/bubble/bubble.tscn")
 var torpedo_scene = load("res://submarine/torpedo/torpedo.tscn")
 var discovered_fish = {} # This is a dict but will be used as a set
 var defeated_enemy_fish = {}
-var acceleration = 20000 
+var acceleration = 9000 
 var friction = 0.9
 var elapsed = 0.5
 var gravity = Vector2(0,10)
@@ -120,14 +120,13 @@ func check_if_boss_fight():
 		return
 	if defeated_enemy_fish.size() != 3:
 		return
-	defeated_enemy_fish.clear()
 	started_boss_fight = true
 	emit_signal("start_boss_fight")
 func _process(delta):
-	#if is_submarine_destroyed():
-		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
-		#get_tree().root.get_child(0).queue_free()
-		#get_tree().root.add_child(death_scene)
+	if is_submarine_destroyed():
+		var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
+		get_tree().root.get_child(0).queue_free()
+		get_tree().root.add_child(death_scene)
 		
 	var direction = Vector2.ZERO # (0,0d)
 	if elapsed > 1:
@@ -149,9 +148,9 @@ func _process(delta):
 		direction.x += 1
 	if Input.is_action_just_pressed("release_bubble"):
 		#UNCOMMENT THIS TO TURN ON BUBBLE LIMITS
-		#if oxygen_bar.value >= oxygen_bar.BUBBLE_COST:
-			#spawn_bubble()
-		spawn_bubble()
+		if oxygen_bar.value >= oxygen_bar.BUBBLE_COST:
+			spawn_bubble()
+		#spawn_bubble()
 	
 	if direction.length() > 1:
 		direction = direction.normalized()
@@ -186,13 +185,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		var fish_type = body.get_meta("FISH_TYPE")
 		if not fish_type in discovered_fish:
 			discovered_fish[fish_type] = true
+			body.get_node("new_fish_captured").play()
 			set_meta("discovered_new_fish_type", fish_type)
 			emit_signal("discovered_new")
 			
 		var curr_money = int(total_money.text.substr(1))
 		curr_money += body.get_meta("FISH_VALUE")
 		total_money.text = "$" + str(curr_money)
-		body.queue_free()
+		body.get_node("AnimatedSprite2D").play("pop")
 	elif body.name.begins_with("bubble"):
 		body.get_node("AnimatedSprite2D").play("pop")
 	

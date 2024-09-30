@@ -61,6 +61,14 @@ func update_eel_metadata():
 		timer.wait_time -= 0.1
 
 func _on_start_boss_fight():
+	$background_music.stop()
+	$start_boss_fight.play()
+	
+func _on_player_alive_time_timeout() -> void:
+	update_eel_metadata()
+
+
+func _on_start_boss_fight_finished() -> void:
 	var octopus_instance = octopus_scene.instantiate()
 	var transform_position = Transform2D()
 	var spawn_pos = submarine_instance.global_position
@@ -75,6 +83,4 @@ func _on_start_boss_fight():
 	octopus_instance.start(transform_position, 
 		submarine_instance.global_position, octopus_instance.SPEED, octopus_instance.DAMAGE_DEALT)
 	octopus_instance.get_node("AnimatedSprite2D").play("octopus_swim")
-	
-func _on_player_alive_time_timeout() -> void:
-	update_eel_metadata()
+	$boss_fight_music.play()
