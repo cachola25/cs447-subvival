@@ -25,10 +25,12 @@ var started_boss_fight = false
 var displayed_popup = false
 var can_fire = true
 var nuxMode = false
+var updated_metadata = false
 
 signal discovered_new
 signal killed_new
 signal start_boss_fight
+signal update_enemy_fish_metadata
 
 func spawn_bubble():
 	var bubble = bubble_scene.instantiate()
@@ -169,6 +171,9 @@ func _process(delta):
 	
 	if display_final_compendium():
 		$CanvasLayer/total_torpedos.visible = true
+		if not updated_metadata:
+			emit_signal("update_enemy_fish_metadata")
+			updated_metadata = true
 		if not displayed_popup:
 			$popup_message.get_node("AnimationPlayer").play("show_and_hide")
 			displayed_popup = true

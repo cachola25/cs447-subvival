@@ -18,7 +18,6 @@ var eel_spawn_areas = []
 var update_damage_flag = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
 	$background_music.play(2)
 	map_right_limit = $background.size.x
 	map_bottom_limit = $background.size.y
@@ -33,6 +32,7 @@ func _ready() -> void:
 	submarine_camera.limit_bottom = map_bottom_limit
 	
 	submarine_instance.connect("start_boss_fight", _on_start_boss_fight)
+	submarine_instance.connect("update_enemy_fish_metadata", _on_update_enemy_fish_metadata)
 	for child in get_children():
 		if child.name.begins_with("eel_spawn_area"):
 			eel_spawn_areas.append(child)
@@ -41,31 +41,29 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	set_meta("SUBMARINE_POSITION", $submarine.global_position)
 	
-func update_eel_metadata():
-	var updated_speed = get_meta("EEL_SPEED") + 100
-	var updated_max_in_area = get_meta("MAX_EELS_IN_AREA") + 2
-	var updated_damage = get_meta("EEL_DAMAGE") + 1
+func _on_update_enemy_fish_metadata():
+	var updated_eel_speed = get_meta("EEL_SPEED") + 100
+	var updated_eel_max_in_area = get_meta("MAX_EEL_IN_AREA") + 2
+	var updated_eel_damage = get_meta("EEL_DAMAGE") + 1
 	
-	if updated_speed <= 2000:
-		set_meta("EEL_SPEED", updated_speed)
-	if updated_max_in_area <= 50:
-		set_meta("MAX_EELS_IN_AREA", updated_max_in_area)
-	if update_damage_flag % 3 == 0:
-		set_meta("EEL_DAMAGE", updated_damage)
+	set_meta("EEL_SPEED", updated_eel_speed)
+	set_meta("MAX_EEL_IN_AREA", updated_eel_max_in_area)
+	set_meta("EEL_DAMAGE", updated_eel_damage)
 	
-	for spawn_area in eel_spawn_areas:
-		var timer = spawn_area.get_node("spawn_delay_timer")
-		var curr_wait_time = timer.wait_time
-		if (curr_wait_time - 0.1 <= 0.5):
-			break
-		timer.wait_time -= 0.1
+	var updated_swordfish_speed = get_meta("SWORDFISH_SPEED") + 100
+	var updated_swordfish_max_in_area = get_meta("MAX_SWORDFISH_IN_AREA") + 1
+	var updated_swordfish_damage = get_meta("SWORDFISH_DAMAGE") + 3
+	
+	set_meta("SWORDFISH_SPEED", updated_swordfish_speed)
+	set_meta("MAX_SWORDFISH_IN_AREA", updated_swordfish_max_in_area)
+	set_meta("SWORDFISH_DAMAGE", updated_swordfish_damage)
+	
+	var updated_shark_damage = get_meta("SHARK_DAMAGE") + 15
+	set_meta("SHARK_DAMAGE", updated_shark_damage)
 
 func _on_start_boss_fight():
 	$background_music.stop()
 	$start_boss_fight.play()
-	
-func _on_player_alive_time_timeout() -> void:
-	update_eel_metadata()
 
 
 func _on_start_boss_fight_finished() -> void:
