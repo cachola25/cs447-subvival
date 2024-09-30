@@ -376,7 +376,7 @@ parameters/looping = true
 stream = ExtResource("23_5bij4")
 
 [node name="end_of_game" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]

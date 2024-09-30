@@ -8,6 +8,7 @@ const UPGRADES_LIST = ["o2", "armor", "health", "luck"]
 @onready var total_money = $CanvasLayer/total_money
 @onready var oxygen_bar = $CanvasLayer/oxygen_bar
 @onready var popup = preload("res://menu_scenes/popup_message/popup_message.tscn")
+@onready var explosion_sound = preload("res://submarine/torpedo/explosion.tscn")
 var ARMOR = 0
 var SPEED = 10000
 var LUCK = 0
@@ -26,6 +27,7 @@ var displayed_popup = false
 var can_fire = true
 var nuxMode = false
 var updated_metadata = false
+var died = false
 
 signal discovered_new
 signal killed_new
@@ -69,9 +71,6 @@ func undisplay_user_menu():
 	$CanvasLayer/enemy_fish_compendium.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
-	#if not displayed_popup and display_final_compendium():
-		#display_unlock_message()
-		#displayed_popup = true
 	
 func _ready():
 	$AnimatedSprite2D.play("submarine_default")
@@ -119,15 +118,16 @@ func check_if_boss_fight():
 	emit_signal("start_boss_fight")
 	
 func _process(delta):
-	#if is_submarine_destroyed():
-		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
-		#get_tree().root.get_child(0).queue_free()
-		#get_tree().root.add_child(death_scene)
-		
+	
+	if is_submarine_destroyed() and not died:
+		died = true
+		get_tree().current_scene.add_child(explosion_sound.instantiate())
+		$AnimatedSprite2D.play("submarine_explode")
+
 	var direction = Vector2.ZERO # (0,0d)
 	if elapsed > 1:
 		elapsed = 1
-	if Input.is_action_just_pressed("display_user_menu"):
+	if Input.is_action_just_pressed("display_user_menu") and not died:
 		if get_tree().paused:
 			undisplay_user_menu()
 		else:
@@ -142,7 +142,7 @@ func _process(delta):
 		direction.x -= 1
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
-	if Input.is_action_just_pressed("release_bubble"):
+	if Input.is_action_just_pressed("release_bubble") and not died:
 		#UNCOMMENT THIS TO TURN ON BUBBLE LIMITS
 		if oxygen_bar.value >= oxygen_bar.BUBBLE_COST:
 			spawn_bubble()
@@ -151,6 +151,9 @@ func _process(delta):
 	if direction.length() > 1:
 		direction = direction.normalized()
 	
+	if died:
+		direction = Vector2.ZERO
+		
 	if direction != Vector2.ZERO:
 		velocity += direction * acceleration * delta
 		velocity = velocity.limit_length(SPEED)
@@ -163,8 +166,9 @@ func _process(delta):
 		
 	velocity *= friction
 	
-	apply_movement_rotation(direction, delta)
-	if Input.is_action_just_pressed("fire_torpedo"):
+	if not died:
+		apply_movement_rotation(direction, delta)
+	if Input.is_action_just_pressed("fire_torpedo") and not died:
 		if get_total_torpedos() >= 1 and can_fire:
 			fire_torpedo()
 	check_if_boss_fight()
@@ -177,6 +181,8 @@ func _process(delta):
 		if not displayed_popup:
 			$popup_message.get_node("AnimationPlayer").play("show_and_hide")
 			displayed_popup = true
+	if died:
+		velocity = Vector2.ZERO
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
@@ -201,6 +207,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "damage_taken":
 		$AnimatedSprite2D.play("submarine_default")
+	elif $AnimatedSprite2D.animation == "submarine_explode":
+		$AnimatedSprite2D.visible = false
+		$CanvasLayer/fade_rect/fadeout_player.play("fadeout")
 		
 func fire_torpedo():
 	var torpedo = torpedo_scene.instantiate()
@@ -220,3 +229,10 @@ func _on_nux_mode_button_button_down() -> void:
 
 func _on_torpedo_timer_timeout() -> void:
 	can_fire = true
+
+
+func _on_fadeout_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fadeout" and not died:
+		get_tree().change_scene_to_file("res://menu_scenes/victory_screen/victory_screen.tscn")
+	elif anim_name == "fadeout" and died:
+		get_tree().change_scene_to_file("res://menu_scenes/death_screen/death_screen.tscn")

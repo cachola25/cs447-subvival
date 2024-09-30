@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=58 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
 [ext_resource type="Texture2D" uid="uid://gwne8bytd5jk" path="res://assets/art/submarine/Subvival Sub Damage Taken.png" id="2_pxsed"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3v0h43a6cfh8" path="res://assets/art/GUI/upgrade_menu/NuxButton.png" id="4_4csxp"]
 [ext_resource type="Script" path="res://submarine/sub_viewport.gd" id="4_6bchf"]
 [ext_resource type="PackedScene" uid="uid://kw0anfqbxxlx" path="res://menu_scenes/popup_message/popup_message.tscn" id="4_77p1i"]
+[ext_resource type="Texture2D" uid="uid://cesipwugewvr7" path="res://assets/art/submarine/submarine_explode.png" id="4_pgfk7"]
 [ext_resource type="Script" path="res://submarine/UI/health_bar/health_bar.gd" id="5_sriyo"]
 [ext_resource type="AudioStream" uid="uid://n7r2xl1ke5ty" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
 [ext_resource type="Texture2D" uid="uid://bywvdjp7cgytu" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
@@ -74,6 +75,22 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("3_ul7x1")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4w8d"]
+atlas = ExtResource("4_pgfk7")
+region = Rect2(4, 2, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwrmu"]
+atlas = ExtResource("4_pgfk7")
+region = Rect2(34, 2, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vcmh"]
+atlas = ExtResource("4_pgfk7")
+region = Rect2(64, 2, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmff"]
+atlas = ExtResource("4_pgfk7")
+region = Rect2(94, 2, 30, 34)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ls03"]
 animations = [{
 "frames": [{
@@ -109,6 +126,26 @@ animations = [{
 "loop": true,
 "name": &"submarine_default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4w8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwrmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vcmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmff")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"submarine_explode",
+"speed": 5.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d84qk"]
@@ -124,6 +161,43 @@ shadow_color = Color(0, 0, 0, 0.796078)
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0py5"]
 font_size = 25
+
+[sub_resource type="Animation" id="Animation_qiboa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_arhl2"]
+resource_name = "fadeout"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 3.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 0.568627), Color(1, 1, 1, 0.796078), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qi8l1"]
+_data = {
+"RESET": SubResource("Animation_qiboa"),
+"fadeout": SubResource("Animation_arhl2")
+}
 
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
@@ -155,8 +229,7 @@ debug_color = Color(0.417429, 0.552356, 0.672516, 0.42)
 position = Vector2(-1.00002, 0.999981)
 scale = Vector2(4.76562, 3.3125)
 sprite_frames = SubResource("SpriteFrames_1ls03")
-animation = &"submarine_default"
-frame_progress = 0.714703
+animation = &"submarine_explode"
 
 [node name="popup_message" parent="." instance=ExtResource("4_77p1i")]
 offset_left = -6.0
@@ -714,6 +787,18 @@ text = "10000"
 label_settings = SubResource("LabelSettings_e0py5")
 autowrap_mode = 2
 
+[node name="fade_rect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1994.0
+offset_bottom = 1152.0
+color = Color(0, 0, 0, 1)
+
+[node name="fadeout_player" type="AnimationPlayer" parent="CanvasLayer/fade_rect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qi8l1")
+}
+
 [node name="moving_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_1ex1o")
 volume_db = -8.0
@@ -744,4 +829,5 @@ one_shot = true
 [connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/torpedo/buy_torpedo_button" to="CanvasLayer/upgrade_menu" method="_on_buy_torpedo_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/fade_rect/fadeout_player" to="." method="_on_fadeout_player_animation_finished"]
 [connection signal="timeout" from="torpedo_timer" to="." method="_on_torpedo_timer_timeout"]

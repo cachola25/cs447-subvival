@@ -1,57 +1,118 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqmjo43gtlkch"]
+[gd_scene load_steps=11 format=3 uid="uid://cqmjo43gtlkch"]
 
 [ext_resource type="Script" path="res://menu_scenes/death_screen/death_screen.gd" id="1_fimrw"]
+[ext_resource type="Texture2D" uid="uid://bkkogwf1xh00j" path="res://assets/art/submarine/skull-and-bones.png" id="2_sv5qe"]
+[ext_resource type="Texture2D" uid="uid://duyni0d3rw5bk" path="res://assets/art/enemy_fish/Eel/Eel 1.png" id="3_vmrh6"]
+[ext_resource type="Texture2D" uid="uid://bvxg2mxjb1kot" path="res://assets/art/enemy_fish/swordfish/swordfish.png" id="4_qgls7"]
+[ext_resource type="Texture2D" uid="uid://3c06gy12lxef" path="res://assets/art/enemy_fish/shark/Shark.png" id="5_wvjbf"]
+[ext_resource type="Texture2D" uid="uid://b15o087q3w4vt" path="res://assets/art/enemy_fish/Octopus/Octopus Swim.png" id="6_rpael"]
+[ext_resource type="AudioStream" uid="uid://wtosjqthyl83" path="res://assets/sounds/died.MP3" id="7_4t1gq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gef7"]
+bg_color = Color(0.808998, 0.808998, 0.808998, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.060137, 0.0227532, 0.0084306, 1)
+corner_detail = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt6nq"]
+atlas = ExtResource("6_rpael")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftkqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt6nq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="death_screen" type="Node2D"]
 script = ExtResource("1_fimrw")
 
-[node name="Display" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2082.0
+offset_bottom = 1080.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
 
-[node name="destroyed_text" type="Label" parent="Display"]
-layout_mode = 0
-offset_left = 277.0
-offset_top = 110.0
-offset_right = 502.0
-offset_bottom = 133.0
+[node name="destroyed_text" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 83.0
+offset_right = 499.0
+offset_bottom = 106.0
 scale = Vector2(6.3004, 5.82821)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Your sub has been destroyed"
 
-[node name="retry_button" type="TextureButton" parent="Display"]
-layout_mode = 0
-offset_left = 204.0
-offset_top = 591.0
-offset_right = 711.0
-offset_bottom = 795.0
-
-[node name="quit_button" type="TextureButton" parent="Display"]
-layout_mode = 0
-offset_left = 1235.0
-offset_top = 597.0
-offset_right = 1649.0
-offset_bottom = 781.0
-
-[node name="retry_text" type="Label" parent="Display"]
-layout_mode = 0
-offset_left = 191.0
-offset_top = 525.0
-offset_right = 706.0
-offset_bottom = 798.0
-theme_override_font_sizes/font_size = 200
+[node name="retry_button" type="Button" parent="."]
+offset_left = 140.0
+offset_top = 781.0
+offset_right = 729.0
+offset_bottom = 993.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_1gef7")
 text = "Retry"
 
-[node name="quit_text" type="Label" parent="Display"]
-layout_mode = 0
-offset_left = 1229.0
-offset_top = 532.0
-offset_right = 1648.0
-offset_bottom = 805.0
-theme_override_font_sizes/font_size = 200
+[node name="quit_button" type="Button" parent="."]
+offset_left = 1161.0
+offset_top = 783.0
+offset_right = 1750.0
+offset_bottom = 995.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_1gef7")
 text = "Quit"
 
-[connection signal="pressed" from="Display/retry_button" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="Display/quit_button" to="." method="_on_quit_button_pressed"]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(940, 514)
+scale = Vector2(0.863281, 0.767578)
+texture = ExtResource("2_sv5qe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1507, 700)
+rotation = 0.103117
+scale = Vector2(4.566, 5.19118)
+texture = ExtResource("3_vmrh6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(372, 339)
+rotation = 0.20496
+scale = Vector2(4.566, 5.19118)
+texture = ExtResource("3_vmrh6")
+flip_h = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(390, 624)
+rotation = -0.11585
+scale = Vector2(13.3556, 17.0164)
+skew = -0.0263437
+texture = ExtResource("4_qgls7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1483, 404)
+rotation = -0.259276
+scale = Vector2(7.29409, 6.15578)
+texture = ExtResource("5_wvjbf")
+flip_h = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-86, 497)
+rotation = 0.651604
+scale = Vector2(5.65625, 4.34375)
+sprite_frames = SubResource("SpriteFrames_ftkqo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4t1gq")
+volume_db = 5.0
+
+[connection signal="pressed" from="retry_button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]

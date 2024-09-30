@@ -23,8 +23,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1218.0
-offset_bottom = -1828.0
+offset_right = -920.0
+offset_bottom = -1693.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.995928, 1.00709)
@@ -33,7 +33,7 @@ scale = Vector2(0.995928, 1.00709)
 layout_mode = 0
 offset_left = 3.0
 offset_top = -3.0
-offset_right = 1924.0
+offset_right = 1928.0
 offset_bottom = 1073.0
 
 [node name="title" type="Label" parent="Panel/VBoxContainer"]

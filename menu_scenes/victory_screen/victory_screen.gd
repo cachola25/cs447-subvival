@@ -6,7 +6,8 @@ var changeState = false
 #var style
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	style_button(quit_bg, Color(0.5,0.5,0.5), 3)
+	$AudioStreamPlayer.play(1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,11 +20,11 @@ func style_button(panel: Panel, color: Color, width: int) -> void:
 	panel.add_theme_stylebox_override("panel",style)
 
 func _on_quit_button_mouse_entered() -> void:
-	style_button(quit_bg, Color(0.5,0.5,0.5), 3)
+	style_button(quit_bg, Color(0.8,0.8,0.8), 3)
 
 
 func _on_quit_button_mouse_exited() -> void:
-	style_button(quit_bg, Color(0,0,0), 0)
+	style_button(quit_bg, Color(0.5,0.5,0.5), 3)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu_scenes/start_menu/start_menu.tscn")

@@ -96,4 +96,4 @@ func _on_octopus_death_finished() -> void:
 	$end_of_game.start()
 
 func _on_end_of_game_timeout() -> void:
-	get_tree().change_scene_to_file("res://menu_scenes/victory_screen/victory_screen.tscn")
+	submarine_instance.get_node("CanvasLayer/fade_rect/fadeout_player").play("fadeout")
