@@ -91,8 +91,9 @@ func _physics_process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is submarine:
-		body.get_node("AnimatedSprite2D").play("damage_taken")
-		body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
+		if not body.died:
+			body.get_node("AnimatedSprite2D").play("damage_taken")
+			body.get_node("CanvasLayer/health_bar").value -= (DAMAGE_DEALT - body.ARMOR)
 	elif body is torpedo:
 		if state == State.ATTACKING:
 			$octopus_health_bar.value -= $octopus_health_bar.step
