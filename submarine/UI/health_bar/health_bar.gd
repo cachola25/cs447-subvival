@@ -14,6 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if value <= 0:
+		return
 	if value >= max_value:
 		if not $health_regen_timer.is_stopped():
 			$health_regen_timer.stop()
@@ -30,6 +32,8 @@ func _process(delta: float) -> void:
 
 func _on_health_regen_timer_timeout() -> void:
 	if value >= max_value:
+		return
+	if value <=0:
 		return
 	value += HEALTH_REGENERATION_AMOUNT
 

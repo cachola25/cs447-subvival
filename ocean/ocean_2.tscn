@@ -341,19 +341,15 @@ position = Vector2(-135, 148)
 curve = SubResource("Curve2D_b4uhe")
 
 [node name="Path2D" type="Path2D" parent="parrot_fish_spawn_area_1"]
-scale = Vector2(1, 1)
 curve = SubResource("Curve2D_4x56w")
 
 [node name="Path2D2" type="Path2D" parent="parrot_fish_spawn_area_1"]
-scale = Vector2(1, 1)
 curve = SubResource("Curve2D_ed8xo")
 
 [node name="Path2D3" type="Path2D" parent="parrot_fish_spawn_area_1"]
-scale = Vector2(1, 1)
 curve = SubResource("Curve2D_e87lp")
 
 [node name="Path2D4" type="Path2D" parent="parrot_fish_spawn_area_1"]
-scale = Vector2(1, 1)
 curve = SubResource("Curve2D_xt2pd")
 
 [node name="spawn_timer" type="Timer" parent="parrot_fish_spawn_area_1"]
