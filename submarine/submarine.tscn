@@ -151,9 +151,6 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d84qk"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_i3x40"]
-font_size = 20
-
 [sub_resource type="LabelSettings" id="LabelSettings_q08o6"]
 outline_size = 2
 shadow_size = 3
@@ -198,6 +195,9 @@ _data = {
 "RESET": SubResource("Animation_qiboa"),
 "fadeout": SubResource("Animation_arhl2")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3x40"]
+font_size = 20
 
 [node name="submarine" type="CharacterBody2D"]
 z_index = 2
@@ -338,6 +338,134 @@ offset_right = 1702.0
 offset_bottom = 280.0
 theme_override_font_sizes/font_size = 30
 text = "$10"
+
+[node name="fish_compendium" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.784
+anchor_top = 0.584
+anchor_right = 0.784
+anchor_bottom = 0.584
+offset_left = -20.28
+offset_top = -21.72
+offset_right = 19.72
+offset_bottom = 18.28
+script = ExtResource("20_3p7ap")
+
+[node name="clownfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-18.0001, 377)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="blue_tang" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(195, 381)
+scale = Vector2(0.314453, 0.313477)
+texture = ExtResource("20_3amhb")
+
+[node name="triggerfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(296, 208)
+scale = Vector2(0.331667, 0.323242)
+texture = ExtResource("20_3amhb")
+
+[node name="parrot_fish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(82, 203)
+scale = Vector2(0.326172, 0.305664)
+texture = ExtResource("20_3amhb")
+
+[node name="turtle" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-139, 209)
+scale = Vector2(0.329102, 0.314453)
+texture = ExtResource("20_3amhb")
+
+[node name="title" type="Label" parent="CanvasLayer/fish_compendium"]
+layout_mode = 0
+offset_left = -92.0
+offset_top = 54.0
+offset_right = 92.0
+offset_bottom = 77.0
+scale = Vector2(2.07624, 2.09309)
+text = "Discovery Compendium"
+label_settings = SubResource("LabelSettings_q08o6")
+
+[node name="comp_icon_1" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(337, 80)
+scale = Vector2(0.106934, 0.102539)
+texture = ExtResource("21_5xm55")
+
+[node name="comp_icon_2" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
+position = Vector2(-151, 83)
+scale = Vector2(0.133789, 0.115234)
+texture = ExtResource("22_mjqdk")
+
+[node name="enemy_fish_compendium" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1315.0
+offset_top = 473.0
+offset_right = 1355.0
+offset_bottom = 513.0
+script = ExtResource("30_bl0wq")
+
+[node name="title" type="Label" parent="CanvasLayer/enemy_fish_compendium"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = -94.0
+offset_right = 290.0
+offset_bottom = -71.0
+scale = Vector2(2.07624, 2.09309)
+text = "Enemy Fish Compendium"
+label_settings = SubResource("LabelSettings_q08o6")
+
+[node name="shark" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
+position = Vector2(66, 67)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="swordfish" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
+position = Vector2(300, 70)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="eel" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
+position = Vector2(518, 70)
+scale = Vector2(0.320312, 0.337891)
+texture = ExtResource("20_3amhb")
+
+[node name="total_torpedos" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1864.0
+offset_top = 254.0
+offset_right = 1904.0
+offset_bottom = 294.0
+
+[node name="torpedo" type="Sprite2D" parent="CanvasLayer/total_torpedos"]
+position = Vector2(-47, 30)
+rotation = -1.5708
+scale = Vector2(2.10994, 2.40668)
+texture = ExtResource("31_qoqab")
+
+[node name="num_torpedos" type="Label" parent="CanvasLayer/total_torpedos"]
+layout_mode = 2
+offset_left = -27.0
+offset_top = 13.0
+offset_right = -17.0
+offset_bottom = 48.0
+text = "0"
+label_settings = SubResource("LabelSettings_e0py5")
+autowrap_mode = 2
+
+[node name="fade_rect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1994.0
+offset_bottom = 1152.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="fadeout_player" type="AnimationPlayer" parent="CanvasLayer/fade_rect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qi8l1")
+}
 
 [node name="upgrade_menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -672,133 +800,6 @@ offset_top = 870.0
 offset_right = 191.0
 offset_bottom = 987.0
 
-[node name="fish_compendium" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchor_left = 0.784
-anchor_top = 0.584
-anchor_right = 0.784
-anchor_bottom = 0.584
-offset_left = -20.28
-offset_top = -21.72
-offset_right = 19.72
-offset_bottom = 18.28
-script = ExtResource("20_3p7ap")
-
-[node name="clownfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(-18.0001, 377)
-scale = Vector2(0.320312, 0.337891)
-texture = ExtResource("20_3amhb")
-
-[node name="blue_tang" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(195, 381)
-scale = Vector2(0.314453, 0.313477)
-texture = ExtResource("20_3amhb")
-
-[node name="triggerfish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(296, 208)
-scale = Vector2(0.331667, 0.323242)
-texture = ExtResource("20_3amhb")
-
-[node name="parrot_fish" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(82, 203)
-scale = Vector2(0.326172, 0.305664)
-texture = ExtResource("20_3amhb")
-
-[node name="turtle" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(-139, 209)
-scale = Vector2(0.329102, 0.314453)
-texture = ExtResource("20_3amhb")
-
-[node name="title" type="Label" parent="CanvasLayer/fish_compendium"]
-layout_mode = 0
-offset_left = -92.0
-offset_top = 54.0
-offset_right = 92.0
-offset_bottom = 77.0
-scale = Vector2(2.07624, 2.09309)
-text = "Discovery Compendium"
-label_settings = SubResource("LabelSettings_q08o6")
-
-[node name="comp_icon_1" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(337, 80)
-scale = Vector2(0.106934, 0.102539)
-texture = ExtResource("21_5xm55")
-
-[node name="comp_icon_2" type="Sprite2D" parent="CanvasLayer/fish_compendium"]
-position = Vector2(-151, 83)
-scale = Vector2(0.133789, 0.115234)
-texture = ExtResource("22_mjqdk")
-
-[node name="enemy_fish_compendium" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1315.0
-offset_top = 473.0
-offset_right = 1355.0
-offset_bottom = 513.0
-script = ExtResource("30_bl0wq")
-
-[node name="title" type="Label" parent="CanvasLayer/enemy_fish_compendium"]
-layout_mode = 0
-offset_left = 94.0
-offset_top = -94.0
-offset_right = 290.0
-offset_bottom = -71.0
-scale = Vector2(2.07624, 2.09309)
-text = "Enemy Fish Compendium"
-label_settings = SubResource("LabelSettings_q08o6")
-
-[node name="shark" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
-position = Vector2(66, 67)
-scale = Vector2(0.320312, 0.337891)
-texture = ExtResource("20_3amhb")
-
-[node name="swordfish" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
-position = Vector2(300, 70)
-scale = Vector2(0.320312, 0.337891)
-texture = ExtResource("20_3amhb")
-
-[node name="eel" type="Sprite2D" parent="CanvasLayer/enemy_fish_compendium"]
-position = Vector2(518, 70)
-scale = Vector2(0.320312, 0.337891)
-texture = ExtResource("20_3amhb")
-
-[node name="total_torpedos" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1864.0
-offset_top = 254.0
-offset_right = 1904.0
-offset_bottom = 294.0
-
-[node name="torpedo" type="Sprite2D" parent="CanvasLayer/total_torpedos"]
-position = Vector2(-47, 30)
-rotation = -1.5708
-scale = Vector2(2.10994, 2.40668)
-texture = ExtResource("31_qoqab")
-
-[node name="num_torpedos" type="Label" parent="CanvasLayer/total_torpedos"]
-layout_mode = 2
-offset_left = -27.0
-offset_top = 13.0
-offset_right = -17.0
-offset_bottom = 48.0
-text = "10000"
-label_settings = SubResource("LabelSettings_e0py5")
-autowrap_mode = 2
-
-[node name="fade_rect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-offset_right = 1994.0
-offset_bottom = 1152.0
-color = Color(0, 0, 0, 1)
-
-[node name="fadeout_player" type="AnimationPlayer" parent="CanvasLayer/fade_rect"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_qi8l1")
-}
-
 [node name="moving_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_1ex1o")
 volume_db = -8.0
@@ -812,6 +813,7 @@ one_shot = true
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CanvasLayer/health_bar/health_regen_timer" to="CanvasLayer/health_bar" method="_on_health_regen_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/oxygen_bar/o2_regen_timer" to="CanvasLayer/oxygen_bar" method="_on_o_2_regen_timer_timeout"]
+[connection signal="animation_finished" from="CanvasLayer/fade_rect/fadeout_player" to="." method="_on_fadeout_player_animation_finished"]
 [connection signal="infinite" from="CanvasLayer/upgrade_menu" to="CanvasLayer/health_bar" method="_on_upgrade_menu_infinite"]
 [connection signal="infinite" from="CanvasLayer/upgrade_menu" to="CanvasLayer/oxygen_bar" method="_on_upgrade_menu_infinite"]
 [connection signal="button_down" from="CanvasLayer/upgrade_menu/NuxModeButton" to="." method="_on_nux_mode_button_button_down"]
@@ -829,5 +831,4 @@ one_shot = true
 [connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/torpedo/buy_torpedo_button" to="CanvasLayer/upgrade_menu" method="_on_buy_torpedo_button_pressed"]
-[connection signal="animation_finished" from="CanvasLayer/fade_rect/fadeout_player" to="." method="_on_fadeout_player_animation_finished"]
 [connection signal="timeout" from="torpedo_timer" to="." method="_on_torpedo_timer_timeout"]

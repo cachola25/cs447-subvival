@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=52 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -77,6 +77,24 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="Curve2D" id="Curve2D_5gw7u"]
+_data = {
+"points": PackedVector2Array(1121.27, 277.647, -1121.27, -277.647, 15193, 7003, 0, 0, 0, 0, 14269, 6047, 0, 848.958, 0, -848.958, 13351, 4392, 0, 0, 0, 0, 14611, 2102, -646.063, -945.067, 646.063, 945.067, 15759, 3143, -1030.5, -966.424, 1030.5, 966.424, 15273, 4654, 0, 0, 0, 0, 17670, 2929)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_b6xim"]
+_data = {
+"points": PackedVector2Array(699.456, 37.3755, -699.456, -37.3755, 16084, 5535, -181.538, -347.058, 181.538, 347.058, 15080, 4889, 91.3967, 353.6, -91.3967, -353.6, 14904, 4408, -173.804, 263.702, 173.804, -263.702, 15038, 3495, -296.985, 159.806, 296.985, -159.806, 15630, 2924, -438.406, -18.3848, 438.406, 18.3848, 16629, 2678, -502.046, -183.848, 502.046, 183.848, 17910, 2854, 107.48, -521.845, -107.48, 521.845, 18386, 3778, 367.696, -462.448, -367.696, 462.448, 17953, 4809, 445.477, -101.823, -445.477, 101.823, 17190, 5273, 956.008, 130.108, -956.008, -130.108, 16090, 5540)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_s8852"]
+_data = {
+"points": PackedVector2Array(-919.941, 23.5451, 919.941, -23.5451, 15065, 6967, -176.588, 588.628, 176.588, -588.628, 16292, 6249, -166.677, 558.765, 166.677, -558.765, 15393, 5245, 539.716, -1495.33, -539.716, 1495.33, 16753, 4242, 761.952, 400.025, -761.952, -400.025, 15540, 3637, 0, 0, 0, 0, 13804, 4047, 1138.17, 385.738, -1138.17, -385.738, 12924, 4503, -933.392, -387.326, 933.392, 387.326, 12791, 3400, 0, 0, 0, 0, 13856, 2853)
+}
+point_count = 9
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_afb5f"]
 radius = 2864.72
 
@@ -86,20 +104,56 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="Curve2D" id="Curve2D_4x56w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7323.04, 10245.4, -727.796, 780.837, 727.796, -780.837, 10491.4, 9545.89, 461.871, 809.757, -461.871, -809.757, 9726.26, 7820.51, 23.3268, 1098.96, -23.3268, -1098.96, 9917.81, 6534.15, -1021.71, -178.339, 1021.71, 178.339, 10822.7, 5786.91, 387.225, -988.096, -387.225, 988.096, 9997.08, 4606.32)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_ed8xo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10337.2, 9108.01, 765.119, 298.839, -765.119, -298.839, 8419.52, 9792.7, 452.54, 626.597, -452.54, -626.597, 8652.9, 8167.41, -667.146, -443.438, 667.146, 443.438, 6623.99, 9078.44, -536.516, 438.618, 536.516, -438.618, 7328.55, 7964.96, 587.835, 501.278, -587.835, -501.278, 5905.11, 7107.38, -111.969, -872.416, 111.969, 872.416, 4552.13, 7382.63, 0, 0, 0, 0, 5098.17, 8442.65)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_e87lp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8396.4, 5979.12, -2108.74, 819.396, 2108.74, -819.396, 11708.9, 5324, 1492.92, 192.799, -1492.92, -192.799, 10673, 3271.06, 363.898, -925.436, -363.898, 925.436, 8652.9, 3492.84, -1581.56, 1677.35, 1581.56, -1677.35, 9269.4, 5252.34, 0, 0, 0, 0, 10080.7, 7016.4)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_xt2pd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7818.44, 9642.57, -737.127, 684.437, 737.127, -684.437, 9968.45, 9151.23, -373.229, 925.436, 373.229, -925.436, 9945.33, 7908.09, 765.119, -641.057, -765.119, 641.057, 9819.83, 6605.81, 699.804, 62.6597, -699.804, -62.6597, 8858.77, 8047.98, 634.489, -48.1998, -634.489, 48.1998, 6992.78, 7656.73, 181.949, -612.137, -181.949, 612.137, 6288.22, 8755.42, 0, 0, 0, 0, 5400.91, 8866.89)
+}
+point_count = 8
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_r8o26"]
 radius = 1813.08
 
-[sub_resource type="Curve2D" id="Curve2D_xum6q"]
+[sub_resource type="Curve2D" id="Curve2D_mijit"]
 _data = {
-"points": PackedVector2Array(-377.573, -335.621, 377.573, 335.621, 16848, 10167, 1042.82, 922.957, -1042.82, -922.957, 15716, 9370, -299.661, 95.8916, 299.661, -95.8916, 15554, 8147, -1582.21, 713.194, 1582.21, -713.194, 16321, 7440, 0, 0, 0, 0, 18113, 7716)
+"points": PackedVector2Array(0, 0, 0, 0, 25887, 11002, 720.435, -101.708, -720.435, 101.708, 25387, 12515, 211.893, 432.261, -211.893, -432.261, 23899, 11756, -29.665, 601.775, 29.665, -601.775, 24090, 11066, 72.0435, 449.212, -72.0435, -449.212, 23421, 10629, 0, 0, 0, 0, 24205, 9108, -542.445, 72.0435, 542.445, -72.0435, 24955, 8714)
 }
-point_count = 5
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_4fsyy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 22475, 10282, -1568.01, -902.662, 1568.01, 902.662, 22904, 9553, -2318.1, -1364.59, 2318.1, 1364.59, 24145, 8697, 953.517, 1428.16, -953.517, -1428.16, 25773, 9557, 618.726, -500.067, -618.726, 500.067, 25323, 10303, 72.0435, -1097.6, -72.0435, 1097.6, 23793, 10455)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_oyj67"]
+_data = {
+"points": PackedVector2Array(627.202, 372.931, -627.202, -372.931, 24111, 7739, -4.23785, -288.174, 4.23785, 288.174, 23565, 8048, -266.985, -546.683, 266.985, 546.683, 23264, 8900, -1220.5, -529.732, 1220.5, 529.732, 23590, 10167, -847.57, 440.737, 847.57, -440.737, 25086, 10269, 38.1407, 1131.51, -38.1407, -1131.51, 25951, 9290, 0, 0, 0, 0, 24264, 8277)
+}
+point_count = 7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udfst"]
 radius = 4511.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umemo"]
-radius = 3675.18
+radius = 4512.11
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvcau"]
 radius = 2644.66
@@ -215,7 +269,8 @@ wait_time = 1.2
 autostart = true
 
 [node name="blue_tang_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-4805, -2493)
+position = Vector2(-9216, 2334)
+scale = Vector2(0.801188, 0.741344)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("10_n787b")
@@ -260,11 +315,21 @@ shape = SubResource("CircleShape2D_mcto7")
 [node name="Path2D_1" type="Path2D" parent="triggerfish_spawn_area_1"]
 curve = SubResource("Curve2D_f70ak")
 
+[node name="Path2D_2" type="Path2D" parent="triggerfish_spawn_area_1"]
+curve = SubResource("Curve2D_5gw7u")
+
+[node name="Path2D_3" type="Path2D" parent="triggerfish_spawn_area_1"]
+curve = SubResource("Curve2D_b6xim")
+
+[node name="Path2D_4" type="Path2D" parent="triggerfish_spawn_area_1"]
+curve = SubResource("Curve2D_s8852")
+
 [node name="spawn_timer" type="Timer" parent="triggerfish_spawn_area_1"]
 autostart = true
 
 [node name="parrot_fish_spawn_area_1" type="Area2D" parent="."]
-position = Vector2(-6241, -1443)
+position = Vector2(2218, -918)
+scale = Vector2(0.908366, 0.879226)
 script = ExtResource("12_mtbj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="parrot_fish_spawn_area_1"]
@@ -274,6 +339,22 @@ shape = SubResource("CircleShape2D_afb5f")
 [node name="Path2D_1" type="Path2D" parent="parrot_fish_spawn_area_1"]
 position = Vector2(-135, 148)
 curve = SubResource("Curve2D_b4uhe")
+
+[node name="Path2D" type="Path2D" parent="parrot_fish_spawn_area_1"]
+scale = Vector2(1, 1)
+curve = SubResource("Curve2D_4x56w")
+
+[node name="Path2D2" type="Path2D" parent="parrot_fish_spawn_area_1"]
+scale = Vector2(1, 1)
+curve = SubResource("Curve2D_ed8xo")
+
+[node name="Path2D3" type="Path2D" parent="parrot_fish_spawn_area_1"]
+scale = Vector2(1, 1)
+curve = SubResource("Curve2D_e87lp")
+
+[node name="Path2D4" type="Path2D" parent="parrot_fish_spawn_area_1"]
+scale = Vector2(1, 1)
+curve = SubResource("Curve2D_xt2pd")
 
 [node name="spawn_timer" type="Timer" parent="parrot_fish_spawn_area_1"]
 autostart = true
@@ -286,12 +367,17 @@ script = ExtResource("13_chf3f")
 position = Vector2(24298, 11170)
 shape = SubResource("CircleShape2D_r8o26")
 
-[node name="Path2D_1" type="Path2D" parent="turtle_spawn_area_1"]
-position = Vector2(8584, 2432)
-curve = SubResource("Curve2D_xum6q")
-
 [node name="spawn_timer" type="Timer" parent="turtle_spawn_area_1"]
 autostart = true
+
+[node name="Path2D" type="Path2D" parent="turtle_spawn_area_1"]
+curve = SubResource("Curve2D_mijit")
+
+[node name="Path2D2" type="Path2D" parent="turtle_spawn_area_1"]
+curve = SubResource("Curve2D_4fsyy")
+
+[node name="Path2D3" type="Path2D" parent="turtle_spawn_area_1"]
+curve = SubResource("Curve2D_oyj67")
 
 [node name="eel_spawn_area_1" type="Area2D" parent="."]
 position = Vector2(-9465, -3309)
@@ -309,7 +395,7 @@ position = Vector2(-1816, 480)
 script = ExtResource("15_weewt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="swordfish_spawn_area_1"]
-position = Vector2(11630, 3544)
+position = Vector2(11146, 3483)
 shape = SubResource("CircleShape2D_umemo")
 debug_color = Color(0.811073, 0.378136, 0.434404, 0.42)
 
