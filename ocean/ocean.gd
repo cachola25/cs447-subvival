@@ -70,6 +70,7 @@ func _on_player_alive_time_timeout() -> void:
 
 func _on_start_boss_fight_finished() -> void:
 	var octopus_instance = octopus_scene.instantiate()
+	octopus_instance.connect("defeated", _on_octopus_defeated)
 	var transform_position = Transform2D()
 	var spawn_pos = submarine_instance.global_position
 	var min_distance = 600
@@ -84,3 +85,17 @@ func _on_start_boss_fight_finished() -> void:
 		submarine_instance.global_position, octopus_instance.SPEED, octopus_instance.DAMAGE_DEALT)
 	octopus_instance.get_node("AnimatedSprite2D").play("octopus_swim")
 	$boss_fight_music.play()
+
+func _on_octopus_defeated():
+	$boss_fight_music.stop()
+	$background_music.play(1.0)
+	$eel_spawn_area_1.queue_free()
+	$swordfish_spawn_area_1.queue_free()
+	$shark_spawn_area_1.queue_free()
+	$octopus_death.play()
+	
+func _on_octopus_death_finished() -> void:
+	$end_of_game.start()
+
+func _on_end_of_game_timeout() -> void:
+	get_tree().change_scene_to_file("res://menu_scenes/victory_screen/victory_screen.tscn")

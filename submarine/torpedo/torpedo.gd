@@ -11,15 +11,22 @@ func _ready():
 	var submarine_animation = submarine_scene.get_node("AnimatedSprite2D")
 	var direction = Vector2(cos(submarine_animation.rotation),sin(submarine_animation.rotation))
 	$AnimatedSprite2D.rotation = submarine_animation.rotation
-	if not submarine_animation.flip_h:
+	if submarine_animation.flip_h:
 		$AnimatedSprite2D.flip_h = true
 		SPEED = -SPEED
 	$torpedo_launch.play()
 	velocity = direction * SPEED
 	
 func _process(delta):
+	if $AnimatedSprite2D.animation == "exploding":
+		return
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		if collision_info.get_collider() is rocks:
 			get_tree().current_scene.add_child(explosion_sound.instantiate())
-			queue_free()
+			$AnimatedSprite2D.play("exploding")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "exploding":
+		queue_free()

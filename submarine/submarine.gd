@@ -23,8 +23,8 @@ var previous_direction = Vector2.ZERO
 var previous_rotation = -100
 var started_boss_fight = false
 var displayed_popup = false
-
-var nuxMode = false;
+var can_fire = true
+var nuxMode = false
 
 signal discovered_new
 signal killed_new
@@ -67,9 +67,9 @@ func undisplay_user_menu():
 	$CanvasLayer/enemy_fish_compendium.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().paused = false
-	if not displayed_popup and display_final_compendium():
-		display_unlock_message()
-		displayed_popup = true
+	#if not displayed_popup and display_final_compendium():
+		#display_unlock_message()
+		#displayed_popup = true
 	
 func _ready():
 	$AnimatedSprite2D.play("submarine_default")
@@ -100,13 +100,6 @@ func apply_movement_rotation(direction: Vector2, delta):
 	else:
 		$AnimatedSprite2D.flip_v = false
 		
-func display_unlock_message():
-	var popup_instance = popup.instantiate()
-	var viewport_size = get_viewport().get_visible_rect().size
-	popup_instance.position = (viewport_size - popup_instance.size) / 2
-	popup_instance.position = position + Vector2(0, -100)
-	get_parent().add_child(popup_instance)
-	
 func get_total_torpedos():
 	var total = int($CanvasLayer/total_torpedos/num_torpedos.text)
 	return total
@@ -122,11 +115,12 @@ func check_if_boss_fight():
 		return
 	started_boss_fight = true
 	emit_signal("start_boss_fight")
+	
 func _process(delta):
-	if is_submarine_destroyed():
-		var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
-		get_tree().root.get_child(0).queue_free()
-		get_tree().root.add_child(death_scene)
+	#if is_submarine_destroyed():
+		#var death_scene = load("res://menu_scenes/death_screen/death_screen.tscn").instantiate()
+		#get_tree().root.get_child(0).queue_free()
+		#get_tree().root.add_child(death_scene)
 		
 	var direction = Vector2.ZERO # (0,0d)
 	if elapsed > 1:
@@ -169,12 +163,15 @@ func _process(delta):
 	
 	apply_movement_rotation(direction, delta)
 	if Input.is_action_just_pressed("fire_torpedo"):
-		if get_total_torpedos() >= 1:
+		if get_total_torpedos() >= 1 and can_fire:
 			fire_torpedo()
 	check_if_boss_fight()
 	
 	if display_final_compendium():
 		$CanvasLayer/total_torpedos.visible = true
+		if not displayed_popup:
+			$popup_message.get_node("AnimationPlayer").play("show_and_hide")
+			displayed_popup = true
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
@@ -205,6 +202,8 @@ func fire_torpedo():
 	torpedo.position = position
 	get_parent().add_child(torpedo)
 	update_total_torpedos(-1)
+	$torpedo_timer.start()
+	can_fire = false
 	
 
 func _on_nux_mode_button_button_down() -> void:
@@ -212,3 +211,7 @@ func _on_nux_mode_button_button_down() -> void:
 
 	if nuxMode:
 		pass
+
+
+func _on_torpedo_timer_timeout() -> void:
+	can_fire = true

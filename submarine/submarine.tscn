@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://cnemvuq4712kt"]
+[gd_scene load_steps=50 format=3 uid="uid://cnemvuq4712kt"]
 
 [ext_resource type="Script" path="res://submarine/submarine.gd" id="1_uaken"]
-[ext_resource type="Texture2D" uid="uid://cxmk81ptkjwwi" path="res://assets/art/submarine/krita-submarine.png" id="2_ipk4e"]
-[ext_resource type="Texture2D" uid="uid://bnhxeo1giqu83" path="res://assets/art/submarine/krita-submarine-damage-taken.png" id="3_00n82"]
+[ext_resource type="Texture2D" uid="uid://gwne8bytd5jk" path="res://assets/art/submarine/Subvival Sub Damage Taken.png" id="2_pxsed"]
+[ext_resource type="Texture2D" uid="uid://dxi0syvk7yqeo" path="res://assets/art/submarine/Subvival Sub.png" id="3_ul7x1"]
 [ext_resource type="Texture2D" uid="uid://3v0h43a6cfh8" path="res://assets/art/GUI/upgrade_menu/NuxButton.png" id="4_4csxp"]
 [ext_resource type="Script" path="res://submarine/sub_viewport.gd" id="4_6bchf"]
+[ext_resource type="PackedScene" uid="uid://kw0anfqbxxlx" path="res://menu_scenes/popup_message/popup_message.tscn" id="4_77p1i"]
 [ext_resource type="Script" path="res://submarine/UI/health_bar/health_bar.gd" id="5_sriyo"]
 [ext_resource type="AudioStream" uid="uid://n7r2xl1ke5ty" path="res://assets/sounds/low_health.mp3" id="6_1n6uy"]
 [ext_resource type="Texture2D" uid="uid://bywvdjp7cgytu" path="res://assets/art/GUI/upgrade_menu/health.png" id="6_4qh78"]
@@ -39,21 +40,48 @@ size = Vector2(1920.5, 1074.5)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ucp48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwy0q"]
-size = Vector2(160, 97)
+size = Vector2(262.476, 90.8268)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tje5v"]
-atlas = ExtResource("3_00n82")
-region = Rect2(2, 12, 96, 73)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocis2"]
+atlas = ExtResource("2_pxsed")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cc4d1"]
-atlas = ExtResource("2_ipk4e")
-region = Rect2(2, 12, 96, 73)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ec0u"]
+atlas = ExtResource("2_pxsed")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgsbq"]
+atlas = ExtResource("3_ul7x1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu38a"]
+atlas = ExtResource("3_ul7x1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw3at"]
+atlas = ExtResource("3_ul7x1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3je4e"]
+atlas = ExtResource("3_ul7x1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fmfa"]
+atlas = ExtResource("3_ul7x1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_besxr"]
+atlas = ExtResource("3_ul7x1")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ls03"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tje5v")
+"texture": SubResource("AtlasTexture_ocis2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ec0u")
 }],
 "loop": false,
 "name": &"damage_taken",
@@ -61,7 +89,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cc4d1")
+"texture": SubResource("AtlasTexture_cgsbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu38a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw3at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3je4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fmfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_besxr")
 }],
 "loop": true,
 "name": &"submarine_default",
@@ -103,16 +146,23 @@ debug_color = Color(0.866512, 0.295501, 0.510766, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 material = SubResource("CanvasItemMaterial_ucp48")
-position = Vector2(1, -0.5)
+position = Vector2(-10.7726, -5.5)
+scale = Vector2(1.01931, 0.869787)
 shape = SubResource("RectangleShape2D_pwy0q")
 debug_color = Color(0.417429, 0.552356, 0.672516, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(1.68208, 1.33437)
+position = Vector2(-1.00002, 0.999981)
+scale = Vector2(4.76562, 3.3125)
 sprite_frames = SubResource("SpriteFrames_1ls03")
-animation = &"damage_taken"
-flip_h = true
+animation = &"submarine_default"
+frame_progress = 0.714703
+
+[node name="popup_message" parent="." instance=ExtResource("4_77p1i")]
+offset_left = -6.0
+offset_top = -114.0
+offset_right = -6.0
+offset_bottom = -114.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -669,6 +719,10 @@ stream = ExtResource("28_1ex1o")
 volume_db = -8.0
 parameters/looping = true
 
+[node name="torpedo_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_exited" from="Camera2D/scoring_zone" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CanvasLayer/health_bar/health_regen_timer" to="CanvasLayer/health_bar" method="_on_health_regen_timer_timeout"]
@@ -690,3 +744,4 @@ parameters/looping = true
 [connection signal="mouse_entered" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/upgrade_menu/luck/tooltip_button" to="CanvasLayer/upgrade_menu/luck" method="_on_tooltip_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/upgrade_menu/torpedo/buy_torpedo_button" to="CanvasLayer/upgrade_menu" method="_on_buy_torpedo_button_pressed"]
+[connection signal="timeout" from="torpedo_timer" to="." method="_on_torpedo_timer_timeout"]

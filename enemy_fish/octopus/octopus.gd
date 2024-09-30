@@ -5,10 +5,9 @@ class_name octopus
 var SPEED = 800
 var DAMAGE_DEALT = 55
 var ocean_scene
+@onready var explosion_sound = preload("res://submarine/torpedo/explosion.tscn")
 
-signal hit_sub
-signal despawned
-signal hit_by_torpedo
+signal defeated
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -31,6 +30,7 @@ var angular_speed = 2
 
 var returning_duration = 1.5
 func start(_transform, submarine_position, _SPEED, _DAMAGE_DEALT):
+	$AnimatedSprite2D.play("octopus_swim")
 	global_transform = _transform
 	SPEED = _SPEED
 	DAMAGE_DEALT = _DAMAGE_DEALT
@@ -45,7 +45,9 @@ func _physics_process(delta):
 	if not ocean_scene:
 		return
 	if $octopus_health_bar.value <= $octopus_health_bar.min_value:
-		get_tree().change_scene_to_file("res://menu_scenes/victory_screen/victory_screen.tscn")
+		emit_signal("defeated")
+		queue_free()
+	
 	var submarine_position = ocean_scene.get_meta("SUBMARINE_POSITION")
 	circling_center = circling_center.lerp(submarine_position, circling_center_follow_speed * delta)
 	phase_timer += delta
@@ -53,6 +55,7 @@ func _physics_process(delta):
 	if state == State.CIRCLING:
 		if phase_timer >= circling_duration:
 			state = State.ATTACKING
+			$AnimatedSprite2D.play("octopus_attack")
 			phase_timer = 0.0
 		else:
 			angle += angular_speed * delta
@@ -62,6 +65,7 @@ func _physics_process(delta):
 	elif state == State.ATTACKING:
 		if phase_timer >= attacking_duration:
 			state = State.RETURNING
+			$AnimatedSprite2D.play("octopus_swim")
 			phase_timer = 0.0
 		else:
 			var direction = (submarine_position - global_position).normalized()
@@ -92,7 +96,8 @@ func _on_body_entered(body: Node2D) -> void:
 	elif body is torpedo:
 		if state == State.ATTACKING:
 			$octopus_health_bar.value -= $octopus_health_bar.step
-		body.queue_free()
+		get_tree().current_scene.add_child(explosion_sound.instantiate())
+		body.get_node("AnimatedSprite2D").play("exploding")
 		
 func _ready() -> void:
 	pass

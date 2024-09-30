@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bl83olmxxaih4"]
+[gd_scene load_steps=43 format=3 uid="uid://bl83olmxxaih4"]
 
 [ext_resource type="Script" path="res://ocean/ocean.gd" id="1_6pvg6"]
 [ext_resource type="PackedScene" uid="uid://cnemvuq4712kt" path="res://submarine/submarine.tscn" id="2_jkcuj"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://xsr3jhvyos7h" path="res://assets/sounds/log_enemy.MP3" id="20_1e8w5"]
 [ext_resource type="AudioStream" uid="uid://bm0qjyrifpyi2" path="res://assets/sounds/boss_fight_start.MP3" id="21_m3114"]
 [ext_resource type="AudioStream" uid="uid://uaoly4j8eu1b" path="res://assets/sounds/boss_fight_music.MP3" id="22_6dxdx"]
+[ext_resource type="AudioStream" uid="uid://cevbsggyexomy" path="res://assets/sounds/octopus_death.MP3" id="23_5bij4"]
 
 [sub_resource type="TileSet" id="TileSet_iqnev"]
 
@@ -364,11 +365,18 @@ pitch_scale = 1.2
 
 [node name="start_boss_fight" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_m3114")
+volume_db = 7.0
 
 [node name="boss_fight_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_6dxdx")
-volume_db = -3.0
+volume_db = -5.0
 parameters/looping = true
+
+[node name="octopus_death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_5bij4")
+
+[node name="end_of_game" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="body_entered" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_entered"]
 [connection signal="body_exited" from="clownfish_spawn_area_1" to="clownfish_spawn_area_1" method="_on_body_exited"]
@@ -395,3 +403,5 @@ parameters/looping = true
 [connection signal="body_exited" from="shark_spawn_area_1" to="shark_spawn_area_1" method="_on_body_exited"]
 [connection signal="timeout" from="shark_spawn_area_1/spawn_delay_timer" to="shark_spawn_area_1" method="_on_spawn_delay_timer_timeout"]
 [connection signal="finished" from="start_boss_fight" to="." method="_on_start_boss_fight_finished"]
+[connection signal="finished" from="octopus_death" to="." method="_on_octopus_death_finished"]
+[connection signal="timeout" from="end_of_game" to="." method="_on_end_of_game_timeout"]
